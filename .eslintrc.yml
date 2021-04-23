@@ -1,0 +1,27 @@
+# https://eslint.org/docs/user-guide/configuring
+
+---
+parser: '@typescript-eslint/parser'
+
+parserOptions:
+  ecmaVersion: 2021
+  sourceType: module
+  ecmaFeatures:
+    impliedStrict: true
+
+env:
+  es2021: true
+  node: true
+  jest: true
+
+extends:
+  # https://google.github.io/styleguide/jsguide.html
+  - google
+  # https://prettier.io/docs/en/integrating-with-linters.html
+  - prettier
+
+plugins:
+  - '@typescript-eslint'
+
+
+rules: {}
