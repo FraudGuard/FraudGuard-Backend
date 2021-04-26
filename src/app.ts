@@ -24,6 +24,8 @@ const ExpressPinoLogger = require('express-pino-logger')({
   },
 });
 
+export const PATH = 'api/ads/';
+
 /**
  * Create App Object with pino logger.
  * @param {IExpress} app Express App-Object.
@@ -66,7 +68,7 @@ class App {
    * loads routes for the paths.
    */
   private routes() {
-    this.app.use(adRouter);
+    this.app.use(PATH, adRouter);
     // this.app.get('*', notFound);
     // this.app.use(internalError);
 

@@ -21,16 +21,15 @@ export const adsSchema = new Schema<AdsSchema>(
     followers: { type: Number },
     replySpeed: { type: Number },
     replyRate: { type: Number },
-    friendliness: { type: Number },
-    rating: { type: Number },
+    friendliness: { type: [Number] },
+    rating: { type: [Number] },
     versand: { type: [Number] },
     scam: { type: Number },
+    createdAt: { type: Date, expires: 1209600 }, // Delete document after 2 weeks
   },
   {
-    // TODO keep data only for a limited time. no need to save data which doesnt exist on ebay anymore
     id: true,
     timestamps: true,
-    // https://thecodebarbarian.com/whats-new-in-mongoose-5-10-optimistic-concurrency.html
     optimisticConcurrency: true,
   },
 );

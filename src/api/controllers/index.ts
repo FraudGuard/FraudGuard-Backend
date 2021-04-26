@@ -1,1 +1,1 @@
-export * from './getDataById';
+export * from './findById';
