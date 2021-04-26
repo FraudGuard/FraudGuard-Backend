@@ -14,7 +14,6 @@ interface ServerConfig {
 const computername = hostname();
 const ipAddress = ip.address();
 
-
 const { env } = process;
 const { NODE_ENV, SERVER_PORT } = env;
 
