@@ -74,7 +74,7 @@ jobs:
       - name: npm ci, build, and test
         run: |
           npm ci
-          npm run test --if-present
+          npm t --if-present
           npm run build --if-present
   analyze:
     # https://github.com/github/codeql-action
