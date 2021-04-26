@@ -1,6 +1,5 @@
 import { hostname } from 'os';
 import ip from 'ip';
-import RE2 from 're2';
 
 interface ServerConfig {
   dev: boolean;
@@ -15,9 +14,6 @@ interface ServerConfig {
 const computername = hostname();
 const ipAddress = ip.address();
 
-// https://github.com/google/re2
-// https://github.com/uhop/node-re2
-export const userIdRegexp = new RE2('[\\0-9]{8}', 'u');
 
 const { env } = process;
 const { NODE_ENV, SERVER_PORT } = env;

@@ -8,20 +8,22 @@ module.exports = {
   testRunner: 'jest-circus/runner',
 
   bail: true,
+
   collectCoverageFrom: ['**/*.ts', '!src/index.ts'],
   // default: ["/node_modules/"]
   coveragePathIgnorePatterns: [
+    '<rootDir>/.github/',
+    '<rootDir>/.husky/',
     '<rootDir>/build/',
     '<rootDir>/coverage/',
     '<rootDir>/dist/',
     '<rootDir>/node_modules/',
     '<rootDir>/scripts/',
-    '<rootDir>/.husky/',
-    '<rootDir>/.github/',
     '<rootDir>/test/',
   ],
-  coverageReporters: ['text-summary', 'html'],
+  coverageReporters: ['text-summary', 'html', 'clover'],
   errorOnDeprecated: true,
   testTimeout: 10000,
   verbose: true,
+  collectCoverage: true,
 };

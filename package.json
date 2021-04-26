@@ -15,8 +15,7 @@
     "prettier": "npx prettier --write src/**/*.ts",
     "start:dev": "tsnd --respawn src/index.ts | pino-pretty -c -t",
     "start": "node dist/src/index.js",
-    "test:coverage": "npm t -- --coverage",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --detectOpenHandles --coverage && coverage-badger -e 90 -g 65 -r coverage/clover.xml -d src/assets/",
     "tsc": "npx tsc"
   },
   "keywords": [
@@ -67,7 +66,6 @@
     "mongoose": "^5.11.18",
     "pino": "^6.11.1",
     "pino-pretty": "^4.5.0",
-    "re2": "^1.15.9",
     "release": "^6.3.0",
     "strip-indent": "^3.0.0",
     "type": "^2.3.0"
@@ -87,11 +85,14 @@
     "@types/uuid": "^8.3.0",
     "chai": "^4.3.4",
     "copyfiles": "^2.4.1",
+    "coverage-badger": "^1.0.1",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.1.0",
     "husky": "^5.1.2",
     "jest-circus": "^26.6.3",
+    "jest-coverage-shield": "^1.1.2",
     "jest-each": "^26.6.2",
+    "jest-junit": "^12.0.0",
     "node-fetch": "^2.6.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
