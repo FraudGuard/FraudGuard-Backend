@@ -18,7 +18,6 @@ module.exports = {
     '<rootDir>/coverage/',
     '<rootDir>/dist/',
     '<rootDir>/node_modules/',
-    '<rootDir>/scripts/',
     '<rootDir>/test/',
   ],
   coverageReporters: ['text-summary', 'html', 'clover'],

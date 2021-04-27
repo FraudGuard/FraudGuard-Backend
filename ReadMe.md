@@ -39,10 +39,10 @@
   <a href="https://github.com/Barnes-C/FraudGuard-Backend/actions?query=workflow%3A%22Node.js+CI%22">
     <img src="https://github.com/Barnes-C/FraudGuard-Backend/workflows/Node.js%20CI/badge.svg" alt="CI status" />
   </a>&nbsp;
-    <img src="./src/assets/coverage.svg" alt="test coverage" />
+    <img src="./src/assets/coverage.svg" alt="test coverage" />&nbsp;
   <a href="https://google.github.io/styleguide/jsguide.html">
     <img src="https://img.shields.io/badge/code%20style-google-yellow" alt="Code Style" />
-  </a>&nbsp;
+  </a>
 </p>
 
 <hr>

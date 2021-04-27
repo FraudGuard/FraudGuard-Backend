@@ -11,6 +11,7 @@ const stripIndent = require('strip-indent');
 
 export const printBanner = () => {
   const banner = `
+
          d8888      888
         d88888      888
        d88P888      888
