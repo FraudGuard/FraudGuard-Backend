@@ -41,10 +41,10 @@ const createIndex = async (collection: Collection) => {
 
   // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#createIndex
   // Warning: the options for createIndexes() apply to all indexes
-  // TODO auf was machen wir indexes? discuss after 14.05
-  let index = await collection.createIndex('scam', { unique: true });
+  // TODO auf was machen wir indexes? nach was soll man suchen können? discuss after 14.05
+  let index = await collection.createIndex('scam', { sparse: true });
   logger.warn(`The index ${index} was created.`);
-  index = await collection.createIndex('userId', { unique: true });
+  index = await collection.createIndex('userId', { sparse: true });
   logger.warn(`The index ${index} was created.`);
 };
 

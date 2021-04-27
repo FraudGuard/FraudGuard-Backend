@@ -1,6 +1,5 @@
 import { AdsModel as Ads } from '../models/ads';
-import { HttpStatus } from '../../shared';
-import { logger } from '../../shared';
+import { HttpStatus, logger } from '../../shared';
 import { Request, Response } from 'express';
 
 // Get findById

@@ -1,10 +1,14 @@
 import { app } from './app';
 import { createServer } from 'http';
-import { disconnectDB, connectDB } from './shared';
-import { logger } from './shared';
-import { printBanner } from './shared';
+import {
+  disconnectDB,
+  connectDB,
+  printBanner,
+  serverConfig,
+  logger,
+  populateDB,
+} from './shared';
 import { Server } from 'net';
-import { serverConfig } from './shared';
 
 import dotenv from 'dotenv';
 const result = dotenv.config();
@@ -35,8 +39,8 @@ const startServer = () => {
 (async () => {
   try {
     startServer();
-    connectDB();
-    // dbPopulate();
+    await connectDB();
+    await populateDB();
   } catch (err: unknown) {
     logger.error(`Error while starting Server: ${err}`);
   }

@@ -1,8 +1,6 @@
-import { corsHandler } from './security';
-import { helmetHandlers } from './security';
-import { loggerProfiles } from './shared';
-import { serverConfig } from './shared';
-import adRouter from './api/routes/ads';
+import { corsHandler, helmetHandlers } from './security';
+import { loggerProfiles, serverConfig } from './shared';
+import adsRouter from './api/routes/adsRouter';
 import compression from 'compression';
 import express, { Express as IExpress } from 'express';
 import pino, { Logger } from 'pino';
@@ -68,10 +66,7 @@ class App {
    * loads routes for the paths.
    */
   private routes() {
-    this.app.use(PATH, adRouter);
-    // this.app.get('*', notFound);
-    // this.app.use(internalError);
-
+    this.app.use('/api/ads', adsRouter);
     this.app.get('/', (_, res) => {
       res.send('Hello World on "/" => GET');
     });
