@@ -1,16 +1,10 @@
 import { afterAll, beforeAll, describe, expect, test } from '@jest/globals';
 
-const noop = (_: Error) => {};
-
 // Test-Suite
 describe('Test', () => {
-  beforeAll(async () => {
-    noop;
-  });
+  beforeAll(async () => {});
 
-  afterAll(() => {
-    noop;
-  });
+  afterAll(() => {});
 
   test('Test if true is true', async () => {
     expect(true).toBeTruthy;

@@ -3,12 +3,14 @@ import pino, { Logger, LoggerOptions } from 'pino';
 const pinoPrettifyOptions = {
   colorize: true,
   levelFirst: true,
+  translateTime: true,
 };
 
 export const logger: Logger = pino({
   prettyPrint: {
     colorize: true,
     levelFirst: true,
+    translateTime: true,
   },
 });
 
