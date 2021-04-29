@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 // if its there then get the scam score and send it back
 export const countToLabel = async (_req: Request, res: Response) => {
   try {
-    Ads.count({ labeled: true , searchQuery: 'lego' })
+    Ads.count({ labeled: true, searchQuery: 'lego' })
       .exec()
       .then((ad) => {
         if (ad) {

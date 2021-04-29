@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 // if its there then get the scam score and send it back
 export const findOneToReview = async (_req: Request, res: Response) => {
   try {
-    Ads.findOne({ toReview:true })
+    Ads.findOne({ toReview: true })
       .exec()
       .then((ad) => {
         if (ad) {

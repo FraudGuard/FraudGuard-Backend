@@ -28,7 +28,7 @@ export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(
     locale: { type: String },
     locations: { type: Object },
     medias: { type: Object },
-    otherAttributes: { type: Object }, 
+    otherAttributes: { type: Object },
     phone: { type: Object },
     pictures: { type: Object },
     'poster-type': { type: Object },
@@ -36,15 +36,15 @@ export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(
     'seller-account-type': { value: { type: String } },
     'start-date-time': { value: { type: String } },
     'store-id': { type: Object },
-    'title': { value: { type: String } },
+    title: { value: { type: String } },
     tracking: {
-      'user-account-type': { value: { type: String } }
+      'user-account-type': { value: { type: String } },
     },
     'user-id': { value: { type: Number } },
     'user-rating': { averageRating: { value: { type: Number } } },
     'user-since-date-time': { value: { type: String } },
     userBadges: { type: Array },
-    version: { type: String }
+    version: { type: String },
   },
   {
     id: true,
@@ -53,4 +53,7 @@ export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(
   },
 );
 
-export const AdsFromEbayModel = model<AdsFromEbaySchema>('adsfromebay', adsFromEbaySchema);
+export const AdsFromEbayModel = model<AdsFromEbaySchema>(
+  'adsfromebay',
+  adsFromEbaySchema,
+);

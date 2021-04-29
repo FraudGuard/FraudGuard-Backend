@@ -12,32 +12,31 @@ export const updateAd = async (req: Request, res: Response) => {
     const { id, labeledDecision, toReview } = req.body;
 
     if (!id) {
-      throw new Error('No valid id ')
+      throw new Error('No valid id ');
     }
-    let update: UpdateQuery<AdsFromEbaySchema>
+    let update: UpdateQuery<AdsFromEbaySchema>;
     if (toReview) {
-      update = { toReview }
+      update = { toReview };
     } else {
       update = {
         labeled: true,
         labeledDecision,
         toReview: false,
-      }
+      };
     }
 
-    Ads.findByIdAndUpdate({ _id: id.toString() }, update)
-      .then((ad) => {
-        logger.log('updated', ad ? 'yes' : 'no')
-        if (ad) {
-          res.status(HttpStatus.OK).json({
-            ad,
-          });
-        } else {
-          res.status(HttpStatus.INTERNAL_ERROR).json({
-            msg: 'Error while updating',
-          });
-        }
-      });
+    Ads.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
+      logger.log('updated', ad ? 'yes' : 'no');
+      if (ad) {
+        res.status(HttpStatus.OK).json({
+          ad,
+        });
+      } else {
+        res.status(HttpStatus.INTERNAL_ERROR).json({
+          msg: 'Error while updating',
+        });
+      }
+    });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
