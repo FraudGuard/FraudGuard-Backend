@@ -7,6 +7,7 @@ export const findById = async (req: Request, res: Response) => {
     // TODO is it really a id?? validation, also sanitize input
     const { id } = req.params;
     logger.info(req.params);
+    logger.info('info');
     logger.info(id);
 
     Ads.findById(id)
