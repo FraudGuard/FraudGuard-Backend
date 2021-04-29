@@ -3,6 +3,7 @@ import cors from 'cors';
 const whitelist = [
   'https://www.ebay-kleinanzeigen.de/*',
   'http://localhost:4200',
+  'https://awp-label5000.inncoded.com',
 ]
 
 export const corsHandler = cors({
