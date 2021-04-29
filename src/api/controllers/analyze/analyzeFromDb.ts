@@ -9,26 +9,28 @@ export const analyzeFromDb = async (req: Request, res: Response) => {
     const { id } = req.params;
     logger.info(req.params);
     logger.info(id);
-    findByIdEbay(id).then(ad => {
+    findByIdEbay(id).then((ad) => {
       if (!ad) {
-        logger.info(`loaded ad not found: ${id}`)
+        logger.info(`loaded ad not found: ${id}`);
         res.status(HttpStatus.NOT_FOUND).json({
           msg: 'ad not found',
         });
-        return
+        return;
       }
-      logger.info('loaded ad from db')
+      logger.info('loaded ad from db');
 
-      analyze(ad).then(result => {
-        res.status(HttpStatus.OK).json(result);
-      }).catch(error => {
-        logger.error(error);
-        res.status(HttpStatus.INTERNAL_ERROR).json({
-          msg: 'Internal Error',
-          error
+      analyze(ad)
+        .then((result) => {
+          res.status(HttpStatus.OK).json(result);
+        })
+        .catch((error) => {
+          logger.error(error);
+          res.status(HttpStatus.INTERNAL_ERROR).json({
+            msg: 'Internal Error',
+            error,
+          });
         });
-      })
-    })
+    });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
