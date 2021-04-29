@@ -1,7 +1,18 @@
 import cors from 'cors';
 
+const whitelist = [
+  'https://www.ebay-kleinanzeigen.de/*',
+  'http://localhost:4200',
+]
+
 export const corsHandler = cors({
-  origin: 'https://www.ebay-kleinanzeigen.de/*',
+  origin: function (origin, callback) {
+    if (origin && whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: [
     'Origin',
