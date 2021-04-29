@@ -1,6 +1,7 @@
 import { corsHandler, helmetHandlers } from './security';
 import { loggerProfiles, serverConfig } from './shared';
 import adsRouter from './api/routes/adsRouter';
+import analyzeRouter from './api/routes/analyzeRouter';
 import labelRouter from './api/routes/labelRouter';
 import compression from 'compression';
 import express, { Express as IExpress } from 'express';
@@ -68,6 +69,7 @@ class App {
    */
   private routes() {
     this.app.use('/api/ads', adsRouter);
+    this.app.use('/api/analyze', analyzeRouter);
     this.app.use('/api/label', labelRouter);
     this.app.get('/', (_, res) => {
       res.send('Hello World on "/" => GET');

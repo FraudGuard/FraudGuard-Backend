@@ -1,6 +1,6 @@
-import { AdsModel as Ads } from '../models/ads';
 import { HttpStatus, logger } from '../../shared';
 import { Request, Response } from 'express';
+import { findById as findByIdInMongo } from '../services/mongo';
 
 export const findById = async (req: Request, res: Response) => {
   try {
@@ -9,10 +9,8 @@ export const findById = async (req: Request, res: Response) => {
     logger.info(req.params);
     logger.info(id);
 
-    Ads.findById(id)
-      .select('scam')
-      .exec()
-      .then((ad) => {
+    findByIdInMongo(id)
+      .then((ad: any) => {
         if (ad) {
           res.status(HttpStatus.OK).json({
             ad,

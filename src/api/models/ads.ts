@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { AdsSchema } from '../../shared/ads';
+import { AdsSchema } from './schemas/ads';
 
 // https://mongoosejs.com/docs/schematypes.html
 export const adsSchema = new Schema<AdsSchema>(

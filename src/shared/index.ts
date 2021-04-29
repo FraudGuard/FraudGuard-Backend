@@ -1,4 +1,3 @@
-export * from './ads';
 export * from './banner';
 export * from './base-uri';
 export * from './config';

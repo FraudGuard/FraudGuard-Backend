@@ -10,8 +10,8 @@
     "build": "tsc",
     "clean": "npx rimraf ./dist && npx rimraf server.*",
     "linter": "npx eslint src/**/*.ts -c ./.eslintrc.yml --fix",
-    "predocker":"npm run build",
-    "docker":"docker build -t gcr.io/fraudgaurd/backend:latest .",
+    "predocker": "npm run build",
+    "docker": "docker build -t gcr.io/fraudgaurd/backend:latest .",
     "prettier": "npx prettier --write src/**/*.ts",
     "start:dev": "tsnd --respawn src/index.ts | pino-pretty -c -t",
     "start": "node dist/src/index.js | pino-pretty -c -t",
@@ -52,6 +52,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "axios": "^0.21.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

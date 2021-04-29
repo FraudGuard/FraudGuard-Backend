@@ -2,7 +2,7 @@ import { AdsFromEbayModel as Ads } from '../models/adsFromEbay';
 import { HttpStatus, logger } from '../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
-import { AdsFromEbaySchema } from 'src/shared/adsFromEbay';
+import { AdsFromEbaySchema } from '../models/schemas/adsFromEbay';
 
 export const updateAd = async (req: Request, res: Response) => {
   try {
