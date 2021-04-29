@@ -1,10 +1,10 @@
-import { AdsFromEbayModel as Ads } from '../models/adsFromEbay';
-import { HttpStatus, logger } from '../../shared';
+import { AdsFromEbayModel as Ads } from '../../models/adsFromEbay';
+import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
-export const countToLabel = async (_req: Request, res: Response) => {
+export const findOneToReview = async (_req: Request, res: Response) => {
   try {
-    Ads.count({ labeled: true, searchQuery: 'lego' })
+    Ads.findOne({ toReview: true })
       .exec()
       .then((ad) => {
         if (ad) {
