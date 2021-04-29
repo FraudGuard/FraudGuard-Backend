@@ -17,7 +17,7 @@ const ipAddress = ip.address();
 const { env } = process;
 const { NODE_ENV, SERVER_PORT } = env;
 
-let port = 3000;
+let port = 4200;
 if (SERVER_PORT !== undefined) {
   port = Number.parseInt(SERVER_PORT, 10);
 }

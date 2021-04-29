@@ -5,20 +5,26 @@ FROM node:16-alpine3.13
 
 WORKDIR /usr/src/app
 
-
 COPY .env .
 COPY package.json .
 COPY package-lock.json .
 
 RUN \
-  npm ci --only=production
+  npm ci
 
-COPY dist .
+COPY . .
 
-# port
-EXPOSE 3000
+EXPOSE 4200
 
 STOPSIGNAL SIGINT
 
-CMD [ "node", "index.js" ]
+CMD ["npm", "run", "start:dev"]
 
+#docker build -t gcr.io/fraudgaurd/backend:1.0 .
+#docker push gcr.io/fraudgaurd/backend:1.0
+#docker run -p outsidePort:insidePort gcr.io/fraudgaurd/backend:1.0
+
+# Get container ID
+#docker ps
+
+#docker pull gcr.io/google-samples/hello-app:1.0
