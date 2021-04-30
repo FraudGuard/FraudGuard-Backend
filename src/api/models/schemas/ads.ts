@@ -23,7 +23,6 @@ export interface AdsSchema extends Document {
   versand: Array<number>;
   scam: number;
 
-
   // tim
   konto_rating: number;
   konto_erstellt_timestamp: number;

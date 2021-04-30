@@ -10,21 +10,32 @@ export const analyzeKonto = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       reject(new Error('Some Error happened'));
     }
 
-    const badgesMap: any = {}
-    ad.userBadges?.[0]?.badges?.forEach(x => badgesMap[x.name] = x)
+    const badgesMap: any = {};
+    ad.userBadges?.[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
-    resultingAd.konto_rating = badgesMap?.rating?.level ? Number.parseInt(badgesMap.rating.level) : -1
-    resultingAd.konto_follower_anzahl = badgesMap?.followers?.value ? Number.parseInt(badgesMap.followers.value) : -1
-    resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value ? Number.parseInt(badgesMap.replySpeed.value) : -1
-    resultingAd.konto_antwortrate = badgesMap?.replyRate?.value ? Number.parseInt(badgesMap.replyRate.value) : -1
-    resultingAd.konto_freundlichkeit = badgesMap?.replyRate?.value ? Number.parseInt(badgesMap.replyRate.value) : -1
-    resultingAd.konto_bewertung = ad['user-rating'].averageRating.value
-    resultingAd.konto_name_laenge = ad['contact-name']?.value?.length
-    resultingAd.konto_gewerblich = ad['seller-account-type'].value === 'PRIVATE' ? 0 : 1
-    resultingAd.konto_privat = ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0
+    resultingAd.konto_rating = badgesMap?.rating?.level
+      ? Number.parseInt(badgesMap.rating.level)
+      : -1;
+    resultingAd.konto_follower_anzahl = badgesMap?.followers?.value
+      ? Number.parseInt(badgesMap.followers.value)
+      : -1;
+    resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value
+      ? Number.parseInt(badgesMap.replySpeed.value)
+      : -1;
+    resultingAd.konto_antwortrate = badgesMap?.replyRate?.value
+      ? Number.parseInt(badgesMap.replyRate.value)
+      : -1;
+    resultingAd.konto_freundlichkeit = badgesMap?.replyRate?.value
+      ? Number.parseInt(badgesMap.replyRate.value)
+      : -1;
+    resultingAd.konto_bewertung = ad['user-rating'].averageRating.value;
+    resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
+    resultingAd.konto_gewerblich =
+      ad['seller-account-type'].value === 'PRIVATE' ? 0 : 1;
+    resultingAd.konto_privat =
+      ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
 
     // resultingAd.konto_erstellt_timestamp = ad.
-
 
     // resultingAd.konto_anzeigen_anzahl = ad.
     // resultingAd.konto_anzeigen_betrugsrate = ad.
