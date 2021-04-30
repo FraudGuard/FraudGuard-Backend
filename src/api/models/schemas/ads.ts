@@ -2,6 +2,7 @@ import { Document } from 'mongoose';
 
 export interface AdsSchema extends Document {
   _id: string;
+  fraud_score: number;
 
   // tim
   konto_rating: number;
@@ -29,6 +30,4 @@ export interface AdsSchema extends Document {
   metadata_amount_pictures: number;
   metadata_phone: number;
   metadata_startDateTime: number;
-
-  fraud_score: number;
 }

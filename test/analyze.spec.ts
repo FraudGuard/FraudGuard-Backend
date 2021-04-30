@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   analyze,
   analyzeBeschreibung,
@@ -34,12 +35,11 @@ describe('Analyze Ads', () => {
   test('Analyze price', async () => {});
 
   test('Analyze metadata', async () => {
-    // given
-
-    // when
-    const result = analyzeMetadaten(testAd, testResult);
-    // then
-    expect(result).to.be.equal();
+    // // given
+    // // when
+    // const result = analyzeMetadaten(testAd, testResult);
+    // // then
+    // expect(result).to.be.equal()
   });
 
   test('Analyze misc.', async () => {});
