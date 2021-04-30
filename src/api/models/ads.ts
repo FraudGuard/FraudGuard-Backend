@@ -24,8 +24,6 @@ export const adsSchema = new Schema<AdsSchema>(
     friendliness: { type: [Number] },
     rating: { type: [Number] },
     versand: { type: [Number] },
-    scam: { type: Number },
-    createdAt: { type: Date, expires: 1209600 }, // Delete document after 2 weeks
 
     // tim
     konto_rating: { type: Number },
@@ -45,6 +43,18 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_name_natuerlich: { type: Number },
     konto_gewerblich: { type: Number },
     konto_privat: { type: Number },
+
+    // Chris
+    metadata_longitude: { type: Number },
+    metadata_latitude: { type: Number },
+    metadata_phone: { type: Number },
+    metadata_amount_pictures: { type: Number },
+    metadata_category: { type: Number },
+    metadata_start_time: { type: Number },
+
+    fraud_score: { type: Number },
+
+    createdAt: { type: Date, expires: 1209600 },
   },
   {
     id: true,

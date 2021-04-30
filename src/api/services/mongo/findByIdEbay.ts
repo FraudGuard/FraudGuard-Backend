@@ -1,4 +1,4 @@
-import { AdsModel } from '../../models/ads';
+import { AdsModel } from '../../models';
 
 export const findById = (id: string) =>
-  AdsModel.findById(id).select('scam').exec();
+  AdsModel.findById(id).select('fraud_score').exec();

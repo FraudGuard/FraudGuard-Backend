@@ -1,5 +1,4 @@
-import { AdsSchema } from '../../models/schemas/ads';
-import { AdsFromEbaySchema } from 'src/api/models/schemas/adsFromEbay';
+import { AdsFromEbaySchema, AdsSchema } from '../../models';
 import { logger } from '../../../shared';
 
 export const analyzeMetadaten = (

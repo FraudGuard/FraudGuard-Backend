@@ -9,4 +9,4 @@ const analyzeRouter: Router = express.Router();
 analyzeRouter.route('/:id').get(analyzeFromApi);
 analyzeRouter.route('/fromDb/:id').get(analyzeFromDb);
 
-export default analyzeRouter;
+export { analyzeRouter };

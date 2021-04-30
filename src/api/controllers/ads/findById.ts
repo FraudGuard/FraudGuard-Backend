@@ -1,10 +1,9 @@
-import { HttpStatus, logger } from '../../shared';
+import { findById as findByIdInMongo } from '../../services/mongo';
+import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
-import { findById as findByIdInMongo } from '../services/mongo';
 
 export const findById = async (req: Request, res: Response) => {
   try {
-    // TODO is it really a id?? validation, also sanitize input
     const { id } = req.params;
     logger.info(req.params);
     logger.info(id);

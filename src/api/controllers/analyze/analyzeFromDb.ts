@@ -1,7 +1,7 @@
-import { HttpStatus, logger } from '../../../shared';
-import { Request, Response } from 'express';
 import { analyze } from '../../services/analyze';
 import { findByIdEbay } from '../../services/mongo';
+import { HttpStatus, logger } from '../../../shared';
+import { Request, Response } from 'express';
 
 export const analyzeFromDb = async (req: Request, res: Response) => {
   try {

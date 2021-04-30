@@ -1,7 +1,7 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { AdsFromEbayModel } from '../../models/adsFromEbay';
-import { logger } from '../../../shared';
+import { AdsFromEbayModel } from '../../models';
 import { ebayHeaders } from './ebay';
+import { logger } from '../../../shared';
+import axios, { AxiosRequestConfig } from 'axios';
 
 export const getSingleById = (id: string): Promise<any> =>
   new Promise((resolve, reject) => {
