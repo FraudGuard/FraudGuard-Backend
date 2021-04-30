@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import {
-  analyze,
-  analyzeBeschreibung,
-  analyzeKonto,
-  analyzeMetadaten,
-  analyzePreis,
-  analyzeSonstiges,
-  analyzeTitel,
-} from './api/services/analyze';
+// import {
+//   analyze,
+//   analyzeBeschreibung,
+//   analyzeKonto,
+//   analyzeMetadaten,
+//   analyzePreis,
+//   analyzeSonstiges,
+//   analyzeTitel,
+// } from './api/services/analyze';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
-import { expect } from 'chai';
-import { testAd } from './testData';
+// import { expect } from 'chai';
+// import { testAd } from './testData';
 import type { Server } from 'http';
 
 let server: Server;

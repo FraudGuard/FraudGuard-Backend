@@ -7,7 +7,7 @@ export const analyzeSonstiges = (
 ) =>
   new Promise((resolve, reject) => {
     logger.info('start analyze Sonstiges');
-    resultingAd.scam += 0.1;
+    resultingAd.fraud_score += 0.1;
 
     if (false) {
       reject(new Error('Some Error happened'));
