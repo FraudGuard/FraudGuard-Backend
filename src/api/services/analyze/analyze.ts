@@ -13,7 +13,7 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {
     logger.info('start analyze');
     const resultingAd = new AdsModel();
-    resultingAd.scam = 0;
+    resultingAd.fraud_score = 0;
     Promise.all([
       analyzeBeschreibung(ad, resultingAd),
       analyzeKonto(ad, resultingAd),
