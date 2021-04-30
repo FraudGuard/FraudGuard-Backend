@@ -1,5 +1,4 @@
 # https://eslint.org/docs/user-guide/configuring
-
 ---
 parser: '@typescript-eslint/parser'
 
@@ -23,5 +22,4 @@ extends:
 plugins:
   - '@typescript-eslint'
 
-
-rules: {}
+rules: { camelcase: 0 }

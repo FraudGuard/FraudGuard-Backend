@@ -96,6 +96,6 @@ export interface AdsFromEbaySchema extends Document {
   'user-id': { value: number };
   'user-rating': { averageRating: { value: number } };
   'user-since-date-time': { value: string };
-  userBadges: { badges: { name: string; level: number; value: any }[] };
+  userBadges: { badges: { name: string; level: number; value: any }[] }[];
   version: string;
 }
