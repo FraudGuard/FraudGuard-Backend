@@ -38,5 +38,4 @@ export interface AdsSchema extends Document {
   preis_typ_vb: number;
   ap_preis_ueber_marktwert: number;
   ap_preis_ist_leer: number;
-
 }
