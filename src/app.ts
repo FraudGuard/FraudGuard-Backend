@@ -1,7 +1,6 @@
+import { adsRouter, analyzeRouter, labelRouter } from './api/routes';
 import { corsHandler, helmetHandlers } from './security';
 import { loggerProfiles, serverConfig } from './shared';
-import adsRouter from './api/routes/adsRouter';
-import labelRouter from './api/routes/labelRouter';
 import compression from 'compression';
 import express, { Express as IExpress } from 'express';
 import pino, { Logger } from 'pino';
@@ -23,7 +22,12 @@ const ExpressPinoLogger = require('express-pino-logger')({
   },
 });
 
-export const PATH = 'api/ads/';
+const apiPath = '/api';
+export const PATHS = {
+  ads: `${apiPath}/ads`,
+  analyze: `${apiPath}/analyze`,
+  label: `${apiPath}/label`,
+};
 
 /**
  * Create App Object with pino logger.
@@ -67,8 +71,9 @@ class App {
    * loads routes for the paths.
    */
   private routes() {
-    this.app.use('/api/ads', adsRouter);
-    this.app.use('/api/label', labelRouter);
+    this.app.use(PATHS.ads, adsRouter);
+    this.app.use(PATHS.analyze, analyzeRouter);
+    this.app.use(PATHS.label, labelRouter);
     this.app.get('/', (_, res) => {
       res.send('Hello World on "/" => GET');
     });

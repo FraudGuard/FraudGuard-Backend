@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { AdsFromEbaySchema } from '../../shared/adsFromEbay';
+import { AdsFromEbaySchema } from './schemas/adsFromEbay';
 
 // https://mongoosejs.com/docs/schematypes.html
 export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(

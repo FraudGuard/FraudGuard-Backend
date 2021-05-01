@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { AdsSchema } from '../../shared/ads';
+import { AdsSchema } from './schemas/ads';
 
 // https://mongoosejs.com/docs/schematypes.html
 export const adsSchema = new Schema<AdsSchema>(
@@ -24,8 +24,37 @@ export const adsSchema = new Schema<AdsSchema>(
     friendliness: { type: [Number] },
     rating: { type: [Number] },
     versand: { type: [Number] },
-    scam: { type: Number },
-    createdAt: { type: Date, expires: 1209600 }, // Delete document after 2 weeks
+
+    // tim
+    konto_rating: { type: Number },
+    konto_erstellt_timestamp: { type: Number },
+    konto_anzeigen_anzahl: { type: Number },
+    konto_anzeigen_betrugsrate: { type: Number },
+    konto_follower_anzahl: { type: Number },
+    konto_antwortzeit: { type: Number },
+    konto_antwortrate: { type: Number },
+    konto_freundlichkeit: { type: Number },
+    konto_bewertung: { type: Number },
+    konto_anzeigen_ueber_100: { type: Number },
+    konto_anzeigen_gleich: { type: Number },
+    konto_name_laenge: { type: Number },
+    konto_name_sonderzeichen_anzahl: { type: Number },
+    konto_name_enthaelt_unueblich: { type: Number },
+    konto_name_natuerlich: { type: Number },
+    konto_gewerblich: { type: Number },
+    konto_privat: { type: Number },
+
+    // Chris
+    metadata_longitude: { type: Number },
+    metadata_latitude: { type: Number },
+    metadata_phone: { type: Number },
+    metadata_amount_pictures: { type: Number },
+    metadata_category: { type: Number },
+    metadata_start_time: { type: Number },
+
+    fraud_score: { type: Number },
+
+    createdAt: { type: Date, expires: 1209600 },
   },
   {
     id: true,

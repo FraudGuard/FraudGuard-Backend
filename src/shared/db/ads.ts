@@ -1,5 +1,3 @@
-// TODO do i need "createdAt: new Date()"
-
 export const ads = [
   {
     _id: 1000000001,

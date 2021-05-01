@@ -7,4 +7,4 @@ const adsRouter: Router = express.Router();
 // TODO SWAGGER.io doc
 adsRouter.route('/:id').get(findById);
 
-export default adsRouter;
+export { adsRouter };
