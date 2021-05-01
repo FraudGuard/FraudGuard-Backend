@@ -2,9 +2,6 @@ import { AdsModel as Ads } from '../models/ads';
 import { HttpStatus, logger } from '../../shared';
 import { Request, Response } from 'express';
 
-// Get findById
-// lookup in DB if ad is there
-// if its there then get the scam score and send it back
 export const findById = async (req: Request, res: Response) => {
   try {
     // TODO is it really a id?? validation, also sanitize input

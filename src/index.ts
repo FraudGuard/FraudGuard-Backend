@@ -27,6 +27,7 @@ const shutdown = async () => {
 const startServer = () => {
   const server: Server = createServer(app);
   server.listen(port, printBanner);
+  logger.info('Hallo leute');
 
   // <CTRL>C
   process.on('SIGINT', shutdown);

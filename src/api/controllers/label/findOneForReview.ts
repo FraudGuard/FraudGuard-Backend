@@ -1,14 +1,10 @@
-import { AdsFromEbayModel as Ads } from '../models/adsFromEbay';
-import { HttpStatus, logger } from '../../shared';
+import { AdsFromEbayModel as Ads } from '../../models/adsFromEbay';
+import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
-// Get findById
-// lookup in DB if ad is there
-// if its there then get the scam score and send it back
-export const findOneForLabel = async (_req: Request, res: Response) => {
+export const findOneToReview = async (_req: Request, res: Response) => {
   try {
-    Ads.findOne({ labeled: { $ne: true }, searchQuery: 'lego' })
-      .skip(Math.round(Math.random() * 1000))
+    Ads.findOne({ toReview: true })
       .exec()
       .then((ad) => {
         if (ad) {

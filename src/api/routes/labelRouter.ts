@@ -1,7 +1,7 @@
 import express, { Router } from 'express';
-import { findOneForLabel } from '../controllers/findOneForLabel';
-import { findOneToReview } from '../controllers/findOneForReview';
-import { countToLabel } from '../controllers/countToLabel';
+import { countToLabel } from '../controllers/label/countToLabel';
+import { findOneForLabel } from '../controllers/label/findOneForLabel';
+import { findOneToReview } from '../controllers/label/findOneForReview';
 import { updateAd } from '../controllers/updateAd';
 
 // eslint-disable-next-line new-cap

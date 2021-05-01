@@ -4,9 +4,6 @@ import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
 import { AdsFromEbaySchema } from 'src/shared/adsFromEbay';
 
-// Get findById
-// lookup in DB if ad is there
-// if its there then get the scam score and send it back
 export const updateAd = async (req: Request, res: Response) => {
   try {
     const { id, labeledDecision, toReview } = req.body;

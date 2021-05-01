@@ -40,6 +40,7 @@ pids
 
 # IDE - VSCode
 .vscode/*
+/.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -62,5 +63,3 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-back.log
