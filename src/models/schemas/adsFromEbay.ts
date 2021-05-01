@@ -81,7 +81,7 @@ export interface AdsFromEbaySchema extends Document {
   'poster-type': { value: string };
   price: {
     'currency-iso-code': {
-      value: { value: string; 'localized-label': string };
+      value: string;
     };
     amount: { value: number };
     'price-type': { value: string };
