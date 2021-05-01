@@ -9,6 +9,8 @@ export const analyzeFromDb = async (req: Request, res: Response) => {
     const { id } = req.params;
     logger.info(req.params);
     logger.info(id);
+    
+    // funktionerweise gleich wie const ad = await findByIdEbay(id);
     findByIdEbay(id).then((ad) => {
       if (!ad) {
         logger.info(`loaded ad not found: ${id}`);

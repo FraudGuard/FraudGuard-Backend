@@ -10,25 +10,44 @@ import {
 import { logger } from '../../shared';
 
 export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     logger.info('start analyze');
+
     const resultingAd = new AdsModel();
     resultingAd.fraud_score = 0;
-    Promise.all([
+
+    // await analyzeBeschreibung(ad, resultingAd).then
+    // await analyzeKonto(ad, resultingAd)
+    // await analyzeMetadaten(ad, resultingAd)
+    // await analyzePreis(ad, resultingAd)
+    // await analyzeSonstiges(ad, resultingAd)
+    // await analyzeTitel(ad, resultingAd)
+    //  |--
+    //     |--
+    //         |--––
+    //               |---
+    //                   |----| -> weiter
+
+
+    // |--     |
+    // |-----  |
+    // |--     |
+    // |-------|->weiter
+    await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
       analyzeKonto(ad, resultingAd),
       analyzeMetadaten(ad, resultingAd),
       analyzePreis(ad, resultingAd),
       analyzeSonstiges(ad, resultingAd),
       analyzeTitel(ad, resultingAd),
-    ])
-      .then((_res) => {
-        logger.info('all analyze done');
-        resolve(resultingAd);
-      })
-      .catch((error) => {
-        logger.error('error in analyze');
-        logger.error(error);
-        reject(error);
-      });
+    ]).catch((error) => {
+      logger.error('error in analyze');
+      logger.error(error);
+      reject(error);
+    });
+
+    logger.info('all analyze done');
+    // Todo Regelwerk läuft durch
+    return resolve(resultingAd);
+
   });
