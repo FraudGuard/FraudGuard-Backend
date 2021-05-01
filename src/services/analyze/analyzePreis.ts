@@ -12,15 +12,15 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     // if (produkt_aus_titel.includes('lego')){
     //const num = produkt_aus_titel.replace(/^\D+|\D+$/g, "");}
 
-  
-
     resultingAd.preis_unter_marktwert = ad.price?.amount?.value;
 
     // Prozentwert der Abweichung von Amount und Marktwert WIP
     resultingAd.preis_abweichung_marktwert = ad.price?.amount?.value;
-    
-    resultingAd.preis_waehrung_eur = ad.price['currency-iso-code'].value === 'EUR' ? 0 : 1;
-    resultingAd.preis_typ_vb = ad.price['price-type'].value === 'PLEASE_CONTACT' ? 0 : 1;
+
+    resultingAd.preis_waehrung_eur =
+      ad.price['currency-iso-code'].value === 'EUR' ? 0 : 1;
+    resultingAd.preis_typ_vb =
+      ad.price['price-type'].value === 'PLEASE_CONTACT' ? 0 : 1;
     resultingAd.ap_preis_ist_leer = ad.price?.amount?.value === 0 ? 0 : 1;
 
     if (false) {
