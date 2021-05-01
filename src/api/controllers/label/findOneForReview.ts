@@ -1,4 +1,4 @@
-import { AdsFromEbayModel as Ads } from '../../../models';
+import { AdsFromEbayModel as Ads } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 

@@ -7,12 +7,12 @@ export interface AdsFromEbaySchema extends Document {
   toReview: boolean;
 
   'ad-address': {
-    street: string;
-    state: string;
-    'zip-code': number;
-    longitude: number;
-    latitude: number;
-    radius: number;
+    street: { value: string };
+    state: { value: string };
+    'zip-code': { value: string };
+    longitude: { value: string };
+    latitude: { value: string };
+    radius: { value: string };
   };
   'ad-external-reference-id': any;
   'ad-source-id': any;
@@ -57,22 +57,22 @@ export interface AdsFromEbaySchema extends Document {
       {
         'id-name': { value: string };
         'localized-name': { value: string };
-        longitude: { value: number };
-        latitude: { value: number };
-        radius: { value: number };
+        longitude: { value: string };
+        latitude: { value: string };
+        radius: { value: string };
         regions: {
           region: [{ 'localized-name': { value: string } }];
           'localized-label': string;
         };
         location: [];
-        'parent-id': { value: number };
+        'parent-id': { value: string };
         'children-count': { value: 0 };
-        id: 2533;
+        id: string;
       },
     ];
   };
   medias: { media: [] };
-  originId: { value: 0 };
+  originId: { value: string };
   otherAttributes: any;
   phone: any;
   pictures: {
@@ -82,6 +82,7 @@ export interface AdsFromEbaySchema extends Document {
   price: {
     'currency-iso-code': {
       value: string;
+      'localized-label': string;
     };
     amount: { value: number };
     'price-type': { value: string };
