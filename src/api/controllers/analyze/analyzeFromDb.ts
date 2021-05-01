@@ -1,5 +1,5 @@
-import { analyze } from '../../services/analyze';
-import { findByIdEbay } from '../../services/mongo';
+import { analyze } from '../../../services/analyze';
+import { findByIdEbay } from '../../../services/mongo';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 

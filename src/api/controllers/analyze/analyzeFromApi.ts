@@ -1,5 +1,5 @@
-import { analyze } from '../../services/analyze';
-import { getSingleById } from '../../services/ebay';
+import { analyze } from '../../../services/analyze';
+import { getSingleById } from '../../../services/ebay';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 

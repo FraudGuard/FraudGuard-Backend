@@ -1,6 +1,6 @@
 import { AdsFromEbayModel } from '../../models';
 import { ebayHeaders } from './ebay';
-import { logger } from '../../../shared';
+import { logger } from '../../shared';
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const getSingleById = (id: string): Promise<any> =>

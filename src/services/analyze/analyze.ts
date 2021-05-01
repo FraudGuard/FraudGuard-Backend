@@ -7,7 +7,7 @@ import {
   analyzeSonstiges,
   analyzeTitel,
 } from './';
-import { logger } from '../../../shared';
+import { logger } from '../../shared';
 
 export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {

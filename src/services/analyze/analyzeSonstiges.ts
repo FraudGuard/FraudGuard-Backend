@@ -1,9 +1,12 @@
 import { AdsFromEbaySchema, AdsSchema } from '../../models';
-import { logger } from '../../../shared';
+import { logger } from '../../shared';
 
-export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
+export const analyzeSonstiges = (
+  ad: AdsFromEbaySchema,
+  resultingAd: AdsSchema,
+) =>
   new Promise((resolve, reject) => {
-    logger.info('start analyze Titel');
+    logger.info('start analyze Sonstiges');
     resultingAd.fraud_score += 0.1;
 
     if (false) {

@@ -1,4 +1,4 @@
-import { findById as findByIdInMongo } from '../../services/mongo';
+import { findById as findByIdInMongo } from '../../../services/mongo';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
