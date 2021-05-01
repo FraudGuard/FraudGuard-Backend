@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsModel, AdsSchema } from '../../api/models';
+import { AdsFromEbaySchema, AdsModel, AdsSchema } from '../../models';
 import {
   analyzeBeschreibung,
   analyzeKonto,
@@ -16,13 +16,29 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
     const resultingAd = new AdsModel();
     resultingAd.fraud_score = 0;
 
+    // await analyzeBeschreibung(ad, resultingAd).then
+    // await analyzeKonto(ad, resultingAd)
+    // await analyzeMetadaten(ad, resultingAd)
+    // await analyzePreis(ad, resultingAd)
+    // await analyzeSonstiges(ad, resultingAd)
+    // await analyzeTitel(ad, resultingAd)
+    //  |--
+    //     |--
+    //         |--––
+    //               |---
+    //                   |----| -> weiter
+
+    // |--     |
+    // |-----  |
+    // |--     |
+    // |-------|->weiter
     await Promise.all([
-      analyzeBeschreibung(ad),
-      analyzeKonto(ad),
-      analyzeMetadaten(ad),
-      analyzePreis(ad),
-      analyzeSonstiges(ad),
-      analyzeTitel(ad),
+      analyzeBeschreibung(ad, resultingAd),
+      analyzeKonto(ad, resultingAd),
+      analyzeMetadaten(ad, resultingAd),
+      analyzePreis(ad, resultingAd),
+      analyzeSonstiges(ad, resultingAd),
+      analyzeTitel(ad, resultingAd),
     ]).catch((error) => {
       logger.error('error in analyze');
       logger.error(error);

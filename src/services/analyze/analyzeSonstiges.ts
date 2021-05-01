@@ -1,22 +1,16 @@
-import { AdsFromEbaySchema } from '../../api/models';
+import { AdsFromEbaySchema, AdsSchema } from '../../models';
 import { logger } from '../../shared';
 
-export const analyzeSonstiges = async (ad: AdsFromEbaySchema) => {
-  logger.info('analyze Sonstiges');
+export const analyzeSonstiges = (
+  ad: AdsFromEbaySchema,
+  resultingAd: AdsSchema,
+) =>
+  new Promise((resolve, reject) => {
+    logger.info('start analyze Sonstiges');
+    resultingAd.fraud_score += 0.1;
 
-  const anzeige_kopiert = ad;
-  const anzeige_zeit_minuten = ad;
-  const ap_anzeige_zeit_tag = ad;
-  const ap_anzeige_suche = ad;
-  const ap_anzeige_nur_abholung = ad;
-
-  const resultingAd = {
-    anzeige_kopiert,
-    anzeige_zeit_minuten,
-    ap_anzeige_zeit_tag,
-    ap_anzeige_suche,
-    ap_anzeige_nur_abholung,
-  };
-
-  return resultingAd;
-};
+    if (false) {
+      reject(new Error('Some Error happened'));
+    }
+    resolve(ad);
+  });
