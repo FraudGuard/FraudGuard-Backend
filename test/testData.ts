@@ -1,4 +1,5 @@
-export const testAd = {
+import { AdsEbaySchema } from '../src/api/models';
+export const testAd: AdsEbaySchema = {
   ad: {
     'contact-name': { value: 'Michael' },
     'contact-name-initials': { value: 'M' },
