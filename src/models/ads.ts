@@ -52,12 +52,11 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_category: { type: Number },
     metadata_start_time: { type: Number },
 
-    //Jessi
+    // Jessi
     preis_unter_marktwert: { type: Number },
     preis_abweichung_marktwert: { type: Number },
     preis_waehrung_eur: { type: Number },
     preis_typ_vb: { type: Number },
-    ap_preis_ueber_marktwert: { type: Number },
     ap_preis_ist_leer: { type: Number },
 
     fraud_score: { type: Number },
