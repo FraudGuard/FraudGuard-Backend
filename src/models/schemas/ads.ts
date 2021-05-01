@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 export interface AdsSchema extends Document {
   _id: string;
   fraud_score: number;
-
+  title: string;
   // tim
   konto_rating: number;
   konto_erstellt_timestamp: number;
