@@ -26,8 +26,6 @@ export const analyzeKonto = async (
     ? Number.parseInt(badgesMap.replyRate.value)
     : -1;
 
-
-
   resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value;
 
   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
@@ -38,14 +36,14 @@ export const analyzeKonto = async (
   //   resultingAd.konto_name_laenge = undefined
   // }
 
-  resultingAd.konto_privat = ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
+  resultingAd.konto_privat =
+    ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
   // langform
   // if (ad['seller-account-type'].value === 'PRIVATE') {
   //   resultingAd.konto_privat = 1
   // } else {
   //   resultingAd.konto_privat = 0
   // }
-
 
   // Todo
   // resultingAd.konto_erstellt_timestamp = ad.

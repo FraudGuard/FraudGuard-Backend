@@ -28,7 +28,6 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
     //               |---
     //                   |----| -> weiter
 
-
     // |--     |
     // |-----  |
     // |--     |
@@ -49,5 +48,4 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
     logger.info('all analyze done');
     // Todo Regelwerk läuft durch
     return resolve(resultingAd);
-
   });
