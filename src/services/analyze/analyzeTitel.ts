@@ -5,10 +5,10 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
   new Promise((resolve, reject) => {
     try {
       logger.info('start analyze Titel');
-      console.log(ad.title.value)
+      console.log(ad.title.value);
 
       const str = ad['title'].value.toLowerCase();
-     
+
       // Muster
       // Merkmal neu
       const wordListNeu = ["new", "neu", "nie ausgepackt", "unbenutzt", "nicht benutzt", "nicht aufgebaut"];
@@ -54,7 +54,7 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       const wordListUngeoeffnet = ["ungeöffnet", "ungeoeffnet", "nicht geöffnet"]
       const wordListUngeoeffnet_gegenteil = ["geöffnet", "geoeffnet"]
 
-      resultingAd.titel_enthaelt_ungeoeffnet = 0
+      resultingAd.titel_enthaelt_ungeoeffnet = 0;
       for (const w3 of wordListUngeoeffnet) {
       for (const g3 of wordListUngeoeffnet_gegenteil) {
         if (str.includes(w3) && !str.includes(g3)){
@@ -64,15 +64,14 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     }
 
       // Merkmal Zeichen
-      const wordListZeichen = [ "❤", "✅", "✔", "⭐", "!", "?", "*", "+"]
+      const wordListZeichen = ['❤', '✅', '✔', '⭐', '!', '?', '*', '+'];
 
-      resultingAd.titel_enthaelt_zeichen = 0
-      for (const w4 of wordListZeichen){
-        if (str.includes(w4)){
-          resultingAd.titel_enthaelt_zeichen = 1
+      resultingAd.titel_enthaelt_zeichen = 0;
+      for (const w4 of wordListZeichen) {
+        if (str.includes(w4)) {
+          resultingAd.titel_enthaelt_zeichen = 1;
         }
       }
-
 
       // Antipattern
       // Merkmal gebraucht
@@ -116,12 +115,12 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     }
 
       // Merkmal kilo
-      const wordListKilo = ["kg","kilo","kilogramm"]
+      const wordListKilo = ['kg', 'kilo', 'kilogramm'];
 
-      resultingAd.ap_titel_enthaelt_kilo = 0
-      for (const w8 of wordListKilo){
+      resultingAd.ap_titel_enthaelt_kilo = 0;
+      for (const w8 of wordListKilo) {
         if (str.includes(w8)) {
-          resultingAd.ap_titel_enthaelt_kilo = 1
+          resultingAd.ap_titel_enthaelt_kilo = 1;
         }
       }
 
@@ -139,7 +138,7 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
         }
       }
     }
-    
+
       resultingAd.title = ad.title.value;
       if (false) {
         reject(new Error('Some Error happened'));

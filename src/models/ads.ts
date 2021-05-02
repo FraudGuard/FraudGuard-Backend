@@ -68,7 +68,7 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_beschreibung_enthaelt_suche: { type: Number },
     ap_beschreibung_enthaelt_sammleraufloesung: { type: Number },
     ap_beschreibung_enthaelt_kilo: { type: Number },
-    
+
     // Michelle
     // Titel
     titel_enthaelt_neu: { type: Number },
@@ -86,7 +86,7 @@ export const adsSchema = new Schema<AdsSchema>(
     sonstiges_anzeige_kopiert: { type: Number },
     ap_sonstiges_anzeige_zeit_tag: { type: Number },
     ap_sonstiges_anzeige_nur_abholung: { type: Number },
-    ap_sonstiges_anzeige_suche: {type: Number},
+    ap_sonstiges_anzeige_suche: { type: Number },
 
     // Jessi
     preis_unter_marktwert: { type: Number },

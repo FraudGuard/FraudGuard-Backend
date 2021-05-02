@@ -23,7 +23,7 @@ export interface AdsFromEbaySchema extends Document {
       value: {
         value: string;
         'localized-label': string;
-      }[]
+      }[];
       name: string;
       unit: any;
       'search-display': boolean;
