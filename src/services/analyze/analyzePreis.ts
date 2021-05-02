@@ -1,5 +1,5 @@
 import { AdsFromEbaySchema, AdsSchema } from '../../models';
-import { connectDB, logger } from '../../shared';
+import { logger } from '../../shared';
 
 export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
   new Promise((resolve, reject) => {
