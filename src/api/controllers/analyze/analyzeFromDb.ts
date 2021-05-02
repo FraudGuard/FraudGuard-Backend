@@ -9,7 +9,7 @@ export const analyzeFromDb = async (req: Request, res: Response) => {
     const { id } = req.params;
     logger.info(req.params);
     logger.info(id);
-logger.info('analyzeFromDb');
+    logger.info('analyzeFromDb');
     // funktionerweise gleich wie const ad = await findByIdEbay(id);
     findByIdEbay(id).then((ad) => {
       if (!ad) {

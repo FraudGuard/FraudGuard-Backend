@@ -17,7 +17,7 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       resultingAd.titel_enthaelt_neu = 0
       for (const w of wordListNeu) {
         if (str.includes(w)) {
-          resultingAd.titel_enthaelt_neu = 1
+          resultingAd.titel_enthaelt_neu = 1;
         }
       }
 
@@ -121,6 +121,6 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       }
       resolve(ad);
     } catch (e) {
-      reject(e)
+      reject(e);
     }
   });

@@ -30,6 +30,22 @@ export interface AdsSchema extends Document {
   metadata_amount_pictures: number;
   metadata_phone: number;
   metadata_startDateTime: number;
+  //JANA
+  beschreibung_enthaelt_ueberweisung: number;
+  beschreibung_enthaelt_versand: number;
+  beschreibung_enthaelt_neu: number;
+  beschreibung_enthaelt_ovp: number;
+  beschreibung_enthaelt_versiegelt: number;
+  beschreibung_enthaelt_whatsapp: number;
+  beschreibung_ist_kopiert_anzeige: number;
+  beschreibung_ist_kopiert_unternehmen: number;
+  ap_beschreibung_enthaelt_barzahlung: number;
+  ap_beschreibung_enthaelt_gebraucht: number;
+  ap_beschreibung_enthaelt_tausch: number;
+  ap_beschreibung_enthaelt_abholung: number;
+  ap_beschreibung_enthaelt_suche: number;
+  ap_beschreibung_enthaelt_sammleraufloesung: number;
+  ap_beschreibung_enthaelt_kilo: number;
 
   // Michelle
   // Titel
