@@ -30,7 +30,7 @@ export interface AdsSchema extends Document {
   metadata_amount_pictures: number;
   metadata_phone: number;
   metadata_startDateTime: number;
-//JANA
+  //JANA
   beschreibung_enthaelt_ueberweisung: number;
   beschreibung_enthaelt_versand: number;
   beschreibung_enthaelt_neu: number;
