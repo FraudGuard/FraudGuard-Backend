@@ -6,7 +6,7 @@ export const analyzeBeschreibung = (
   resultingAd: AdsSchema,
 
 ) =>
-  new Promise((resolve, reject) => {
+  new Promise( async (resolve, reject) => {
     logger.info('start analyze Beschreibung');
     var beschreibung = ad['description']?.value?.toLowerCase()
     //prüfen auf Überweisung
@@ -82,8 +82,12 @@ export const analyzeBeschreibung = (
   //TODO
 
   // prüfen auf kopierte Unternehmensbeschreibung
-
-  ProductModel.find();
+  enthaelt_signalwort=0
+  var produktbeschreibungen =  await ProductModel.find({},{"beschreibung":1});
+  for(var produktbeschreibung in produktbeschreibungen){
+    if (beschreibung.includes(produktbeschreibung)) {enthaelt_signalwort =1}
+  }
+  resultingAd.beschreibung_ist_kopiert_unternehmen = enthaelt_signalwort
 
 
 
