@@ -42,4 +42,11 @@ export interface AdsSchema extends Document {
   ap_titel_enthaelt_tausche: number;
   ap_titel_enthaelt_kilo: number;
   ap_titel_enthaelt_sammlung: number;
+  //Jessi
+  preis_unter_marktwert: number;
+  preis_abweichung_marktwert: number;
+  preis_waehrung_eur: number;
+  preis_typ_vb: number;
+  ap_preis_ueber_marktwert: number;
+  ap_preis_ist_leer: number;
 }

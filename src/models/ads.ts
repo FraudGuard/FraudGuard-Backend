@@ -63,6 +63,12 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_titel_enthaelt_tausche: { type: Number},
     ap_titel_enthaelt_kilo: { type: Number},
     ap_titel_enthaelt_sammlung: { type: Number},
+    // Jessi
+    preis_unter_marktwert: { type: Number },
+    preis_abweichung_marktwert: { type: Number },
+    preis_waehrung_eur: { type: Number },
+    preis_typ_vb: { type: Number },
+    ap_preis_ist_leer: { type: Number },
 
     fraud_score: { type: Number },
 
