@@ -64,7 +64,7 @@ export interface AdsSchema extends Document {
   sonstiges_anzeige_kopiert: number;
   ap_sonstiges_anzeige_zeit_tag: number;
   ap_sonstiges_anzeige_nur_abholung: number;
-  ap_sonstiges_anzeige_suche:number;
+  ap_sonstiges_anzeige_suche: number;
 
   //Jessi
   preis_unter_marktwert: number;
