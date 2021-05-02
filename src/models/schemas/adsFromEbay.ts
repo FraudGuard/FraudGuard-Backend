@@ -19,13 +19,18 @@ export interface AdsFromEbaySchema extends Document {
   'ad-status': any;
   'ad-type': any;
   attributes: {
-    attribute: any[];
-    name: string;
-    unit: any;
-    'search-display': boolean;
-    'fake-sub-category': boolean;
-    type: string;
-    'localized-label': string;
+    attribute: {
+      value: {
+        value: string;
+        'localized-label': string;
+      }[]
+      name: string;
+      unit: any;
+      'search-display': boolean;
+      'fake-sub-category': boolean;
+      type: string;
+      'localized-label': string;
+    }[];
   }[];
   category: {
     'id-name': { value: string };

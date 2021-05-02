@@ -53,16 +53,24 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_start_time: { type: Number },
 
     // Michelle
-    titel_enthaelt_neu: { type: Number},
-    titel_enthaelt_ovp: { type: Number},
-    titel_enthaelt_verschweißt: { type: Number},
-    titel_enthaelt_ungeoeffnet: { type: Number},
-    titel_enthaelt_zeichen: { type: Number},
-    ap_titel_enthaelt_gebraucht: { type: Number},
-    ap_titel_enthaelt_suche: { type: Number},
-    ap_titel_enthaelt_tausche: { type: Number},
-    ap_titel_enthaelt_kilo: { type: Number},
-    ap_titel_enthaelt_sammlung: { type: Number},
+    // Titel
+    titel_enthaelt_neu: { type: Number },
+    titel_enthaelt_ovp: { type: Number },
+    titel_enthaelt_verschweißt: { type: Number },
+    titel_enthaelt_ungeoeffnet: { type: Number },
+    titel_enthaelt_zeichen: { type: Number },
+    ap_titel_enthaelt_gebraucht: { type: Number },
+    ap_titel_enthaelt_suche: { type: Number },
+    ap_titel_enthaelt_tausche: { type: Number },
+    ap_titel_enthaelt_kilo: { type: Number },
+    ap_titel_enthaelt_sammlung: { type: Number },
+
+    // Sonstiges
+    sonstiges_anzeige_kopiert: { type: Number },
+    ap_sonstiges_anzeige_zeit_tag: { type: Number },
+    ap_sonstiges_anzeige_nur_abholung: { type: Number },
+    ap_sonstiges_anzeige_suche: {type: Number},
+
     // Jessi
     preis_unter_marktwert: { type: Number },
     preis_abweichung_marktwert: { type: Number },

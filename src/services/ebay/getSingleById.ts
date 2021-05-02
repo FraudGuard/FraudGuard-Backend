@@ -19,7 +19,7 @@ export const getSingleById = (id: string): Promise<any> =>
         resolve(new AdsFromEbayModel(data));
       })
       .catch((error: any) => {
-        logger.log(error.body);
+        logger.error(error.body);
         reject(error);
       });
   });
