@@ -35,7 +35,7 @@ export const analyzeBeschreibung = (
   
     //Prüfen auf neu
     var neu_signalwoerter = ["neu", "new", "unbenutzt", "nie ausgepackt", "ungeoeffnet", "nicht benutzt" ];
-    var neu_signalwoerter_gegenteil = ["nicht neu", "nicht new", "nicht unbenutzt", "nicht nie ausgepackt", "nicht ungeoeffnet"];
+    var neu_signalwoerter_gegenteil = ["nicht neu", "nicht new", "nicht unbenutzt", "nicht nie ausgepackt", "nicht ungeoeffnet", "neuwertig"];
     enthaelt_signalwort = 0
     for ( var signalwort of neu_signalwoerter){
         if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 1}
