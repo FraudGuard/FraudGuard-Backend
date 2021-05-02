@@ -30,7 +30,7 @@ export interface AdsSchema extends Document {
   metadata_amount_pictures: number;
   metadata_phone: number;
   metadata_startDateTime: number;
-//JANA
+  //JANA
   beschreibung_enthaelt_ueberweisung: number;
   beschreibung_enthaelt_versand: number;
   beschreibung_enthaelt_neu: number;
@@ -48,6 +48,7 @@ export interface AdsSchema extends Document {
   ap_beschreibung_enthaelt_kilo: number;
 
   // Michelle
+  // Titel
   titel_enthaelt_neu: number;
   titel_enthaelt_ovp: number;
   titel_enthaelt_verschweißt: number;
@@ -58,6 +59,13 @@ export interface AdsSchema extends Document {
   ap_titel_enthaelt_tausche: number;
   ap_titel_enthaelt_kilo: number;
   ap_titel_enthaelt_sammlung: number;
+
+  // Sonstiges
+  sonstiges_anzeige_kopiert: number;
+  ap_sonstiges_anzeige_zeit_tag: number;
+  ap_sonstiges_anzeige_nur_abholung: number;
+  ap_sonstiges_anzeige_suche: number;
+
   //Jessi
   preis_unter_marktwert: number;
   preis_abweichung_marktwert: number;

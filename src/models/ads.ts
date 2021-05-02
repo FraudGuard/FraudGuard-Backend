@@ -52,23 +52,25 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_category: { type: Number },
     metadata_start_time: { type: Number },
 
-      //Jana
-    beschreibung_enthaelt_ueberweisung: {type: Number},
-    beschreibung_enthaelt_versand: {type: Number},
-    beschreibung_enthaelt_neu: {type: Number},
-    beschreibung_enthaelt_ovp: {type: Number},
-    beschreibung_enthaelt_versiegelt: {type: Number},
-    beschreibung_enthaelt_whatsapp: {type: Number},
-    beschreibung_ist_kopiert_anzeige: {type: Number},
-    beschreibung_ist_kopiert_unternehmen: {type: Number},
-    ap_beschreibung_enthaelt_barzahlung: {type: Number},
-    ap_beschreibung_enthaelt_gebraucht: {type: Number},
-    ap_beschreibung_enthaelt_tausch: {type: Number},
-    ap_beschreibung_enthaelt_abholung: {type: Number},
-    ap_beschreibung_enthaelt_suche: {type: Number},
-    ap_beschreibung_enthaelt_sammleraufloesung: {type: Number},
-    ap_beschreibung_enthaelt_kilo: {type: Number},
+    //Jana
+    beschreibung_enthaelt_ueberweisung: { type: Number },
+    beschreibung_enthaelt_versand: { type: Number },
+    beschreibung_enthaelt_neu: { type: Number },
+    beschreibung_enthaelt_ovp: { type: Number },
+    beschreibung_enthaelt_versiegelt: { type: Number },
+    beschreibung_enthaelt_whatsapp: { type: Number },
+    beschreibung_ist_kopiert_anzeige: { type: Number },
+    beschreibung_ist_kopiert_unternehmen: { type: Number },
+    ap_beschreibung_enthaelt_barzahlung: { type: Number },
+    ap_beschreibung_enthaelt_gebraucht: { type: Number },
+    ap_beschreibung_enthaelt_tausch: { type: Number },
+    ap_beschreibung_enthaelt_abholung: { type: Number },
+    ap_beschreibung_enthaelt_suche: { type: Number },
+    ap_beschreibung_enthaelt_sammleraufloesung: { type: Number },
+    ap_beschreibung_enthaelt_kilo: { type: Number },
+
     // Michelle
+    // Titel
     titel_enthaelt_neu: { type: Number },
     titel_enthaelt_ovp: { type: Number },
     titel_enthaelt_verschweißt: { type: Number },
@@ -79,6 +81,13 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_titel_enthaelt_tausche: { type: Number },
     ap_titel_enthaelt_kilo: { type: Number },
     ap_titel_enthaelt_sammlung: { type: Number },
+
+    // Sonstiges
+    sonstiges_anzeige_kopiert: { type: Number },
+    ap_sonstiges_anzeige_zeit_tag: { type: Number },
+    ap_sonstiges_anzeige_nur_abholung: { type: Number },
+    ap_sonstiges_anzeige_suche: { type: Number },
+
     // Jessi
     preis_unter_marktwert: { type: Number },
     preis_abweichung_marktwert: { type: Number },

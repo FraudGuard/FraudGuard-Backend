@@ -8,9 +8,8 @@ export const productSchema = new Schema<ProductSchema>(
     unternehmen: { type: String },
     produktname: { type: String },
     beschreibung: { type: String },
-    preis:{type: Number},
+    preis: { type: Number },
 
-  
     createdAt: { type: Date, expires: 1209600 },
   },
   {

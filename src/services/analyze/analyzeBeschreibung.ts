@@ -4,7 +4,6 @@ import { logger } from '../../shared';
 export const analyzeBeschreibung = (
   ad: AdsFromEbaySchema,
   resultingAd: AdsSchema,
-
 ) =>
   new Promise( async (resolve, reject) => {
     logger.info('start analyze Beschreibung');
@@ -31,8 +30,8 @@ export const analyzeBeschreibung = (
     for ( var signalwort of versand_signalwoerter_gegenteil){
         if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 0}
     }
-    resultingAd.beschreibung_enthaelt_versand = enthaelt_signalwort
-  
+    resultingAd.beschreibung_enthaelt_versand = enthaelt_signalwort;
+
     //Prüfen auf neu
     var neu_signalwoerter = ["neu", "new", "unbenutzt", "nie ausgepackt", "ungeoeffnet", "nicht benutzt" ];
     var neu_signalwoerter_gegenteil = ["nicht neu", "nicht new", "nicht unbenutzt", "nicht nie ausgepackt", "nicht ungeoeffnet", "neuwertig"];
@@ -43,7 +42,7 @@ export const analyzeBeschreibung = (
     for ( var signalwort of neu_signalwoerter_gegenteil){
         if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 0}
     }
-    resultingAd.beschreibung_enthaelt_neu = enthaelt_signalwort
+    resultingAd.beschreibung_enthaelt_neu = enthaelt_signalwort;
 
     //Prüfen auf ovp
     var ovp_signalwoerter = ["ovp", "original", "originalverpackt", "originalverpackung"];
