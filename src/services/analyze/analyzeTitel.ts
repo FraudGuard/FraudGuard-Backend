@@ -5,27 +5,28 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
   new Promise((resolve, reject) => {
     try {
       logger.info('start analyze Titel');
-      const wordListNeu = ["new", "neu", "nie ausgepackt", "unbenutzt"];
+      const wordListNeu = ['new', 'neu', 'nie ausgepackt', 'unbenutzt'];
 
-      resultingAd.titel_enthaelt_neu = 0
+      resultingAd.titel_enthaelt_neu = 0;
       const str = ad['title'].value.toLowerCase();
       for (const w of wordListNeu) {
         if (str.includes(w)) {
-          resultingAd.titel_enthaelt_neu = 1
+          resultingAd.titel_enthaelt_neu = 1;
         }
       }
 
-
-
-
-      resultingAd.titel_enthaelt_ovp; {
+      resultingAd.titel_enthaelt_ovp;
+      {
         const str = ad['title'].value.toLowerCase();
 
-        if (str.includes("ovp" || "originalverpackt" || "original" || "originalverpackung")) {
-          resultingAd.titel_enthaelt_ovp = 1
-        }
-        else {
-          resultingAd.titel_enthaelt_ovp = 0
+        if (
+          str.includes(
+            'ovp' || 'originalverpackt' || 'original' || 'originalverpackung',
+          )
+        ) {
+          resultingAd.titel_enthaelt_ovp = 1;
+        } else {
+          resultingAd.titel_enthaelt_ovp = 0;
         }
       }
       /*
@@ -45,6 +46,6 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       }
       resolve(ad);
     } catch (e) {
-      reject(e)
+      reject(e);
     }
   });
