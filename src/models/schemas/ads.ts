@@ -46,4 +46,12 @@ export interface AdsSchema extends Document {
   ap_beschreibung_enthaelt_suche: number;
   ap_beschreibung_enthaelt_sammleraufloesung: number;
   ap_beschreibung_enthaelt_kilo: number;
+
+  //Jessi
+  preis_unter_marktwert: number;
+  preis_abweichung_marktwert: number;
+  preis_waehrung_eur: number;
+  preis_typ_vb: number;
+  ap_preis_ueber_marktwert: number;
+  ap_preis_ist_leer: number;
 }
