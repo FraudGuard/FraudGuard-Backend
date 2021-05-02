@@ -84,8 +84,8 @@ export const analyzeBeschreibung = (
   // prüfen auf kopierte Unternehmensbeschreibung
   enthaelt_signalwort=0
   var produktbeschreibungen =  await ProductModel.find({},{"beschreibung":1});
-  for(var produktbeschreibung in produktbeschreibungen){
-    if (beschreibung.includes(produktbeschreibung)) {enthaelt_signalwort =1}
+  for(var produktbeschreibung of produktbeschreibungen){
+    if (beschreibung.includes(produktbeschreibung.beschreibung)) {enthaelt_signalwort =1}
   }
   resultingAd.beschreibung_ist_kopiert_unternehmen = enthaelt_signalwort
 
