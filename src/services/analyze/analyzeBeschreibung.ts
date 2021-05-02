@@ -5,42 +5,94 @@ export const analyzeBeschreibung = (
   ad: AdsFromEbaySchema,
   resultingAd: AdsSchema,
 ) =>
-  new Promise( async (resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     logger.info('start analyze Beschreibung');
-    var beschreibung = ad['description']?.value?.toLowerCase()
+    var beschreibung = ad['description']?.value?.toLowerCase();
     //prüfen auf Überweisung
-    var ueberweisung_signalwoerter = ["überweisung", "ueberweisung", "sepa-überweisung", "sepa-ueberwesiung", "überweisen", "ueberweisen","sepa" ];
-    var ueberweisung_signalwoerter_gegenteil = ["keine überweisung", "keine ueberweisung", "keine sepa-überweisung", "keine sepa-ueberwesiung", "nicht überweisen", " nicht ueberweisen","kein sepa" ];
-    var enthaelt_signalwort = 0
-    for ( var signalwort of ueberweisung_signalwoerter){       
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 1}
+    var ueberweisung_signalwoerter = [
+      'überweisung',
+      'ueberweisung',
+      'sepa-überweisung',
+      'sepa-ueberwesiung',
+      'überweisen',
+      'ueberweisen',
+      'sepa',
+    ];
+    var ueberweisung_signalwoerter_gegenteil = [
+      'keine überweisung',
+      'keine ueberweisung',
+      'keine sepa-überweisung',
+      'keine sepa-ueberwesiung',
+      'nicht überweisen',
+      ' nicht ueberweisen',
+      'kein sepa',
+    ];
+    var enthaelt_signalwort = 0;
+    for (var signalwort of ueberweisung_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
     }
-    for ( var signalwort of ueberweisung_signalwoerter_gegenteil){
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 0}
-    }    
-    resultingAd.beschreibung_enthaelt_ueberweisung = enthaelt_signalwort
+    for (var signalwort of ueberweisung_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
+    }
+    resultingAd.beschreibung_enthaelt_ueberweisung = enthaelt_signalwort;
 
     //Prüfen auf Versand
-    var versand_signalwoerter = ["versand", "versandgebuehren", "dhl", "hermes" ];
-    var versand_signalwoerter_gegenteil = ["kein versand", "keine versandgebuehren", "kein dhl", "kein hermes"];
-    enthaelt_signalwort = 0
-    for ( var signalwort of versand_signalwoerter){
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 1}
+    var versand_signalwoerter = [
+      'versand',
+      'versandgebuehren',
+      'dhl',
+      'hermes',
+    ];
+    var versand_signalwoerter_gegenteil = [
+      'kein versand',
+      'keine versandgebuehren',
+      'kein dhl',
+      'kein hermes',
+    ];
+    enthaelt_signalwort = 0;
+    for (var signalwort of versand_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
     }
-    for ( var signalwort of versand_signalwoerter_gegenteil){
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 0}
+    for (var signalwort of versand_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
     }
     resultingAd.beschreibung_enthaelt_versand = enthaelt_signalwort;
 
     //Prüfen auf neu
-    var neu_signalwoerter = ["neu", "new", "unbenutzt", "nie ausgepackt", "ungeoeffnet", "nicht benutzt" ];
-    var neu_signalwoerter_gegenteil = ["nicht neu", "nicht new", "nicht unbenutzt", "nicht nie ausgepackt", "nicht ungeoeffnet", "neuwertig"];
-    enthaelt_signalwort = 0
-    for ( var signalwort of neu_signalwoerter){
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 1}
+    var neu_signalwoerter = [
+      'neu',
+      'new',
+      'unbenutzt',
+      'nie ausgepackt',
+      'ungeoeffnet',
+      'nicht benutzt',
+    ];
+    var neu_signalwoerter_gegenteil = [
+      'nicht neu',
+      'nicht new',
+      'nicht unbenutzt',
+      'nicht nie ausgepackt',
+      'nicht ungeoeffnet',
+      'neuwertig',
+    ];
+    enthaelt_signalwort = 0;
+    for (var signalwort of neu_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
     }
-    for ( var signalwort of neu_signalwoerter_gegenteil){
-        if (beschreibung.includes(signalwort)){ enthaelt_signalwort = 0}
+    for (var signalwort of neu_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
     }
     resultingAd.beschreibung_enthaelt_neu = enthaelt_signalwort;
 
@@ -180,6 +232,33 @@ export const analyzeBeschreibung = (
   }
   resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort
 
+    //Prüfen auf Suche
+    var suche_signalwoerter = ['suche', 'gesucht'];
+    var suche_signalwoerter_gegenteil = ['keine suche', 'nicht gesucht'];
+    enthaelt_signalwort = 0;
+    for (var signalwort of suche_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
+    }
+    for (var signalwort of suche_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
+    }
+    resultingAd.ap_beschreibung_enthaelt_suche = enthaelt_signalwort;
+
+
+    //Prüfen auf Verkauf mit Kiloangabe
+    var kilo_signalwoerter = ['kilo', ' kg ', 'kilogramm'];
+
+    enthaelt_signalwort = 0;
+    for (var signalwort of kilo_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
+    }
+    resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
 
     if (false) {
       reject(new Error('Some Error happened'));
