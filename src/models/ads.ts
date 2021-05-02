@@ -68,6 +68,17 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_beschreibung_enthaelt_suche: {type: Number},
     ap_beschreibung_enthaelt_sammleraufloesung: {type: Number},
     ap_beschreibung_enthaelt_kilo: {type: Number},
+    // Michelle
+    titel_enthaelt_neu: { type: Number },
+    titel_enthaelt_ovp: { type: Number },
+    titel_enthaelt_verschweißt: { type: Number },
+    titel_enthaelt_ungeoeffnet: { type: Number },
+    titel_enthaelt_zeichen: { type: Number },
+    ap_titel_enthaelt_gebraucht: { type: Number },
+    ap_titel_enthaelt_suche: { type: Number },
+    ap_titel_enthaelt_tausche: { type: Number },
+    ap_titel_enthaelt_kilo: { type: Number },
+    ap_titel_enthaelt_sammlung: { type: Number },
     // Jessi
     preis_unter_marktwert: { type: Number },
     preis_abweichung_marktwert: { type: Number },

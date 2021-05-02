@@ -47,6 +47,17 @@ export interface AdsSchema extends Document {
   ap_beschreibung_enthaelt_sammleraufloesung: number;
   ap_beschreibung_enthaelt_kilo: number;
 
+  // Michelle
+  titel_enthaelt_neu: number;
+  titel_enthaelt_ovp: number;
+  titel_enthaelt_verschweißt: number;
+  titel_enthaelt_ungeoeffnet: number;
+  titel_enthaelt_zeichen: number;
+  ap_titel_enthaelt_gebraucht: number;
+  ap_titel_enthaelt_suche: number;
+  ap_titel_enthaelt_tausche: number;
+  ap_titel_enthaelt_kilo: number;
+  ap_titel_enthaelt_sammlung: number;
   //Jessi
   preis_unter_marktwert: number;
   preis_abweichung_marktwert: number;
