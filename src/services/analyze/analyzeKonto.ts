@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsSchema } from '../../models';
+import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeKonto = async (

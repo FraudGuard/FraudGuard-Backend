@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsSchema } from '../../models';
+import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
@@ -10,7 +10,7 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     // const produkt_aus_titel = ad.title.value;
 
     // if (produkt_aus_titel.includes('lego')){
-    //const num = produkt_aus_titel.replace(/^\D+|\D+$/g, "");}
+    // const num = produkt_aus_titel.replace(/^\D+|\D+$/g, "");}
 
     resultingAd.preis_unter_marktwert = ad.price?.amount?.value;
 

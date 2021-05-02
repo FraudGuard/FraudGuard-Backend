@@ -1,4 +1,8 @@
-import { AdsFromEbayModel, AdsFromEbaySchema, AdsSchema } from '../../models';
+import {
+  AdsFromEbayModel,
+  AdsFromEbaySchema,
+  AdsSchema,
+} from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeSonstiges = (
@@ -17,8 +21,8 @@ export const analyzeSonstiges = (
     }
 
     resultingAd.ap_sonstiges_anzeige_zeit_tag = 0;
-    var yesterday = new Date().getTime() - 24 * 60 * 60 * 1000;
-    var start = new Date(ad['start-date-time'].value).getTime();
+    const yesterday = new Date().getTime() - 24 * 60 * 60 * 1000;
+    const start = new Date(ad['start-date-time'].value).getTime();
     if (yesterday > start) {
       resultingAd.ap_sonstiges_anzeige_zeit_tag = 1;
     }

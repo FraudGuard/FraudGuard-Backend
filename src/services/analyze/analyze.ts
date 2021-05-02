@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsModel, AdsSchema } from '../../models';
+import { AdsFromEbaySchema, AdsModel, AdsSchema } from '../../api/models';
 import {
   analyzeBeschreibung,
   analyzeKonto,

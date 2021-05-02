@@ -1,4 +1,4 @@
-import { AdsFromEbayModel } from '../../models';
+import { AdsFromEbayModel } from '../../api/models';
 import { ebayHeaders } from './ebay';
 import { logger } from '../../shared';
 import axios, { AxiosRequestConfig } from 'axios';
