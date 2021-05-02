@@ -52,6 +52,18 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_category: { type: Number },
     metadata_start_time: { type: Number },
 
+    // Michelle
+    titel_enthaelt_neu: { type: Number},
+    titel_enthaelt_ovp: { type: Number},
+    titel_enthaelt_verschweißt: { type: Number},
+    titel_enthaelt_ungeoeffnet: { type: Number},
+    titel_enthaelt_zeichen: { type: Number},
+    ap_titel_enthaelt_gebraucht: { type: Number},
+    ap_titel_enthaelt_suche: { type: Number},
+    ap_titel_enthaelt_tausche: { type: Number},
+    ap_titel_enthaelt_kilo: { type: Number},
+    ap_titel_enthaelt_sammlung: { type: Number},
+
     fraud_score: { type: Number },
 
     createdAt: { type: Date, expires: 1209600 },
