@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsSchema, ProductModel } from '../../models';
+import { AdsFromEbaySchema, AdsSchema, ProductModel , AdsFromEbayModel} from '../../models';
 import { logger } from '../../shared';
 
 export const analyzeBeschreibung = (
@@ -78,7 +78,13 @@ export const analyzeBeschreibung = (
 
   // prüfen auf kopierte Anzeigenbeschreibung
 
-  //TODO
+  const res = await AdsFromEbayModel.find({
+    'description.value': ad.description.value,
+  });
+  if (res) {
+    resultingAd.beschreibung_ist_kopiert_anzeige = res.length > 1 ? 1 : 0;
+  }
+
 
   // prüfen auf kopierte Unternehmensbeschreibung
   enthaelt_signalwort=0
