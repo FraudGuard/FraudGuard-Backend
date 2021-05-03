@@ -1,14 +1,10 @@
-import {
-  AdsFromEbayModel,
-  AdsFromEbaySchema,
-  AdsSchema,
-} from '../../api/models';
+import { AdsFromEbayModel, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeSonstiges = (
-  ad: AdsFromEbaySchema,
+  ad: any,
   resultingAd: AdsSchema,
-) =>
+): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Sonstiges');
 
@@ -42,5 +38,5 @@ export const analyzeSonstiges = (
     if (false) {
       reject(new Error('Some Error happened'));
     }
-    resolve(ad);
+    resolve(resultingAd);
   });

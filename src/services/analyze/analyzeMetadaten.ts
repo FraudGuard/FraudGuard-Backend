@@ -1,10 +1,10 @@
-import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
+import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeMetadaten = (
-  ad: AdsFromEbaySchema,
+  ad: any,
   resultingAd: AdsSchema,
-) =>
+): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {
     logger.info('start analyze Metadaten');
 
@@ -20,5 +20,5 @@ export const analyzeMetadaten = (
     if (false) {
       reject(new Error('Some Error happened'));
     }
-    resolve(ad);
+    resolve(resultingAd);
   });
