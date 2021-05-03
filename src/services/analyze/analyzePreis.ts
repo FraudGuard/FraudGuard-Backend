@@ -1,7 +1,10 @@
 import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
-export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
+export const analyzePreis = (
+  ad: AdsFromEbaySchema,
+  resultingAd: AdsSchema,
+): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {
     logger.info('start analyze Preis');
     resultingAd.fraud_score += 0.1;
@@ -26,5 +29,5 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     if (false) {
       reject(new Error('Some Error happened'));
     }
-    resolve(ad);
+    resolve(resultingAd);
   });

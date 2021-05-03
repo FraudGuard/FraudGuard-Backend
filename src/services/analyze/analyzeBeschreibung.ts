@@ -9,7 +9,7 @@ import { logger } from '../../shared';
 export const analyzeBeschreibung = (
   ad: AdsFromEbaySchema,
   resultingAd: AdsSchema,
-) =>
+): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Beschreibung');
     const beschreibung = ad['description']?.value?.toLowerCase();
@@ -371,5 +371,5 @@ export const analyzeBeschreibung = (
     if (false) {
       reject(new Error('Some Error happened'));
     }
-    resolve(ad);
+    resolve(resultingAd);
   });

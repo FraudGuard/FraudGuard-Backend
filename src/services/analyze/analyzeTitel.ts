@@ -1,7 +1,10 @@
 import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
-export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
+export const analyzeTitel = (
+  ad: AdsFromEbaySchema,
+  resultingAd: AdsSchema,
+): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {
     try {
       logger.info('start analyze Titel');
@@ -208,7 +211,7 @@ export const analyzeTitel = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       if (false) {
         reject(new Error('Some Error happened'));
       }
-      resolve(ad);
+      resolve(resultingAd);
     } catch (e) {
       reject(e);
     }

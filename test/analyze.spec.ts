@@ -38,8 +38,6 @@ describe('Analyze Ads', () => {
   test('Analyze metadata', async () => {
     const result = await analyzeMetadaten(testAd, new AdsModel());
 
-    expect(result.metadata_latitude).to.be.equal(9.3557);
-    expect(result.metadata_longitude).to.be.equal(48.64);
     expect(result.metadata_category).to.be.equal(23);
     expect(result.metadata_amount_pictures).to.be.equal(6);
     expect(result.metadata_phone).to.be.equal(1);
