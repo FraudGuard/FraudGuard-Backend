@@ -7,7 +7,7 @@ import {
   analyzeMetadaten,
   // analyzePreis,
   analyzeSonstiges,
-  // analyzeTitel,
+  analyzeTitel,
 } from '../src/services/analyze';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
@@ -27,7 +27,12 @@ describe('Analyze Ads', () => {
     server.close();
   });
 
-  test('Analyze titel', async () => {});
+  test('Analyze titel', async () => {
+    const result = await analyzeTitel(testAd, new AdsModel());
+
+    expect(result.titel_enthaelt_neu).to.be.equal(0);
+    expect(result.titel_enthaelt_neu).to.be.not.equal(1);
+  });
 
   test('Analyze description', async () => {});
 

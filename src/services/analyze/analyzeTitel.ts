@@ -1,8 +1,8 @@
-import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
+import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeTitel = (
-  ad: AdsFromEbaySchema,
+  ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
   new Promise((resolve, reject) => {
