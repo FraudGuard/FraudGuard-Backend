@@ -42,9 +42,9 @@ describe('Analyze Ads', () => {
     expect(result.titel_enthaelt_verschweißt).to.be.equal(0);
     expect(result.titel_enthaelt_verschweißt).to.be.not.equal(1);
 
-    // Titel enthält ungeöffnet 
+    // Titel enthält ungeöffnet
     expect(result.titel_enthaelt_ungeoeffnet).to.be.equal(0);
-    expect(result.titel_enthaelt_ungeoeffnet).to.be.not.equal(1)
+    expect(result.titel_enthaelt_ungeoeffnet).to.be.not.equal(1);
 
     // Titel enthält Zeichen
     expect(result.titel_enthaelt_zeichen).to.be.equal(0);
@@ -69,7 +69,6 @@ describe('Analyze Ads', () => {
     // Antipattern: Titel enthält Kilo
     expect(result.ap_titel_enthaelt_kilo).to.be.equal(0);
     expect(result.ap_titel_enthaelt_kilo).to.be.not.equal(1);
-
   });
 
   test('Analyze description', async () => {});
