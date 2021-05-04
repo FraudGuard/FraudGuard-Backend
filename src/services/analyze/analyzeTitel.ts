@@ -193,7 +193,7 @@ export const analyzeTitel = (
       const wordListSammlung_gegenteil = [
         'keine sammlerauflösung',
         'keine sammlung',
-        ' keine sammlungsauflösung',
+        'keine sammlungsauflösung',
         'keine sammleraufloesung',
         'keine sammlungsaufloesung',
       ];
