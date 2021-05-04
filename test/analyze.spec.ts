@@ -38,7 +38,7 @@ describe('Analyze Ads', () => {
   test('Analyze metadata', async () => {
     const result = await analyzeMetadaten(testAd, new AdsModel());
 
-    expect(result.metadata_category).to.be.equal(23);
+    expect(result.metadata_category).to.be.equal(testAd.category.id);
     expect(result.metadata_amount_pictures).to.be.equal(6);
     expect(result.metadata_phone).to.be.equal(1);
     expect(result.metadata_startDateTime).to.be.equal(1614434831000);
