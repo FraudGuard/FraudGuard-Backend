@@ -71,6 +71,5 @@ export interface AdsSchema extends Document {
   preis_abweichung_marktwert: number;
   preis_waehrung_eur: number;
   preis_typ_vb: number;
-  ap_preis_ueber_marktwert: number;
   ap_preis_ist_leer: number;
 }
