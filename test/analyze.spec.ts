@@ -12,7 +12,7 @@ import {
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
 import { expect } from 'chai';
-import { testAd } from './testAd';
+import { Ad1, Ad2 } from './testAds';
 import type { Server } from 'http';
 
 let server: Server;
@@ -28,47 +28,38 @@ describe('Analyze Ads', () => {
   });
 
   test('Analyze titel', async () => {
-    const result = await analyzeTitel(testAd, new AdsModel());
+    const result1 = await analyzeTitel(Ad1, new AdsModel());
+    const result2 = await analyzeTitel(Ad2, new AdsModel());
 
     // Titel enthählt neu
-    expect(result.titel_enthaelt_neu).to.be.equal(0);
-    expect(result.titel_enthaelt_neu).to.be.not.equal(1);
+    expect(result1.titel_enthaelt_neu).to.be.equal(0);
 
     // Titel enthält ovp
-    expect(result.titel_enthaelt_ovp).to.be.equal(0);
-    expect(result.titel_enthaelt_ovp).to.be.not.equal(1);
+    expect(result1.titel_enthaelt_ovp).to.be.equal(0);
 
     // Titel enthält verschweißt
-    expect(result.titel_enthaelt_verschweißt).to.be.equal(0);
-    expect(result.titel_enthaelt_verschweißt).to.be.not.equal(1);
+    expect(result1.titel_enthaelt_verschweißt).to.be.equal(0);
 
     // Titel enthält ungeöffnet
-    expect(result.titel_enthaelt_ungeoeffnet).to.be.equal(0);
-    expect(result.titel_enthaelt_ungeoeffnet).to.be.not.equal(1);
+    expect(result1.titel_enthaelt_ungeoeffnet).to.be.equal(0);
 
     // Titel enthält Zeichen
-    expect(result.titel_enthaelt_zeichen).to.be.equal(0);
-    expect(result.titel_enthaelt_zeichen).to.be.not.equal(1);
+    expect(result1.titel_enthaelt_zeichen).to.be.equal(0);
 
     // Anitpattern: Titel enthält gebraucht
-    expect(result.ap_titel_enthaelt_gebraucht).to.be.equal(0);
-    expect(result.ap_titel_enthaelt_gebraucht).to.be.not.equal(1);
+    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
 
     // Antipattern: Titel enthält suche
-    expect(result.ap_titel_enthaelt_suche).to.be.equal(0);
-    expect(result.ap_titel_enthaelt_suche).to.be.not.equal(1);
+    expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
 
     // Antipattern: Titel enthält tausche
-    expect(result.ap_titel_enthaelt_tausche).to.be.equal(0);
-    expect(result.ap_titel_enthaelt_tausche).to.be.not.equal(1);
+    expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
 
     // Antipattern: Titel enthält Sammlung
-    expect(result.ap_titel_enthaelt_sammlung).to.be.equal(0);
-    expect(result.ap_titel_enthaelt_sammlung).to.be.not.equal(1);
+    expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
 
     // Antipattern: Titel enthält Kilo
-    expect(result.ap_titel_enthaelt_kilo).to.be.equal(0);
-    expect(result.ap_titel_enthaelt_kilo).to.be.not.equal(1);
+    expect(result1.ap_titel_enthaelt_kilo).to.be.equal(0);
   });
 
   test('Analyze description', async () => {});
@@ -78,21 +69,27 @@ describe('Analyze Ads', () => {
   test('Analyze price', async () => {});
 
   test('Analyze metadata', async () => {
-    const result = await analyzeMetadaten(testAd, new AdsModel());
+    const result1 = await analyzeMetadaten(Ad1, new AdsModel());
+    const result2 = await analyzeMetadaten(Ad2, new AdsModel());
 
-    expect(result.metadata_category).to.be.equal(testAd.category.id);
-    expect(result.metadata_amount_pictures).to.be.equal(6);
-    expect(result.metadata_phone).to.be.equal(1);
-    expect(result.metadata_startDateTime).to.be.equal(1614434831000);
+    expect(result1.metadata_category).to.be.equal(Ad1.category.id);
+    expect(result1.metadata_amount_pictures).to.be.equal(6);
+    expect(result1.metadata_phone).to.be.equal(1);
+    expect(result1.metadata_startDateTime).to.be.equal(1614434831000);
+
+    expect(result2.metadata_category).to.be.equal(Ad1.category.id);
+    expect(result2.metadata_amount_pictures).to.be.equal(6);
+    expect(result2.metadata_phone).to.be.equal(1);
+    expect(result2.metadata_startDateTime).to.be.equal(1614434831000);
   });
 
   test('Analyze misc.', async () => {
-    const result = await analyzeSonstiges(testAd, new AdsModel());
+    const result1 = await analyzeSonstiges(Ad1, new AdsModel());
 
-    expect(result.sonstiges_anzeige_kopiert).to.be.equal('1');
-    expect(result.ap_sonstiges_anzeige_nur_abholung).to.be.equal('1');
-    expect(result.ap_sonstiges_anzeige_suche).to.be.equal('1');
-    expect(result.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
+    expect(result1.sonstiges_anzeige_kopiert).to.be.equal('1');
+    expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal('1');
+    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal('1');
+    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
   });
 
   test('Analyze all', async () => {});
