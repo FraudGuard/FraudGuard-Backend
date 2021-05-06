@@ -141,9 +141,9 @@ export const Ad1 = {
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
+    'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
     amount: { value: { $numberInt: '200' } },
-    'price-type': { value: 'PLEASE_CONTACT' },
+    'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
@@ -312,9 +312,9 @@ export const Ad2 = {
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
+    'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
     amount: { value: { $numberInt: '100' } },
-    'price-type': { value: 'SPECIFIED_AMOUNT' },
+    'price-type': { value: 'PLEASE_CONTACT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },

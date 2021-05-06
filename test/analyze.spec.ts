@@ -141,15 +141,15 @@ describe('Analyze Ads', () => {
     // keine Merkmale enthalten
     expect(result1.preis_unter_marktwert).to.be.equal(0);
     expect(result1.preis_abweichung_marktwert).to.be.equal(0);
-    expect(result1.preis_waehrung_eur).to.be.equal(1);
-    expect(result1.preis_typ_vb).to.be.equal(1);
+    expect(result1.preis_waehrung_eur).to.be.equal(0);
+    expect(result1.preis_typ_vb).to.be.equal(0);
     expect(result1.ap_preis_ist_leer).to.be.equal(0);
 
     // Merkmale enthalten
     expect(result2.preis_unter_marktwert).to.be.equal(1);
     expect(result1.preis_abweichung_marktwert).to.be.equal(0.5);
-    expect(result1.preis_waehrung_eur).to.be.equal(0);
-    expect(result1.preis_typ_vb).to.be.equal(0);
+    expect(result1.preis_waehrung_eur).to.be.equal(1);
+    expect(result1.preis_typ_vb).to.be.equal(1);
     expect(result1.ap_preis_ist_leer).to.be.equal(0);
   });
 
