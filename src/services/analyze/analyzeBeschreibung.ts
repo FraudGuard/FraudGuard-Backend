@@ -1,8 +1,4 @@
-import {
-  AdsSchema,
-  ProductModel,
-  AdsFromEbayModel,
-} from '../../api/models';
+import { AdsSchema, ProductModel, AdsFromEbayModel } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeBeschreibung = (
@@ -188,7 +184,12 @@ export const analyzeBeschreibung = (
       { beschreibung: 1 },
     );
     for (const produktbeschreibung of produktbeschreibungen) {
-      if (beschreibung.includes(produktbeschreibung.beschreibung.toLocaleLowerCase()) && produktbeschreibung.beschreibung.length > 1) {
+      if (
+        beschreibung.includes(
+          produktbeschreibung.beschreibung.toLocaleLowerCase(),
+        ) &&
+        produktbeschreibung.beschreibung.length > 1
+      ) {
         enthaelt_signalwort = 1;
       }
     }
