@@ -185,5 +185,5 @@ describe('Analyze Ads', () => {
     expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
   });
 
-  test('Analyze all', async () => {}, 100000);
+  test('Analyze all', async () => {}, 1000000);
 });
