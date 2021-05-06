@@ -140,7 +140,7 @@ describe('Analyze Ads', () => {
     expect(result2.ap_preis_ist_leer).to.be.equal(0);
 
     // Preis - Antipattern enthalten
-    expect(result3.preis_unter_marktwert).to.be.equal(0);
+    expect(result3.preis_unter_marktwert).to.be.equal(1);
     expect(result3.preis_abweichung_marktwert).to.be.equal(0);
     expect(result3.preis_waehrung_eur).to.be.equal(1);
     expect(result3.preis_typ_vb).to.be.equal(0);
