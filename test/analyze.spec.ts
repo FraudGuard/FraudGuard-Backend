@@ -62,7 +62,42 @@ describe('Analyze Ads', () => {
     expect(result1.ap_titel_enthaelt_kilo).to.be.equal(0);
   });
 
-  test('Analyze description', async () => {});
+  test('Analyze description', async () => {
+    const result1 = await analyzeTitel(Ad1, new AdsModel());
+    const result2 = await analyzeTitel(Ad2, new AdsModel());
+
+  expect(result1.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
+  expect(result1.beschreibung_enthaelt_versand).to.be.equal(1);
+  expect(result1.beschreibung_enthaelt_neu).to.be.equal(0);
+  expect(result1.beschreibung_enthaelt_ovp).to.be.equal(0);
+  expect(result1.beschreibung_enthaelt_versiegelt).to.be.equal(0);
+  expect(result1.beschreibung_enthaelt_whatsapp).to.be.equal(0);
+  expect(result1.beschreibung_ist_kopiert_anzeige).to.be.equal(0);
+  expect(result1.beschreibung_ist_kopiert_unternehmen).to.be.equal(0);
+  expect(result1.ap_beschreibung_enthaelt_barzahlung).to.be.equal(0);
+  expect(result1.ap_beschreibung_enthaelt_gebraucht).to.be.equal(1);
+  expect(result1.ap_beschreibung_enthaelt_tausch).to.be.equal(0);
+  expect(result1.ap_beschreibung_enthaelt_abholung).to.be.equal(1);
+  expect(result1.ap_beschreibung_enthaelt_suche).to.be.equal(0);
+  expect(result1.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(1);
+  expect(result1.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
+
+  expect(result2.beschreibung_enthaelt_ueberweisung).to.be.equal(1);
+  expect(result2.beschreibung_enthaelt_versand).to.be.equal(0);
+  expect(result2.beschreibung_enthaelt_neu).to.be.equal(0);
+  expect(result2.beschreibung_enthaelt_ovp).to.be.equal(1);
+  expect(result2.beschreibung_enthaelt_versiegelt).to.be.equal(1);
+  expect(result2.beschreibung_enthaelt_whatsapp).to.be.equal(1);
+  expect(result2.beschreibung_ist_kopiert_anzeige).to.be.equal(0);
+  expect(result2.beschreibung_ist_kopiert_unternehmen).to.be.equal(1);
+  expect(result2.ap_beschreibung_enthaelt_barzahlung).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_gebraucht).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_tausch).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_abholung).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_suche).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
+  expect(result2.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
+  });
 
   test('Analyze account', async () => {});
 

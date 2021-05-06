@@ -51,12 +51,16 @@ export const analyzeBeschreibung = (
       'versandgebuehren',
       'dhl',
       'hermes',
+      'versendet',
+      'versenden',
     ];
     const versand_signalwoerter_gegenteil = [
       'kein versand',
       'keine versandgebuehren',
       'kein dhl',
       'kein hermes',
+      'nicht versendet',
+      'nicht versenden',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of versand_signalwoerter) {
@@ -173,6 +177,7 @@ export const analyzeBeschreibung = (
     const res = await AdsFromEbayModel.find({
       'description.value': ad.description.value,
     });
+    // res ist array mit Ads
     if (res) {
       resultingAd.beschreibung_ist_kopiert_anzeige = res.length > 1 ? 1 : 0;
     }
@@ -271,12 +276,14 @@ export const analyzeBeschreibung = (
       'nur abholung',
       'selbstabholer',
       'abholen',
+      'abgeholt',
     ];
     const abholung_signalwoerter_gegenteil = [
       'keine abholung',
       'keine abholung',
       'kein selbstabholer',
       'nicht abholen',
+      'nicht abgeholt',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of abholung_signalwoerter) {
@@ -337,28 +344,6 @@ export const analyzeBeschreibung = (
 
     // Prüfen auf Verkauf mit Kiloangabe
     const kilo_signalwoerter = ['kilo', ' kg ', 'kilogramm'];
-
-    enthaelt_signalwort = 0;
-    for (const signalwort of kilo_signalwoerter) {
-      if (beschreibung.includes(signalwort)) {
-        enthaelt_signalwort = 1;
-      }
-    }
-    resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
-
-    // Prüfen auf Suche
-    enthaelt_signalwort = 0;
-    for (const signalwort of suche_signalwoerter) {
-      if (beschreibung.includes(signalwort)) {
-        enthaelt_signalwort = 1;
-      }
-    }
-    for (const signalwort of suche_signalwoerter_gegenteil) {
-      if (beschreibung.includes(signalwort)) {
-        enthaelt_signalwort = 0;
-      }
-    }
-    resultingAd.ap_beschreibung_enthaelt_suche = enthaelt_signalwort;
 
     enthaelt_signalwort = 0;
     for (const signalwort of kilo_signalwoerter) {
