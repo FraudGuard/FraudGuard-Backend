@@ -12,7 +12,7 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     let marktwert = 0;
     let ad_title = ad.title?.value?.toLowerCase();
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
-    let num = ad_title.replace(/^\D+|\D+$/g, "");
+    let num = ad_title.replace(/^\D+|\D+$/g, '');
     // alle Produkte aus der product collection in ein Array
     const produkte = await ProductModel.find({});
 
@@ -24,7 +24,7 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
         marktwert = produkt.preis;
     }
 
-    resultingAd.preis_unter_marktwert = ad_preis <= marktwert ? 1 : 0 ; 
+    resultingAd.preis_unter_marktwert = ad_preis <= marktwert ? 1 : 0;
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
