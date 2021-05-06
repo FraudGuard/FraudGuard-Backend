@@ -5,7 +5,7 @@ import {
   // analyzeBeschreibung,
   // analyzeKonto,
   analyzeMetadaten,
-  // analyzePreis,
+  analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
 } from '../src/services/analyze';
@@ -134,7 +134,24 @@ describe('Analyze Ads', () => {
 
   test('Analyze account', async () => {});
 
-  test('Analyze price', async () => {});
+  test('Analyze price', async () => {
+    const result1 = await analyzePreis(Ad1, new AdsModel());
+    const result2 = await analyzePreis(Ad2, new AdsModel());
+
+    // keine Merkmale enthalten
+    expect(result1.preis_unter_marktwert).to.be.equal(0);
+    expect(result1.preis_abweichung_marktwert).to.be.equal(0);
+    expect(result1.preis_waehrung_eur).to.be.equal(1);
+    expect(result1.preis_typ_vb).to.be.equal(1);
+    expect(result1.ap_preis_ist_leer).to.be.equal(0);
+
+    // Merkmale enthalten
+    expect(result2.preis_unter_marktwert).to.be.equal(1);
+    expect(result1.preis_abweichung_marktwert).to.be.equal(0.5);
+    expect(result1.preis_waehrung_eur).to.be.equal(0);
+    expect(result1.preis_typ_vb).to.be.equal(0);
+    expect(result1.ap_preis_ist_leer).to.be.equal(0);
+  });
 
   test('Analyze metadata', async () => {
     const result1 = await analyzeMetadaten(Ad1, new AdsModel());

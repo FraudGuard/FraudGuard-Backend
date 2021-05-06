@@ -1,7 +1,10 @@
-import { AdsFromEbaySchema, AdsSchema, ProductModel } from '../../api/models';
+import { AdsSchema, ProductModel } from '../../api/models';
 import { logger } from '../../shared';
 
-export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
+export const analyzePreis = (
+  ad: any,
+  resultingAd: AdsSchema,
+): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Preis');
     resultingAd.fraud_score += 0.1;
