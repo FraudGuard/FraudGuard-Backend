@@ -1,5 +1,4 @@
 import {
-  AdsFromEbaySchema,
   AdsSchema,
   ProductModel,
   AdsFromEbayModel,
@@ -7,7 +6,7 @@ import {
 import { logger } from '../../shared';
 
 export const analyzeBeschreibung = (
-  ad: AdsFromEbaySchema,
+  ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
@@ -29,7 +28,7 @@ export const analyzeBeschreibung = (
       'keine sepa-überweisung',
       'keine sepa-ueberwesiung',
       'nicht überweisen',
-      ' nicht ueberweisen',
+      'nicht ueberweisen',
       'kein sepa',
     ];
     let enthaelt_signalwort = 0;
@@ -189,7 +188,7 @@ export const analyzeBeschreibung = (
       { beschreibung: 1 },
     );
     for (const produktbeschreibung of produktbeschreibungen) {
-      if (beschreibung.includes(produktbeschreibung.beschreibung)) {
+      if (beschreibung.includes(produktbeschreibung.beschreibung.toLocaleLowerCase()) && produktbeschreibung.beschreibung.length > 1) {
         enthaelt_signalwort = 1;
       }
     }
@@ -200,7 +199,7 @@ export const analyzeBeschreibung = (
     const barzahlung_signalwoerter = ['barzahlung', 'bar', 'bezahlung vor ort'];
     const barzahlung_signalwoerter_gegenteil = [
       'keine barzahlung',
-      'kein bar',
+      'nicht bar',
       'keine bezahlung vor ort',
     ];
     enthaelt_signalwort = 0;
@@ -246,10 +245,10 @@ export const analyzeBeschreibung = (
 
     // Prüfen auf Tausch
     const tausch_signalwoerter = [
-      'tausch',
-      'tausche',
+      ' tausch ',
+      ' tausche ',
       'tauschangebot',
-      'tauschen',
+      ' tauschen ',
     ];
     const tausch_signalwoerter_gegenteil = [
       'kein tausch',
