@@ -1,7 +1,10 @@
-import { AdsFromEbaySchema, AdsSchema, ProductModel } from '../../api/models';
+import { AdsSchema, ProductModel } from '../../api/models';
 import { logger } from '../../shared';
 
-export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
+export const analyzePreis = (
+  ad: any,
+  resultingAd: AdsSchema,
+): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Preis');
     resultingAd.fraud_score += 0.1;
@@ -10,9 +13,9 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
 
     // Preisabgleich mit hinterlegten Preisen aus DB
     let marktwert = 0;
-    let ad_title = ad.title?.value?.toLowerCase();
+    const ad_title = ad.title?.value?.toLowerCase();
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
-    let num = ad_title.replace(/^\D+|\D+$/g, '');
+    const num = ad_title.replace(/^\D+|\D+$/g, '');
     // alle Produkte aus der product collection in ein Array
     const produkte = await ProductModel.find({});
 
@@ -23,8 +26,9 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
       if (produkt.produktname.toLowerCase().includes(num))
         marktwert = produkt.preis;
     }
-
-    resultingAd.preis_unter_marktwert = ad_preis <= marktwert ? 1 : 0;
+    console.log(marktwert);
+    console.log(ad_preis);
+    resultingAd.preis_unter_marktwert = ad_preis < marktwert ? 1 : 0;
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
