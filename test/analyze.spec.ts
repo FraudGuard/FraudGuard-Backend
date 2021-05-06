@@ -12,7 +12,7 @@ import {
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
 import { expect } from 'chai';
-import { Ad1, Ad2 } from './testAds';
+import { Ad1, Ad2, Ad3 } from './testAds';
 import type { Server } from 'http';
 
 let server: Server;
@@ -28,6 +28,7 @@ describe('Analyze Ads', () => {
   });
 
   test('Analyze titel', async () => {
+
     // keine Merkmale enthalten
     const result1 = await analyzeTitel(Ad1, new AdsModel());
 
@@ -80,19 +81,51 @@ describe('Analyze Ads', () => {
     expect(result2.titel_enthaelt_zeichen).to.be.equal(1);
 
     // Anitpattern: Titel enthält nicht gebraucht
-    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
+    expect(result2.ap_titel_enthaelt_gebraucht).to.be.equal(0);
 
     // Antipattern: Titel enthält keine suche
-    expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
+    expect(result2.ap_titel_enthaelt_suche).to.be.equal(0);
 
     // Antipattern: Titel enthält nicht tausche
-    expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
+    expect(result2.ap_titel_enthaelt_tausche).to.be.equal(0);
 
     // Antipattern: Titel enthält keine Sammlung
-    expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
+    expect(result2.ap_titel_enthaelt_sammlung).to.be.equal(0);
 
     // Antipattern: Titel enthält nicht Kilo
-    expect(result1.ap_titel_enthaelt_kilo).to.be.equal(0);
+    expect(result2.ap_titel_enthaelt_kilo).to.be.equal(0);
+
+    const result3 = await analyzeTitel(Ad3, new AdsModel());
+
+    // Titel enthält nicht neu
+    expect(result3.titel_enthaelt_neu).to.be.equal(0);
+
+    // Titel enthält nicht ovp
+    expect(result3.titel_enthaelt_ovp).to.be.equal(0);
+
+    // Titel enthält nicht verschweißt
+    expect(result3.titel_enthaelt_verschweißt).to.be.equal(0);
+
+    // Titel enthält nicht ungeöffnet
+    expect(result3.titel_enthaelt_ungeoeffnet).to.be.equal(0);
+
+    // Titel enthält kein Zeichen
+    expect(result3.titel_enthaelt_zeichen).to.be.equal(0);
+
+    // Anitpattern: Titel enthält gebraucht
+    expect(result3.ap_titel_enthaelt_gebraucht).to.be.equal(1);
+
+    // Antipattern: Titel enthält suche
+    expect(result3.ap_titel_enthaelt_suche).to.be.equal(1);
+
+    // Antipattern: Titel enthält tausche
+    expect(result3.ap_titel_enthaelt_tausche).to.be.equal(1);
+
+    // Antipattern: Titel enthält Sammlung
+    expect(result3.ap_titel_enthaelt_sammlung).to.be.equal(1);
+
+    // Antipattern: Titel enthält Kilo
+    expect(result3.ap_titel_enthaelt_kilo).to.be.equal(1);
   });
 
   test('Analyze description', async () => {});

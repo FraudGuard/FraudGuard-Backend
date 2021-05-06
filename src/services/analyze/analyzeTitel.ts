@@ -167,20 +167,23 @@ export const analyzeTitel = (
       for (const w7 of wordListSuche) {
         for (const g7 of wordListSuche_gegenteil) {
           if (str.includes(w7) && !str.includes(g7)) {
-            resultingAd.ap_sonstiges_anzeige_suche = 1;
+            resultingAd.ap_titel_enthaelt_suche = 1;
           }
         }
       }
 
       // Merkmal kilo
       const wordListKilo = ['kg', 'kilo', 'kilogramm'];
+      const wordListKilo_gegenteil = ['kein kg','kein kilo','kein kilogramm'];
 
       resultingAd.ap_titel_enthaelt_kilo = 0;
       for (const w8 of wordListKilo) {
-        if (str.includes(w8)) {
-          resultingAd.ap_titel_enthaelt_kilo = 1;
+        for (const g8 of wordListKilo_gegenteil) {
+          if (str.includes(w8) && !str.includes(g8)) {
+            resultingAd.ap_titel_enthaelt_kilo = 1;
         }
       }
+    }
 
       // Merkmal Sammlung
       const wordListSammlung = [
@@ -202,7 +205,7 @@ export const analyzeTitel = (
       for (const w9 of wordListSammlung) {
         for (const g9 of wordListSammlung_gegenteil) {
           if (str.includes(w9) && !str.includes(g9)) {
-            resultingAd.ap_titel_enthaelt_suche = 1;
+            resultingAd.ap_titel_enthaelt_sammlung = 1;
           }
         }
       }
