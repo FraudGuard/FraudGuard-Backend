@@ -29,7 +29,6 @@ describe('Analyze Ads', () => {
   });
 
   test('Analyze titel', async () => {
-
     // Titel - keine Merkmale enthalten
     const result1 = await analyzeTitel(Ad1, new AdsModel());
 

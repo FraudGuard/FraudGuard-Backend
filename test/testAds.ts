@@ -319,7 +319,10 @@ export const Ad2 = {
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
-  title: { value: 'Neu & OVP LEGO Technic 42009 Mobiler Schwerlastkran MK II - ungeöffnet und verschweißt ✅' },
+  title: {
+    value:
+      'Neu & OVP LEGO Technic 42009 Mobiler Schwerlastkran MK II - ungeöffnet und verschweißt ✅',
+  },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
   'user-rating': { averageRating: { value: { $numberDouble: '0.875' } } },
