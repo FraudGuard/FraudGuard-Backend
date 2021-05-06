@@ -174,16 +174,16 @@ export const analyzeTitel = (
 
       // Merkmal kilo
       const wordListKilo = ['kg', 'kilo', 'kilogramm'];
-      const wordListKilo_gegenteil = ['kein kg','kein kilo','kein kilogramm'];
+      const wordListKilo_gegenteil = ['kein kg', 'kein kilo', 'kein kilogramm'];
 
       resultingAd.ap_titel_enthaelt_kilo = 0;
       for (const w8 of wordListKilo) {
         for (const g8 of wordListKilo_gegenteil) {
           if (str.includes(w8) && !str.includes(g8)) {
             resultingAd.ap_titel_enthaelt_kilo = 1;
+          }
         }
       }
-    }
 
       // Merkmal Sammlung
       const wordListSammlung = [
