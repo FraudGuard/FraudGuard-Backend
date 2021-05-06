@@ -2,9 +2,10 @@ import { AdsModel } from './../src/api/models/ads';
 /* eslint-disable no-unused-vars */
 import {
   // analyze,
-  // analyzeBeschreibung,
   // analyzeKonto,
   analyzeMetadaten,
+  analyzeBeschreibung,
+  // analyzePreis,
   analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
@@ -82,8 +83,8 @@ describe('Analyze Ads', () => {
   });
 
   test('Analyze description', async () => {
-    const result1 = await analyzeTitel(Ad1, new AdsModel());
-    const result2 = await analyzeTitel(Ad2, new AdsModel());
+    const result1 = await analyzeBeschreibung(Ad1, new AdsModel());
+    const result2 = await analyzeBeschreibung(Ad2, new AdsModel());
 
     expect(result1.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
     expect(result1.beschreibung_enthaelt_versand).to.be.equal(1);
