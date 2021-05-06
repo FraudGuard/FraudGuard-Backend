@@ -145,7 +145,6 @@ describe('Analyze Ads', () => {
     expect(result3.preis_waehrung_eur).to.be.equal(1);
     expect(result3.preis_typ_vb).to.be.equal(0);
     expect(result3.ap_preis_ist_leer).to.be.equal(1);
-
   });
 
   test('Analyze metadata', async () => {
