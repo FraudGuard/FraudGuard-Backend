@@ -1,4 +1,4 @@
-import { AdsFromEbaySchema, AdsSchema, ProductModel,} from '../../api/models';
+import { AdsFromEbaySchema, AdsSchema, ProductModel } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
@@ -13,21 +13,20 @@ export const analyzePreis = (ad: AdsFromEbaySchema, resultingAd: AdsSchema) =>
     let ad_produktname;
     let ad_title = ad.title?.value?.toLowerCase();
     const produkte = await ProductModel.find({});
-    
+
     for (const produkt of produkte) {
       if (ad_title.includes(produkt.produktname.toLowerCase())) {
-        ad_produktname = produkt.produktname; 
+        ad_produktname = produkt.produktname;
         marktwert = produkt.preis;
       }
     }
 
-    resultingAd.preis_unter_marktwert = ad_preis <= marktwert ? 0 : 1 ; 
+    resultingAd.preis_unter_marktwert = ad_preis <= marktwert ? 0 : 1;
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
-      resultingAd.preis_abweichung_marktwert = ad_preis / marktwert -1;
-    else
-      resultingAd.preis_abweichung_marktwert = 0;
+      resultingAd.preis_abweichung_marktwert = ad_preis / marktwert - 1;
+    else resultingAd.preis_abweichung_marktwert = 0;
 
     // Prüfen der Währung in EUR
     resultingAd.preis_waehrung_eur =
