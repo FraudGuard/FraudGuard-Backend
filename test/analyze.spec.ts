@@ -68,7 +68,7 @@ describe('Analyze Ads', () => {
     expect(result2.titel_enthaelt_neu).to.be.equal(1);
 
     // Titel enthält ovp
-    expect (result2.titel_enthaelt_ovp).to.be.equal(1);
+    expect(result2.titel_enthaelt_ovp).to.be.equal(1);
 
     // Titel enthält verschweißt
     expect(result2.titel_enthaelt_verschweißt).to.be.equal(1);
@@ -84,13 +84,13 @@ describe('Analyze Ads', () => {
 
     // Antipattern: Titel enthält keine suche
     expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
-    
+
     // Antipattern: Titel enthält nicht tausche
     expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
-    
+
     // Antipattern: Titel enthält keine Sammlung
     expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
-    
+
     // Antipattern: Titel enthält nicht Kilo
     expect(result1.ap_titel_enthaelt_kilo).to.be.equal(0);
   });
