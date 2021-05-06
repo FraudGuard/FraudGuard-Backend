@@ -9,7 +9,7 @@ export const analyzePreis = (
     logger.info('start analyze Preis');
     resultingAd.fraud_score += 0.1;
 
-    const ad_preis = ad.price?.amount?.value;
+    const ad_preis = parseInt(ad.price?.amount?.value, 10);
 
     // Preisabgleich mit hinterlegten Preisen aus DB
     let marktwert = 1;
@@ -29,6 +29,7 @@ export const analyzePreis = (
     console.log(marktwert);
     console.log(ad_preis);
     resultingAd.preis_unter_marktwert = ad_preis < marktwert ? 1 : 0;
+    console.log(resultingAd.preis_unter_marktwert);
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
