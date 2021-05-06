@@ -142,7 +142,7 @@ export const Ad1 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
-    amount: { value: '200'  },
+    amount: { value: '200' },
     'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
