@@ -141,9 +141,9 @@ export const Ad1 = {
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
+    'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
     amount: { value: { $numberInt: '200' } },
-    'price-type': { value: 'PLEASE_CONTACT' },
+    'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
@@ -218,7 +218,7 @@ export const Ad2 = {
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'Hallo zusammen,<br /><br />ich muss meine Sammlung etwas verkleinern, daher hier zum Verkauf :<br /><br />LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br />Kann zusammengebaut abgeholt, oder zerlegt versendet werden.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden',
+      'Mit Versiegelung aber nicht neu, daher hier zum Verkauf :<br /><br />Originalverpackter LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br /> Überweisung und nicht bar Bezahlung.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden whatsapp Hab Spaß bei Rollenspielen in NINJAGO® City. Die 3 Etagen im Modell sind über einen Aufzug verbunden. Im Erdgeschoss ist ein Fischmarkt, ein Haus, eine Brücke über einen Fluss und ein Fischerboot. Im 1. Stock befinden sich Modegeschäft, Comicladen, Krabbenrestaurant und Geldautomat. Oben in der senkrecht angeordneten Stadt ist die Wohnung von Lloyd Garmadon und Misako. Auf dem Dach gibt es noch eine Sushibar und einen Funkturm. Das Set zu THE LEGO® NINJAGO MOVIE™ enthält auch 16 Minifiguren und Sweep den Serviceroboter für spannende Spielaction.  it 16 Minifiguren: Jay, Kai und Lloyd Garmadon (jeweils in der neuen Schuluniform, die im Aug. 2017 herauskommt), den Ninja im grünen Anzug, Misako, einen Dorfbewohner aus Jamanakai, Sally, Ivy Walker, Konrad, Severin Black, Tommy, Guy, Juno, Mutter Doomsday, ein Haimonster Schütze, Wachtmeister Noonan sowie Sweep den Serviceroboter. Enthält ein 3-geschossiges Modell (zum einfacheren Spielen abnehmbar). Die drei Etagen sind über einen Aufzug verbunden. Zum Set gehört auch ein Fischerboot. Im Erdgeschoss gibt es eine Brücke, einen Abfluss, einen Fluss mit durchsichtig-blauen und grünen Wasserelementen, einen Schiebeaufzug für eine Minifigur, einen traditionellen Fischmarkt mit Fisch- und Krabbenelementen, ein Haus mit Esszimmer und Schlafzimmer mit Schiebetüren und ausklappbaren Sonnenkollektoren, die Servicestation von Sweep, dem Serviceroboter, mit versch. Werkzeugen sowie einen Taxistand mit Telefon. Im 1. Stock befindet sich ein Modegeschäft mit 2 Schaufensterpuppen u. verschiedenen NINJAGO® Produktelementen. Es gibt auch eine Baustelle mit Bonsai und einen Comicladen mit einem Schild (LEGO Steine), Kassenschalter und Comicständer mit div. Elementen wie NINJAGO Trainingskarten zum Sammeln. Das auch dort untergebrachte Krabbenrestaurant hat ein Eingangsschild aus LEGO Steinen und einen Ofen mit „Krabbengrill“-Funktion. Der Geldautomat kann max. 13 der im Set enthaltenen 15 Geldscheine ausgeben. Außerdem gibt es einen Ständer für Filmposter mit 4 austauschbaren Filmposterelementen. Backe das rohe Krabbenelement im Ofen, indem du das Einstellrad drehst. Drücke den Griff hinter dem Geldautomaten, um Scheine auszugeben. Auf dem Dach gibt es einen Funkturm und eine Sushibar mit Förderband und Gerichten aus LEGO Steinen. Im Dach befinden sich ein Bad mit Schiebetür, Skulpturen eines Kugel- und Tintenfisches (LEGO Steine), die Wohnung von Lloyd Garmadon und Misako mit aufklappbarem Fenster, Stockbett, Küche und Dachkammer für den Ninja im grünen Anzug. Dreh das Rad, um das Förderband zu aktivieren. Zur Ausrüstung gehören Jays Morgenstern und die Fischflamme des Haimonster Schützen. Stell die Szenen aus THE LEGO® NINJAGO® MOVIE™ als spannende Rollenspiele nach. NINJAGO® City ist 63 cm hoch, 31 cm breit und 42 cm tief. Das Boot ist 4 cm hoch, 10 cm lang und 3 cm breit.',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
@@ -313,16 +313,13 @@ export const Ad2 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
-    amount: { value: { $numberInt: '200' } },
+    amount: { value: { $numberInt: '100' } },
     'price-type': { value: 'PLEASE_CONTACT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
-  title: {
-    value:
-      'Neu & Ovp - LEGO Technic 42009 Mobiler Schwerlastkran MK II - verschweißt und ungeöffnet✅',
-  },
+  title: { value: 'LEGO Technic 42009 Mobiler Schwerlastkran MK II' },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
   'user-rating': { averageRating: { value: { $numberDouble: '0.875' } } },
