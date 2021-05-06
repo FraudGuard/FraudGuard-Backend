@@ -487,15 +487,15 @@ export const Ad3 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
-    amount: { value: { $numberInt: '200' } },
-    'price-type': { value: 'PLEASE_CONTACT' },
+    amount: { value: { $numberInt: '0' } },
+    'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
   title: {
     value:
-      'Sammlung 45kg LEGO Technic 42009 Mobiler Schwerlastkran MK II - Suche oder Tausche gebraucht',
+      'Sammlung 45kg Lego 10268 vestas Windrad - Suche oder Tausche gebraucht',
   },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
