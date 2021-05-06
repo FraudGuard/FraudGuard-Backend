@@ -29,102 +29,55 @@ describe('Analyze Ads', () => {
 
   test('Analyze titel', async () => {
 
-    // keine Merkmale enthalten
+    // Titel - keine Merkmale enthalten
     const result1 = await analyzeTitel(Ad1, new AdsModel());
 
-    // Titel enthält nicht neu
+    // Titel Merkmale
     expect(result1.titel_enthaelt_neu).to.be.equal(0);
-
-    // Titel enthält nicht ovp
     expect(result1.titel_enthaelt_ovp).to.be.equal(0);
-
-    // Titel enthält nicht verschweißt
     expect(result1.titel_enthaelt_verschweißt).to.be.equal(0);
-
-    // Titel enthält nicht ungeöffnet
     expect(result1.titel_enthaelt_ungeoeffnet).to.be.equal(0);
-
-    // Titel enthält kein Zeichen
     expect(result1.titel_enthaelt_zeichen).to.be.equal(0);
-
-    // Anitpattern: Titel enthält nicht gebraucht
     expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
 
-    // Antipattern: Titel enthält keine suche
+    // Titel Antipattern
     expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
-
-    // Antipattern: Titel enthält nicht tausche
     expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
-
-    // Antipattern: Titel enthält keine Sammlung
     expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
-
-    // Antipattern: Titel enthält nicht Kilo
     expect(result1.ap_titel_enthaelt_kilo).to.be.equal(0);
 
-    // Betrugsmerkmale enthalten
+    // Titel - Betrugsmerkmale enthalten
     const result2 = await analyzeTitel(Ad2, new AdsModel());
 
-    // Titel enthält neu
+    // Titel Merkmale
     expect(result2.titel_enthaelt_neu).to.be.equal(1);
-
-    // Titel enthält ovp
     expect(result2.titel_enthaelt_ovp).to.be.equal(1);
-
-    // Titel enthält verschweißt
     expect(result2.titel_enthaelt_verschweißt).to.be.equal(1);
-
-    // Titel enthält ungeöffnet
     expect(result2.titel_enthaelt_ungeoeffnet).to.be.equal(1);
-
-    // Titel enthält ein Zeichen
     expect(result2.titel_enthaelt_zeichen).to.be.equal(1);
 
-    // Anitpattern: Titel enthält nicht gebraucht
+    // Titel Anitpattern
     expect(result2.ap_titel_enthaelt_gebraucht).to.be.equal(0);
-
-    // Antipattern: Titel enthält keine suche
     expect(result2.ap_titel_enthaelt_suche).to.be.equal(0);
-
-    // Antipattern: Titel enthält nicht tausche
     expect(result2.ap_titel_enthaelt_tausche).to.be.equal(0);
-
-    // Antipattern: Titel enthält keine Sammlung
     expect(result2.ap_titel_enthaelt_sammlung).to.be.equal(0);
-
-    // Antipattern: Titel enthält nicht Kilo
     expect(result2.ap_titel_enthaelt_kilo).to.be.equal(0);
 
+    // Titel - Antipattern enthalten
     const result3 = await analyzeTitel(Ad3, new AdsModel());
 
-    // Titel enthält nicht neu
+    // Titel Merkmale
     expect(result3.titel_enthaelt_neu).to.be.equal(0);
-
-    // Titel enthält nicht ovp
     expect(result3.titel_enthaelt_ovp).to.be.equal(0);
-
-    // Titel enthält nicht verschweißt
     expect(result3.titel_enthaelt_verschweißt).to.be.equal(0);
-
-    // Titel enthält nicht ungeöffnet
     expect(result3.titel_enthaelt_ungeoeffnet).to.be.equal(0);
-
-    // Titel enthält kein Zeichen
     expect(result3.titel_enthaelt_zeichen).to.be.equal(0);
 
-    // Anitpattern: Titel enthält gebraucht
+    // Titel - Anitpattern
     expect(result3.ap_titel_enthaelt_gebraucht).to.be.equal(1);
-
-    // Antipattern: Titel enthält suche
     expect(result3.ap_titel_enthaelt_suche).to.be.equal(1);
-
-    // Antipattern: Titel enthält tausche
     expect(result3.ap_titel_enthaelt_tausche).to.be.equal(1);
-
-    // Antipattern: Titel enthält Sammlung
     expect(result3.ap_titel_enthaelt_sammlung).to.be.equal(1);
-
-    // Antipattern: Titel enthält Kilo
     expect(result3.ap_titel_enthaelt_kilo).to.be.equal(1);
   });
 
