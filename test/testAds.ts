@@ -175,8 +175,8 @@ export const Ad2 = {
     street: { value: 'Lerchenstrasse 46' },
     state: { value: 'Nürtingen' },
     'zip-code': { value: '72622' },
-    longitude: { value: '9.3557' },
-    latitude: { value: '48.64' },
+    longitude: { value: '79.557' },
+    latitude: { value: '4.664' },
     radius: { value: '1.0' },
   },
   'ad-external-reference-id': {},
@@ -212,7 +212,7 @@ export const Ad2 = {
     link: [],
     category: [],
     'parent-id': { value: '17' },
-    id: '23',
+    id: '44',
   },
   'contact-name': { value: 'Alexander Benz' },
   'contact-name-initials': { value: 'AB' },
@@ -271,7 +271,6 @@ export const Ad2 = {
   medias: { media: [] },
   originId: { value: '0' },
   otherAttributes: {},
-  phone: { value: '0176/80426250' },
   pictures: {
     picture: [
       {

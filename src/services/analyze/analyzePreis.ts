@@ -26,10 +26,8 @@ export const analyzePreis = (
       if (produkt.produktname.toLowerCase().includes(num))
         marktwert = produkt.preis;
     }
-    console.log(marktwert);
-    console.log(ad_preis);
+
     resultingAd.preis_unter_marktwert = ad_preis < marktwert ? 1 : 0;
-    console.log(resultingAd.preis_unter_marktwert);
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
