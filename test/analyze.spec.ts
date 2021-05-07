@@ -5,7 +5,6 @@ import {
   // analyzeKonto,
   analyzeMetadaten,
   analyzeBeschreibung,
-  // analyzePreis,
   analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
@@ -39,9 +38,9 @@ describe('Analyze Ads', () => {
     expect(result1.titel_enthaelt_verschweißt).to.be.equal(0);
     expect(result1.titel_enthaelt_ungeoeffnet).to.be.equal(0);
     expect(result1.titel_enthaelt_zeichen).to.be.equal(0);
-    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
 
     // Titel Antipattern
+    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
@@ -84,7 +83,6 @@ describe('Analyze Ads', () => {
 
   test('Analyze description', async () => {
     const result1 = await analyzeBeschreibung(Ad1, new AdsModel());
-    const result2 = await analyzeBeschreibung(Ad2, new AdsModel());
 
     expect(result1.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
     expect(result1.beschreibung_enthaelt_versand).to.be.equal(1);
@@ -102,6 +100,8 @@ describe('Analyze Ads', () => {
     expect(result1.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(1);
     expect(result1.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
 
+    const result2 = await analyzeBeschreibung(Ad2, new AdsModel());
+
     expect(result2.beschreibung_enthaelt_ueberweisung).to.be.equal(1);
     expect(result2.beschreibung_enthaelt_versand).to.be.equal(0);
     expect(result2.beschreibung_enthaelt_neu).to.be.equal(0);
@@ -117,6 +117,24 @@ describe('Analyze Ads', () => {
     expect(result2.ap_beschreibung_enthaelt_suche).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
+
+    const result3 = await analyzeBeschreibung(Ad3, new AdsModel());
+
+    expect(result3.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
+    expect(result3.beschreibung_enthaelt_versand).to.be.equal(0);
+    expect(result3.beschreibung_enthaelt_neu).to.be.equal(0);
+    expect(result3.beschreibung_enthaelt_ovp).to.be.equal(0);
+    expect(result3.beschreibung_enthaelt_versiegelt).to.be.equal(0);
+    expect(result3.beschreibung_enthaelt_whatsapp).to.be.equal(0);
+    expect(result3.beschreibung_ist_kopiert_anzeige).to.be.equal(1);
+    expect(result3.beschreibung_ist_kopiert_unternehmen).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_barzahlung).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_gebraucht).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_tausch).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_abholung).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_suche).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
+    expect(result3.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
   });
 
   test('Analyze account', async () => {
@@ -174,11 +192,8 @@ describe('Analyze Ads', () => {
   });
 
   test('Analyze price', async () => {
-    const result1 = await analyzePreis(Ad1, new AdsModel());
-    const result2 = await analyzePreis(Ad2, new AdsModel());
-    const result3 = await analyzePreis(Ad3, new AdsModel());
-
     // Preis - keine Merkmale enthalten
+    const result1 = await analyzePreis(Ad1, new AdsModel());
     expect(result1.preis_unter_marktwert).to.be.equal(0);
     expect(result1.preis_abweichung_marktwert).to.be.equal(0);
     expect(result1.preis_waehrung_eur).to.be.equal(0);
@@ -186,6 +201,7 @@ describe('Analyze Ads', () => {
     expect(result1.ap_preis_ist_leer).to.be.equal(0);
 
     // Preis - Merkmale enthalten
+    const result2 = await analyzePreis(Ad2, new AdsModel());
     expect(result2.preis_unter_marktwert).to.be.equal(1);
     expect(result2.preis_abweichung_marktwert).to.be.equal(0.5);
     expect(result2.preis_waehrung_eur).to.be.equal(1);
@@ -193,6 +209,7 @@ describe('Analyze Ads', () => {
     expect(result2.ap_preis_ist_leer).to.be.equal(0);
 
     // Preis - Antipattern enthalten
+    const result3 = await analyzePreis(Ad3, new AdsModel());
     expect(result3.preis_unter_marktwert).to.be.equal(1);
     expect(result3.preis_abweichung_marktwert).to.be.equal(0);
     expect(result3.preis_waehrung_eur).to.be.equal(1);
@@ -232,10 +249,24 @@ describe('Analyze Ads', () => {
   test('Analyze misc.', async () => {
     const result1 = await analyzeSonstiges(Ad1, new AdsModel());
 
-    expect(result1.sonstiges_anzeige_kopiert).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
+    expect(result1.sonstiges_anzeige_kopiert).to.be.equal(0);
+    // expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
+    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal(0);
+    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result2 = await analyzeSonstiges(Ad2, new AdsModel());
+
+    expect(result2.sonstiges_anzeige_kopiert).to.be.equal(0);
+    // expect(result2.ap_sonstiges_anzeige_nur_abholung).to.be.equal(0);
+    expect(result2.ap_sonstiges_anzeige_suche).to.be.equal(1);
+    expect(result2.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result3 = await analyzeSonstiges(Ad3, new AdsModel());
+
+    expect(result3.sonstiges_anzeige_kopiert).to.be.equal(1);
+    // expect(result3.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
+    expect(result3.ap_sonstiges_anzeige_suche).to.be.equal(1);
+    expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
   });
 
   test('Analyze all', async () => { }, 1000000);

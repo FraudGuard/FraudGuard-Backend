@@ -22,7 +22,7 @@ module.exports = {
   ],
   coverageReporters: ['text-summary', 'html', 'clover'],
   errorOnDeprecated: true,
-  testTimeout: 10000,
+  testTimeout: 100000,
   verbose: true,
   collectCoverage: true,
 };

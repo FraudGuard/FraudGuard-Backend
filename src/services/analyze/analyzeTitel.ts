@@ -5,7 +5,7 @@ export const analyzeTitel = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     try {
       logger.info('start analyze Titel');
       console.log(ad.title.value);

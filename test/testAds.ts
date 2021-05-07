@@ -33,7 +33,7 @@ export const Ad1 = new AdsFromEbayModel({
         'fake-sub-category': 'false',
         'localized-tag': 'Versand möglich',
         type: 'ENUM',
-        'localized-label': 'Versand',
+        'localized-label': 'Nur Abholung',
       },
     ],
   },
@@ -49,7 +49,7 @@ export const Ad1 = new AdsFromEbayModel({
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'Hallo zusammen,<br /><br />ich muss meine Sammlung etwas verkleinern, daher hier zum Verkauf :<br /><br />LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br />Kann zusammengebaut abgeholt, oder zerlegt versendet werden.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden',
+      'Hallo zusammen,<br /><br />ich muss meine Sammlung etwas verkleinern, daher hier zum Verkauf :<br /><br />LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br />Kann zusammengebaut abgeholt, oder zerlegt versendet werden.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden ',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
@@ -184,7 +184,7 @@ export const Ad2 = new AdsFromEbayModel({
   'ad-external-reference-id': {},
   'ad-source-id': {},
   'ad-status': { value: 'ACTIVE' },
-  'ad-type': { value: 'OFFERED' },
+  'ad-type': { value: 'WANTED' },
   attributes: {
     attribute: [
       {
@@ -357,7 +357,7 @@ export const Ad3 = new AdsFromEbayModel({
   'ad-external-reference-id': {},
   'ad-source-id': {},
   'ad-status': { value: 'ACTIVE' },
-  'ad-type': { value: 'OFFERED' },
+  'ad-type': { value: 'WANTED' },
   attributes: {
     attribute: [
       {
@@ -377,7 +377,7 @@ export const Ad3 = new AdsFromEbayModel({
         'fake-sub-category': 'false',
         'localized-tag': 'Versand möglich',
         type: 'ENUM',
-        'localized-label': 'Versand',
+        'localized-label': 'Nur Abholung',
       },
     ],
   },
@@ -392,8 +392,7 @@ export const Ad3 = new AdsFromEbayModel({
   'contact-name': { value: 'Alexander Benz' },
   'contact-name-initials': { value: 'AB' },
   description: {
-    value:
-      'Hallo zusammen,<br /><br />ich muss meine Sammlung etwas verkleinern, daher hier zum Verkauf :<br /><br />LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br />Kann zusammengebaut abgeholt, oder zerlegt versendet werden.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden',
+    value: 'Test auf kopierte Beschreibungen und Anzeige',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },

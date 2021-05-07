@@ -9,7 +9,6 @@ export const analyzeMetadaten = (
     logger.info('start analyze Metadaten');
 
     resultingAd.metadata_latitude = parseInt(ad['ad-address'].latitude, 10);
-    console.log(resultingAd.metadata_latitude);
 
     resultingAd.metadata_longitude = parseInt(ad['ad-address'].longitude, 10);
     resultingAd.metadata_category = parseInt(ad.category.id, 10);
