@@ -142,7 +142,7 @@ export const Ad1 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
-    amount: { value: { $numberInt: '200' } },
+    amount: { value: '200' },
     'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
@@ -175,8 +175,8 @@ export const Ad2 = {
     street: { value: 'Lerchenstrasse 46' },
     state: { value: 'Nürtingen' },
     'zip-code': { value: '72622' },
-    longitude: { value: '9.3557' },
-    latitude: { value: '48.64' },
+    longitude: { value: '79.557' },
+    latitude: { value: '4.664' },
     radius: { value: '1.0' },
   },
   'ad-external-reference-id': {},
@@ -212,7 +212,7 @@ export const Ad2 = {
     link: [],
     category: [],
     'parent-id': { value: '17' },
-    id: '23',
+    id: '44',
   },
   'contact-name': { value: 'Alexander Benz' },
   'contact-name-initials': { value: 'AB' },
@@ -271,7 +271,6 @@ export const Ad2 = {
   medias: { media: [] },
   originId: { value: '0' },
   otherAttributes: {},
-  phone: { value: '0176/80426250' },
   pictures: {
     picture: [
       {
@@ -313,7 +312,7 @@ export const Ad2 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
-    amount: { value: { $numberInt: '100' } },
+    amount: { value: '100' },
     'price-type': { value: 'PLEASE_CONTACT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
@@ -487,15 +486,15 @@ export const Ad3 = {
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
-    amount: { value: { $numberInt: '200' } },
-    'price-type': { value: 'PLEASE_CONTACT' },
+    amount: { value: '0' },
+    'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
   title: {
     value:
-      'Sammlung 45kg LEGO Technic 42009 Mobiler Schwerlastkran MK II - Suche oder Tausche gebraucht',
+      'Sammlung 45kg Lego 10268 vestas Windrad - Suche oder Tausche gebraucht',
   },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },

@@ -27,11 +27,13 @@ export const analyzeSonstiges = (
     }
 
     // Antipaatern: Nur Abholung in der Detailangabe
-    resultingAd.ap_sonstiges_anzeige_nur_abholung = 0;
-    for (const a of ad.attributes[0].attribute) {
-      if (a['localized-label'] == 'Versand') {
-        if (a.value[0]['localized-label'] == 'Nur Abholung') {
-          resultingAd.ap_sonstiges_anzeige_nur_abholung = 1;
+    if (ad.attributes?.[0]) {
+      resultingAd.ap_sonstiges_anzeige_nur_abholung = 0;
+      for (const a of ad.attributes[0].attribute) {
+        if (a['localized-label'] == 'Versand') {
+          if (a.value[0]['localized-label'] == 'Nur Abholung') {
+            resultingAd.ap_sonstiges_anzeige_nur_abholung = 1;
+          }
         }
       }
     }

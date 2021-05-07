@@ -9,10 +9,10 @@ export const analyzePreis = (
     logger.info('start analyze Preis');
     resultingAd.fraud_score += 0.1;
 
-    const ad_preis = ad.price?.amount?.value;
+    const ad_preis = parseInt(ad.price?.amount?.value, 10);
 
     // Preisabgleich mit hinterlegten Preisen aus DB
-    let marktwert = 0;
+    let marktwert = 1;
     const ad_title = ad.title?.value?.toLowerCase();
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
     const num = ad_title.replace(/^\D+|\D+$/g, '');
@@ -26,8 +26,7 @@ export const analyzePreis = (
       if (produkt.produktname.toLowerCase().includes(num))
         marktwert = produkt.preis;
     }
-    console.log(marktwert);
-    console.log(ad_preis);
+
     resultingAd.preis_unter_marktwert = ad_preis < marktwert ? 1 : 0;
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert

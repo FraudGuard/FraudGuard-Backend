@@ -140,35 +140,57 @@ describe('Analyze Ads', () => {
   test('Analyze price', async () => {
     const result1 = await analyzePreis(Ad1, new AdsModel());
     const result2 = await analyzePreis(Ad2, new AdsModel());
+    const result3 = await analyzePreis(Ad3, new AdsModel());
 
-    // keine Merkmale enthalten
+    // Preis - keine Merkmale enthalten
     expect(result1.preis_unter_marktwert).to.be.equal(0);
     expect(result1.preis_abweichung_marktwert).to.be.equal(0);
     expect(result1.preis_waehrung_eur).to.be.equal(0);
     expect(result1.preis_typ_vb).to.be.equal(0);
     expect(result1.ap_preis_ist_leer).to.be.equal(0);
 
-    // Merkmale enthalten
+    // Preis - Merkmale enthalten
     expect(result2.preis_unter_marktwert).to.be.equal(1);
-    expect(result1.preis_abweichung_marktwert).to.be.equal(0.5);
-    expect(result1.preis_waehrung_eur).to.be.equal(1);
-    expect(result1.preis_typ_vb).to.be.equal(1);
-    expect(result1.ap_preis_ist_leer).to.be.equal(0);
+    expect(result2.preis_abweichung_marktwert).to.be.equal(0.5);
+    expect(result2.preis_waehrung_eur).to.be.equal(1);
+    expect(result2.preis_typ_vb).to.be.equal(1);
+    expect(result2.ap_preis_ist_leer).to.be.equal(0);
+
+    // Preis - Antipattern enthalten
+    expect(result3.preis_unter_marktwert).to.be.equal(1);
+    expect(result3.preis_abweichung_marktwert).to.be.equal(0);
+    expect(result3.preis_waehrung_eur).to.be.equal(1);
+    expect(result3.preis_typ_vb).to.be.equal(0);
+    expect(result3.ap_preis_ist_leer).to.be.equal(1);
   });
 
   test('Analyze metadata', async () => {
     const result1 = await analyzeMetadaten(Ad1, new AdsModel());
-    const result2 = await analyzeMetadaten(Ad2, new AdsModel());
 
-    expect(result1.metadata_category).to.be.equal(Ad1.category.id);
-    expect(result1.metadata_amount_pictures).to.be.equal(6);
+    // expect(result1.metadata_latitude).to.be.equal(9.3557);
+    // expect(result1.metadata_longitude).to.be.equal(48.64);
+    expect(result1.metadata_category).to.be.equal(23);
+    expect(result1.metadata_amount_pictures).to.be.equal(1);
     expect(result1.metadata_phone).to.be.equal(1);
     expect(result1.metadata_startDateTime).to.be.equal(1614434831000);
 
-    expect(result2.metadata_category).to.be.equal(Ad1.category.id);
-    expect(result2.metadata_amount_pictures).to.be.equal(6);
-    expect(result2.metadata_phone).to.be.equal(1);
+    const result2 = await analyzeMetadaten(Ad2, new AdsModel());
+
+    // expect(result2.metadata_latitude).to.be.equal(79.557);
+    // expect(result2.metadata_longitude).to.be.equal(4.664);
+    expect(result2.metadata_category).to.be.equal(44);
+    expect(result2.metadata_amount_pictures).to.be.equal(1);
+    expect(result2.metadata_phone).to.be.equal(0);
     expect(result2.metadata_startDateTime).to.be.equal(1614434831000);
+
+    const result3 = await analyzeMetadaten(Ad3, new AdsModel());
+
+    // expect(result3.metadata_latitude).to.be.equal(9.3557);
+    // expect(result3.metadata_longitude).to.be.equal(48.64);
+    expect(result3.metadata_category).to.be.equal(23);
+    expect(result3.metadata_amount_pictures).to.be.equal(1);
+    expect(result3.metadata_phone).to.be.equal(1);
+    expect(result3.metadata_startDateTime).to.be.equal(1614434831000);
   });
 
   test('Analyze misc.', async () => {
@@ -180,5 +202,5 @@ describe('Analyze Ads', () => {
     expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
   });
 
-  test('Analyze all', async () => {});
+  test('Analyze all', async () => {}, 1000000);
 });

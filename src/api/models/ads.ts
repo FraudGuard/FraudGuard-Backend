@@ -52,7 +52,7 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_category: { type: Number },
     metadata_start_time: { type: Number },
 
-    //Jana
+    // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },
     beschreibung_enthaelt_versand: { type: Number },
     beschreibung_enthaelt_neu: { type: Number },
