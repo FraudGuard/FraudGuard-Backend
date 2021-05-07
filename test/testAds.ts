@@ -392,7 +392,7 @@ export const Ad3 = {
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'Hallo zusammen,<br /><br />ich muss meine Sammlung etwas verkleinern, daher hier zum Verkauf :<br /><br />LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br />Kann zusammengebaut abgeholt, oder zerlegt versendet werden.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden',
+    'Test auf kopierte Beschreibung und Anzeige'
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
