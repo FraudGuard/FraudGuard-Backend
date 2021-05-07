@@ -13,7 +13,7 @@ export const createTestserver = async () => {
     logger.info(`Node ${process.version}`);
     const address = server.address();
     if (address !== null && typeof address !== 'string') {
-      logger.info(`Testserver started on: https://${host}:${address.port}`);
+      logger.info(`Testserver started on: http://${host}:${address.port}`);
     }
     server.emit('testServerStarted');
   });
