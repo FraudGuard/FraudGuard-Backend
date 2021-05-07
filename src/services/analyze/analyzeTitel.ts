@@ -1,11 +1,11 @@
-import { AdsFromEbayModel,AdsSchema } from '../../api/models';
+import { AdsFromEbayModel, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeTitel = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise(async(resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     try {
       logger.info('start analyze Titel');
       console.log(ad.title.value);
@@ -110,15 +110,14 @@ export const analyzeTitel = (
         }
       }
 
-       // Titel kopiert
-       const res = await AdsFromEbayModel.find({
+      // Titel kopiert
+      const res = await AdsFromEbayModel.find({
         'title.value': ad.title.value,
       });
       // res ist array mit Anzeigen
       if (res) {
         resultingAd.titel_kopiert = res.length > 1 ? 1 : 0;
       }
-
 
       // Antipattern
       // Merkmal gebraucht

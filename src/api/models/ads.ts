@@ -76,7 +76,7 @@ export const adsSchema = new Schema<AdsSchema>(
     titel_enthaelt_verschweißt: { type: Number },
     titel_enthaelt_ungeoeffnet: { type: Number },
     titel_enthaelt_zeichen: { type: Number },
-    titel_kopiert: {type: Number},
+    titel_kopiert: { type: Number },
     ap_titel_enthaelt_gebraucht: { type: Number },
     ap_titel_enthaelt_suche: { type: Number },
     ap_titel_enthaelt_tausche: { type: Number },
