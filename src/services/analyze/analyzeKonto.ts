@@ -12,7 +12,7 @@ export const analyzeKonto = async (
   const adsFromAccount = await getAllByAccount(ad['user-id'].value.toString());
 
   const badgesMap: any = {};
-  ad.userBadges?.[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
+  // ad.userBadges?.[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
   resultingAd.konto_rating = badgesMap?.rating?.level
     ? Number.parseInt(badgesMap.rating.level)
@@ -75,7 +75,7 @@ export const analyzeKonto = async (
   if (adsFromAccount) {
     resultingAd.konto_anzeigen_anzahl = adsFromAccount.length;
     resultingAd.konto_anzeigen_ueber_100 = adsFromAccount.filter(
-      (x) => x.price.amount.value > 100,
+      (x) => Number.parseFloat(x.price.amount.value) > 100,
     ).length;
 
     resultingAd.konto_anzeigen_gleich = 0;
@@ -95,4 +95,6 @@ export const analyzeKonto = async (
 
   // Todo
   // resultingAd.konto_anzeigen_betrugsrate = ad.
+
+  return resultingAd
 };

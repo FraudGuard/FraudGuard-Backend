@@ -9,6 +9,7 @@ import {
   analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
+  analyzeKonto,
 } from '../src/services/analyze';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
@@ -118,7 +119,59 @@ describe('Analyze Ads', () => {
     expect(result2.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
   });
 
-  test('Analyze account', async () => {});
+  test('Analyze account', async () => {
+    const result1 = await analyzeKonto(Ad1, new AdsModel());
+    const result2 = await analyzeKonto(Ad2, new AdsModel());
+    const result3 = await analyzeKonto(Ad3, new AdsModel());
+
+    // expect(result1.konto_antwortzeit).to.be.equal(-1);
+    // // expect(result1.konto_anzeigen_anzahl).to.be.equal(0);
+    // // expect(result1.konto_anzeigen_betrugsrate).to.be.equal(0);
+    // // expect(result1.konto_anzeigen_gleich).to.be.equal(0);
+    // // expect(result1.konto_anzeigen_ueber_100).to.be.equal(0);
+    // expect(result1.konto_bewertung).to.be.equal(0);
+    // expect(result1.konto_erstellt_timestamp).to.be.equal(0);
+    // expect(result1.konto_follower_anzahl).to.be.equal(0);
+    // expect(result1.konto_freundlichkeit).to.be.equal(0);
+    // expect(result1.konto_name_enthaelt_unueblich).to.be.equal(0);
+    // expect(result1.konto_name_laenge).to.be.equal(0);
+    // expect(result1.konto_name_natuerlich).to.be.equal(0);
+    // expect(result1.konto_name_sonderzeichen_anzahl).to.be.equal(0);
+    // expect(result1.konto_privat).to.be.equal(0);
+    // expect(result1.konto_rating).to.be.equal(0);
+
+    // expect(result2.konto_antwortzeit).to.be.equal(0);
+    // // expect(result2.konto_anzeigen_anzahl).to.be.equal(0);
+    // // expect(result2.konto_anzeigen_betrugsrate).to.be.equal(0);
+    // // expect(result2.konto_anzeigen_gleich).to.be.equal(0);
+    // // expect(result2.konto_anzeigen_ueber_100).to.be.equal(0);
+    // // expect(result2.konto_bewertung).to.be.equal(0);
+    // expect(result2.konto_erstellt_timestamp).to.be.equal(0);
+    // expect(result2.konto_follower_anzahl).to.be.equal(0);
+    // expect(result2.konto_freundlichkeit).to.be.equal(0);
+    // expect(result2.konto_name_enthaelt_unueblich).to.be.equal(0);
+    // expect(result2.konto_name_laenge).to.be.equal(0);
+    // expect(result2.konto_name_natuerlich).to.be.equal(0);
+    // expect(result2.konto_name_sonderzeichen_anzahl).to.be.equal(0);
+    // expect(result2.konto_privat).to.be.equal(0);
+    // expect(result2.konto_rating).to.be.equal(0);
+
+    // expect(result3.konto_antwortzeit).to.be.equal(0);
+    // // expect(result3.konto_anzeigen_anzahl).to.be.equal(0);
+    // // expect(result3.konto_anzeigen_betrugsrate).to.be.equal(0);
+    // // expect(result3.konto_anzeigen_gleich).to.be.equal(0);
+    // // expect(result3.konto_anzeigen_ueber_100).to.be.equal(0);
+    // expect(result3.konto_bewertung).to.be.equal(0);
+    // expect(result3.konto_erstellt_timestamp).to.be.equal(0);
+    // expect(result3.konto_follower_anzahl).to.be.equal(0);
+    // expect(result3.konto_freundlichkeit).to.be.equal(0);
+    // expect(result3.konto_name_enthaelt_unueblich).to.be.equal(0);
+    // expect(result3.konto_name_laenge).to.be.equal(0);
+    // expect(result3.konto_name_natuerlich).to.be.equal(0);
+    // expect(result3.konto_name_sonderzeichen_anzahl).to.be.equal(0);
+    // expect(result3.konto_privat).to.be.equal(0);
+    // expect(result3.konto_rating).to.be.equal(0);
+  });
 
   test('Analyze price', async () => {
     const result1 = await analyzePreis(Ad1, new AdsModel());
@@ -185,5 +238,5 @@ describe('Analyze Ads', () => {
     expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
   });
 
-  test('Analyze all', async () => {}, 1000000);
+  test('Analyze all', async () => { }, 1000000);
 });

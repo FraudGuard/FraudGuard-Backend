@@ -1,4 +1,6 @@
-export const Ad1 = {
+import { AdsFromEbayModel} from "../src/api/models";
+
+export const Ad1 = new AdsFromEbayModel({
   _id: '1681374618',
   'ad-address': {
     street: { value: 'Lerchenstrasse 46' },
@@ -167,9 +169,9 @@ export const Ad1 = {
   labeledDecision: false,
   toReview: false,
   updatedAt: { $date: { $numberLong: '1619816154092' } },
-};
+});
 
-export const Ad2 = {
+export const Ad2 = new AdsFromEbayModel({
   _id: '1681374618',
   'ad-address': {
     street: { value: 'Lerchenstrasse 46' },
@@ -340,9 +342,9 @@ export const Ad2 = {
   labeledDecision: false,
   toReview: false,
   updatedAt: { $date: { $numberLong: '1619816154092' } },
-};
+});
 
-export const Ad3 = {
+export const Ad3 = new AdsFromEbayModel({
   _id: '1681374618',
   'ad-address': {
     street: { value: 'Lerchenstrasse 46' },
@@ -514,4 +516,4 @@ export const Ad3 = {
   labeledDecision: false,
   toReview: false,
   updatedAt: { $date: { $numberLong: '1619816154092' } },
-};
+});
