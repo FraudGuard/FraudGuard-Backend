@@ -54,6 +54,7 @@ export interface AdsSchema extends Document {
   titel_enthaelt_verschweißt: number;
   titel_enthaelt_ungeoeffnet: number;
   titel_enthaelt_zeichen: number;
+  titel_kopiert: number;
   ap_titel_enthaelt_gebraucht: number;
   ap_titel_enthaelt_suche: number;
   ap_titel_enthaelt_tausche: number;
