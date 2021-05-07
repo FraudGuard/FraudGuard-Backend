@@ -390,8 +390,7 @@ export const Ad3 = {
   'contact-name': { value: 'Alexander Benz' },
   'contact-name-initials': { value: 'AB' },
   description: {
-    value:
-    'Test auf kopierte Beschreibung und Anzeige'
+    value: 'Test auf kopierte Beschreibung und Anzeige',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
