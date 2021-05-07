@@ -1,4 +1,4 @@
-import { AdsFromEbayModel} from "../src/api/models";
+import { AdsFromEbayModel } from '../src/api/models';
 
 export const Ad1 = new AdsFromEbayModel({
   _id: '1681374618',
