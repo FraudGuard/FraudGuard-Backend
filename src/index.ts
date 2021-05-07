@@ -6,7 +6,6 @@ import {
   printBanner,
   serverConfig,
   logger,
-  populateDB,
 } from './shared';
 import { Server } from 'net';
 
@@ -41,7 +40,6 @@ const startServer = () => {
   try {
     startServer();
     await connectDB();
-    await populateDB();
   } catch (err: unknown) {
     logger.error(`Error while starting Server: ${err}`);
   }

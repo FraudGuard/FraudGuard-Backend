@@ -1,13 +1,12 @@
 import { app } from '../src/app';
-import { connectDB, logger, populateDB, serverConfig } from '../src/shared';
+import { connectDB, logger, serverConfig } from '../src/shared';
 import { createServer } from 'https';
 import type { Server } from 'http';
 
-const { host, dev } = serverConfig;
+const { host } = serverConfig;
 let server: Server;
 
 export const createTestserver = async () => {
-  await populateDB(dev);
   await connectDB();
 
   server = createServer(app).listen(() => {
