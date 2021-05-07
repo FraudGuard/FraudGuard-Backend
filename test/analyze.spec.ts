@@ -55,7 +55,6 @@ describe('Analyze Ads', () => {
     expect(result2.titel_enthaelt_verschweißt).to.be.equal(1);
     expect(result2.titel_enthaelt_ungeoeffnet).to.be.equal(1);
     expect(result2.titel_enthaelt_zeichen).to.be.equal(1);
-    
 
     // Titel Anitpattern
     expect(result2.ap_titel_enthaelt_gebraucht).to.be.equal(0);
