@@ -98,5 +98,5 @@ export const analyzeKonto = async (
   // Todo
   // resultingAd.konto_anzeigen_betrugsrate = ad.
 
-  return resultingAd
+  return resultingAd;
 };
