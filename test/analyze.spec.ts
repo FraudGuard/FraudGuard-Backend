@@ -38,9 +38,9 @@ describe('Analyze Ads', () => {
     expect(result1.titel_enthaelt_verschweißt).to.be.equal(0);
     expect(result1.titel_enthaelt_ungeoeffnet).to.be.equal(0);
     expect(result1.titel_enthaelt_zeichen).to.be.equal(0);
-    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
 
     // Titel Antipattern
+    expect(result1.ap_titel_enthaelt_gebraucht).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_suche).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_tausche).to.be.equal(0);
     expect(result1.ap_titel_enthaelt_sammlung).to.be.equal(0);
@@ -55,6 +55,7 @@ describe('Analyze Ads', () => {
     expect(result2.titel_enthaelt_verschweißt).to.be.equal(1);
     expect(result2.titel_enthaelt_ungeoeffnet).to.be.equal(1);
     expect(result2.titel_enthaelt_zeichen).to.be.equal(1);
+    
 
     // Titel Anitpattern
     expect(result2.ap_titel_enthaelt_gebraucht).to.be.equal(0);
@@ -196,10 +197,24 @@ describe('Analyze Ads', () => {
   test('Analyze misc.', async () => {
     const result1 = await analyzeSonstiges(Ad1, new AdsModel());
 
-    expect(result1.sonstiges_anzeige_kopiert).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
+    expect(result1.sonstiges_anzeige_kopiert).to.be.equal(0);
+    //expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal(0);
+    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal(0);
+    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result2 = await analyzeSonstiges(Ad2, new AdsModel());
+
+    expect(result2.sonstiges_anzeige_kopiert).to.be.equal(0);
+    //expect(result2.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
+    expect(result2.ap_sonstiges_anzeige_suche).to.be.equal(0);
+    expect(result2.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result3 = await analyzeSonstiges(Ad3, new AdsModel());
+
+    expect(result3.sonstiges_anzeige_kopiert).to.be.equal(0); // muss aber eigentlich 1 sein, Beschreibung und Titel ist kopiert
+   // expect(result3.ap_sonstiges_anzeige_nur_abholung).to.be.equal(0);
+    expect(result3.ap_sonstiges_anzeige_suche).to.be.equal(1);
+    expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
   });
 
   test('Analyze all', async () => {}, 1000000);

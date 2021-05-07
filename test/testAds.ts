@@ -355,7 +355,7 @@ export const Ad3 = {
   'ad-external-reference-id': {},
   'ad-source-id': {},
   'ad-status': { value: 'ACTIVE' },
-  'ad-type': { value: 'OFFERED' },
+  'ad-type': { value: 'WANTED' },
   attributes: {
     attribute: [
       {

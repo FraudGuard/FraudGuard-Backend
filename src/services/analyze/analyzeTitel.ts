@@ -1,4 +1,4 @@
-import { AdsFromEbayModel,AdsSchema } from '../../api/models';
+import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 export const analyzeTitel = (
@@ -109,16 +109,6 @@ export const analyzeTitel = (
           resultingAd.titel_enthaelt_zeichen = 1;
         }
       }
-
-       // Titel kopiert
-       const res = await AdsFromEbayModel.find({
-        'title.value': ad.title.value,
-      });
-      // res ist array mit Anzeigen
-      if (res) {
-        resultingAd.titel_kopiert = res.length > 1 ? 1 : 0;
-      }
-
 
       // Antipattern
       // Merkmal gebraucht
