@@ -196,11 +196,25 @@ describe('Analyze Ads', () => {
   test('Analyze misc.', async () => {
     const result1 = await analyzeSonstiges(Ad1, new AdsModel());
 
-    expect(result1.sonstiges_anzeige_kopiert).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal('1');
-    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal('1');
+    // expect(result1.sonstiges_anzeige_kopiert).to.be.equal(1);
+    // expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
+    expect(result1.ap_sonstiges_anzeige_suche).to.be.equal(0);
+    expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result2 = await analyzeSonstiges(Ad2, new AdsModel());
+
+    // expect(result2.sonstiges_anzeige_kopiert).to.be.equal(0);
+    // expect(result2.ap_sonstiges_anzeige_nur_abholung).to.be.equal(0);
+    expect(result2.ap_sonstiges_anzeige_suche).to.be.equal(1);
+    expect(result2.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+
+    const result3 = await analyzeSonstiges(Ad3, new AdsModel());
+
+    // expect(result3.sonstiges_anzeige_kopiert).to.be.equal(1);
+    // expect(result3.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
+    expect(result3.ap_sonstiges_anzeige_suche).to.be.equal(0);
+    expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
   });
 
-  test('Analyze all', async () => {}, 1000000);
+  test('Analyze all', async () => {});
 });
