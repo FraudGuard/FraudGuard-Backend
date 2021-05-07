@@ -48,5 +48,5 @@ export const analyzePreis = (
     if (false) {
       reject(new Error('Some Error happened'));
     }
-    resolve(ad);
+    resolve(resultingAd);
   });

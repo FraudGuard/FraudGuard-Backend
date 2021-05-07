@@ -12,7 +12,7 @@ export const analyzeKonto = async (
   const adsFromAccount = await getAllByAccount(ad['user-id'].value.toString());
 
   const badgesMap: any = {};
-  // ad.userBadges?.[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
+  ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
   resultingAd.konto_rating = badgesMap?.rating?.level
     ? Number.parseInt(badgesMap.rating.level)
@@ -27,10 +27,12 @@ export const analyzeKonto = async (
     ? Number.parseInt(badgesMap.replyRate.value)
     : -1;
   resultingAd.konto_freundlichkeit = badgesMap?.replyRate?.value
-    ? Number.parseInt(badgesMap.replyRate.value)
+    ? Number.parseInt(badgesMap.friendliness.level)
     : -1;
 
-  resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value;
+  resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value
+    ? Number.parseFloat(ad['user-rating']?.averageRating?.value)
+    : -1;
 
   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
   // langform

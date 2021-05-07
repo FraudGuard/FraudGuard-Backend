@@ -153,7 +153,7 @@ export const Ad1 = new AdsFromEbayModel({
   title: { value: 'LEGO Technic 42009 Mobiler Schwerlastkran MK II' },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
-  'user-rating': { averageRating: { value: { $numberDouble: '0.875' } } },
+  'user-rating': { averageRating: { value:  '0.875' } },
   'user-since-date-time': { value: '2016-11-05T16:01:14.000+0100' },
   userBadges: {
     badges: [
@@ -326,7 +326,7 @@ export const Ad2 = new AdsFromEbayModel({
   },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
-  'user-rating': { averageRating: { value: { $numberDouble: '0.875' } } },
+  'user-rating': { averageRating: { value:  '0.875' } },
   'user-since-date-time': { value: '2016-11-05T16:01:14.000+0100' },
   userBadges: {
     badges: [
@@ -499,7 +499,7 @@ export const Ad3 = new AdsFromEbayModel({
   },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
-  'user-rating': { averageRating: { value: { $numberDouble: '0.875' } } },
+  'user-rating': { averageRating: { value:  '0.875'  } },
   'user-since-date-time': { value: '2016-11-05T16:01:14.000+0100' },
   userBadges: {
     badges: [
