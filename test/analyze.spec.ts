@@ -6,7 +6,7 @@ import {
   analyzeMetadaten,
   analyzeBeschreibung,
   // analyzePreis,
-  analyzePreis,
+  // analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
 } from '../src/services/analyze';
