@@ -203,7 +203,7 @@ describe('Analyze Ads', () => {
     // Preis - Merkmale enthalten
     const result2 = await analyzePreis(Ad2, new AdsModel());
     expect(result2.preis_unter_marktwert).to.be.equal(1);
-    expect(result2.preis_abweichung_marktwert).to.be.equal(0.5);
+    expect(result2.preis_abweichung_marktwert).to.be.equal(-0.5);
     expect(result2.preis_waehrung_eur).to.be.equal(1);
     expect(result2.preis_typ_vb).to.be.equal(1);
     expect(result2.ap_preis_ist_leer).to.be.equal(0);
@@ -211,7 +211,7 @@ describe('Analyze Ads', () => {
     // Preis - Antipattern enthalten
     const result3 = await analyzePreis(Ad3, new AdsModel());
     expect(result3.preis_unter_marktwert).to.be.equal(1);
-    expect(result3.preis_abweichung_marktwert).to.be.equal(0);
+    expect(result3.preis_abweichung_marktwert).to.be.equal(-1);
     expect(result3.preis_waehrung_eur).to.be.equal(1);
     expect(result3.preis_typ_vb).to.be.equal(0);
     expect(result3.ap_preis_ist_leer).to.be.equal(1);
