@@ -22,24 +22,32 @@ export const analyzeKonto = async (
     : -1;
 
   // Anzahl der Follower
-  resultingAd.konto_follower_anzahl = badgesMap?.followers?.value !== null && badgesMap?.followers?.value !== undefined
-    ? Number.parseInt(badgesMap.followers.value)
-    : -1;
+  resultingAd.konto_follower_anzahl =
+    badgesMap?.followers?.value !== null &&
+    badgesMap?.followers?.value !== undefined
+      ? Number.parseInt(badgesMap.followers.value)
+      : -1;
 
   // Konto Anwortzeit in Minuten
-  resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value !== null && badgesMap?.replySpeed?.value !== undefined
-    ? Number.parseInt(badgesMap.replySpeed.value)
-    : -1;
+  resultingAd.konto_antwortzeit =
+    badgesMap?.replySpeed?.value !== null &&
+    badgesMap?.replySpeed?.value !== undefined
+      ? Number.parseInt(badgesMap.replySpeed.value)
+      : -1;
 
   // Konto Anwortrate
-  resultingAd.konto_antwortrate = badgesMap?.replyRate?.value !== null && badgesMap?.replyRate?.value !== undefined
-    ? Number.parseInt(badgesMap.replyRate.value)
-    : -1;
+  resultingAd.konto_antwortrate =
+    badgesMap?.replyRate?.value !== null &&
+    badgesMap?.replyRate?.value !== undefined
+      ? Number.parseInt(badgesMap.replyRate.value)
+      : -1;
 
   // Konto Freundlichkeitsrate in Leveln
-  resultingAd.konto_freundlichkeit = badgesMap?.friendliness?.level !== null && badgesMap?.friendliness?.level !== undefined
-    ? Number.parseInt(badgesMap.friendliness.level)
-    : -1;
+  resultingAd.konto_freundlichkeit =
+    badgesMap?.friendliness?.level !== null &&
+    badgesMap?.friendliness?.level !== undefined
+      ? Number.parseInt(badgesMap.friendliness.level)
+      : -1;
 
   // Konto Bewertung
   resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value
