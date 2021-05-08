@@ -14,26 +14,37 @@ export const analyzeKonto = async (
   const badgesMap: any = {};
   ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
+  // Anzahl der Kontobewertungen
   resultingAd.konto_rating = badgesMap?.rating?.level
     ? Number.parseInt(badgesMap.rating.level)
     : -1;
+
+  // Anzahl der Follower
   resultingAd.konto_follower_anzahl = badgesMap?.followers?.value
     ? Number.parseInt(badgesMap.followers.value)
     : -1;
+
+  // Konto Anwortzeit in Minuten
   resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value
     ? Number.parseInt(badgesMap.replySpeed.value)
     : -1;
+
+  // Konto Anwortrate
   resultingAd.konto_antwortrate = badgesMap?.replyRate?.value
     ? Number.parseInt(badgesMap.replyRate.value)
     : -1;
+
+  // Konto Freundlichkeitsrate in Leveln
   resultingAd.konto_freundlichkeit = badgesMap?.replyRate?.value
     ? Number.parseInt(badgesMap.friendliness.level)
     : -1;
 
+  // Konto Bewertung
   resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value
     ? Number.parseFloat(ad['user-rating']?.averageRating?.value)
     : -1;
 
+  // Länge des Kontonamens
   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
   // langform
   // if(ad && ad['contact-name'] && ad['contact-name']?.value && ad['contact-name']?.value?.length){
@@ -42,6 +53,7 @@ export const analyzeKonto = async (
   //   resultingAd.konto_name_laenge = undefined
   // }
 
+  // prüfen ob Konto privat ist
   resultingAd.konto_privat =
     ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
   // langform
@@ -50,15 +62,19 @@ export const analyzeKonto = async (
   // } else {
   //   resultingAd.konto_privat = 0
   // }
+
+  // prüfen ob Sonderzeichen im Namen enthalten sind
   const foundSpecialChars = ad['contact-name'].value.match(
     /[@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g,
   );
   resultingAd.konto_name_sonderzeichen_anzahl = foundSpecialChars?.length ?? 0;
 
+  // Gibt die Millisekunden seit dem 1. Januar 1970 zurück
   resultingAd.konto_erstellt_timestamp = new Date(
     ad['user-since-date-time'].value,
   ).getTime();
 
+  // prüfen ob Kontoname natürlich
   resultingAd.konto_name_natuerlich = firstNames.find((x) =>
     ad['contact-name'].value
       .toLocaleLowerCase()
@@ -66,6 +82,8 @@ export const analyzeKonto = async (
   )
     ? 1
     : 0;
+
+  // prüfen ob Kontoname ein unüblicher Name ist
   resultingAd.konto_name_enthaelt_unueblich = countries.find((x) =>
     ad['contact-name'].value
       .toLocaleLowerCase()
