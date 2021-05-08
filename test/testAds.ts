@@ -143,7 +143,7 @@ export const Ad1 = new AdsFromEbayModel({
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'USD', 'localized-label': 'USD' } },
+    'currency-iso-code': { value: 'USD', 'localized-label': 'USD' },
     amount: { value: '200' },
     'price-type': { value: 'SPECIFIED_AMOUNT' },
   },
@@ -313,7 +313,7 @@ export const Ad2 = new AdsFromEbayModel({
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
+    'currency-iso-code': { value: 'EUR', 'localized-label': 'EUR' },
     amount: { value: '100' },
     'price-type': { value: 'PLEASE_CONTACT' },
   },
@@ -486,7 +486,7 @@ export const Ad3 = new AdsFromEbayModel({
   },
   'poster-type': { value: 'PRIVATE' },
   price: {
-    'currency-iso-code': { value: { value: 'EUR', 'localized-label': 'EUR' } },
+    'currency-iso-code': { value: 'EUR', 'localized-label': 'EUR' },
     amount: { value: '0' },
     'price-type': { value: 'SPECIFIED_AMOUNT' },
   },

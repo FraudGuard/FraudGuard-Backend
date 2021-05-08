@@ -36,14 +36,14 @@ export const analyzePreis = (
 
     // Prüfen der Währung in EUR
     resultingAd.preis_waehrung_eur =
-      ad.price['currency-iso-code'].value === 'EUR' ? 0 : 1;
+      ad.price['currency-iso-code'].value == 'EUR' ? 1 : 0;
 
     // Prüfen, ob VB vorliegt
     resultingAd.preis_typ_vb =
-      ad.price['price-type'].value === 'PLEASE_CONTACT' ? 0 : 1;
+      ad.price['price-type'].value == 'PLEASE_CONTACT' ? 1 : 0;
 
     // Prüfen, ob Preis vorhanden ist
-    resultingAd.ap_preis_ist_leer = ad.price?.amount?.value === 0 ? 1 : 0;
+    resultingAd.ap_preis_ist_leer = ad.price?.amount?.value == 0 ? 1 : 0;
 
     if (false) {
       reject(new Error('Some Error happened'));
