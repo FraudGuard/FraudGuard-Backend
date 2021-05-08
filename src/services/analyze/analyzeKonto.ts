@@ -9,6 +9,7 @@ export const analyzeKonto = async (
   resultingAd: AdsSchema,
 ) => {
   logger.info('analyze Konto');
+  console.log('id', ad['user-id'].value)
   const adsFromAccount = await getAllByAccount(ad['user-id'].value.toString()).catch(err => logger.log('cannotReadAdsFromAccount', err));
 
   const badgesMap: any = {};
@@ -20,22 +21,22 @@ export const analyzeKonto = async (
     : -1;
 
   // Anzahl der Follower
-  resultingAd.konto_follower_anzahl = badgesMap?.followers?.value
+  resultingAd.konto_follower_anzahl = badgesMap?.followers?.value !== null && badgesMap?.followers?.value !== undefined
     ? Number.parseInt(badgesMap.followers.value)
     : -1;
 
   // Konto Anwortzeit in Minuten
-  resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value
+  resultingAd.konto_antwortzeit = badgesMap?.replySpeed?.value !== null && badgesMap?.replySpeed?.value !== undefined
     ? Number.parseInt(badgesMap.replySpeed.value)
     : -1;
 
   // Konto Anwortrate
-  resultingAd.konto_antwortrate = badgesMap?.replyRate?.value
+  resultingAd.konto_antwortrate = badgesMap?.replyRate?.value !== null && badgesMap?.replyRate?.value !== undefined
     ? Number.parseInt(badgesMap.replyRate.value)
     : -1;
 
   // Konto Freundlichkeitsrate in Leveln
-  resultingAd.konto_freundlichkeit = badgesMap?.replyRate?.value
+  resultingAd.konto_freundlichkeit = badgesMap?.friendliness?.level !== null && badgesMap?.friendliness?.level !== undefined
     ? Number.parseInt(badgesMap.friendliness.level)
     : -1;
 
@@ -92,9 +93,9 @@ export const analyzeKonto = async (
     ? 1
     : 0;
 
-  resultingAd.konto_anzeigen_anzahl = adsFromAccount ? adsFromAccount.length : -1;
+  resultingAd.konto_anzeigen_anzahl = adsFromAccount ? adsFromAccount.length : 0;
   resultingAd.konto_anzeigen_ueber_100 = adsFromAccount instanceof Array ? adsFromAccount?.filter(
-    (x) => Number.parseFloat(x.price?.amount?.value) > 100).length ?? -1 : -1;
+    (x) => Number.parseFloat(x.price?.amount?.value) > 100).length ?? 0 : 0;
 
   resultingAd.konto_anzeigen_gleich = 0;
   if (adsFromAccount) {
