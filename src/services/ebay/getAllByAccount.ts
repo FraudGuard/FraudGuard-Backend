@@ -1,6 +1,5 @@
 import { AdsFromEbayModel, AdsFromEbaySchema } from '../../api/models';
 import { ebayHeaders } from './ebay';
-import { logger } from '../../shared';
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const getAllByAccount = (
@@ -22,7 +21,6 @@ export const getAllByAccount = (
         );
       })
       .catch((error: any) => {
-        logger.error(error.body);
         reject(error);
       });
   });

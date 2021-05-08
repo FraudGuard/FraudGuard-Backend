@@ -9,7 +9,7 @@ export const analyzeKonto = async (
   resultingAd: AdsSchema,
 ) => {
   logger.info('analyze Konto');
-  const adsFromAccount = await getAllByAccount(ad['user-id'].value.toString());
+  const adsFromAccount = await getAllByAccount(ad['user-id'].value.toString()).catch(err => logger.log('cannotReadAdsFromAccount', err));
 
   const badgesMap: any = {};
   ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
@@ -45,7 +45,7 @@ export const analyzeKonto = async (
     : -1;
 
   // Länge des Kontonamens
-  resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
+  resultingAd.konto_name_laenge = ad['contact-name']?.value?.length ?? -2;
   // langform
   // if(ad && ad['contact-name'] && ad['contact-name']?.value && ad['contact-name']?.value?.length){
   //   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
@@ -92,13 +92,12 @@ export const analyzeKonto = async (
     ? 1
     : 0;
 
-  if (adsFromAccount) {
-    resultingAd.konto_anzeigen_anzahl = adsFromAccount.length;
-    resultingAd.konto_anzeigen_ueber_100 = adsFromAccount.filter(
-      (x) => Number.parseFloat(x.price.amount.value) > 100,
-    ).length;
+  resultingAd.konto_anzeigen_anzahl = adsFromAccount ? adsFromAccount.length : -1;
+  resultingAd.konto_anzeigen_ueber_100 = adsFromAccount instanceof Array ? adsFromAccount?.filter(
+    (x) => Number.parseFloat(x.price?.amount?.value) > 100).length ?? -1 : -1;
 
-    resultingAd.konto_anzeigen_gleich = 0;
+  resultingAd.konto_anzeigen_gleich = 0;
+  if (adsFromAccount) {
     for (const adFromAccount of adsFromAccount) {
       if (
         adFromAccount.title.value.includes(
@@ -112,7 +111,6 @@ export const analyzeKonto = async (
       }
     }
   }
-
   // Todo
   // resultingAd.konto_anzeigen_betrugsrate = ad.
 
