@@ -1,5 +1,5 @@
 {
-  "name": "FraudGuard-Backend",
+  "name": "fraudguard-backend",
   "description": "",
   "version": "1.0.0",
   "author": "Christopher Barnes",
@@ -11,7 +11,7 @@
     "build": "tsc",
     "clean": "npx rimraf ./dist && npx rimraf server.*",
     "docker:build": "docker build -t gcr.io/fraudguard/backend:latest .",
-    "docker:push": "docker push -t gcr.io/fraudguard/backend:latest .",
+    "docker:push": "docker push gcr.io/fraudguard/backend:latest",
     "linter": "npx eslint src/**/*.ts -c ./.eslintrc.yml --fix",
     "predocker": "npm run build",
     "prettier": "npx prettier --write src/**/*.ts",

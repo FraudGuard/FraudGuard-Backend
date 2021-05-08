@@ -350,8 +350,8 @@ export const Ad3 = new AdsFromEbayModel({
     street: { value: 'Lerchenstrasse 46' },
     state: { value: 'Nürtingen' },
     'zip-code': { value: '72622' },
-    longitude: { value: '9.3557' },
-    latitude: { value: '48.64' },
+    longitude: { value: '15.328' },
+    latitude: { value: '55.23' },
     radius: { value: '1.0' },
   },
   'ad-external-reference-id': {},
@@ -428,8 +428,8 @@ export const Ad3 = new AdsFromEbayModel({
       {
         'id-name': { value: '72622' },
         'localized-name': { value: '72622 Nürtingen' },
-        longitude: { value: '9.321328' },
-        latitude: { value: '48.613403' },
+        longitude: { value: '15.328' },
+        latitude: { value: '55.23' },
         radius: { value: '2.94' },
         regions: {
           region: [{ 'localized-name': { value: 'Baden-Württemberg' } }],
