@@ -220,8 +220,8 @@ describe('Analyze Ads', () => {
   test('Analyze metadata', async () => {
     const result1 = await analyzeMetadaten(Ad1, new AdsModel());
 
-    // expect(result1.metadata_latitude).to.be.equal(9.3557);
-    // expect(result1.metadata_longitude).to.be.equal(48.64);
+    expect(result1.metadata_latitude).to.be.equal(48.64);
+    expect(result1.metadata_longitude).to.be.equal(9.3557);
     expect(result1.metadata_category).to.be.equal(23);
     expect(result1.metadata_amount_pictures).to.be.equal(1);
     expect(result1.metadata_phone).to.be.equal(1);
@@ -229,8 +229,8 @@ describe('Analyze Ads', () => {
 
     const result2 = await analyzeMetadaten(Ad2, new AdsModel());
 
-    // expect(result2.metadata_latitude).to.be.equal(79.557);
-    // expect(result2.metadata_longitude).to.be.equal(4.664);
+    expect(result2.metadata_latitude).to.be.equal(4.664);
+    expect(result2.metadata_longitude).to.be.equal(79.557);
     expect(result2.metadata_category).to.be.equal(44);
     expect(result2.metadata_amount_pictures).to.be.equal(1);
     expect(result2.metadata_phone).to.be.equal(0);
@@ -238,8 +238,8 @@ describe('Analyze Ads', () => {
 
     const result3 = await analyzeMetadaten(Ad3, new AdsModel());
 
-    // expect(result3.metadata_latitude).to.be.equal(9.3557);
-    // expect(result3.metadata_longitude).to.be.equal(48.64);
+    expect(result3.metadata_latitude).to.be.equal(55.23);
+    expect(result3.metadata_longitude).to.be.equal(15.328);
     expect(result3.metadata_category).to.be.equal(23);
     expect(result3.metadata_amount_pictures).to.be.equal(1);
     expect(result3.metadata_phone).to.be.equal(1);
