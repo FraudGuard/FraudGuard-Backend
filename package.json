@@ -11,6 +11,7 @@
     "build": "tsc",
     "clean": "npx rimraf ./dist && npx rimraf server.*",
     "docker": "docker build -t gcr.io/fraudgaurd/backend:latest .",
+    "docker:push": "docker push gcr.io/fraudgaurd/backend:latest",
     "linter": "npx eslint src/**/*.ts -c ./.eslintrc.yml --fix",
     "predocker": "npm run build",
     "prettier": "npx prettier --write src/**/*.ts",
