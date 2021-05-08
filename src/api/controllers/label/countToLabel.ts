@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 
 export const countToLabel = async (_req: Request, res: Response) => {
   try {
-    Ads.count({ labeled: true, searchQuery: 'lego' })
+    Ads.count({ labeled: true })
       .exec()
       .then((ad) => {
         if (ad) {
