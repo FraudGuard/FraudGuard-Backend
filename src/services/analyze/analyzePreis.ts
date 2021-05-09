@@ -7,7 +7,6 @@ export const analyzePreis = (
 ): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Preis');
-    resultingAd.fraud_score += 0.1;
 
     const ad_preis = parseInt(ad.price?.amount?.value, 10);
 
