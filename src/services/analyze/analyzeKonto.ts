@@ -12,7 +12,7 @@ export const analyzeKonto = async (
   const adsFromAccount = await getAllByAccount(
     ad['user-id']?.value?.toString(),
   ).catch(() => logger.log('noAccountFound'));
-  
+
   const badgesMap: any = {};
   ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
