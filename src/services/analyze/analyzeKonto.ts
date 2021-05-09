@@ -10,9 +10,9 @@ export const analyzeKonto = async (
 ) => {
   logger.info('analyze Konto');
   const adsFromAccount = await getAllByAccount(
-    ad['user-id'].value.toString(),
-  ).catch((err) => logger.log('cannotReadAdsFromAccount', err));
-
+    ad['user-id']?.value?.toString(),
+  ).catch(() => logger.log('noAccountFound'));
+  
   const badgesMap: any = {};
   ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 

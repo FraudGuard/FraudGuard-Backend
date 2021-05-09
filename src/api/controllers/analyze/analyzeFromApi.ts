@@ -7,7 +7,6 @@ export const analyzeFromApi = async (req: Request, res: Response) => {
   try {
     // TODO is it really a id?? validation, also sanitize input
     const { id } = req.params;
-    logger.info(req.params);
     logger.info(id);
     getSingleById(id).then((ad) => {
       logger.info('loaded ad from api');
@@ -22,6 +21,10 @@ export const analyzeFromApi = async (req: Request, res: Response) => {
             error,
           });
         });
+    }).catch(()=> {
+      res.status(HttpStatus.NOT_FOUND).json({
+        msg: 'Ad not found',
+      });
     });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
