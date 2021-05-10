@@ -11,7 +11,7 @@ export const analyzePreis = (
     const ad_preis = parseInt(ad.price?.amount?.value, 10);
 
     // Preisabgleich mit hinterlegten Preisen aus DB
-    let marktwert = 1;
+    let marktwert = 0;
     const ad_title = ad.title?.value?.toLowerCase();
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
     const num = ad_title.replace(/^\D+|\D+$/g, '');
