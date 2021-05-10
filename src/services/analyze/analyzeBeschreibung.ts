@@ -112,6 +112,8 @@ export const analyzeBeschreibung = (
       'nicht original',
       'nicht originalverpackt',
       'nicht die originalverpackung',
+      'keine originalverpackung',
+      'keine ovp',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of ovp_signalwoerter) {
@@ -340,8 +342,7 @@ export const analyzeBeschreibung = (
         enthaelt_signalwort = 0;
       }
     }
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung =
-      enthaelt_signalwort;
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung = enthaelt_signalwort;
 
     // Prüfen auf Verkauf mit Kiloangabe
     const kilo_signalwoerter = ['kilo', ' kg ', 'kilogramm'];

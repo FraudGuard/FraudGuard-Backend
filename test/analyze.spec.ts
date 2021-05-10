@@ -2,7 +2,6 @@ import { AdsModel } from './../src/api/models/ads';
 /* eslint-disable no-unused-vars */
 import {
   // analyze,
-  // analyzeKonto,
   analyzeMetadaten,
   analyzeBeschreibung,
   analyzePreis,
