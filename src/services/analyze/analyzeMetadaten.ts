@@ -15,7 +15,7 @@ export const analyzeMetadaten = (
     );
     resultingAd.metadata_category = parseInt(ad.category.id, 10);
     resultingAd.metadata_amount_pictures = ad.pictures.picture.length;
-    resultingAd.metadata_phone = ad?.phone.value ? 1 : 0;
+    resultingAd.metadata_phone = ad?.phone?.value ? 1 : 0;
     resultingAd.metadata_startDateTime = new Date(
       ad['start-date-time'].value,
     ).getTime();
