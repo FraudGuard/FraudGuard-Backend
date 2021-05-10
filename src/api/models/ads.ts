@@ -50,7 +50,7 @@ export const adsSchema = new Schema<AdsSchema>(
     metadata_phone: { type: Number },
     metadata_amount_pictures: { type: Number },
     metadata_category: { type: Number },
-    metadata_start_time: { type: Number },
+    metadata_startDateTime: { type: Number },
 
     // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },

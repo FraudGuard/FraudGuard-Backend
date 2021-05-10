@@ -56,8 +56,8 @@ jobs:
             TYPESCRIPT_ES_CONFIG_FILE: .eslintrc.yml
             VALIDATE_TYPESCRIPT_ES: true
 
-  build-and-test:
-      name: Build and Test
+  build:
+      name: Build
       runs-on: ubuntu-20.04
       needs: [prettier, Linter]
 
@@ -71,16 +71,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: npm ci, test and build
+      - name: npm ci build
         run: |
           npm ci
-          npm t --if-present
           npm run build --if-present
   analyze:
     # https://github.com/github/codeql-action
       name: Analyze with CodeQL
       runs-on: ubuntu-20.04
-      needs: build-and-test
+      needs: build
 
       steps:
       - name: Checkout repository
@@ -105,7 +104,7 @@ jobs:
     # https://github.com/SonarSource/sonarcloud-github-action
       name: SonarCloud
       runs-on: ubuntu-20.04
-      needs: build-and-test
+      needs: build
 
       steps:
         - uses: actions/checkout@v2

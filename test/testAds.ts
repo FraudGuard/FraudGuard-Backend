@@ -69,13 +69,11 @@ export const Ad1 = new AdsFromEbayModel({
       rel: 'self',
     },
     {
-      href:
-        'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
+      href: 'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
       rel: 'self-user',
     },
     {
-      href:
-        'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
+      href: 'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
       rel: 'self-public-website',
     },
   ],
@@ -108,33 +106,27 @@ export const Ad1 = new AdsFromEbayModel({
       {
         link: [
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
             rel: 'thumbnail',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
             rel: 'teaser',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
             rel: 'large',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
             rel: 'extraLarge',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
             rel: 'XXL',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
             rel: 'canonicalUrl',
           },
         ],
@@ -240,13 +232,11 @@ export const Ad2 = new AdsFromEbayModel({
       rel: 'self',
     },
     {
-      href:
-        'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
+      href: 'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
       rel: 'self-user',
     },
     {
-      href:
-        'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
+      href: 'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
       rel: 'self-public-website',
     },
   ],
@@ -278,33 +268,27 @@ export const Ad2 = new AdsFromEbayModel({
       {
         link: [
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
             rel: 'thumbnail',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
             rel: 'teaser',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
             rel: 'large',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
             rel: 'extraLarge',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
             rel: 'XXL',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
             rel: 'canonicalUrl',
           },
         ],
@@ -412,13 +396,11 @@ export const Ad3 = new AdsFromEbayModel({
       rel: 'self',
     },
     {
-      href:
-        'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
+      href: 'https://api.ebay-kleinanzeigen.de:443/api/users/43301478/ads/1681374618',
       rel: 'self-user',
     },
     {
-      href:
-        'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
+      href: 'https://www.ebay-kleinanzeigen.de/s-anzeige/lego-technic-42009-mobiler-schwerlastkran-mk-ii/1681374618-23-8219',
       rel: 'self-public-website',
     },
   ],
@@ -451,33 +433,27 @@ export const Ad3 = new AdsFromEbayModel({
       {
         link: [
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_0.JPG',
             rel: 'thumbnail',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_2.JPG',
             rel: 'teaser',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_1.JPG',
             rel: 'large',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_59.JPG',
             rel: 'extraLarge',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_57.JPG',
             rel: 'XXL',
           },
           {
-            href:
-              'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
+            href: 'https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/d-0AAOSwJEhgYKEI/$_{imageId}.JPG',
             rel: 'canonicalUrl',
           },
         ],

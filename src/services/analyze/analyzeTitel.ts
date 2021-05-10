@@ -120,7 +120,6 @@ export const analyzeTitel = (
         'benutzt',
         'selten genutzt',
         'selten benutzt',
-        'alt',
         'gebrauchsspuren',
       ];
       const wordListGebraucht_gegenteil = [

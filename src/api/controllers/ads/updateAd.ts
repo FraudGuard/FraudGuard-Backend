@@ -22,7 +22,7 @@ export const updateAd = async (req: Request, res: Response) => {
     }
 
     Ads.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
-      logger.log('updated', ad ? 'yes' : 'no');
+      logger.info('updated', ad ? 'yes' : 'no');
       if (ad) {
         res.status(HttpStatus.OK).json({
           ad,
