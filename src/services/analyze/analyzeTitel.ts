@@ -8,7 +8,7 @@ export const analyzeTitel = (
   new Promise(async (resolve, reject) => {
     try {
       logger.info('start analyze Titel');
-      console.log(ad.title.value);
+      // console.log(ad.title.value);
 
       const str = ad['title'].value.toLowerCase();
 
@@ -209,7 +209,6 @@ export const analyzeTitel = (
         }
       }
 
-      resultingAd.title = ad.title.value;
       if (false) {
         reject(new Error('Some Error happened'));
       }

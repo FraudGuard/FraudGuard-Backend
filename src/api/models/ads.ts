@@ -5,25 +5,9 @@ import { AdsSchema } from './schemas/ads';
 export const adsSchema = new Schema<AdsSchema>(
   {
     _id: { type: Number },
-    longitude: { type: Number },
-    latitude: { type: Number },
-    category: { type: [Number] },
-    contactName: { type: Number }, // if contact-name exists or not (0,1)
-    description: { type: Number },
-    phone: { type: Number }, // if contact-name exists or not (0,1)
-    price: { type: Number },
-    sellerAccountType: { type: [Number] },
-    startDateTime: { type: Number },
-    title: { type: Number },
-    userId: { type: Number },
-    userRating: { type: Number },
-    userSinceDateTime: { type: Number },
-    followers: { type: Number },
-    replySpeed: { type: Number },
-    replyRate: { type: Number },
-    friendliness: { type: [Number] },
-    rating: { type: [Number] },
-    versand: { type: [Number] },
+    lego: { type: Number },
+    labeled: { type: Number },
+    labeledDecision: { type: Number },
 
     // tim
     konto_rating: { type: Number },

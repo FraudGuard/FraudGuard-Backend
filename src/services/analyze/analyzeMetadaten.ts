@@ -14,7 +14,7 @@ export const analyzeMetadaten = (
       ad['ad-address'].longitude.value,
     );
     resultingAd.metadata_category = parseInt(ad.category.id, 10);
-    resultingAd.metadata_amount_pictures = ad.pictures.picture.length;
+    resultingAd.metadata_amount_pictures = ad.pictures?.picture?.length ?? 0;
     resultingAd.metadata_phone = ad?.phone?.value ? 1 : 0;
     resultingAd.metadata_startDateTime = new Date(
       ad['start-date-time'].value,
