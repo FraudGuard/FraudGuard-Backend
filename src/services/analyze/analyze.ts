@@ -16,8 +16,8 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
     const resultingAd = new AdsModel();
     resultingAd.fraud_score = 0;
     resultingAd._id = ad._id;
-    resultingAd.labeled = ad.labeled?1:0;
-    resultingAd.labeledDecision = ad.labeledDecision?1:0;
+    resultingAd.labeled = ad.labeled ? 1 : 0;
+    resultingAd.labeledDecision = ad.labeledDecision ? 1 : 0;
     resultingAd.lego = ad.searchQuery === 'lego' ? 1 : 0;
 
     // await analyzeBeschreibung(ad, resultingAd).then
