@@ -17,7 +17,7 @@ export const analyzeKonto = async (
   ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
 
   // Anzahl der Kontobewertungen
-  resultingAd.konto_rating = badgesMap?.rating?.level
+  resultingAd.konto_bewertungen_anzahl = badgesMap?.rating?.level
     ? Number.parseInt(badgesMap.rating.level)
     : -1;
 
@@ -80,12 +80,12 @@ export const analyzeKonto = async (
   resultingAd.konto_name_sonderzeichen_anzahl = foundSpecialChars?.length ?? 0;
 
   // Gibt die Millisekunden seit dem 1. Januar 1970 zurück
-  resultingAd.konto_erstellt_timestamp = new Date(
+  resultingAd.konto_erstellt_zeit = new Date(
     ad['user-since-date-time'].value,
   ).getTime();
 
   // prüfen ob Kontoname natürlich
-  resultingAd.konto_name_natuerlich = firstNames.find((x) =>
+  resultingAd.ap_konto_name_natuerlich = firstNames.find((x) =>
     ad['contact-name'].value
       .toLocaleLowerCase()
       .includes(x.toLocaleLowerCase()),
@@ -105,7 +105,7 @@ export const analyzeKonto = async (
   resultingAd.konto_anzeigen_anzahl = adsFromAccount
     ? adsFromAccount.length
     : 0;
-  resultingAd.konto_anzeigen_ueber_100 =
+  resultingAd.ap_konto_anzeigen_ueber_100 =
     adsFromAccount instanceof Array
       ? adsFromAccount?.filter(
           (x) => Number.parseFloat(x.price?.amount?.value) > 100,

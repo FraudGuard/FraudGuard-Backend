@@ -10,8 +10,8 @@ export const adsSchema = new Schema<AdsSchema>(
     labeledDecision: { type: Number },
 
     // tim
-    konto_rating: { type: Number },
-    konto_erstellt_timestamp: { type: Number },
+    konto_bewertungen_anzahl: { type: Number },
+    konto_erstellt_zeit: { type: Number },
     konto_anzeigen_anzahl: { type: Number },
     konto_anzeigen_betrugsrate: { type: Number },
     konto_follower_anzahl: { type: Number },
@@ -19,22 +19,22 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_antwortrate: { type: Number },
     konto_freundlichkeit: { type: Number },
     konto_bewertung: { type: Number },
-    konto_anzeigen_ueber_100: { type: Number },
     konto_anzeigen_gleich: { type: Number },
     konto_name_laenge: { type: Number },
     konto_name_sonderzeichen_anzahl: { type: Number },
     konto_name_enthaelt_unueblich: { type: Number },
-    konto_name_natuerlich: { type: Number },
     konto_gewerblich: { type: Number },
     konto_privat: { type: Number },
+    ap_konto_name_natuerlich: { type: Number },
+    ap_konto_anzeigen_ueber_100: { type: Number },
 
     // Chris
-    metadata_longitude: { type: Number },
-    metadata_latitude: { type: Number },
-    metadata_phone: { type: Number },
-    metadata_amount_pictures: { type: Number },
-    metadata_category: { type: Number },
-    metadata_startDateTime: { type: Number },
+    metadaten_laengengrad: { type: Number },
+    metadaten_breitengrad: { type: Number },
+    metadaten_telefonnumer: { type: Number },
+    metadaten_anzahl_bilder: { type: Number },
+    metadaten_kategorie: { type: Number },
+    metadaten_anzeige_zeit: { type: Number },
 
     // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },

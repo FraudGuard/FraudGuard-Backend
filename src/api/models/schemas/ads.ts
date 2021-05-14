@@ -8,8 +8,8 @@ export interface AdsSchema extends Document {
   fraud_score: number;
 
   // tim
-  konto_rating: number;
-  konto_erstellt_timestamp: number;
+  konto_bewertungen_anzahl: number;
+  konto_erstellt_zeit: number;
   konto_anzeigen_anzahl: number;
   konto_anzeigen_betrugsrate: number;
   konto_follower_anzahl: number;
@@ -17,22 +17,22 @@ export interface AdsSchema extends Document {
   konto_antwortrate: number;
   konto_freundlichkeit: number;
   konto_bewertung: number;
-  konto_anzeigen_ueber_100: number;
   konto_anzeigen_gleich: number;
   konto_name_laenge: number;
   konto_name_sonderzeichen_anzahl: number;
   konto_name_enthaelt_unueblich: number;
-  konto_name_natuerlich: number;
   konto_gewerblich: number;
   konto_privat: number;
+  ap_konto_name_natuerlich: number;
+  ap_konto_anzeigen_ueber_100: number;
 
   // Chris
-  metadata_longitude: number;
-  metadata_latitude: number;
-  metadata_category: number;
-  metadata_amount_pictures: number;
-  metadata_phone: number;
-  metadata_startDateTime: number;
+  metadaten_laengengrad: number;
+  metadaten_breitengrad: number;
+  metadaten_kategorie: number;
+  metadaten_anzahl_bilder: number;
+  metadaten_telefonnummer: number;
+  metadaten_anzeige_zeit: number;
 
   // Jana
   beschreibung_enthaelt_ueberweisung: number;
