@@ -8,15 +8,17 @@ export const analyzeMetadaten = (
   new Promise((resolve, reject) => {
     logger.info('start analyze Metadaten');
 
-    resultingAd.metadata_latitude = parseFloat(ad['ad-address'].latitude.value);
+    resultingAd.metadaten_breitengrad = parseFloat(
+      ad['ad-address'].latitude.value,
+    );
 
-    resultingAd.metadata_longitude = parseFloat(
+    resultingAd.metadaten_laengengrad = parseFloat(
       ad['ad-address'].longitude.value,
     );
-    resultingAd.metadata_category = parseInt(ad.category.id, 10);
-    resultingAd.metadata_amount_pictures = ad.pictures?.picture?.length ?? 0;
-    resultingAd.metadata_phone = ad?.phone?.value ? 1 : 0;
-    resultingAd.metadata_startDateTime = new Date(
+    resultingAd.metadaten_kategorie = parseInt(ad.category.id, 10);
+    resultingAd.metadaten_anzahl_bilder = ad.pictures?.picture?.length ?? 0;
+    resultingAd.metadaten_telefonnummer = ad?.phone?.value ? 1 : 0;
+    resultingAd.metadaten_anzeige_zeit = new Date(
       ad['start-date-time'].value,
     ).getTime();
 
