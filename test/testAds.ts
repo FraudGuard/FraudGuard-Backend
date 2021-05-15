@@ -326,6 +326,7 @@ export const Ad2 = new AdsFromEbayModel({
   labeledDecision: false,
   toReview: false,
   updatedAt: { $date: { $numberLong: '1619816154092' } },
+  fraud_score: '',
 });
 
 export const Ad3 = new AdsFromEbayModel({

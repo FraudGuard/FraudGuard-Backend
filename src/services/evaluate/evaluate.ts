@@ -21,11 +21,6 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     const normalized_antipattern_score = (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) * 100
 
     resultingAd.fraud_score =
-      Math.round((normalized_pattern_score - normalized_antipattern_score) * 100) / 100
-
-
-    logger.info('calculated')
 
     console.log(resultingAd);
     resolve(resultingAd);
-  });
