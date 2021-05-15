@@ -105,7 +105,7 @@ export const analyzeKonto = async (
   resultingAd.konto_anzeigen_anzahl = adsFromAccount
     ? adsFromAccount.length
     : 0;
-  resultingAd.ap_konto_anzeigen_ueber_100 =
+  resultingAd.konto_anzeigen_ueber_100 =
     adsFromAccount instanceof Array
       ? adsFromAccount?.filter(
           (x) => Number.parseFloat(x.price?.amount?.value) > 100,

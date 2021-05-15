@@ -25,8 +25,8 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_name_enthaelt_unueblich: { type: Number },
     konto_gewerblich: { type: Number },
     konto_privat: { type: Number },
+    konto_anzeigen_ueber_100: { type: Number },
     ap_konto_name_natuerlich: { type: Number },
-    ap_konto_anzeigen_ueber_100: { type: Number },
 
     // Chris
     metadaten_laengengrad: { type: Number },
