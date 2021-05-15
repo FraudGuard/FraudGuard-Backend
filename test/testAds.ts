@@ -463,7 +463,7 @@ export const Ad3 = new AdsFromEbayModel({
   'poster-type': { value: 'PRIVATE' },
   price: {
     'currency-iso-code': {
-      value: { value: 'EUR', 'localized-label': 'EUR' }
+      value: { value: 'EUR', 'localized-label': 'EUR' },
     },
     amount: { value: '0' },
     'price-type': { value: 'SPECIFIED_AMOUNT' },

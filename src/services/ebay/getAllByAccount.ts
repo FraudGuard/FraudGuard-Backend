@@ -7,7 +7,7 @@ export const getAllByAccount = (
   accountId: string,
 ): Promise<AdsFromEbaySchema[]> =>
   new Promise(async (resolve, reject) => {
-    logger.info('accountId', accountId)
+    logger.info('accountId', accountId);
     if (!accountId) {
       resolve([]);
       return;
