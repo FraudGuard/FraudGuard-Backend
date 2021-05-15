@@ -268,16 +268,11 @@ describe('Analyze Ads', () => {
     expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
   });
 
-  test('Evaluate', async() => {
-    
-  // Ad 1
-
-  // Ad 2
-
-  // Ad 3
-
-
-  })
+  test('Evaluate', async () => {
+    // Ad 1
+    // Ad 2
+    // Ad 3
+  });
 
   test('Analyze all', async () => {}, 1000000);
 });
