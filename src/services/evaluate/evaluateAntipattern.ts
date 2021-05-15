@@ -42,43 +42,57 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   // Michelle
 
   // Titel
-    addToScore(resultingAd, resultingAd.ap_titel_enthaelt_gebraucht === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_gebraucht === 1, 5);
 
-    addToScore(resultingAd, resultingAd.ap_titel_enthaelt_suche === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_suche === 1, 5);
 
-    addToScore(resultingAd, resultingAd.ap_titel_enthaelt_tausche === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_tausche === 1, 5);
 
-    addToScore(resultingAd, resultingAd.ap_titel_enthaelt_kilo === 1, 3);
+  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_kilo === 1, 3);
 
-    addToScore(resultingAd, resultingAd.ap_titel_enthaelt_sammlung === 1, 4);
+  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_sammlung === 1, 4);
 
   // Beschreibung
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_barzahlung === 1, 5);
+  addToScore(
+    resultingAd,
+    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1,
+    5,
+  );
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_gebraucht === 1, 5);
+  addToScore(
+    resultingAd,
+    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1,
+    5,
+  );
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 5);
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_abholung === 1, 1);
+  addToScore(
+    resultingAd,
+    resultingAd.ap_beschreibung_enthaelt_abholung === 1,
+    1,
+  );
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1, 4);
+  addToScore(
+    resultingAd,
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1,
+    4,
+  );
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 3);
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 3);
 
-    addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 5);
 
   // Konto
-    addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
+  addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
 
-    if (
-      resultingAd.konto_anzeigen_anzahl >= 1 &&
-      resultingAd.konto_anzeigen_ueber_100 >= 1
-    )
-      addToScore(resultingAd, true, 3)
+  if (
+    resultingAd.konto_anzeigen_anzahl >= 1 &&
+    resultingAd.konto_anzeigen_ueber_100 >= 1
+  )
+    addToScore(resultingAd, true, 3);
 
-
-    // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
-
+  // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Jessi
   // Score Kategorie Preis
