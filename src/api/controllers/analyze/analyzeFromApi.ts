@@ -5,7 +5,6 @@ import { Request, Response } from 'express';
 
 export const analyzeFromApi = async (req: Request, res: Response) => {
   try {
-    // TODO is it really a id?? validation, also sanitize input
     const { id } = req.params;
     logger.info(id);
     getSingleById(id)
