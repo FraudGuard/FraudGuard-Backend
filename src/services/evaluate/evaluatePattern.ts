@@ -25,6 +25,25 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   // Jana
 
   // Jessi
+  // Score Kategorie Preis
+  if(resultingAd.preis_waehrung_eur == 1){
+    addToScore(
+        resultingAd, 
+        resultingAd.preis_unter_marktwert === 1, 
+        2,
+    );}
+
+  if(resultingAd.preis_abweichung_marktwert <= -0.5){
+    addToScore(resultingAd, true, 4);}
+
+  // Score Kategorie Sonstiges
+  addToScore(
+    resultingAd,
+    resultingAd.sonstiges_anzeige_kopiert === 1,
+    4,
+  );
+
+
 
   return resultingAd;
 };
