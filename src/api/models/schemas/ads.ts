@@ -8,14 +8,14 @@ export interface AdsSchema extends Document {
   fraud_score: number;
 
   // evaluate
-  pattern_score: number
-  pattern_gesamtscore: number
-  pattern_anzahl_zutreffend: number
-  pattern_anzahl_gesamt: number
-  antipattern_score: number
-  antipattern_gesamtscore: number
-  antipattern_anzahl_zutreffend: number
-  antipattern_anzahl_gesamt: number
+  pattern_score: number;
+  pattern_gesamtscore: number;
+  pattern_anzahl_zutreffend: number;
+  pattern_anzahl_gesamt: number;
+  antipattern_score: number;
+  antipattern_gesamtscore: number;
+  antipattern_anzahl_zutreffend: number;
+  antipattern_anzahl_gesamt: number;
 
   // tim
   konto_bewertungen_anzahl: number;

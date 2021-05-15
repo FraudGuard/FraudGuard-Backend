@@ -55,8 +55,8 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
 
     const result = await evaluate(resultingAd).catch((error) => reject(error));
 
-    if(result instanceof AdsModel){
+    if (result instanceof AdsModel) {
       return resolve(result);
     }
-    reject(new Error())
+    reject(new Error());
   });
