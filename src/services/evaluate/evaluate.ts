@@ -18,11 +18,11 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     logger.info('evaluated');
 
     resultingAd.fraud_score =
-      ((resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100)
-      - ((resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) * 100)
+      (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100 -
+      (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
+        100;
 
-
-    logger.info('calculated')
+    logger.info('calculated');
 
     console.log(resultingAd);
     resolve(resultingAd);
