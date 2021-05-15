@@ -8,6 +8,7 @@ import {
   analyzeSonstiges,
   analyzeTitel,
   analyzeKonto,
+  analyze,
 } from '../src/services/analyze';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
@@ -273,7 +274,8 @@ describe('Analyze Ads', () => {
   // Ad 1
 
   // Ad 2
-  
+  const result2 = await analyze(Ad2);
+  expect(result2.fraud_score).to.be.equal(61.78789231);
   // Ad 3
 
 
