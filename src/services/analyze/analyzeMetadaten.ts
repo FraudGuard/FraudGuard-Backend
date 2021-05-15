@@ -8,7 +8,9 @@ export const analyzeMetadaten = (
   new Promise((resolve, reject) => {
     logger.info('start analyze Metadaten');
 
-    resultingAd.metadaten_breitengrad = parseFloat(ad['ad-address'].latitude.value);
+    resultingAd.metadaten_breitengrad = parseFloat(
+      ad['ad-address'].latitude.value,
+    );
 
     resultingAd.metadaten_laengengrad = parseFloat(
       ad['ad-address'].longitude.value,
