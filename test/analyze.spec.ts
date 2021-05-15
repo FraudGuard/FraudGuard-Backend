@@ -269,17 +269,14 @@ describe('Analyze Ads', () => {
     expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
   });
 
-  test('Evaluate', async() => {
-    
-  // Ad 1
+  test('Evaluate', async () => {
+    // Ad 1
 
-  // Ad 2
-  const result2 = await analyze(Ad2);
-  expect(result2.fraud_score).to.be.equal(61.78789231);
-  // Ad 3
-
-
-  })
+    // Ad 2
+    const result2 = await analyze(Ad2);
+    expect(result2.fraud_score).to.be.equal(61.78789231);
+    // Ad 3
+  });
 
   test('Analyze all', async () => {}, 1000000);
 });
