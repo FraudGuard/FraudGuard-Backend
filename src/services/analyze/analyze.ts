@@ -8,6 +8,7 @@ import {
   analyzeTitel,
 } from './';
 import { logger } from '../../shared';
+import { evaluate } from '../evaluate';
 
 export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
@@ -51,5 +52,11 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
 
     logger.info('all analyze done');
     // Todo Regelwerk läuft durch
-    return resolve(resultingAd);
+
+    const result = await evaluate(resultingAd).catch((error) => reject(error));
+
+    if(result instanceof AdsModel){
+      return resolve(result);
+    }
+    reject(new Error())
   });

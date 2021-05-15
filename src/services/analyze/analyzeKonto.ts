@@ -9,8 +9,9 @@ export const analyzeKonto = async (
   resultingAd: AdsSchema,
 ) => {
   logger.info('analyze Konto');
+  // console.log(ad['user-id'])
   const adsFromAccount = await getAllByAccount(
-    ad['user-id']?.value?.toString(),
+    ad['user-id']?.value
   ).catch(() => logger.info('noAccountFound'));
 
   const badgesMap: any = {};

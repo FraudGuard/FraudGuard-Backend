@@ -147,15 +147,15 @@ describe('Analyze Ads', () => {
     // expect(result1.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result1.konto_anzeigen_ueber_100).to.be.equal(0);
     expect(result1.konto_bewertung).to.be.equal(0.875);
-    expect(result1.konto_erstellt_timestamp).to.be.equal(1478358074000);
+    expect(result1.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result1.konto_follower_anzahl).to.be.equal(-1);
     expect(result1.konto_freundlichkeit).to.be.equal(1);
     expect(result1.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result1.konto_name_laenge).to.be.equal(14);
-    expect(result1.konto_name_natuerlich).to.be.equal(1);
+    expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result1.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result1.konto_privat).to.be.equal(1);
-    expect(result1.konto_rating).to.be.equal(2);
+    expect(result1.konto_bewertungen_anzahl).to.be.equal(2);
 
     expect(result2.konto_antwortzeit).to.be.equal(3);
     // expect(result2.konto_anzeigen_anzahl).to.be.equal(0);
@@ -163,15 +163,15 @@ describe('Analyze Ads', () => {
     // expect(result2.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result2.konto_anzeigen_ueber_100).to.be.equal(0);
     expect(result2.konto_bewertung).to.be.equal(0.875);
-    expect(result2.konto_erstellt_timestamp).to.be.equal(1478358074000);
+    expect(result2.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result2.konto_follower_anzahl).to.be.equal(-1);
     expect(result2.konto_freundlichkeit).to.be.equal(1);
     expect(result2.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result2.konto_name_laenge).to.be.equal(14);
-    expect(result2.konto_name_natuerlich).to.be.equal(1);
+    expect(result2.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result2.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result2.konto_privat).to.be.equal(1);
-    expect(result2.konto_rating).to.be.equal(2);
+    expect(result2.konto_bewertungen_anzahl).to.be.equal(2);
 
     expect(result3.konto_antwortzeit).to.be.equal(3);
     // expect(result3.konto_anzeigen_anzahl).to.be.equal(0);
@@ -179,15 +179,15 @@ describe('Analyze Ads', () => {
     // expect(result3.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result3.konto_anzeigen_ueber_100).to.be.equal(0);
     expect(result3.konto_bewertung).to.be.equal(0.875);
-    expect(result3.konto_erstellt_timestamp).to.be.equal(1478358074000);
+    expect(result3.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result3.konto_follower_anzahl).to.be.equal(-1);
     expect(result3.konto_freundlichkeit).to.be.equal(1);
     expect(result3.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result3.konto_name_laenge).to.be.equal(14);
-    expect(result3.konto_name_natuerlich).to.be.equal(1);
+    expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result3.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result3.konto_privat).to.be.equal(1);
-    expect(result3.konto_rating).to.be.equal(2);
+    expect(result3.konto_bewertungen_anzahl).to.be.equal(2);
   });
 
   test('Analyze price', async () => {
@@ -216,33 +216,33 @@ describe('Analyze Ads', () => {
     expect(result3.ap_preis_ist_leer).to.be.equal(1);
   });
 
-  test('Analyze metadata', async () => {
+  test('Analyze metadaten', async () => {
     const result1 = await analyzeMetadaten(Ad1, new AdsModel());
 
-    expect(result1.metadata_latitude).to.be.equal(48.64);
-    expect(result1.metadata_longitude).to.be.equal(9.3557);
-    expect(result1.metadata_category).to.be.equal(23);
-    expect(result1.metadata_amount_pictures).to.be.equal(1);
-    expect(result1.metadata_phone).to.be.equal(1);
-    expect(result1.metadata_startDateTime).to.be.equal(1614434831000);
+    expect(result1.metadaten_breitengrad).to.be.equal(48.64);
+    expect(result1.metadaten_laengengrad).to.be.equal(9.3557);
+    expect(result1.metadaten_kategorie).to.be.equal(23);
+    expect(result1.metadaten_anzahl_bilder).to.be.equal(1);
+    expect(result1.metadaten_telefonnummer).to.be.equal(1);
+    expect(result1.metadaten_anzeige_zeit).to.be.equal(1614434831000);
 
     const result2 = await analyzeMetadaten(Ad2, new AdsModel());
 
-    expect(result2.metadata_latitude).to.be.equal(4.664);
-    expect(result2.metadata_longitude).to.be.equal(79.557);
-    expect(result2.metadata_category).to.be.equal(44);
-    expect(result2.metadata_amount_pictures).to.be.equal(1);
-    expect(result2.metadata_phone).to.be.equal(0);
-    expect(result2.metadata_startDateTime).to.be.equal(1614434831000);
+    expect(result2.metadaten_breitengrad).to.be.equal(4.664);
+    expect(result2.metadaten_laengengrad).to.be.equal(79.557);
+    expect(result2.metadaten_kategorie).to.be.equal(44);
+    expect(result2.metadaten_anzahl_bilder).to.be.equal(1);
+    expect(result2.metadaten_telefonnummer).to.be.equal(0);
+    expect(result2.metadaten_anzeige_zeit).to.be.equal(1614434831000);
 
     const result3 = await analyzeMetadaten(Ad3, new AdsModel());
 
-    expect(result3.metadata_latitude).to.be.equal(55.23);
-    expect(result3.metadata_longitude).to.be.equal(15.328);
-    expect(result3.metadata_category).to.be.equal(23);
-    expect(result3.metadata_amount_pictures).to.be.equal(1);
-    expect(result3.metadata_phone).to.be.equal(1);
-    expect(result3.metadata_startDateTime).to.be.equal(1614434831000);
+    expect(result3.metadaten_breitengrad).to.be.equal(55.23);
+    expect(result3.metadaten_laengengrad).to.be.equal(15.328);
+    expect(result3.metadaten_kategorie).to.be.equal(23);
+    expect(result3.metadaten_anzahl_bilder).to.be.equal(1);
+    expect(result3.metadaten_telefonnummer).to.be.equal(1);
+    expect(result3.metadaten_anzeige_zeit).to.be.equal(1614434831000);
   });
 
   test('Analyze misc.', async () => {

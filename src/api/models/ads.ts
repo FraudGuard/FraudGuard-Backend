@@ -9,6 +9,15 @@ export const adsSchema = new Schema<AdsSchema>(
     labeled: { type: Number },
     labeledDecision: { type: Number },
 
+    pattern_score: { type: Number },
+    pattern_gesamtscore: { type: Number },
+    pattern_anzahl_zutreffend: { type: Number },
+    pattern_anzahl_gesamt: { type: Number },
+    antipattern_score: { type: Number },
+    antipattern_gesamtscore: { type: Number },
+    antipattern_anzahl_zutreffend: { type: Number },
+    antipattern_anzahl_gesamt: { type: Number },
+
     // tim
     konto_bewertungen_anzahl: { type: Number },
     konto_erstellt_zeit: { type: Number },
