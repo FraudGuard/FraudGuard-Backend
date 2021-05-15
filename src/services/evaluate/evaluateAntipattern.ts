@@ -59,13 +59,11 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   );
 
   // Score Kombinationen
-  if (resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_barzahlung ===1)
-    addToScore(
-      resultingAd,
-      true,
-      4
-    );
+  if (
+    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1
+  )
+    addToScore(resultingAd, true, 4);
 
   return resultingAd;
 };
