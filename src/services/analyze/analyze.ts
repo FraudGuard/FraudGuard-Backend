@@ -21,22 +21,6 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
     resultingAd.labeledDecision = ad.labeledDecision ? 1 : 0;
     resultingAd.lego = ad.searchQuery === 'lego' ? 1 : 0;
 
-    // await analyzeBeschreibung(ad, resultingAd).then
-    // await analyzeKonto(ad, resultingAd)
-    // await analyzeMetadaten(ad, resultingAd)
-    // await analyzePreis(ad, resultingAd)
-    // await analyzeSonstiges(ad, resultingAd)
-    // await analyzeTitel(ad, resultingAd)
-    //  |--
-    //     |--
-    //         |--––
-    //               |---
-    //                   |----| -> weiter
-
-    // |--     |
-    // |-----  |
-    // |--     |
-    // |-------|->weiter
     await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
       analyzeKonto(ad, resultingAd),
