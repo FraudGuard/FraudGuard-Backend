@@ -33,8 +33,8 @@ export interface AdsSchema extends Document {
   konto_name_enthaelt_unueblich: number;
   konto_gewerblich: number;
   konto_privat: number;
+  konto_anzeigen_ueber_100: number;
   ap_konto_name_natuerlich: number;
-  ap_konto_anzeigen_ueber_100: number;
 
   // Chris
   metadaten_laengengrad: number;
