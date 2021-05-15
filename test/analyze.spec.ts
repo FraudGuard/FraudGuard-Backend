@@ -275,7 +275,7 @@ describe('Analyze Ads', () => {
     expect(result1.fraud_score).to.be.equal(-22.83206);
     // Ad 2
     const result2 = await analyze(Ad2);
-    expect(result2.fraud_score).to.be.equal(61.78789231)
+    expect(result2.fraud_score).to.be.equal(61.78789231);
     // Ad 3
   });
 
