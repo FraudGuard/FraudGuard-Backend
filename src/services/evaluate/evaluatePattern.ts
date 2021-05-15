@@ -24,15 +24,15 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   // Jana
   // Titel
-  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 2);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 2,);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 3);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 3,);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_verschweißt === 1, 1);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_verschweißt === 1, 1,);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 4);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 4,);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3,);
 
   // Beschreibung
   addToScore(
@@ -41,7 +41,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     5,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2,);
 
   addToScore(
     resultingAd,
@@ -49,9 +49,9 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     5,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 2,);
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 2,);
 
   addToScore(
     resultingAd,
@@ -65,16 +65,16 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     5,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4,);
 
   // Konto
-  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
+  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3,);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1,);
 
   // addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich >= 0, 5);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich >= 0, 5,);
 
   // Jessi
   // Score Kategorie Preis
