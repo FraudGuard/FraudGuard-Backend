@@ -89,6 +89,28 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
 
+  // Score Kombinationen
+  if (resultingAd.ap_beschreibung_enthaelt_abholung === 1 && 
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1)
+    addToScore(resultingAd, true, 4);
+
+  if (resultingAd.konto_anzeigen_gleich === 1 && 
+    resultingAd.konto_privat === 1)
+    addToScore(resultingAd, true, 3)
+
+  if (resultingAd.titel_enthaelt_ovp === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 || 
+    resultingAd.beschreibung_enthaelt_ovp === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 )
+    addToScore(resultingAd, true, 4)
+
+  if (resultingAd.titel_enthaelt_neu === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 || 
+    resultingAd.beschreibung_enthaelt_neu === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 )
+    addToScore(resultingAd, true, 5) 
+    
+  if (resultingAd.titel_enthaelt_verschweißt === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 ||
+    resultingAd.titel_enthaelt_ungeoeffnet === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 ||
+    resultingAd.beschreibung_enthaelt_versiegelt === 1 && resultingAd.preis_abweichung_marktwert <= -0.3 )
+    addToScore(resultingAd, true, 5)
+
   return resultingAd;
 };
 
