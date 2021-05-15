@@ -20,7 +20,13 @@ export const evaluateAntipattern = async (
     // BEISPIEL ENDE
 
 
+    // Michelle
 
+
+    // Jana
+
+
+    // Jessi
 
 
     return resultingAd;

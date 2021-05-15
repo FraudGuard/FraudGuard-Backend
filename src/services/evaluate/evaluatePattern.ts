@@ -21,7 +21,13 @@ export const evaluatePattern = async (
 
 
 
-    console.log(resultingAd)
+    // Michelle
+
+
+    // Jana
+
+
+    // Jessi
 
     return resultingAd;
 }
