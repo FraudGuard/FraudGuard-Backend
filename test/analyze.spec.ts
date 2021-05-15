@@ -1,19 +1,20 @@
 import { AdsModel } from './../src/api/models/ads';
 /* eslint-disable no-unused-vars */
 import {
-  // analyze,
   analyzeMetadaten,
   analyzeBeschreibung,
   analyzePreis,
   analyzeSonstiges,
   analyzeTitel,
   analyzeKonto,
+  analyze,
 } from '../src/services/analyze';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
 import { expect } from 'chai';
 import { Ad1, Ad2, Ad3 } from './testAds';
 import type { Server } from 'http';
+// import { evaluate } from './services/evaluate';
 
 let server: Server;
 
@@ -270,6 +271,8 @@ describe('Analyze Ads', () => {
 
   test('Evaluate', async () => {
     // Ad 1
+    const result1 = await analyze(Ad1);
+    expect(result1.fraud_score).to.be.equal(-22.83206);
     // Ad 2
     // Ad 3
   });
