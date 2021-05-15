@@ -8,7 +8,7 @@ import {
   analyzeTitel,
 } from './';
 import { logger } from '../../shared';
-import { evaluate } from '../evaluate';
+// import { evaluate } from '../evaluate';
 
 export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {

@@ -29,7 +29,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     //     addToScore(resultingAd, true, 4)
     // }else if(resultingAd.konto_bewertung >1){
     //     addToScore(resultingAd, true, 1)
-    // }else if(resultingAd.konto_bewertung >2){
+    // }else{
     //     addToScore(resultingAd, false, 1)
     // }
 
