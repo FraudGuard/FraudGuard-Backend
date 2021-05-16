@@ -3,7 +3,7 @@ import { logger } from '../../shared';
 
 export const evaluatePattern = async (resultingAd: AdsSchema) => {
   logger.info('evaluate Pattern');
-
+  
   resultingAd.pattern_score = 0;
   resultingAd.pattern_gesamtscore = 0;
   resultingAd.pattern_anzahl_zutreffend = 0;

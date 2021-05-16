@@ -23,7 +23,6 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
         100;
 
     logger.info('calculated');
-
-    console.log(resultingAd);
+    logger.info(resultingAd);
     resolve(resultingAd);
   });
