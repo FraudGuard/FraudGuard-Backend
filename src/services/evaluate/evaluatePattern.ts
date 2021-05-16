@@ -34,6 +34,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
 
+  console.log(resultingAd.pattern_score);
+
   // Beschreibung
   addToScore(
     resultingAd,
@@ -67,6 +69,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4);
 
+  console.log(resultingAd.pattern_score);
+
   // Konto
   addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
 
@@ -74,7 +78,9 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   // addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich >= 0, 5);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
+  
+  console.log(resultingAd.pattern_score);
 
   // Jessi
   // Score Kategorie Preis
@@ -90,6 +96,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     addToScore(resultingAd, false, 4);
   }
 
+  console.log(resultingAd.pattern_score);
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
 
@@ -113,6 +120,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
+  console.log(resultingAd.pattern_score);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 &&
@@ -133,6 +141,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
+  console.log(resultingAd.pattern_score);
 
   return resultingAd;
 };
