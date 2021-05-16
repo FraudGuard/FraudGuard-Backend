@@ -81,10 +81,12 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (resultingAd.preis_waehrung_eur == 1) {
     addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 2);
   }
+  else{addToScore(resultingAd, false, 2,)};
 
   if (resultingAd.preis_abweichung_marktwert <= -0.5) {
     addToScore(resultingAd, true, 4);
   }
+  else{addToScore(resultingAd, false, 4,)};
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
@@ -95,9 +97,11 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_ueberweisung === 1
   )
     addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd, false, 4,);
 
   if (resultingAd.konto_anzeigen_gleich === 1 && resultingAd.konto_privat === 1)
     addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd,false,3,);
 
   if (
     (resultingAd.titel_enthaelt_ovp === 1 &&
@@ -106,6 +110,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
     addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd, false,4,);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 &&
@@ -114,6 +119,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
     addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false,5,);
 
   if (
     (resultingAd.titel_enthaelt_verschweißt === 1 &&
@@ -124,6 +130,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
     addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false,5,);
 
   return resultingAd;
 };

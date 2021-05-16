@@ -14,11 +14,11 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   // wenn pattern zutrifft -> bedingung wahr
 
   // addToScore(resultingAd immer eingeben, bedingung wann addiert werden soll, score)
-  addToScore(
+  /* addToScore(
     resultingAd,
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1,
     5,
-  );
+  ); */
   // gleich wie
   // if (resultingAd.ap_beschreibung_enthaelt_barzahlung === 1) {
   //     addToScore(resultingAd, false, 5)
@@ -91,7 +91,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     resultingAd.konto_anzeigen_ueber_100 === 0
   )
     addToScore(resultingAd, true, 3);
-
+ else addToScore(resultingAd,false,3,);
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Jessi
@@ -115,6 +115,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1
   )
     addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd,false,4,);  
 
   return resultingAd;
 };

@@ -271,14 +271,14 @@ describe('Analyze Ads', () => {
 
   test('Evaluate', async () => {
     // Ad 1
-    // const result1 = await analyze(Ad1);
-    // expect(result1.fraud_score).to.be.equal(-9.405458089668617);
+   const result1 = await analyze(Ad1);
+   expect(result1.fraud_score).to.be.equal(-9.405458089668617);
     // Ad 2
-    // const result2 = await analyze(Ad2);
-    // expect(result2.fraud_score).to.be.equal(61.237553342816504);
+   const result2 = await analyze(Ad2);
+   expect(result2.fraud_score).to.be.equal(61.237553342816504);
     // Ad 3
     const result3 = await analyze(Ad3);
-    expect(result3.fraud_score).to.be.equal(-40.157894737);
+    expect(result3.fraud_score).to.be.equal(-34.210526);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(24);
     expect(result3.pattern_anzahl_zutreffend).to.be.equal(2);
     expect(result3.pattern_score).to.be.equal(9);
