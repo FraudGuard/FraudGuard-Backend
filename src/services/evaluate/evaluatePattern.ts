@@ -79,7 +79,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   // addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
-  
+
   console.log(resultingAd.pattern_score);
 
   // Jessi
