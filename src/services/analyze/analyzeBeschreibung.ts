@@ -323,6 +323,8 @@ export const analyzeBeschreibung = (
       'sammlung',
       'löse sammlung auf',
       'löse meine sammlung auf',
+      'konvult',
+      'konvolut',
     ];
     const sammleraufloesung_signalwoerter_gegenteil = [
       'keine sammlerauflösung',
@@ -342,8 +344,7 @@ export const analyzeBeschreibung = (
         enthaelt_signalwort = 0;
       }
     }
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung =
-      enthaelt_signalwort;
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung = enthaelt_signalwort;
 
     // Prüfen auf Verkauf mit Kiloangabe
     const kilo_signalwoerter = ['kilo', ' kg ', 'kilogramm'];

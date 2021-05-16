@@ -191,6 +191,8 @@ export const analyzeTitel = (
         'sammlungsauflösung',
         'sammleraufloesung',
         'sammlungsaufloesung',
+        'konvult',
+        'konvolut',
       ];
       const wordListSammlung_gegenteil = [
         'keine sammlerauflösung',
