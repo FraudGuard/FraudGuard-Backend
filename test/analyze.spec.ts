@@ -284,7 +284,7 @@ describe('Analyze Ads', () => {
     expect(result1.antipattern_gesamtscore).to.be.equal(78);
     // Ad 2
     const result2 = await analyze(Ad2);
-    //expect(result2.fraud_score).to.be.equal(55.08072175);
+    // expect(result2.fraud_score).to.be.equal(55.08072175);
     expect(result2.fraud_score).to.be.equal(55.08);
     expect(result2.pattern_anzahl_gesamt).to.be.equal(24);
     expect(result2.pattern_anzahl_zutreffend).to.be.equal(16);
@@ -294,9 +294,9 @@ describe('Analyze Ads', () => {
     expect(result2.antipattern_anzahl_zutreffend).to.be.equal(2);
     expect(result2.antipattern_score).to.be.equal(10);
     expect(result2.antipattern_gesamtscore).to.be.equal(78);
-    //Ad 3
+    // Ad 3
     const result3 = await analyze(Ad3);
-    //expect(result3.fraud_score).to.be.equal(-38.888888888889);
+    // expect(result3.fraud_score).to.be.equal(-38.888888888889);
     expect(result3.fraud_score).to.be.equal(-38.89);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(24);
     expect(result3.pattern_anzahl_zutreffend).to.be.equal(2);
