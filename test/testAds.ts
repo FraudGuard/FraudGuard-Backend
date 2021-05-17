@@ -208,7 +208,7 @@ export const Ad2 = new AdsFromEbayModel({
     'parent-id': { value: '17' },
     id: '44',
   },
-  'contact-name': { value: 'Alexander Benz' },
+  'contact-name': { value: 'Aruba' },
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
