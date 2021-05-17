@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { AdsModel, AdsSchema } from '../../models';
 import { evaluate } from '../../../services/evaluate';
 
-const skipValue = 1000
+const skipValue = 1000;
 export const transformEvaluate = async (_req: Request, res: Response) => {
   try {
     logger.info('transformEvaluate');
@@ -25,8 +25,8 @@ const runEvaluate = async (skip = 0) => {
     promises.push(singleEvaluate(ad, i));
   });
   const data = await Promise.all(promises);
-  await AdsModel.bulkWrite(data.filter(x => x))
-  logger.info('updated')
+  await AdsModel.bulkWrite(data.filter((x) => x));
+  logger.info('updated');
   if (items.length === skipValue) {
     runEvaluate(skip + skipValue);
   }
@@ -37,8 +37,14 @@ const singleEvaluate = (ad: AdsSchema, i: number) =>
     // const result = await analyze(ad);
     const result = await evaluate(ad).catch((error) => reject(error));
     if (!result) {
-      return 
+      return;
     }
     console.log('analyzed', ++i);
-    resolve({ updateOne: { filter: { _id: result._id }, update: result.toObject(), upsert: true }});
+    resolve({
+      updateOne: {
+        filter: { _id: result._id },
+        update: result.toObject(),
+        upsert: true,
+      },
+    });
   });
