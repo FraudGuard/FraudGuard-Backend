@@ -14,10 +14,9 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     //   logger.error(error);
     //   reject(error);
     // });
+    const pattern_score = (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100
+    const antipattern_score = (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) * 100
 
-    resultingAd.fraud_score =
-      (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100 -
-      (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
-        100;
+    resultingAd.fraud_score = Math.round((pattern_score - antipattern_score) * 100) / 100;
     resolve(resultingAd);
   });
