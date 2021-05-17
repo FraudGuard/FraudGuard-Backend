@@ -9,10 +9,6 @@
 </p>
 
 <p align="center">
-  <a href="https://www.barnes.biz"><strong>www.barnes.biz</strong></a>
-  <br>
-</p>
-<p align="center">
   </br></br>
   <a href="https://chrome.google.com/webstore/detail/">
     <img src="./src/assets/chrome.png" alt="Chrome Web Store"></a>
