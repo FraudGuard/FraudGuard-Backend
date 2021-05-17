@@ -6,11 +6,8 @@ import { Request, Response } from 'express';
 export const analyzeFromApi = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    logger.info(id);
     getSingleById(id)
       .then((ad) => {
-        logger.info('loaded ad from api');
-
         analyze(ad)
           .then((result) => {
             res.status(HttpStatus.OK).json(result);

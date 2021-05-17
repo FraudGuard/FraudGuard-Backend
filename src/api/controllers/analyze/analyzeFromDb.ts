@@ -6,19 +6,14 @@ import { Request, Response } from 'express';
 export const analyzeFromDb = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    logger.info(req.params);
-    logger.info(id);
-    logger.info('analyzeFromDb');
     // funktionerweise gleich wie const ad = await findByIdEbay(id);
     findByIdEbay(id).then((ad) => {
       if (!ad) {
-        logger.info(`loaded ad not found: ${id}`);
         res.status(HttpStatus.NOT_FOUND).json({
           msg: 'ad not found',
         });
         return;
       }
-      logger.info('loaded ad from db');
 
       analyze(ad)
         .then((result) => {

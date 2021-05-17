@@ -48,6 +48,7 @@ export const analyzeBeschreibung = (
       'hermes',
       'versendet',
       'versenden',
+      'delivery',
     ];
     const versand_signalwoerter_gegenteil = [
       'kein versand',
@@ -56,6 +57,7 @@ export const analyzeBeschreibung = (
       'kein hermes',
       'nicht versendet',
       'nicht versenden',
+      'kein delivery',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of versand_signalwoerter) {
@@ -344,7 +346,8 @@ export const analyzeBeschreibung = (
         enthaelt_signalwort = 0;
       }
     }
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung = enthaelt_signalwort;
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung =
+      enthaelt_signalwort;
 
     // Prüfen auf Verkauf mit Kiloangabe
     const kilo_signalwoerter = ['kilo', ' kg ', 'kilogramm'];

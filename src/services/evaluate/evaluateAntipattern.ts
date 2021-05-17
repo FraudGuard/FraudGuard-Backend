@@ -1,9 +1,6 @@
 import { AdsSchema } from '../../api/models';
-import { logger } from '../../shared';
 
 export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
-  logger.info('evaluate Antipattern');
-
   resultingAd.antipattern_score = 0;
   resultingAd.antipattern_gesamtscore = 0;
   resultingAd.antipattern_anzahl_zutreffend = 0;
