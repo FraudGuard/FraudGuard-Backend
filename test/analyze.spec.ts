@@ -303,7 +303,6 @@ describe('Analyze Ads', () => {
     expect(result3.antipattern_anzahl_zutreffend).to.be.equal(9);
     expect(result3.antipattern_score).to.be.equal(39);
     expect(result3.antipattern_gesamtscore).to.be.equal(78);
-
   });
 
   test('Analyze all', async () => {}, 1000000);
