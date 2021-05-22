@@ -194,7 +194,7 @@ describe('Analyze Ads', () => {
   test('Analyze price', async () => {
     // Preis - keine Merkmale enthalten
     const result1 = await analyzePreis(Ad1, new AdsModel());
-    expect(result1.preis_unter_marktwert).to.be.equal(0);
+    expect(result1.preis_unter_marktwert).to.be.equal(2);
     expect(result1.preis_abweichung_marktwert).to.be.equal(0);
     expect(result1.preis_waehrung_eur).to.be.equal(0);
     expect(result1.preis_typ_vb).to.be.equal(0);
