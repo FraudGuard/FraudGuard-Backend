@@ -84,6 +84,7 @@ describe('Analyze Ads', () => {
   test('Analyze description', async () => {
     const result1 = await analyzeBeschreibung(Ad1, new AdsModel());
 
+    expect(result1.beschreibung_enthaelt_sepa).to.be.equal(1);
     expect(result1.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
     expect(result1.beschreibung_enthaelt_versand).to.be.equal(1);
     expect(result1.beschreibung_enthaelt_neu).to.be.equal(0);
@@ -102,6 +103,7 @@ describe('Analyze Ads', () => {
 
     const result2 = await analyzeBeschreibung(Ad2, new AdsModel());
 
+    expect(result2.beschreibung_enthaelt_sepa).to.be.equal(0);
     expect(result2.beschreibung_enthaelt_ueberweisung).to.be.equal(1);
     expect(result2.beschreibung_enthaelt_versand).to.be.equal(0);
     expect(result2.beschreibung_enthaelt_neu).to.be.equal(0);
@@ -120,6 +122,7 @@ describe('Analyze Ads', () => {
 
     const result3 = await analyzeBeschreibung(Ad3, new AdsModel());
 
+    expect(result3.beschreibung_enthaelt_sepa).to.be.equal(0);
     expect(result3.beschreibung_enthaelt_ueberweisung).to.be.equal(0);
     expect(result3.beschreibung_enthaelt_versand).to.be.equal(0);
     expect(result3.beschreibung_enthaelt_neu).to.be.equal(0);
