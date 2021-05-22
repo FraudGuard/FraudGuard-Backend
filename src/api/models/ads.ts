@@ -47,6 +47,7 @@ export const adsSchema = new Schema<AdsSchema>(
 
     // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },
+    beschreibung_enthaelt_sepa: { type: Number },
     beschreibung_enthaelt_versand: { type: Number },
     beschreibung_enthaelt_neu: { type: Number },
     beschreibung_enthaelt_ovp: { type: Number },
@@ -77,7 +78,7 @@ export const adsSchema = new Schema<AdsSchema>(
 
     // Sonstiges
     sonstiges_anzeige_kopiert: { type: Number },
-    sonstiges_kategorie_unpassend: {type: Number},
+    sonstiges_kategorie_unpassend: { type: Number },
     ap_sonstiges_anzeige_zeit_tag: { type: Number },
     ap_sonstiges_anzeige_nur_abholung: { type: Number },
     ap_sonstiges_anzeige_suche: { type: Number },

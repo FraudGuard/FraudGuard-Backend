@@ -18,7 +18,8 @@
     "start:dev": "tsnd --respawn src/index.ts | pino-pretty -c -t",
     "start": "node dist/src/index.js | pino-pretty -c -t",
     "test": "npx jest --detectOpenHandles --coverage",
-    "tsc": "npx tsc"
+    "tsc": "npx tsc",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [
     "Node",
@@ -87,6 +88,7 @@
     "@types/rimraf": "^3.0.0",
     "@types/shelljs": "^0.8.8",
     "@types/uuid": "^8.3.0",
+    "better-docs": "^2.3.2",
     "chai": "^4.3.4",
     "copyfiles": "^2.4.1",
     "coverage-badger": "^1.0.1",
@@ -97,6 +99,7 @@
     "jest-coverage-shield": "^1.1.2",
     "jest-each": "^26.6.2",
     "jest-junit": "^12.0.0",
+    "jsdoc": "^3.6.7",
     "node-fetch": "^2.6.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
