@@ -25,13 +25,12 @@ export const analyzePreis = (
       if (produkt.produktname.toLowerCase().includes(num))
         marktwert = produkt.preis;
     }
-    
+
     // Abgleich mit Marktwert 1 bedeutet geprüft und unter Marktwert / 2 bedeutet geprüft und nicht unter Marktwert
     if (marktwert != 0)
       resultingAd.preis_unter_marktwert = ad_preis < marktwert ? 1 : 2;
     // 0 bedeutet es wurde keine Prüfung durchgeführt, weil Produkt nicht in DB
     else resultingAd.preis_unter_marktwert = 0;
-
 
     // Prozentuale Abweichung vom Produktpreis und Marktwert
     if (marktwert != 0)
