@@ -41,25 +41,23 @@ export const analyzeSonstiges = (
       313, // Zubehör
       242, // Sonstige - Weiteres Freizeit, Hobby & Nachbarschaft
       75, // Sonstiges - weitere Musik, Filme & Bücher
-      240 // Kunst & Antiquitäten
+      240, // Kunst & Antiquitäten
     ];
-    const ad_title = ad.title?.value?.toLowerCase();;
+    const ad_title = ad.title?.value?.toLowerCase();
     const ad_beschreibung = ad['description']?.value?.toLowerCase();
-   
+
     // Abgleich bei Lego Anzeigen auf denkbare Kategorien
-    if (ad_title.includes('lego') || ad_beschreibung.includes('lego')){
-      for ( const k in kategorienLego ) {
-        if (k == kategorie)
-          break;
+    if (ad_title.includes('lego') || ad_beschreibung.includes('lego')) {
+      for (const k in kategorienLego) {
+        if (k == kategorie) break;
       }
       resultingAd.sonstiges_kategorie_unpassend = 1;
     }
 
     // Abgleich bei Dyson Anzeigen auf denkbare Kategorien
-    if (ad_title.includes('dyson') || ad_beschreibung.includes('dyson')){
-      for ( const k in kategorienDyson ) {
-        if (k == kategorie)
-          break;
+    if (ad_title.includes('dyson') || ad_beschreibung.includes('dyson')) {
+      for (const k in kategorienDyson) {
+        if (k == kategorie) break;
       }
       resultingAd.sonstiges_kategorie_unpassend = 1;
     }
