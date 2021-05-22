@@ -31,39 +31,37 @@ export const analyzeSonstiges = (
       '175', // TV_Video wegen Dyson TV
     ];
     const kategorienLego = [
-      "23", // Spielzeug
-      "249", // Modellbau
-      "234", // Sammeln
-      "76", // Zeitschriften
-      "187", // Freizeitaktivitäten
-      "227", // PC_Videospiele
-      "279", // Konsolen
-      "313", // Zubehör
-      "242", // Sonstige - Weiteres Freizeit, Hobby & Nachbarschaft
-      "75", // Sonstiges - weitere Musik, Filme & Bücher
-      "240" // Kunst & Antiquitäten
+      '23', // Spielzeug
+      '249', // Modellbau
+      '234', // Sammeln
+      '76', // Zeitschriften
+      '187', // Freizeitaktivitäten
+      '227', // PC_Videospiele
+      '279', // Konsolen
+      '313', // Zubehör
+      '242', // Sonstige - Weiteres Freizeit, Hobby & Nachbarschaft
+      '75', // Sonstiges - weitere Musik, Filme & Bücher
+      '240', // Kunst & Antiquitäten
     ];
     const ad_title = ad.title?.value?.toLowerCase();
     const ad_beschreibung = ad['description']?.value?.toLowerCase();
-    const lego = "lego";
-    const dyson = "dyson";
+    const lego = 'lego';
+    const dyson = 'dyson';
 
     resultingAd.sonstiges_kategorie_unpassend = 1;
 
     // Abgleich bei Lego Anzeigen auf denkbare Kategorien
-    if (ad_title.includes(lego) || ad_beschreibung.includes(lego)){
-      for ( const k of kategorienLego ) {
-        if (k == ad_kategorie)
-          resultingAd.sonstiges_kategorie_unpassend = 0;
+    if (ad_title.includes(lego) || ad_beschreibung.includes(lego)) {
+      for (const k of kategorienLego) {
+        if (k == ad_kategorie) resultingAd.sonstiges_kategorie_unpassend = 0;
       }
     }
 
     // Abgleich bei Dyson Anzeigen auf denkbare Kategorien
-    if (ad_title.includes(dyson) || ad_beschreibung.includes(dyson)){
-        for ( const k of kategorienDyson ) {
-          if (k == ad_kategorie)
-            resultingAd.sonstiges_kategorie_unpassend = 0;
-        }
+    if (ad_title.includes(dyson) || ad_beschreibung.includes(dyson)) {
+      for (const k of kategorienDyson) {
+        if (k == ad_kategorie) resultingAd.sonstiges_kategorie_unpassend = 0;
+      }
     }
 
     // Antipattern: Anzeige länger als einen Tag online
