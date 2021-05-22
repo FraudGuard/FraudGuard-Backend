@@ -21,14 +21,14 @@ export const analyzeSonstiges = (
     // Kategorie passt nicht zur Anzeige
     const kategorie = ad.category.id;
     const kategorienDyson = [
-      "176", // Haushaltsgeräte
-      "224", // Beauty & Gesundheit
-      "168", // weitere Elektronik - Sonstiges
-      "91", // Badezimmer
-      "82", // Lampen - Licht
-      "313", // Zubehör
-      "155", // Sonstiges - Weiteres Mode & Beauty
-      "175", // TV_Video wegen Dyson TV
+      '176', // Haushaltsgeräte
+      '224', // Beauty & Gesundheit
+      '168', // weitere Elektronik - Sonstiges
+      '91', // Badezimmer
+      '82', // Lampen - Licht
+      '313', // Zubehör
+      '155', // Sonstiges - Weiteres Mode & Beauty
+      '175', // TV_Video wegen Dyson TV
     ];
     const kategorienLego = [
       23, // Spielzeug
