@@ -240,7 +240,7 @@ describe('Analyze Ads', () => {
 
     expect(result3.metadaten_breitengrad).to.be.equal(55.23);
     expect(result3.metadaten_laengengrad).to.be.equal(15.328);
-    expect(result3.metadaten_kategorie).to.be.equal(23);
+    expect(result3.metadaten_kategorie).to.be.equal(176);
     expect(result3.metadaten_anzahl_bilder).to.be.equal(1);
     expect(result3.metadaten_telefonnummer).to.be.equal(1);
     expect(result3.metadaten_anzeige_zeit).to.be.equal(1614434831000);
@@ -253,6 +253,7 @@ describe('Analyze Ads', () => {
     // expect(result1.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
     expect(result1.ap_sonstiges_anzeige_suche).to.be.equal(0);
     expect(result1.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+    expect(result1.sonstiges_kategorie_unpassend).to.be.equal(0);
 
     const result2 = await analyzeSonstiges(Ad2, new AdsModel());
 
@@ -260,6 +261,7 @@ describe('Analyze Ads', () => {
     // expect(result2.ap_sonstiges_anzeige_nur_abholung).to.be.equal(0);
     expect(result2.ap_sonstiges_anzeige_suche).to.be.equal(1);
     expect(result2.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+    expect(result2.sonstiges_kategorie_unpassend).to.be.equal(1);
 
     const result3 = await analyzeSonstiges(Ad3, new AdsModel());
 
@@ -267,13 +269,13 @@ describe('Analyze Ads', () => {
     // expect(result3.ap_sonstiges_anzeige_nur_abholung).to.be.equal(1);
     expect(result3.ap_sonstiges_anzeige_suche).to.be.equal(1);
     expect(result3.ap_sonstiges_anzeige_zeit_tag).to.be.equal(1);
+    expect(result3.sonstiges_kategorie_unpassend).to.be.equal(1);
   });
 
   test('Evaluate', async () => {
     // Ad 1
     const result1 = await analyze(Ad1);
-    // expect(result1.fraud_score).to.be.equal(-19.32573599240266);
-    expect(result1.fraud_score).to.be.equal(-19.33);
+    expect(result1.fraud_score).to.be.equal(-16.76);
     expect(result1.pattern_anzahl_gesamt).to.be.equal(24);
     expect(result1.pattern_anzahl_zutreffend).to.be.equal(1);
     expect(result1.pattern_score).to.be.equal(2);

@@ -18,6 +18,54 @@ export const analyzeSonstiges = (
       resultingAd.sonstiges_anzeige_kopiert = res.length > 1 ? 1 : 0;
     }
 
+    // Kategorie passt nicht zur Anzeige
+    const kategorie = ad.category.id;
+    const kategorienDyson = [
+      176, // Haushaltsgeräte
+      224, // Beauty & Gesundheit
+      168, // weitere Elektronik - Sonstiges
+      91, // Badezimmer
+      82, // Lampen - Licht
+      313, // Zubehör
+      155, // Sonstiges - Weiteres Mode & Beauty
+      175, // TV_Video wegen Dyson TV
+    ];
+    const kategorienLego = [
+      23, // Spielzeug
+      249, // Modellbau
+      234, // Sammeln
+      76, // Zeitschriften
+      187, // Freizeitaktivitäten
+      227, // PC_Videospiele
+      279, // Konsolen
+      313, // Zubehör
+      242, // Sonstige - Weiteres Freizeit, Hobby & Nachbarschaft
+      75, // Sonstiges - weitere Musik, Filme & Bücher
+      240 // Kunst & Antiquitäten
+    ];
+    const ad_title = ad.title?.value?.toLowerCase();;
+    const ad_beschreibung = ad['description']?.value?.toLowerCase();
+   
+    // Abgleich bei Lego Anzeigen auf denkbare Kategorien
+    if (ad_title.includes('lego') || ad_beschreibung.includes('lego')){
+      for ( const k in kategorienLego ) {
+        if (k == kategorie)
+          break;
+      }
+      resultingAd.sonstiges_kategorie_unpassend = 1;
+    }
+
+    // Abgleich bei Dyson Anzeigen auf denkbare Kategorien
+    if (ad_title.includes('dyson') || ad_beschreibung.includes('dyson')){
+      for ( const k in kategorienDyson ) {
+        if (k == kategorie)
+          break;
+      }
+      resultingAd.sonstiges_kategorie_unpassend = 1;
+    }
+
+    resultingAd.sonstiges_kategorie_unpassend = 0;
+
     // Antipattern: Anzeige länger als einen Tag online
     resultingAd.ap_sonstiges_anzeige_zeit_tag = 0;
     const yesterday = new Date().getTime() - 24 * 60 * 60 * 1000;

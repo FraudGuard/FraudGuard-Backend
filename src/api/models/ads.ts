@@ -77,6 +77,7 @@ export const adsSchema = new Schema<AdsSchema>(
 
     // Sonstiges
     sonstiges_anzeige_kopiert: { type: Number },
+    sonstiges_kategorie_unpassend: {type: Number},
     ap_sonstiges_anzeige_zeit_tag: { type: Number },
     ap_sonstiges_anzeige_nur_abholung: { type: Number },
     ap_sonstiges_anzeige_suche: { type: Number },

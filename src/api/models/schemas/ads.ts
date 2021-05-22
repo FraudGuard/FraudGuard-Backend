@@ -75,6 +75,7 @@ export interface AdsSchema extends Document {
 
   // Sonstiges
   sonstiges_anzeige_kopiert: number;
+  sonstiges_kategorie_unpassend: number;
   ap_sonstiges_anzeige_zeit_tag: number;
   ap_sonstiges_anzeige_nur_abholung: number;
   ap_sonstiges_anzeige_suche: number;

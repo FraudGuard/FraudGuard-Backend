@@ -372,7 +372,7 @@ export const Ad3 = new AdsFromEbayModel({
     link: [],
     category: [],
     'parent-id': { value: '17' },
-    id: '23',
+    id: '176',
   },
   'contact-name': { value: 'Alexander Benz' },
   'contact-name-initials': { value: 'AB' },
