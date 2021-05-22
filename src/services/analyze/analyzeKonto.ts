@@ -3,6 +3,7 @@ import { logger } from '../../shared';
 import { getAllByAccount } from '../ebay/getAllByAccount';
 import firstNames from '../../assets/data/firstNames.json';
 import countries from '../../assets/data/world.json';
+import cities from '../../assets/data/cities.json';
 
 export const analyzeKonto = async (
   ad: AdsFromEbaySchema,
@@ -99,11 +100,18 @@ export const analyzeKonto = async (
   resultingAd.konto_name_enthaelt_unueblich = 0;
   const str = ad['contact-name'].value.toLowerCase();
   for (const z of zahlen) {
-    for (const c of countries) {
-      //for (const s of cities) {
-      if (str.includes(z) || str.includes(c.name)) {
-        resultingAd.konto_name_enthaelt_unueblich = 1;
-      }
+    if (str.includes(z)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
+    }
+  }
+  for (const c of countries) {
+    if (str.includes(c.name)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
+    }
+  }
+  for (const s of cities) {
+    if (str.includes(s.name)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
     }
   }
 
