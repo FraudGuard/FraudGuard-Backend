@@ -76,7 +76,7 @@ export const analyzeKonto = async (
 
   // prüfen ob Sonderzeichen im Namen enthalten sind
   const foundSpecialChars = ad['contact-name'].value.match(
-    /[@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g,
+    /[@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]/g,
   );
   resultingAd.konto_name_sonderzeichen_anzahl = foundSpecialChars?.length ?? 0;
 
@@ -86,22 +86,27 @@ export const analyzeKonto = async (
   ).getTime();
 
   // prüfen ob Kontoname natürlich
-  resultingAd.ap_konto_name_natuerlich = firstNames.find((x) =>
-    ad['contact-name'].value
-      .toLocaleLowerCase()
-      .includes(x.toLocaleLowerCase()),
-  )
-    ? 1
-    : 0;
+  resultingAd.ap_konto_name_natuerlich = 0;
+  const str1 = ad['contact-name'].value.toLowerCase();
+  for (const f of firstNames){
+    if(str1.includes(f)){
+      resultingAd.ap_konto_name_natuerlich = 1;
+    }
+  }
 
   // prüfen ob Kontoname ein unüblicher Name ist
-  resultingAd.konto_name_enthaelt_unueblich = countries.find((x) =>
-    ad['contact-name'].value
-      .toLocaleLowerCase()
-      .includes(x.name.toLocaleLowerCase()),
-  )
-    ? 1
-    : 0;
+  const zahlen = ['0','1','2','3','4','5','6','7','8','9'];
+  resultingAd.konto_name_enthaelt_unueblich = 0;
+  const str = ad['contact-name'].value.toLowerCase();
+  for (const z of zahlen) {
+  for (const c of countries){
+  //for (const s of cities) {
+  if(str.includes(z) || str.includes(c.name)) {
+    resultingAd.konto_name_enthaelt_unueblich = 1;
+     }
+   }
+}
+
 
   resultingAd.konto_anzeigen_anzahl = adsFromAccount
     ? adsFromAccount.length
