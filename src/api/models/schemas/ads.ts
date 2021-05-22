@@ -46,6 +46,7 @@ export interface AdsSchema extends Document {
 
   // Jana
   beschreibung_enthaelt_ueberweisung: number;
+  beschreibung_enthaelt_sepa: number;
   beschreibung_enthaelt_versand: number;
   beschreibung_enthaelt_neu: number;
   beschreibung_enthaelt_ovp: number;

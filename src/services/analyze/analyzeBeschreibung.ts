@@ -8,26 +8,46 @@ export const analyzeBeschreibung = (
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Beschreibung');
     const beschreibung = ad['description']?.value?.toLowerCase();
+
+    // prüfen auf sepa
+    const sepa_signalwoerter = [
+      'sepa-überweisung',
+      'sepa-ueberwesiung',
+      'sepa',
+    ];
+    const sepa_signalwoerter_gegenteil = [
+      'keine sepa-überweisung',
+      'keine sepa-ueberwesiung',
+      'kein sepa',
+      'ohne sepa',
+    ];
+    let enthaelt_signalwort = 0;
+    for (const signalwort of sepa_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
+    }
+    for (const signalwort of sepa_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
+    }
+    resultingAd.beschreibung_enthaelt_sepa = enthaelt_signalwort;
+
     // prüfen auf Überweisung
     const ueberweisung_signalwoerter = [
       'überweisung',
       'ueberweisung',
-      'sepa-überweisung',
-      'sepa-ueberwesiung',
       'überweisen',
       'ueberweisen',
-      'sepa',
     ];
     const ueberweisung_signalwoerter_gegenteil = [
       'keine überweisung',
       'keine ueberweisung',
-      'keine sepa-überweisung',
-      'keine sepa-ueberwesiung',
       'nicht überweisen',
       'nicht ueberweisen',
-      'kein sepa',
     ];
-    let enthaelt_signalwort = 0;
+    enthaelt_signalwort = 0;
     for (const signalwort of ueberweisung_signalwoerter) {
       if (beschreibung.includes(signalwort)) {
         enthaelt_signalwort = 1;

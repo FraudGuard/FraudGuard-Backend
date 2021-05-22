@@ -47,6 +47,7 @@ export const adsSchema = new Schema<AdsSchema>(
 
     // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },
+    beschreibung_enthaelt_sepa: { type: Number },
     beschreibung_enthaelt_versand: { type: Number },
     beschreibung_enthaelt_neu: { type: Number },
     beschreibung_enthaelt_ovp: { type: Number },
