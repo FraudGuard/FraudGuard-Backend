@@ -7,6 +7,11 @@ const whitelist = [
   'https://awp-label5000.inncoded.com',
 ];
 
+/**
+ * Cross-Origin Resource Sharing ist ein Mechanismus, der Webbrowsern oder auch anderen Webclients Cross-Origin-Requests ermöglicht.
+ * Zugriffe dieser Art sind normalerweise durch die Same-Origin-Policy (SOP) untersagt.
+ * CORS ist ein Kompromiss zugunsten größerer Flexibilität im Internet unter Berücksichtigung möglichst hoher Sicherheitsmaßnahmen.
+ */
 export const corsHandler = cors({
   origin: function (origin, callback) {
     if (!origin || (origin && whitelist.indexOf(origin) !== -1)) {

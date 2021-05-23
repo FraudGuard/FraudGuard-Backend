@@ -3,12 +3,13 @@ import { release, type } from 'os';
 import { serverConfig } from './config/server';
 import { version } from '../../package.json';
 import ip from 'ip';
+const stripIndent = require('strip-indent');
 
 const { host, port } = serverConfig;
 
-// TODO ES5?
-const stripIndent = require('strip-indent');
-
+/**
+ * Funktion die bei Serverstart das Banner und die Versionen der genutzten Software druckt.
+ */
 export const printBanner = () => {
   const banner = `
 

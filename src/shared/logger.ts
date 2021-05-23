@@ -6,6 +6,9 @@ const pinoPrettifyOptions = {
   translateTime: true,
 };
 
+/**
+ * Initiierung des Loggers mit prettyPrint Optionen
+ */
 export const logger: Logger = pino({
   prettyPrint: {
     colorize: true,
@@ -14,6 +17,9 @@ export const logger: Logger = pino({
   },
 });
 
+/**
+ * Logger Profile für den Pino Logger
+ */
 export const loggerProfiles = new Map<string, LoggerOptions>([
   [
     'info',

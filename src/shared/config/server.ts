@@ -31,6 +31,9 @@ if (
   dev = true;
 }
 
+/**
+ * Exportiert die Umgebungsvariablen die aus der .env-Datei gelesen wurden.
+ */
 export const serverConfig: ServerConfig = {
   dev,
   production,

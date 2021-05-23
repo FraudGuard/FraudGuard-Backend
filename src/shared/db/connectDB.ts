@@ -22,6 +22,9 @@ const useCreateIndex = true;
 const useUnifiedTopology = true;
 
 // Callback: Start des Appservers, nachdem der DB-Server gestartet ist
+/**
+ * Funktion die eine Verbindung zur MongoDB mit den gegebenen Verbindungsoptionen erstellt.
+ */
 export const connectDB = async () => {
   logger.info(
     `URL for mongoose: ${url
@@ -62,9 +65,11 @@ export const connectDB = async () => {
   connection.on('error', () => logger.error('Faulty DB-Connection'));
 };
 
+/**
+ * Funktion die auf das Mongoose Objekt close ruft und bei einem Error den Server gewaltsam herunterfährt
+ */
 export const disconnectDB = () => {
   connection.close().catch(() => process.exit(0));
 };
 
-// TODO In Prod set to false
-export const autoIndex = true;
+export const autoIndex = false;
