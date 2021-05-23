@@ -1,5 +1,10 @@
 import { AdsSchema } from '../../api/models';
 
+/**
+ * Funktion zur Anwendung des Regelwerkes nach Pattern
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
+ * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück
+ */
 export const evaluatePattern = async (resultingAd: AdsSchema) => {
   resultingAd.pattern_score = 0;
   resultingAd.pattern_gesamtscore = 0;

@@ -2,6 +2,12 @@ import { AdsFromEbayModel as Ads } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
+/**
+ * Funktion welche eine zufällige Anzeige zum Labeln zurück gibt
+ * @param {req} _req - Express Request Objekt
+ * @param {res} res - Express Response Objekt
+ * @return {void}
+ */
 export const findOneForLabel = async (_req: Request, res: Response) => {
   try {
     Ads.findOne({ labeled: { $ne: true } })

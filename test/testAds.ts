@@ -208,7 +208,7 @@ export const Ad2 = new AdsFromEbayModel({
     'parent-id': { value: '17' },
     id: '44',
   },
-  'contact-name': { value: 'Aruba' },
+  'contact-name': { value: 'Aruba 3!' },
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
@@ -374,7 +374,7 @@ export const Ad3 = new AdsFromEbayModel({
     'parent-id': { value: '17' },
     id: '176',
   },
-  'contact-name': { value: 'Alexander Benz' },
+  'contact-name': { value: 'Alexander Benz GmbH' },
   'contact-name-initials': { value: 'AB' },
   description: {
     value: 'Test auf kopierte Beschreibungen und Anzeige',

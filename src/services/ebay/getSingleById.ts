@@ -2,6 +2,11 @@ import { AdsFromEbayModel } from '../../api/models';
 import { ebayHeaders } from './ebay';
 import axios, { AxiosRequestConfig } from 'axios';
 
+/**
+ * Funktion zum abrufen einer Anzeige
+ * @param {string} id - Id nach der gesucht werden soll
+ * @return {Promise<AdsFromEbaySchema>} Gibt eine Anzeige zurück
+ */
 export const getSingleById = (id: string): Promise<any> =>
   new Promise((resolve, reject) => {
     try {

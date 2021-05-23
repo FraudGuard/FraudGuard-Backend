@@ -3,6 +3,12 @@ import { getSingleById } from '../../../services/ebay';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
+/**
+ * Funktion welche die Anfrage vom Request Router entgegennimmt und die Analyse über die API anstößt
+ * @param {req} req - Express Request Objekt
+ * @param {res} res - Express Response Objekt
+ * @return {void}
+ */
 export const analyzeFromApi = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

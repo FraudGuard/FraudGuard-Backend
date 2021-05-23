@@ -10,7 +10,10 @@ import {
 import { logger } from '../../shared';
 import { evaluate } from '../evaluate';
 
-export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
+export const analyze = (
+  ad: AdsFromEbaySchema,
+  skipKonto = false,
+): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze');
 
@@ -23,7 +26,7 @@ export const analyze = (ad: AdsFromEbaySchema): Promise<AdsSchema> =>
 
     await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
-      analyzeKonto(ad, resultingAd),
+      (skipKonto ? null : analyzeKonto(ad, resultingAd)),
       analyzeMetadaten(ad, resultingAd),
       analyzePreis(ad, resultingAd),
       analyzeSonstiges(ad, resultingAd),

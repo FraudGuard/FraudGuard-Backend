@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: shared/db/connectDB.ts</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: shared/db/connectDB.ts</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import type { ConnectionOptions } from 'mongoose';
+import { connect, connection } from 'mongoose';
+import { dbConfig } from '../config';
+import { logger } from '../logger';
+
+// http://mongoosejs.com/docs/connections.html
+// https://github.com/mongodb/node-mongodb-native
+// https://docs.mongodb.com/manual/tutorial/configure-ssl-clients
+
+const { url } = dbConfig;
+
+// https://mongoosejs.com/docs/deprecations.html
+const useNewUrlParser = true;
+
+// findOneAndUpdate uses findOneAndUpdate() from MongoDB instead findAndModify()
+const useFindAndModify = false;
+
+// Mongoose uses createIndex() from MongoDB instead ensureIndex()
+const useCreateIndex = true;
+
+// MongoDB hat eine neue "Server Discover and Monitoring engine"
+const useUnifiedTopology = true;
+
+// Callback: Start des Appservers, nachdem der DB-Server gestartet ist
+/**
+ * Funktion die eine Verbindung zur MongoDB mit den gegebenen Verbindungsoptionen erstellt.
+ */
+export const connectDB = async () => {
+  logger.info(
+    `URL for mongoose: ${url
+      .replace(/\/\/.*:/u, '//USERNAME:@')
+      .replace(/:[^:]*@/u, ':***@')}`,
+  );
+
+  // Optional Settings, that are not usable in the connection-string
+  // http://mongoosejs.com/docs/connections.html
+  // http://mongodb.github.io/node-mongodb-native/3.5/api/MongoClient.html#.connect
+  // https://mongodb.github.io/node-mongodb-native/3.5/reference/connecting/connection-settings
+  const options: ConnectionOptions = {
+    useNewUrlParser,
+    useFindAndModify,
+    useCreateIndex,
+    useUnifiedTopology,
+  };
+
+  // http://mongoosejs.com/docs/api.html#index_Mongoose-createConnection
+  // http://mongoosejs.com/docs/api.html#connection_Connection-open
+  // http://mongoosejs.com/docs/connections.html
+  // https://docs.mongodb.com/manual/reference/connection-string/#connections-connection-options
+  // http://mongodb.github.io/node-mongodb-native/3.5/api/MongoClient.html
+  try {
+    await connect(url, options);
+  } catch (err: any) {
+    logger.error(`${JSON.stringify(err)}`);
+    logger.error(`ERROR while connecting to DB: ${err.message as string}\n`);
+    process.exit(0);
+  }
+
+  logger.info(`DB-Connection to ${connection.db.databaseName} is established`);
+
+  connection.on('disconnecting', () =>
+    logger.info('DB-Connection is being closed geschlossen...'),
+  );
+  connection.on('disconnected', () => logger.info('DB-Connection is closed.'));
+  connection.on('error', () => logger.error('Faulty DB-Connection'));
+};
+
+/**
+ * Funktion die auf das Mongoose Objekt close ruft und bei einem Error den Server gewaltsam herunterfährt
+ */
+export const disconnectDB = () => {
+  connection.close().catch(() => process.exit(0));
+};
+
+export const autoIndex = false;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun May 23 2021 23:39:12 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

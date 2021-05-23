@@ -2,6 +2,9 @@ import { Schema, model } from 'mongoose';
 import { AdsSchema } from './schemas/ads';
 
 // https://mongoosejs.com/docs/schematypes.html
+/**
+ *  Erstellt ein AdsSchema für mongoose
+ */
 export const adsSchema = new Schema<AdsSchema>(
   {
     _id: { type: Number },
@@ -30,6 +33,8 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_bewertung: { type: Number },
     konto_anzeigen_gleich: { type: Number },
     konto_name_laenge: { type: Number },
+    konto_name_enthaelt_gmbh: { type: Number },
+    konto_anzeigen_verschiedene_orte: { type: Number },
     konto_name_sonderzeichen_anzahl: { type: Number },
     konto_name_enthaelt_unueblich: { type: Number },
     konto_gewerblich: { type: Number },

@@ -3,6 +3,12 @@ import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
 
+/**
+ * Funktion zum Aktualisieren einer Anzeige
+ * @param {req} _req - Express Request Objekt
+ * @param {res} res - Express Response Objekt
+ * @return {void}
+ */
 export const updateAd = async (req: Request, res: Response) => {
   try {
     const { id, labeledDecision, toReview } = req.body;

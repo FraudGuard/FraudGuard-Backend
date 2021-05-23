@@ -1,5 +1,8 @@
 import { Document } from 'mongoose';
 
+/**
+ *  Erstellt ein AdsFromEbaySchema Interface
+ */
 export interface AdsFromEbaySchema extends Document {
   _id: string;
   labeled: boolean;
