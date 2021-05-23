@@ -1,6 +1,5 @@
 import { Document } from 'mongoose';
 
-
 /**
  *  Erstellt ein AdsSchema Interface
  */

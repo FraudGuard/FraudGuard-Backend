@@ -26,7 +26,7 @@ export const analyze = (
 
     await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
-      (skipKonto ? null : analyzeKonto(ad, resultingAd)),
+      skipKonto ? null : analyzeKonto(ad, resultingAd),
       analyzeMetadaten(ad, resultingAd),
       analyzePreis(ad, resultingAd),
       analyzeSonstiges(ad, resultingAd),

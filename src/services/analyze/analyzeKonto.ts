@@ -126,8 +126,8 @@ export const analyzeKonto = async (
 
   resultingAd.konto_anzeigen_gleich = 0;
   let betrugsrate_summe = 0;
-  const verschiedene_orte_anzeigen:any = {
-    [ad['ad-address']['zip-code'].value]: true
+  const verschiedene_orte_anzeigen: any = {
+    [ad['ad-address']['zip-code'].value]: true,
   };
   if (adsFromAccount) {
     for (const adFromAccount of adsFromAccount) {
@@ -143,7 +143,9 @@ export const analyzeKonto = async (
       }
 
       if (adFromAccount['ad-address']['zip-code'].value) {
-        verschiedene_orte_anzeigen[adFromAccount['ad-address']['zip-code'].value] = true;
+        verschiedene_orte_anzeigen[
+          adFromAccount['ad-address']['zip-code'].value
+        ] = true;
       }
 
       const analyzeResult = await analyze(adFromAccount, true);
@@ -157,7 +159,8 @@ export const analyzeKonto = async (
       betrugsrate_summe / resultingAd.konto_anzeigen_anzahl;
 
     // eintragen der Anzahl der verschiedenen Orte
-    resultingAd.konto_anzeigen_verschiedene_orte = Object.keys(verschiedene_orte_anzeigen).length - 1
+    resultingAd.konto_anzeigen_verschiedene_orte =
+      Object.keys(verschiedene_orte_anzeigen).length - 1;
   }
 
   return resultingAd;
