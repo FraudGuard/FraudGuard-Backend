@@ -2,7 +2,7 @@ import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
 /**
- * Funktion welche die Anzeige auf Eigenschaften vom Typ Titel prüft.
+ * Funktion, welche die Anzeige auf Eigenschaften vom Typ Titel prüft.
  * Sie beinhaltet die Prüfung folgender Merkmale:
  * Neu, Ovp, verschweißt, ungeöffnet, Zeichen
  * sowie folgender Antipatterns:

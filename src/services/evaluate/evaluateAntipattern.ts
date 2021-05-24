@@ -1,9 +1,11 @@
 import { AdsSchema } from '../../api/models';
 
 /**
- * Funktion zur Anwendung des Regelwerkes nach Antipattern
- * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
- * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück
+ * Funktion zur Anwendung des Regelwerkes nach Antipattern.
+ * Die einzelnen Scores wurden zunächst subjektiv erstellt und zu einem gesammten Antipattern Score zusammenaddiert.
+ * Der Wertebereich der einzelnen Scores liegt zwischen 1 und 5. Der Wertebereich wurde frei gewählt.
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird, um die Referenzen setzen zu können.
+ * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
 export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   resultingAd.antipattern_score = 0;

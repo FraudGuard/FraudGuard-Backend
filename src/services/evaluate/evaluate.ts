@@ -2,9 +2,11 @@ import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 import { evaluateAntipattern, evaluatePattern } from './';
 /**
- * Funktion zur Berechnung des Scores einer Anzeige
- * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
- * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück
+ * Funktion zur Berechnung des Scores einer Anzeige.
+ * Dabei werden die Scores (Patternscore und Antipatternscore) miteinander verrechnet und normiert.
+ * Die Normierung ist wichtig, um bei der Ergänzung oder Entfernung von Merkmalen im Wertebereich von -100 bis 100 zu liegen.
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können.
+ * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
 export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise(async (resolve, _reject) => {
