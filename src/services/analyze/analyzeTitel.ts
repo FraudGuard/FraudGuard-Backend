@@ -1,6 +1,16 @@
 import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
+/**
+ * Funktion welche die Anzeige auf Eigenschaften vom Typ Titel prüft.
+ * Sie beinhaltet die Prüfung folgender Merkmale:
+ * Neu, Ovp, verschweißt, ungeöffnet, Zeichen
+ * sowie folgender Antipatterns:
+ * gebraucht, tausche, suche, Kilo, Sammlungsauflösung 
+ * @param {ad} ad - Anzeige welche von der eBay-Kleinanzeigen Api kommt.
+ * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige.
+ * @return {Promise<AdsSchema>} Gibt das resolved resultingAd zurück.
+ */
 export const analyzeTitel = (
   ad: any,
   resultingAd: AdsSchema,
