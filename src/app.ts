@@ -30,16 +30,16 @@ export const PATHS = {
 };
 
 /**
- * Create App Object with pino logger.
- * @param {IExpress} app Express App-Object.
- * @param {Logger} logger
+ *  Erstellt eine Express application. Die Funtkion express() ist eine top-level Funktion welche vom Express Modul exportiert wird.
+ * @param {IExpress} app Express App Objekt
+ * @param {Logger} logger Pino Logger Objekt
  */
 class App {
   readonly app: IExpress = express();
   logger!: Logger;
 
   /**
-   * Constructor for App class
+   * Konstruktor für die Appklasse.
    */
   constructor() {
     this.config();
@@ -47,7 +47,7 @@ class App {
   }
 
   /**
-   * initializes settings/middleware for App-Object.
+   * Initialisiert settings/middleware für das App-Object.
    */
   private config() {
     // Logging
@@ -68,7 +68,7 @@ class App {
   }
 
   /**
-   * loads routes for the paths.
+   * Initialisiert die Routes (Pfade) für das App-Object.
    */
   private routes() {
     this.app.use(PATHS.ads, adsRouter);

@@ -14,6 +14,9 @@ const pass = DB_PASS ?? 'p';
 const url = `mongodb+srv://${user}:${pass}@${host}/${dbName}?retryWrites=true&w=majority`;
 const adminUrl = `mongodb://${user}:${pass}@${host}/admin`;
 
+/**
+ * Exportiert die Umgebungsvariablen die aus der .env-Datei gelesen wurden.
+ */
 export const dbConfig = {
   url,
   adminUrl,

@@ -17,16 +17,22 @@ if (result.error !== undefined) {
 
 const { port } = serverConfig;
 
+/**
+ * Trennt die Verbindung der MongoDB und beendet den Serverprozess.
+ */
 const shutdown = async () => {
   logger.info('Server is being shutdown');
   disconnectDB();
   process.exit(0);
 };
 
+/**
+ * Startet den Server auf den gegebenen Port in der .env-Datei und injeziert ein Express app-Objekt durch Construktor Injection.
+ * Legt fest dass der Server durch einen 'SIGNINT' Event die shutdown Funktion aufruft.
+ */
 const startServer = () => {
   const server: Server = createServer(app);
   server.listen(port, printBanner);
-  logger.info('Hallo leute');
 
   // <CTRL>C
   process.on('SIGINT', shutdown);
@@ -36,6 +42,9 @@ const startServer = () => {
   });
 };
 
+/**
+ * IIFE (Immediately Invoked Function Expression), die ausgeführt wird, sobald sie definiert wird.
+ */
 (async () => {
   try {
     startServer();

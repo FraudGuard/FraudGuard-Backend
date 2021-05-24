@@ -155,6 +155,7 @@ describe('Analyze Ads', () => {
     expect(result1.konto_follower_anzahl).to.be.equal(-1);
     expect(result1.konto_freundlichkeit).to.be.equal(1);
     expect(result1.konto_name_enthaelt_unueblich).to.be.equal(0);
+    expect(result1.konto_name_enthaelt_gmbh).to.be.equal(0);
     expect(result1.konto_name_laenge).to.be.equal(14);
     expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result1.konto_name_sonderzeichen_anzahl).to.be.equal(0);
@@ -171,7 +172,8 @@ describe('Analyze Ads', () => {
     expect(result2.konto_follower_anzahl).to.be.equal(-1);
     expect(result2.konto_freundlichkeit).to.be.equal(1);
     expect(result2.konto_name_enthaelt_unueblich).to.be.equal(1);
-    expect(result2.konto_name_laenge).to.be.equal(5);
+    expect(result2.konto_name_laenge).to.be.equal(8);
+    expect(result2.konto_name_enthaelt_gmbh).to.be.equal(0);
     expect(result2.ap_konto_name_natuerlich).to.be.equal(0);
     expect(result2.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result2.konto_privat).to.be.equal(1);
@@ -187,7 +189,8 @@ describe('Analyze Ads', () => {
     expect(result3.konto_follower_anzahl).to.be.equal(-1);
     expect(result3.konto_freundlichkeit).to.be.equal(1);
     expect(result3.konto_name_enthaelt_unueblich).to.be.equal(0);
-    expect(result3.konto_name_laenge).to.be.equal(14);
+    expect(result3.konto_name_laenge).to.be.equal(19);
+    expect(result3.konto_name_enthaelt_gmbh).to.be.equal(1);
     expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result3.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result3.konto_privat).to.be.equal(1);
@@ -278,7 +281,7 @@ describe('Analyze Ads', () => {
   test('Evaluate', async () => {
     // Ad 1
     const result1 = await analyze(Ad1);
-    expect(result1.fraud_score).to.be.equal(-16.76);
+    expect(result1.fraud_score).to.be.equal(-19.33);
     expect(result1.pattern_anzahl_gesamt).to.be.equal(24);
     expect(result1.pattern_anzahl_zutreffend).to.be.equal(1);
     expect(result1.pattern_score).to.be.equal(2);

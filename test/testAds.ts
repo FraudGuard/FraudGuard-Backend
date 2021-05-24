@@ -208,11 +208,11 @@ export const Ad2 = new AdsFromEbayModel({
     'parent-id': { value: '17' },
     id: '44',
   },
-  'contact-name': { value: 'Aruba' },
+  'contact-name': { value: 'Aruba 3!' },
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'kein sepa .Mit Versiegelung aber nicht neu, daher hier zum Verkauf :<br />Originalverpackter LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br /> Überweisung und nicht bar Bezahlung.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden whatsapp Nicht nur die Elite des Imperiums, sondern auch gelegentlich ein Spezialkommando der Rebellen nutzt das elegante Imperial Shuttle der Lamdba-Klasse , um durch die Galaxie zu reisen. Zum allerersten Mal gibt es dieses berühmte Star Wars Raumschiff nun als LEGO Modell im Minifiguren-Maßstab. Das Imperial Shuttle besitzt authentische Details wie zum Beispiel die rotierenden Doppel-Laserkanonen und das Cockpit mit vier Sitzen. Zudem begeistert dieses ultimative Sammlermodell durch Besonderheiten wie das Kabinendach zum Öffnen, das einklappbare Fahrwerk, einen Präsentationsständer zum Aufstellen des Modells im Flug- oder Landemodus, eine Sammelplakette sowie Flügel, die über einen Zahnradmechanismus bewegt werden können. Das Modell ist auf dem Präsentationsständer mit ausgeklappten Flügeln 71 cm hoch und 57 cm breit. Enthält 5 Minifiguren: Darth Vader, imperialen Piloten, imperialen Offizier, Stormtrooper und Luke Skywalker.  Das LEGO 10212 Imperial Shuttle - UCS ist einer der vielen Sätze der LEGO Star Wars Thema. Eigenschaften Das Set enthält 5 Minifiguren: Darth Vader, Shuttle-Piloten, imperialen Offizier, *Stormtrooper und Luke Skywalker. Mit rotierenden Doppel-Laserkanonen! Cockpit kann geöffnet werden, um die Minifiguren im Inneren zu platzieren Mithilfe von Zahnrädern können die Flügel nach oben zusammengefaltet oder ausgeklappt werden Modell kann auf dem Fahrwerk oder mit abgenommenem Fahrwerk (Flugmodus) ausgestellt werden! Enthält Präsentationsständer, Sammelplakette und Namensschild! Modell ist auf Präsentationsständer und mit ausgeklappten Flügeln 71 cm hoch und 57 cm breit  Das LEGO-Set gehört der LEGO Star Wars Thema. Das LEGO 10212 Imperial Shuttle - UCS ist im Jahr 2010 veröffentlicht. Das Set enthält 2482 Teile. Das Set kommt mit 5 Minifiguren und 4 Anweisungen. Das Set ist für Kinder geeignet im Alter von 16 Jahr.',
+      'kein sepa .Mit Versiegelung aber nicht neu, daher hier zum Verkauf :<br />Originalverpackter LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br /> Überweisung und nicht bar Bezahlung.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden whatsapp Nicht nur die Elite des Imperiums, sondern auch gelegentlich ein Spezialkommando der Rebellen nutzt das elegante Imperial Shuttle der Lamdba-Klasse , um durch die Galaxie zu reisen. Zum allerersten Mal gibt es dieses berühmte Star Wars Raumschiff nun als LEGO Modell im Minifiguren-Maßstab. Tauchen Sie mit der LEGO® Polizeistation (10278) in eine Welt voller Gaunereien, Ermittlungserfolge und Donuts ein',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
@@ -374,7 +374,7 @@ export const Ad3 = new AdsFromEbayModel({
     'parent-id': { value: '17' },
     id: '176',
   },
-  'contact-name': { value: 'Alexander Benz' },
+  'contact-name': { value: 'Alexander Benz GmbH' },
   'contact-name-initials': { value: 'AB' },
   description: {
     value: 'Test auf kopierte Beschreibungen und Anzeige',

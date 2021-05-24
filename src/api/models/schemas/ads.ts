@@ -1,5 +1,8 @@
 import { Document } from 'mongoose';
 
+/**
+ *  Erstellt ein AdsSchema Interface
+ */
 export interface AdsSchema extends Document {
   _id: string;
   lego: number;
@@ -29,6 +32,8 @@ export interface AdsSchema extends Document {
   konto_bewertung: number;
   konto_anzeigen_gleich: number;
   konto_name_laenge: number;
+  konto_name_enthaelt_gmbh: number;
+  konto_anzeigen_verschiedene_orte: number;
   konto_name_sonderzeichen_anzahl: number;
   konto_name_enthaelt_unueblich: number;
   konto_gewerblich: number;

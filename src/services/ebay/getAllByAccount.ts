@@ -3,6 +3,11 @@ import { ebayHeaders } from './ebay';
 import axios, { AxiosRequestConfig } from 'axios';
 import { logger } from '../../shared';
 
+/**
+ * Funktion zum abrufen aller Anzeigen eines Accounts
+ * @param {string} accountId - Account Id nach dem gesucht werden soll
+ * @return {Promise<AdsFromEbaySchema[]>} Gibt ein Array aus Anzeigen zurück
+ */
 export const getAllByAccount = (
   accountId: string,
 ): Promise<AdsFromEbaySchema[]> =>

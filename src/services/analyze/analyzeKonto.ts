@@ -4,7 +4,14 @@ import { getAllByAccount } from '../ebay/getAllByAccount';
 import firstNames from '../../assets/data/firstNames.json';
 import countries from '../../assets/data/world.json';
 import cities from '../../assets/data/cities.json';
+import { analyze } from './analyze';
 
+/**
+ * Funktion welche die Anzeige auf Eigenschaften vom Typ Konto prüft
+ * @param {ad} ad - Anzeige welche von der eBay-Kleinanzeigen Api kommt
+ * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige
+ * @return {Promise<AdsSchema>} Returned das resolved resultingAd
+ */
 export const analyzeKonto = async (
   ad: AdsFromEbaySchema,
   resultingAd: AdsSchema,
@@ -58,22 +65,14 @@ export const analyzeKonto = async (
 
   // Länge des Kontonamens
   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length ?? -2;
-  // langform
-  // if(ad && ad['contact-name'] && ad['contact-name']?.value && ad['contact-name']?.value?.length){
-  //   resultingAd.konto_name_laenge = ad['contact-name']?.value?.length;
-  // }else{
-  //   resultingAd.konto_name_laenge = undefined
-  // }
+
+  // Kontoname enthält GmbH
+  resultingAd.konto_name_enthaelt_gmbh =
+    ad['contact-name']?.value?.toLowerCase()?.indexOf('gmbh') > -1 ? 1 : 0;
 
   // prüfen ob Konto privat ist
   resultingAd.konto_privat =
     ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
-  // langform
-  // if (ad['seller-account-type'].value === 'PRIVATE') {
-  //   resultingAd.konto_privat = 1
-  // } else {
-  //   resultingAd.konto_privat = 0
-  // }
 
   // prüfen ob Sonderzeichen im Namen enthalten sind
   const foundSpecialChars = ad['contact-name'].value.match(
@@ -90,7 +89,7 @@ export const analyzeKonto = async (
   resultingAd.ap_konto_name_natuerlich = 0;
   const str1 = ad['contact-name'].value.toLowerCase();
   for (const f of firstNames) {
-    if (str1.includes(f)) {
+    if (str1.includes(f.toLowerCase())) {
       resultingAd.ap_konto_name_natuerlich = 1;
     }
   }
@@ -126,6 +125,10 @@ export const analyzeKonto = async (
       : 0;
 
   resultingAd.konto_anzeigen_gleich = 0;
+  let betrugsrate_summe = 0;
+  const verschiedene_orte_anzeigen: any = {
+    [ad['ad-address']['zip-code'].value]: true,
+  };
   if (adsFromAccount) {
     for (const adFromAccount of adsFromAccount) {
       if (
@@ -138,10 +141,27 @@ export const analyzeKonto = async (
       ) {
         ++resultingAd.konto_anzeigen_gleich;
       }
+
+      if (adFromAccount['ad-address']['zip-code'].value) {
+        verschiedene_orte_anzeigen[
+          adFromAccount['ad-address']['zip-code'].value
+        ] = true;
+      }
+
+      const analyzeResult = await analyze(adFromAccount, true);
+      if (analyzeResult) {
+        betrugsrate_summe += analyzeResult.fraud_score;
+      }
     }
+
+    // berechnen der durchschnittlichen Betrugsrate
+    resultingAd.konto_anzeigen_betrugsrate =
+      betrugsrate_summe / resultingAd.konto_anzeigen_anzahl;
+
+    // eintragen der Anzahl der verschiedenen Orte
+    resultingAd.konto_anzeigen_verschiedene_orte =
+      Object.keys(verschiedene_orte_anzeigen).length - 1;
   }
-  // Todo
-  // resultingAd.konto_anzeigen_betrugsrate = ad.
 
   return resultingAd;
 };

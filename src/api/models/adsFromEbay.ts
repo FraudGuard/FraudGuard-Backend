@@ -2,6 +2,9 @@ import { Schema, model } from 'mongoose';
 import { AdsFromEbaySchema } from './schemas/adsFromEbay';
 
 // https://mongoosejs.com/docs/schematypes.html
+/**
+ *  Erstellt ein AdsFromEbaySchema für mongoose
+ */
 export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(
   {
     _id: { type: String },

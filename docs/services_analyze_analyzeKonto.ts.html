@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/analyze/analyzeKonto.ts</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/analyze/analyzeKonto.ts</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { AdsFromEbaySchema, AdsSchema } from '../../api/models';
+import { logger } from '../../shared';
+import { getAllByAccount } from '../ebay/getAllByAccount';
+import firstNames from '../../assets/data/firstNames.json';
+import countries from '../../assets/data/world.json';
+import cities from '../../assets/data/cities.json';
+import { analyze } from './analyze';
+
+/**
+ * Funktion welche die Anzeige auf Eigenschaften vom Typ Konto prüft
+ * @param {ad} ad - Anzeige welche von der eBay-Kleinanzeigen Api kommt
+ * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige
+ * @return {Promise&lt;AdsSchema>} Returned das resolved resultingAd
+ */
+export const analyzeKonto = async (
+  ad: AdsFromEbaySchema,
+  resultingAd: AdsSchema,
+) => {
+  logger.info('analyze Konto');
+  // console.log(ad['user-id'])
+  const adsFromAccount = await getAllByAccount(ad['user-id']?.value).catch(() =>
+    logger.info('noAccountFound'),
+  );
+
+  const badgesMap: any = {};
+  ad.userBadges[0]?.badges?.forEach((x) => (badgesMap[x.name] = x));
+
+  // Anzahl der Kontobewertungen
+  resultingAd.konto_bewertungen_anzahl = badgesMap?.rating?.level
+    ? Number.parseInt(badgesMap.rating.level)
+    : -1;
+
+  // Anzahl der Follower
+  resultingAd.konto_follower_anzahl =
+    badgesMap?.followers?.value !== null &amp;&amp;
+    badgesMap?.followers?.value !== undefined
+      ? Number.parseInt(badgesMap.followers.value)
+      : -1;
+
+  // Konto Anwortzeit in Minuten
+  resultingAd.konto_antwortzeit =
+    badgesMap?.replySpeed?.value !== null &amp;&amp;
+    badgesMap?.replySpeed?.value !== undefined
+      ? Number.parseInt(badgesMap.replySpeed.value)
+      : -1;
+
+  // Konto Anwortrate
+  resultingAd.konto_antwortrate =
+    badgesMap?.replyRate?.value !== null &amp;&amp;
+    badgesMap?.replyRate?.value !== undefined
+      ? Number.parseInt(badgesMap.replyRate.value)
+      : -1;
+
+  // Konto Freundlichkeitsrate in Leveln
+  resultingAd.konto_freundlichkeit =
+    badgesMap?.friendliness?.level !== null &amp;&amp;
+    badgesMap?.friendliness?.level !== undefined
+      ? Number.parseInt(badgesMap.friendliness.level)
+      : -1;
+
+  // Konto Bewertung
+  resultingAd.konto_bewertung = ad['user-rating']?.averageRating?.value
+    ? Number.parseFloat(ad['user-rating']?.averageRating?.value)
+    : -1;
+
+  // Länge des Kontonamens
+  resultingAd.konto_name_laenge = ad['contact-name']?.value?.length ?? -2;
+
+  // Kontoname enthält GmbH
+  resultingAd.konto_name_enthaelt_gmbh =
+    ad['contact-name']?.value?.toLowerCase()?.indexOf('gmbh') > -1 ? 1 : 0;
+
+  // prüfen ob Konto privat ist
+  resultingAd.konto_privat =
+    ad['seller-account-type'].value === 'PRIVATE' ? 1 : 0;
+
+  // prüfen ob Sonderzeichen im Namen enthalten sind
+  const foundSpecialChars = ad['contact-name'].value.match(
+    /[@#$%^&amp;*()_+\-=\[\]{};':"\\|,&lt;>\/?]/g,
+  );
+  resultingAd.konto_name_sonderzeichen_anzahl = foundSpecialChars?.length ?? 0;
+
+  // Gibt die Millisekunden seit dem 1. Januar 1970 zurück
+  resultingAd.konto_erstellt_zeit = new Date(
+    ad['user-since-date-time'].value,
+  ).getTime();
+
+  // prüfen ob Kontoname natürlich
+  resultingAd.ap_konto_name_natuerlich = 0;
+  const str1 = ad['contact-name'].value.toLowerCase();
+  for (const f of firstNames) {
+    if (str1.includes(f.toLowerCase())) {
+      resultingAd.ap_konto_name_natuerlich = 1;
+    }
+  }
+
+  // prüfen ob Kontoname ein unüblicher Name ist
+  const zahlen = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  resultingAd.konto_name_enthaelt_unueblich = 0;
+  const str = ad['contact-name'].value.toLowerCase();
+  for (const z of zahlen) {
+    if (str.includes(z)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
+    }
+  }
+  for (const c of countries) {
+    if (str.includes(c.name)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
+    }
+  }
+  for (const s of cities) {
+    if (str.includes(s.name)) {
+      resultingAd.konto_name_enthaelt_unueblich = 1;
+    }
+  }
+
+  resultingAd.konto_anzeigen_anzahl = adsFromAccount
+    ? adsFromAccount.length
+    : 0;
+  resultingAd.konto_anzeigen_ueber_100 =
+    adsFromAccount instanceof Array
+      ? adsFromAccount?.filter(
+          (x) => Number.parseFloat(x.price?.amount?.value) > 100,
+        ).length ?? 0
+      : 0;
+
+  resultingAd.konto_anzeigen_gleich = 0;
+  let betrugsrate_summe = 0;
+  const verschiedene_orte_anzeigen:any = {
+    [ad['ad-address']['zip-code'].value]: true
+  };
+  if (adsFromAccount) {
+    for (const adFromAccount of adsFromAccount) {
+      if (
+        adFromAccount.title.value.includes(
+          ad.title.value.toLocaleLowerCase(),
+        ) &amp;&amp;
+        adFromAccount.description.value.includes(
+          ad.description.value.toLocaleLowerCase(),
+        )
+      ) {
+        ++resultingAd.konto_anzeigen_gleich;
+      }
+
+      if (adFromAccount['ad-address']['zip-code'].value) {
+        verschiedene_orte_anzeigen[adFromAccount['ad-address']['zip-code'].value] = true;
+      }
+
+      const analyzeResult = await analyze(adFromAccount, true);
+      if (analyzeResult) {
+        betrugsrate_summe += analyzeResult.fraud_score;
+      }
+    }
+
+    // berechnen der durchschnittlichen Betrugsrate
+    resultingAd.konto_anzeigen_betrugsrate =
+      betrugsrate_summe / resultingAd.konto_anzeigen_anzahl;
+
+    // eintragen der Anzahl der verschiedenen Orte
+    resultingAd.konto_anzeigen_verschiedene_orte = Object.keys(verschiedene_orte_anzeigen).length - 1
+  }
+
+  return resultingAd;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun May 23 2021 23:39:12 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

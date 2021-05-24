@@ -1,7 +1,11 @@
 import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 import { evaluateAntipattern, evaluatePattern } from './';
-
+/**
+ * Funktion zur Berechnung des Scores einer Anzeige
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
+ * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück
+ */
 export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise(async (resolve, _reject) => {
     logger.info('start evaluate');

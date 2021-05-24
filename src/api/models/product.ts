@@ -2,6 +2,9 @@ import { Schema, model } from 'mongoose';
 import { ProductSchema } from './schemas/product';
 
 // https://mongoosejs.com/docs/schematypes.html
+/**
+ *  Erstellt ein ProductSchema für mongoose
+ */
 export const productSchema = new Schema<ProductSchema>(
   {
     _id: { type: Number },

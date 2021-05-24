@@ -3,6 +3,12 @@ import { findByIdEbay } from '../../../services/mongo';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 
+/**
+ * Funktion welche die Anfrage vom Request Router entgegennimmt und die Analyse aus der Datenbank anstößt
+ * @param {req} req - Express Request Objekt
+ * @param {res} res - Express Response Objekt
+ * @return {void}
+ */
 export const analyzeFromDb = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
