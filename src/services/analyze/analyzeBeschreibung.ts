@@ -214,7 +214,6 @@ export const analyzeBeschreibung = (
             
             if(beschreibung.includes(satz.toLowerCase().trim()) && satz.length > 10) {
               enthaelt_signalwort = 1;
-              logger.info("enthält unternehmensbeschreibung")
             }
             
           }
