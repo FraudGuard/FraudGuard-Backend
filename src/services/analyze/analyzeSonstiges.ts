@@ -48,19 +48,27 @@ export const analyzeSonstiges = (
     const lego = 'lego';
     const dyson = 'dyson';
 
-    resultingAd.sonstiges_kategorie_unpassend = 1;
+    resultingAd.sonstiges_kategorie_unpassend = 0;
 
     // Abgleich bei Lego Anzeigen auf denkbare Kategorien
     if (ad_title.includes(lego) || ad_beschreibung.includes(lego)) {
+      resultingAd.sonstiges_kategorie_unpassend = 1;
       for (const k of kategorienLego) {
-        if (k == ad_kategorie) resultingAd.sonstiges_kategorie_unpassend = 0;
+        if (k == ad_kategorie) {
+          resultingAd.sonstiges_kategorie_unpassend = 0;
+          break;
+        }
       }
     }
 
     // Abgleich bei Dyson Anzeigen auf denkbare Kategorien
     if (ad_title.includes(dyson) || ad_beschreibung.includes(dyson)) {
+      resultingAd.sonstiges_kategorie_unpassend = 1;
       for (const k of kategorienDyson) {
-        if (k == ad_kategorie) resultingAd.sonstiges_kategorie_unpassend = 0;
+        if (k == ad_kategorie) {
+          resultingAd.sonstiges_kategorie_unpassend = 0;
+          break;
+        }
       }
     }
 
