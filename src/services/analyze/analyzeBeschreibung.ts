@@ -210,9 +210,7 @@ export const analyzeBeschreibung = (
     for (const produktbeschreibung of produktbeschreibungen) {
       if(produktbeschreibung.beschreibung.length > 1) {
        const saetze = produktbeschreibung.beschreibung.split('.');
-       logger.info(saetze);
-       logger.info(beschreibung);
-          for (const satz in  saetze) {
+          for (const satz of saetze) {
             
             if(beschreibung.includes(satz.toLowerCase().trim()) && satz.length > 10) {
               enthaelt_signalwort = 1;
