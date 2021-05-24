@@ -208,15 +208,21 @@ export const analyzeBeschreibung = (
       { beschreibung: 1 },
     );
     for (const produktbeschreibung of produktbeschreibungen) {
-      if (
-        beschreibung.includes(
-          produktbeschreibung.beschreibung.toLocaleLowerCase(),
-        ) &&
-        produktbeschreibung.beschreibung.length > 1
-      ) {
-        enthaelt_signalwort = 1;
+      if(produktbeschreibung.beschreibung.length > 1) {
+       const saetze = produktbeschreibung.beschreibung.split('.');
+       logger.info(saetze);
+       logger.info(beschreibung);
+          for (const satz in  saetze) {
+            
+            if(beschreibung.includes(satz.toLowerCase().trim()) && satz.length > 10) {
+              enthaelt_signalwort = 1;
+              logger.info("enthält unternehmensbeschreibung")
+            }
+            
+          }
+        }
       }
-    }
+      
     resultingAd.beschreibung_ist_kopiert_unternehmen = enthaelt_signalwort;
 
     // Antipattern
