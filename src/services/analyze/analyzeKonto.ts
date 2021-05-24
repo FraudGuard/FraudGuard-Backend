@@ -114,10 +114,9 @@ export const analyzeKonto = async (
     }
   }
   if (foundSpecialChars) {
-  resultingAd.konto_name_enthaelt_unueblich = 1;
+    resultingAd.konto_name_enthaelt_unueblich = 1;
   }
 
-  
   resultingAd.konto_anzeigen_anzahl = adsFromAccount
     ? adsFromAccount.length
     : 0;
