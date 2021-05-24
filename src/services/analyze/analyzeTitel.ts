@@ -6,7 +6,7 @@ import { logger } from '../../shared';
  * Sie beinhaltet die Prüfung folgender Merkmale:
  * Neu, Ovp, verschweißt, ungeöffnet, Zeichen
  * sowie folgender Antipatterns:
- * gebraucht, tausche, suche, Kilo, Sammlungsauflösung 
+ * gebraucht, tausche, suche, Kilo, Sammlungsauflösung
  * @param {ad} ad - Anzeige welche von der eBay-Kleinanzeigen Api kommt.
  * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige.
  * @return {Promise<AdsSchema>} Gibt das resolved resultingAd zurück.
