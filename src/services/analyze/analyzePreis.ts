@@ -1,6 +1,13 @@
 import { AdsSchema, ProductModel } from '../../api/models';
 import { logger } from '../../shared';
 
+/**
+ * Funktion welche die Anzeige auf Eigenschaften vom Typ Konto prüft
+ * @param {ad} ad - Anzeige welche von der eBay-Kleinanzeigen Api kommt
+ * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige
+ * @return {Promise<AdsSchema>} Returned das resolved resultingAd
+ */
+
 export const analyzePreis = (
   ad: any,
   resultingAd: AdsSchema,
