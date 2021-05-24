@@ -219,7 +219,8 @@ export const analyzeBeschreibung = (
           }
         }
       }
-      
+    
+
     resultingAd.beschreibung_ist_kopiert_unternehmen = enthaelt_signalwort;
 
     // Antipattern

@@ -37,6 +37,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
 
   // Beschreibung
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 5);
+
   addToScore(
     resultingAd,
     resultingAd.beschreibung_enthaelt_ueberweisung === 1,
