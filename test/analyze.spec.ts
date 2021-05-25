@@ -150,6 +150,7 @@ describe('Analyze Ads', () => {
     // expect(result1.konto_anzeigen_betrugsrate).to.be.equal(0);
     // expect(result1.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result1.konto_anzeigen_ueber_100).to.be.equal(0);
+    // expect(result1.konto_anzeigen_verschiedene_orte).to.be.equal(0);
     expect(result1.konto_bewertung).to.be.equal(0.875);
     expect(result1.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result1.konto_follower_anzahl).to.be.equal(-1);
@@ -167,6 +168,7 @@ describe('Analyze Ads', () => {
     // expect(result2.konto_anzeigen_betrugsrate).to.be.equal(0);
     // expect(result2.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result2.konto_anzeigen_ueber_100).to.be.equal(0);
+    // expect(result2.konto_anzeigen_verschiedene_orte).to.be.equal(0);
     expect(result2.konto_bewertung).to.be.equal(0.875);
     expect(result2.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result2.konto_follower_anzahl).to.be.equal(-1);
@@ -184,6 +186,7 @@ describe('Analyze Ads', () => {
     // expect(result3.konto_anzeigen_betrugsrate).to.be.equal(0);
     // expect(result3.konto_anzeigen_gleich).to.be.equal(0);
     // expect(result3.konto_anzeigen_ueber_100).to.be.equal(0);
+    // expect(result1.konto_anzeigen_verschiedene_orte).to.be.equal(0);
     expect(result3.konto_bewertung).to.be.equal(0.875);
     expect(result3.konto_erstellt_zeit).to.be.equal(1478358074000);
     expect(result3.konto_follower_anzahl).to.be.equal(-1);
