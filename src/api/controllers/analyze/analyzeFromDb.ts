@@ -23,6 +23,8 @@ export const analyzeFromDb = async (req: Request, res: Response) => {
 
       analyze(ad)
         .then((result) => {
+          result._id = id;
+          result.save();
           res.status(HttpStatus.OK).json(result);
         })
         .catch((error) => {
