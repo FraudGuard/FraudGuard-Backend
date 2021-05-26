@@ -38,9 +38,6 @@ export const analyze = (
     });
 
     logger.info('all analyze done');
-    // Todo Regelwerk läuft durch
-
-    // return resolve(resultingAd)
 
     const result = await evaluate(resultingAd).catch((error) => reject(error));
 

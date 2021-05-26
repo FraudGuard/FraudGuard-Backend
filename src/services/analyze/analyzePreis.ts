@@ -46,7 +46,7 @@ export const analyzePreis = (
 
     // Prüfen der Währung in EUR
     resultingAd.preis_waehrung_eur =
-      ad.price['currency-iso-code'].value.value == 'EUR' ? 1 : 0;
+      ad.price['currency-iso-code']?.value?.value == 'EUR' ? 1 : 0;
 
     // Prüfen, ob VB vorliegt
     resultingAd.preis_typ_vb =

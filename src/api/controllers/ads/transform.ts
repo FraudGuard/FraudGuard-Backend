@@ -12,9 +12,6 @@ import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
 export const transform = async (_req: Request, res: Response) => {
   try {
     logger.info('transform');
-    // const skip = 17964
-
-    // }
     run(0);
     res.status(HttpStatus.OK).json({ result: true });
   } catch (err) {
