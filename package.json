@@ -72,6 +72,7 @@
     "pino-pretty": "^4.5.0",
     "release": "^6.3.0",
     "strip-indent": "^3.0.0",
+    "swagger-ui-express": "^4.1.6",
     "type": "^2.3.0"
   },
   "devDependencies": {

@@ -1,3 +1,4 @@
+import { findById } from './../../../services/mongo/findByIdEbay';
 import { analyze } from '../../../services/analyze';
 import { getSingleById } from '../../../services/ebay';
 import { HttpStatus, logger } from '../../../shared';
@@ -12,26 +13,33 @@ import { Request, Response } from 'express';
 export const analyzeFromApi = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    getSingleById(id)
-      .then((ad) => {
-        analyze(ad)
-          .then((result) => {
-            result._id = id;
-            result.save();
-            res.status(HttpStatus.OK).json(result);
-          })
-          .catch((error) => {
-            res.status(HttpStatus.NOT_FOUND).json({
-              msg: 'Internal Error',
-              error,
+
+    const result = await findById(id);
+
+    if (result) {
+      res.status(HttpStatus.OK).json(result);
+    } else {
+      getSingleById(id)
+        .then((ad) => {
+          analyze(ad)
+            .then((result) => {
+              result._id = id;
+              result.save();
+              res.status(HttpStatus.OK).json(result);
+            })
+            .catch((error) => {
+              res.status(HttpStatus.NOT_FOUND).json({
+                msg: 'Internal Error',
+                error,
+              });
             });
+        })
+        .catch(() => {
+          res.status(HttpStatus.NOT_FOUND).json({
+            msg: 'Ad not found',
           });
-      })
-      .catch(() => {
-        res.status(HttpStatus.NOT_FOUND).json({
-          msg: 'Ad not found',
         });
-      });
+    }
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
