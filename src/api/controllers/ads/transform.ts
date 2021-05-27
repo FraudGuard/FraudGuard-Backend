@@ -21,7 +21,7 @@ export const transform = async (_req: Request, res: Response) => {
 };
 
 const run = async (skip = 0) => {
-  const limit = 200
+  const limit = 200;
   const items = await AdsFromEbayModel.find({}).skip(skip).limit(limit);
   console.log('items', items.length);
 
