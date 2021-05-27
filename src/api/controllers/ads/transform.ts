@@ -12,7 +12,7 @@ import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
 export const transform = async (_req: Request, res: Response) => {
   try {
     logger.info('transform');
-    run(0);
+    run(4500);
     res.status(HttpStatus.OK).json({ result: true });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
@@ -21,7 +21,8 @@ export const transform = async (_req: Request, res: Response) => {
 };
 
 const run = async (skip = 0) => {
-  const items = await AdsFromEbayModel.find({}).skip(skip).limit(300);
+  const limit = 200
+  const items = await AdsFromEbayModel.find({}).skip(skip).limit(limit);
   console.log('items', items.length);
 
   const promises: Promise<any>[] = [];
@@ -29,9 +30,10 @@ const run = async (skip = 0) => {
     // for (const ad of items) {
     promises.push(single(ad, i));
   });
-  await Promise.all(promises);
-  if (items.length === 300) {
-    run(skip + 300);
+  const data = await Promise.all(promises);
+  await AdsModel.bulkWrite(data.filter((x) => x));
+  if (items.length === limit) {
+    run(skip + limit);
   }
 };
 
@@ -39,8 +41,11 @@ const single = (ad: AdsFromEbaySchema, i: number) =>
   new Promise(async (resolve) => {
     const result = await analyze(ad);
     console.log('analyzed', ++i);
-    await AdsModel.findOneAndUpdate({ _id: result.id }, result, {
-      upsert: true,
+    resolve({
+      updateOne: {
+        filter: { _id: result._id },
+        update: result.toObject(),
+        upsert: true,
+      },
     });
-    resolve(true);
   });
