@@ -44,7 +44,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   addToScore(
     resultingAd,
     resultingAd.beschreibung_enthaelt_ueberweisung === 1,
-    5,
+    2,
   );
 
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2);
@@ -78,9 +78,11 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1);
 
-  // addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
+
+  addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 4);
 
   // Jessi
   // Score Kategorie Preis
@@ -98,6 +100,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
+
+  addToScore(resultingAd, resultingAd.sonstiges_kategorie_unpassend === 1, 4);
 
   // Score Kombinationen
   if (
@@ -139,6 +143,13 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.konto_privat === 1 &&
+    resultingAd.konto_name_enthaelt_gmbh === 1
+  )
+    addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd, false, 4);
 
   return resultingAd;
 };

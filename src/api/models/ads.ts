@@ -7,7 +7,8 @@ import { AdsSchema } from './schemas/ads';
  */
 export const adsSchema = new Schema<AdsSchema>(
   {
-    _id: { type: Number },
+    _id: { type: String },
+    beschreibung: { type: String },
     lego: { type: Number },
     labeled: { type: Number },
     labeledDecision: { type: Number },
