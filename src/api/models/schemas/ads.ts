@@ -5,6 +5,7 @@ import { Document } from 'mongoose';
  */
 export interface AdsSchema extends Document {
   _id: string;
+  beschreibung: string;
   lego: number;
   labeled: number;
   labeledDecision: number;

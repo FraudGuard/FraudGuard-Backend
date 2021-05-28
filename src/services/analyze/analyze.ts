@@ -23,6 +23,7 @@ export const analyze = (
     resultingAd.labeled = ad.labeled ? 1 : 0;
     resultingAd.labeledDecision = ad.labeledDecision ? 1 : 0;
     resultingAd.lego = ad.searchQuery === 'lego' ? 1 : 0;
+    resultingAd.beschreibung = "Testbeschreibung<br/><ul><li>Test1</li><li>Test2</li></ul>";
 
     await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
