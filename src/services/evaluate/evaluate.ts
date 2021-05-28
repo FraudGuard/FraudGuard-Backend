@@ -1,6 +1,7 @@
 import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 import { evaluateAntipattern, evaluatePattern } from './';
+import { evaluateExclusions } from './evaluateExclusions';
 /**
  * Funktion zur Berechnung des Scores einer Anzeige.
  * Dabei werden die Scores (Patternscore und Antipatternscore) miteinander verrechnet und normiert.
@@ -20,13 +21,21 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     //   logger.error(error);
     //   reject(error);
     // });
-    const pattern_score =
-      (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
-    const antipattern_score =
-      (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
-      100;
+    const  ausschlusskriterium_erfuellt =  evaluateExclusions(resultingAd);
 
-    resultingAd.fraud_score =
-      Math.round((pattern_score - antipattern_score) * 100) / 100;
+    if (ausschlusskriterium_erfuellt === 1) {
+      resultingAd.fraud_score = -100;
+    }
+    else {
+
+      const pattern_score =
+        (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
+      const antipattern_score =
+        (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
+        100;
+
+      resultingAd.fraud_score =
+        Math.round((pattern_score - antipattern_score) * 100) / 100;
+    }
     resolve(resultingAd);
   });
