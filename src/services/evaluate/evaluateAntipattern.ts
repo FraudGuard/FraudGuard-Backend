@@ -126,7 +126,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
     (resultingAd.ap_beschreibung_enthaelt_gebraucht === 1 ||
-    resultingAd.ap_titel_enthaelt_gebraucht === 1)
+      resultingAd.ap_titel_enthaelt_gebraucht === 1)
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
@@ -135,7 +135,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
     (resultingAd.ap_beschreibung_enthaelt_gebraucht === 1 ||
-    resultingAd.ap_titel_enthaelt_gebraucht === 1)
+      resultingAd.ap_titel_enthaelt_gebraucht === 1)
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
@@ -143,7 +143,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   if (
     resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
     (resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1 ||
-    resultingAd.ap_titel_enthaelt_sammlung === 1)
+      resultingAd.ap_titel_enthaelt_sammlung === 1)
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
@@ -151,7 +151,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   if (
     resultingAd.ap_konto_name_natuerlich === 1 &&
     (resultingAd.ap_beschreibung_enthaelt_gebraucht === 1 ||
-    resultingAd.ap_titel_enthaelt_gebraucht === 1)
+      resultingAd.ap_titel_enthaelt_gebraucht === 1)
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
@@ -159,7 +159,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   if (
     resultingAd.preis_abweichung_marktwert >= 0.5 &&
     (resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1 ||
-    resultingAd.ap_titel_enthaelt_sammlung === 1)
+      resultingAd.ap_titel_enthaelt_sammlung === 1)
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
