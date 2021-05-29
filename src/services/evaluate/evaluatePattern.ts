@@ -158,15 +158,15 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 &&
       resultingAd.beschreibung_enthaelt_whatsapp === 1)
   )
-      addToScore(resultingAd, true, 3);
-    else addToScore(resultingAd, false, 3);
-  
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
+
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.titel_enthaelt_ovp === 1) &&
-    (resultingAd.beschreibung_ist_kopiert_unternehmen === 1)
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1
   )
     addToScore(resultingAd, true, 2);
   else addToScore(resultingAd, false, 2);
@@ -176,7 +176,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.titel_enthaelt_ovp === 1) &&
-    (resultingAd.beschreibung_ist_kopiert_anzeige === 1)
+    resultingAd.beschreibung_ist_kopiert_anzeige === 1
   )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
@@ -186,7 +186,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.titel_enthaelt_ovp === 1) &&
-    (resultingAd.sonstiges_anzeige_kopiert === 1)
+    resultingAd.sonstiges_anzeige_kopiert === 1
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
@@ -194,8 +194,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.sonstiges_anzeige_kopiert === 1) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.sonstiges_anzeige_kopiert === 1 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
@@ -203,15 +203,15 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.beschreibung_enthaelt_whatsapp === 1) &&
-    (resultingAd.beschreibung_enthaelt_sepa )
+    resultingAd.beschreibung_enthaelt_whatsapp === 1 &&
+    resultingAd.beschreibung_enthaelt_sepa
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
 
   if (
-    (resultingAd.beschreibung_ist_kopiert_unternehmen === 1) &&
-    (resultingAd.beschreibung_enthaelt_whatsapp === 1)
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &&
+    resultingAd.beschreibung_enthaelt_whatsapp === 1
   )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
@@ -221,8 +221,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.titel_enthaelt_ovp === 1) &&
-    (resultingAd.beschreibung_ist_kopiert_unternehmen === 1) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
@@ -240,26 +240,26 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 4);
 
   if (
-    (resultingAd.titel_enthaelt_zeichen === 1) &&
-    (resultingAd.sonstiges_anzeige_kopiert === 1)
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.sonstiges_anzeige_kopiert === 1
   )
     addToScore(resultingAd, true, 2);
   else addToScore(resultingAd, false, 2);
 
   if (
-    (resultingAd.titel_enthaelt_neu === 0 &&
-      resultingAd.beschreibung_enthaelt_neu === 0) &&
-    (resultingAd.sonstiges_anzeige_kopiert === 1) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.titel_enthaelt_neu === 0 &&
+    resultingAd.beschreibung_enthaelt_neu === 0 &&
+    resultingAd.sonstiges_anzeige_kopiert === 1 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
 
   if (
-    (resultingAd.titel_enthaelt_ovp === 0 &&
-      resultingAd.beschreibung_enthaelt_ovp === 0) &&
-    (resultingAd.sonstiges_anzeige_kopiert === 1) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.titel_enthaelt_ovp === 0 &&
+    resultingAd.beschreibung_enthaelt_ovp === 0 &&
+    resultingAd.sonstiges_anzeige_kopiert === 1 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 2);
   else addToScore(resultingAd, false, 2);
@@ -267,17 +267,17 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.ap_sonstiges_anzeige_zeit_tag === 0) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.ap_sonstiges_anzeige_zeit_tag === 0 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 1);
   else addToScore(resultingAd, false, 1);
 
   if (
-    (resultingAd.titel_enthaelt_neu === 0 &&
-      resultingAd.beschreibung_enthaelt_neu === 0) &&
-    (resultingAd.ap_sonstiges_anzeige_zeit_tag === 0) &&
-    (resultingAd.preis_abweichung_marktwert <= -0.3)
+    resultingAd.titel_enthaelt_neu === 0 &&
+    resultingAd.beschreibung_enthaelt_neu === 0 &&
+    resultingAd.ap_sonstiges_anzeige_zeit_tag === 0 &&
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 1);
   else addToScore(resultingAd, false, 1);
@@ -285,15 +285,13 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.ap_beschreibung_enthaelt_abholung === 0)
+    resultingAd.ap_beschreibung_enthaelt_abholung === 0
   )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
 
   return resultingAd;
 };
-
-
 
 const addToScore = (
   resultingAd: AdsSchema,
