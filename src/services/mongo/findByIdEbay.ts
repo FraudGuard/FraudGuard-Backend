@@ -6,4 +6,4 @@ import { AdsModel } from '../../api/models';
  * @return {Promise<Ad>} Gibt eine Anzeige aus der Datenbank zurück
  */
 export const findById = (id: string) =>
-  AdsModel.findById(id).select('fraud_score').exec();
+  AdsModel.findById(id);
