@@ -39,7 +39,7 @@ export const analyze = (
       reject(error);
     });
 
-    generateBeschreibung(resultingAd)
+    generateBeschreibung(resultingAd);
     logger.info('all analyze done');
 
     const result = await evaluate(resultingAd).catch((error) => reject(error));

@@ -5,5 +5,4 @@ import { AdsModel } from '../../api/models';
  * @param {string} id - ID einer anzeige
  * @return {Promise<Ad>} Gibt eine Anzeige aus der Datenbank zurück
  */
-export const findById = (id: string) =>
-  AdsModel.findById(id);
+export const findById = (id: string) => AdsModel.findById(id);
