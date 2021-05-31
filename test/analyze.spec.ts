@@ -284,11 +284,11 @@ describe('Analyze Ads', () => {
   test('Evaluate', async () => {
     // Ad 1
     const result1 = await analyze(Ad1);
-    expect(result1.fraud_score).to.be.equal(-20.28);
+    expect(result1.fraud_score).to.be.equal(-20.31);
     expect(result1.pattern_anzahl_gesamt).to.be.equal(44);
     expect(result1.pattern_anzahl_zutreffend).to.be.equal(2);
     expect(result1.pattern_score).to.be.equal(7);
-    expect(result1.pattern_gesamtscore).to.be.equal(141);
+    expect(result1.pattern_gesamtscore).to.be.equal(142);
     expect(result1.antipattern_anzahl_gesamt).to.be.equal(24);
     expect(result1.antipattern_anzahl_zutreffend).to.be.equal(7);
     expect(result1.antipattern_score).to.be.equal(26);
@@ -300,7 +300,7 @@ describe('Analyze Ads', () => {
     expect(result2.pattern_anzahl_gesamt).to.be.equal(44);
     expect(result2.pattern_anzahl_zutreffend).to.be.equal(23);
     expect(result2.pattern_score).to.be.equal(75);
-    expect(result2.pattern_gesamtscore).to.be.equal(141);
+    expect(result2.pattern_gesamtscore).to.be.equal(142);
     expect(result2.antipattern_anzahl_gesamt).to.be.equal(24);
     expect(result2.antipattern_anzahl_zutreffend).to.be.equal(2);
     expect(result2.antipattern_score).to.be.equal(10);
@@ -312,7 +312,7 @@ describe('Analyze Ads', () => {
     expect(result3.pattern_anzahl_gesamt).to.be.equal(44);
     expect(result3.pattern_anzahl_zutreffend).to.be.equal(4);
     expect(result3.pattern_score).to.be.equal(17);
-    expect(result3.pattern_gesamtscore).to.be.equal(141);
+    expect(result3.pattern_gesamtscore).to.be.equal(142);
     expect(result3.antipattern_anzahl_gesamt).to.be.equal(24);
     expect(result3.antipattern_anzahl_zutreffend).to.be.equal(10);
     expect(result3.antipattern_score).to.be.equal(43);

@@ -78,7 +78,17 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_betrugsrate === 1, 3);
+  if (resultingAd.konto_anzeigen_betrugsrate >= 40) {
+  addToScore(resultingAd, true, 4);
+  } 
+  else if (resultingAd.konto_anzeigen_betrugsrate <40 && resultingAd.konto_anzeigen_betrugsrate>= 20) {
+    addToScore(resultingAd, true, 2);
+    }
+  else {
+    addToScore(resultingAd, false, 4);
+  }
+
+  
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
 
