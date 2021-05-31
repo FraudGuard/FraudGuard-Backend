@@ -308,7 +308,7 @@ describe('Analyze Ads', () => {
     // Ad 3
     const result3 = await analyze(Ad3);
     // expect(result3.fraud_score).to.be.equal(-29.69); ohne Ausschlusskriterien
-    expect(result3.fraud_score).to.be.equal(-100); 
+    expect(result3.fraud_score).to.be.equal(-100);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(44);
     expect(result3.pattern_anzahl_zutreffend).to.be.equal(4);
     expect(result3.pattern_score).to.be.equal(17);
