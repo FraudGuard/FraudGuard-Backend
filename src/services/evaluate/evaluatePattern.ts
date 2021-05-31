@@ -165,7 +165,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.titel_enthaelt_ovp === 1) &&
+      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.beschreibung_ist_kopiert_unternehmen === 1
   )
     addToScore(resultingAd, true, 2);
@@ -175,7 +175,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.titel_enthaelt_ovp === 1) &&
+      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.beschreibung_ist_kopiert_anzeige === 1
   )
     addToScore(resultingAd, true, 3);
@@ -185,7 +185,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.titel_enthaelt_ovp === 1) &&
+      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.sonstiges_anzeige_kopiert === 1
   )
     addToScore(resultingAd, true, 4);
@@ -220,7 +220,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.titel_enthaelt_ovp === 1) &&
+      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
@@ -231,7 +231,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.titel_enthaelt_ovp === 1) &&
+      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     (resultingAd.beschreibung_enthaelt_versiegelt === 1 ||
       resultingAd.titel_enthaelt_verschweißt === 1 ||
       resultingAd.titel_enthaelt_ungeoeffnet === 1)
@@ -285,7 +285,8 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    resultingAd.ap_beschreibung_enthaelt_abholung === 0
+    resultingAd.ap_beschreibung_enthaelt_abholung === 0 && 
+    resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
