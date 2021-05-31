@@ -21,13 +21,11 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     //   logger.error(error);
     //   reject(error);
     // });
-    const  ausschlusskriterium_erfuellt =  evaluateExclusions(resultingAd);
+    const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
 
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
-    }
-    else {
-
+    } else {
       const pattern_score =
         (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
       const antipattern_score =
