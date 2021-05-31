@@ -9,6 +9,7 @@ import {
 } from './';
 import { logger } from '../../shared';
 import { evaluate } from '../evaluate';
+import { generateBeschreibung } from './generateBeschreibung';
 
 export const analyze = (
   ad: AdsFromEbaySchema,
@@ -23,8 +24,7 @@ export const analyze = (
     resultingAd.labeled = ad.labeled ? 1 : 0;
     resultingAd.labeledDecision = ad.labeledDecision ? 1 : 0;
     resultingAd.lego = ad.searchQuery === 'lego' ? 1 : 0;
-    resultingAd.beschreibung =
-      'Testbeschreibung<br/><ul><li>Test1</li><li>Test2</li></ul>';
+    resultingAd.beschreibung = '';
 
     await Promise.all([
       analyzeBeschreibung(ad, resultingAd),
@@ -39,6 +39,7 @@ export const analyze = (
       reject(error);
     });
 
+    generateBeschreibung(resultingAd);
     logger.info('all analyze done');
 
     const result = await evaluate(resultingAd).catch((error) => reject(error));
