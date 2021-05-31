@@ -285,7 +285,7 @@ export const evaluatePattern = async (resultingAd: AdsSchema) => {
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
       resultingAd.beschreibung_enthaelt_neu === 1) &&
-    resultingAd.ap_beschreibung_enthaelt_abholung === 0 && 
+    resultingAd.ap_beschreibung_enthaelt_abholung === 0 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
     addToScore(resultingAd, true, 3);
