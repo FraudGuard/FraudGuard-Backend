@@ -1,5 +1,6 @@
 import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
+import { generateBeschreibung } from '../analyze/generateBeschreibung';
 import { evaluateAntipattern, evaluatePattern } from './';
 import { evaluateExclusions } from './evaluateExclusions';
 /**
@@ -35,5 +36,8 @@ export const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       resultingAd.fraud_score =
         Math.round((pattern_score - antipattern_score) * 100) / 100;
     }
+
+    generateBeschreibung(resultingAd);
+
     resolve(resultingAd);
   });

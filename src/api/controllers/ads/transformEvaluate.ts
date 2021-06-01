@@ -34,18 +34,19 @@ const runEvaluate = async (skip = 0) => {
   await AdsModel.bulkWrite(data.filter((x) => x));
   logger.info('updated');
   if (items.length === skipValue) {
+    console.log('analyzed', skipValue);
     runEvaluate(skip + skipValue);
   }
 };
 
-const singleEvaluate = (ad: AdsSchema, i: number) =>
+const singleEvaluate = (ad: AdsSchema, _i: number) =>
   new Promise(async (resolve, reject) => {
     // const result = await analyze(ad);
     const result = await evaluate(ad).catch((error) => reject(error));
     if (!result) {
       return;
     }
-    console.log('analyzed', ++i);
+    // console.log('analyzed', ++i);
     resolve({
       updateOne: {
         filter: { _id: result._id },

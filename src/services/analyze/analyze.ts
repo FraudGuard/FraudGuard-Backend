@@ -9,7 +9,6 @@ import {
 } from './';
 import { logger } from '../../shared';
 import { evaluate } from '../evaluate';
-import { generateBeschreibung } from './generateBeschreibung';
 
 export const analyze = (
   ad: AdsFromEbaySchema,
@@ -39,7 +38,6 @@ export const analyze = (
       reject(error);
     });
 
-    generateBeschreibung(resultingAd);
     logger.info('all analyze done');
 
     const result = await evaluate(resultingAd).catch((error) => reject(error));
