@@ -3,7 +3,7 @@ import type { MongoClientOptions } from 'mongodb';
 import { dbConfig } from '../config/db';
 import { logger } from '../../shared/logger';
 
-export const connectMongoDB = async () => {
+const connectMongoDB = async () => {
   const { dbName, url } = dbConfig;
   logger.debug(`mongodb.connectMongoDB(): url=${url}`);
   const options: MongoClientOptions = {
@@ -21,7 +21,7 @@ export const connectMongoDB = async () => {
 
 // NICHT: async, weil die Funktion fuer Request-Events beim Hochladen und
 // fuer GridFS-Events beim Herunterladen verwendet wird
-export const closeMongoDBClient = (client: MongoClient): void => {
+const closeMongoDBClient = (client: MongoClient): void => {
   // IIFE (= Immediately Invoked Function Expression) wegen await
   // https://developer.mozilla.org/en-US/docs/Glossary/IIFE
   // https://github.com/typescript-eslint/typescript-eslint/issues/647
@@ -37,3 +37,4 @@ export const closeMongoDBClient = (client: MongoClient): void => {
     logger.debug('mongodb.closeDbClient(): DB-Client wurde geschlossen');
   })();
 };
+export { connectMongoDB, closeMongoDBClient };

@@ -6,7 +6,7 @@ import type { Server } from 'http';
 const { host } = serverConfig;
 let server: Server;
 
-export const createTestserver = async () => {
+const createTestserver = async () => {
   await connectDB();
 
   server = createServer(app).listen(() => {
@@ -19,3 +19,4 @@ export const createTestserver = async () => {
   });
   return server;
 };
+export { createTestserver };

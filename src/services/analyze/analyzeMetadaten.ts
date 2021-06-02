@@ -7,7 +7,7 @@ import { logger } from '../../shared';
  * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige
  * @return {Promise<AdsSchema>} Returned das resolved resultingAd
  */
-export const analyzeMetadaten = (
+const analyzeMetadaten = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
@@ -33,3 +33,5 @@ export const analyzeMetadaten = (
     }
     resolve(resultingAd);
   });
+
+export { analyzeMetadaten };

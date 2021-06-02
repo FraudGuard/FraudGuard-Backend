@@ -7,7 +7,7 @@ import { AdsSchema } from '../../api/models';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird, um die Referenzen setzen zu können.
  * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
-export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
+const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   resultingAd.antipattern_score = 0;
   resultingAd.antipattern_gesamtscore = 0;
   resultingAd.antipattern_anzahl_zutreffend = 0;
@@ -183,3 +183,4 @@ const addToScore = (
   resultingAd.antipattern_gesamtscore += score;
   resultingAd.antipattern_anzahl_gesamt += 1;
 };
+export { evaluateAntipattern };

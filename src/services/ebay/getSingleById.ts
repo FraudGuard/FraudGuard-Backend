@@ -7,7 +7,7 @@ import axios, { AxiosRequestConfig } from 'axios';
  * @param {string} id - Id nach der gesucht werden soll
  * @return {Promise<AdsFromEbaySchema>} Gibt eine Anzeige zurück
  */
-export const getSingleById = (id: string): Promise<any> =>
+const getSingleById = (id: string): Promise<any> =>
   new Promise((resolve, reject) => {
     try {
       const config: AxiosRequestConfig = {
@@ -31,3 +31,4 @@ export const getSingleById = (id: string): Promise<any> =>
       reject(e);
     }
   });
+export { getSingleById };

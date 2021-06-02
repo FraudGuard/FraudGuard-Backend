@@ -6,11 +6,11 @@ import { evaluate } from '../../../services/evaluate';
 const skipValue = 1000;
 /**
  * Funktion welche alle Anzeigen aus der Datenbank evaluiert und speichert
- * @param {req} _req - Express Request Objekt
+ * @param {req} req - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-export const transformEvaluate = async (_req: Request, res: Response) => {
+const transformEvaluate = async (req: Request, res: Response) => {
   try {
     logger.info('transformEvaluate');
     runEvaluate(0);
@@ -55,3 +55,4 @@ const singleEvaluate = (ad: AdsSchema, _i: number) =>
       },
     });
   });
+export { transformEvaluate };

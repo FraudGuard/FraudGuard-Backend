@@ -5,11 +5,11 @@ import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
 
 /**
  * Funktion welche alle Anzeigen aus der Datenbank analysiert und speichert
- * @param {req} _req - Express Request Objekt
+ * @param {req} req - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-export const transform = async (_req: Request, res: Response) => {
+const transform = async (req: Request, res: Response) => {
   try {
     logger.info('transform');
     run(4500);
@@ -49,3 +49,4 @@ const single = (ad: AdsFromEbaySchema, i: number) =>
       },
     });
   });
+export { transform };

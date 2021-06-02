@@ -10,7 +10,7 @@ import {
 import { logger } from '../../shared';
 import { evaluate } from '../evaluate';
 
-export const analyze = (
+const analyze = (
   ad: AdsFromEbaySchema,
   skipKonto = false,
 ): Promise<AdsSchema> =>
@@ -47,3 +47,5 @@ export const analyze = (
     }
     reject(new Error());
   });
+
+export { analyze };

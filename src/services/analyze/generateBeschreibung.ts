@@ -1,6 +1,6 @@
 import { AdsSchema } from '../../api/models';
 
-export const generateBeschreibung = (resultingAd: AdsSchema) => {
+const generateBeschreibung = (resultingAd: AdsSchema) => {
   resultingAd.beschreibung = '';
 
   if (
@@ -60,3 +60,4 @@ export const generateBeschreibung = (resultingAd: AdsSchema) => {
       '</ul>';
   }
 };
+export { generateBeschreibung };

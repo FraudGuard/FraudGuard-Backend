@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
  * @param {req} req - Das req-Objekt repräsentiert die HTTP-Anfrage und hat Eigenschaften für den Anfragestring, die Parameter, den Body, die HTTP-Header usw.
  * @param {res} res - Das res-Objekt stellt die HTTP-Antwort dar, die eine Express-App sendet, wenn sie eine HTTP-Anfrage erhält.
  */
-export const findById = async (req: Request, res: Response) => {
+const findById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -27,3 +27,4 @@ export const findById = async (req: Request, res: Response) => {
     logger.error(err);
   }
 };
+export { findById };

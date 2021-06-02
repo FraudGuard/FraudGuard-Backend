@@ -4,11 +4,11 @@ import { Request, Response } from 'express';
 
 /**
  * Funktion die Anzeigt wieviele Anzeigen bereits gelabelt wurden
- * @param {req} _req - Express Request Objekt
+ * @param {req} req - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-export const countToLabel = async (_req: Request, res: Response) => {
+const countToLabel = async (req: Request, res: Response) => {
   try {
     Ads.count({ labeled: true })
       .exec()
@@ -28,3 +28,4 @@ export const countToLabel = async (_req: Request, res: Response) => {
     logger.error(err);
   }
 };
+export { countToLabel };

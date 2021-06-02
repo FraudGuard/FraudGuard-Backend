@@ -10,7 +10,7 @@ import { Request, Response } from 'express';
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-export const analyzeFromDb = async (req: Request, res: Response) => {
+const analyzeFromDb = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -48,3 +48,4 @@ export const analyzeFromDb = async (req: Request, res: Response) => {
     logger.error(err);
   }
 };
+export { analyzeFromDb };

@@ -1,7 +1,7 @@
 import { AdsFromEbayModel, AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
 
-export const analyzeSonstiges = (
+const analyzeSonstiges = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
@@ -101,3 +101,4 @@ export const analyzeSonstiges = (
     }
     resolve(resultingAd);
   });
+export { analyzeSonstiges };

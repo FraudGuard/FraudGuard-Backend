@@ -7,7 +7,7 @@ import { AdsSchema } from '../../api/models';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
  * @return {number} Gibt zurück, ob eine Auschlusskriterium erfüllt ist
  */
-export const evaluateExclusions = (resultingAd: AdsSchema) => {
+const evaluateExclusions = (resultingAd: AdsSchema) => {
   let ausschlusskriterium_erfuellt = 0;
 
   if (resultingAd.ap_titel_enthaelt_gebraucht === 1) {
@@ -52,3 +52,4 @@ export const evaluateExclusions = (resultingAd: AdsSchema) => {
 
   return ausschlusskriterium_erfuellt;
 };
+export { evaluateExclusions };
