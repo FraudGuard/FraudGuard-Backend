@@ -10,6 +10,8 @@ export interface AdsSchema extends Document {
   labeled: number;
   labeledDecision: number;
   fraud_score: number;
+  toReview: number;
+  comment: string;
 
   // evaluate
   pattern_score: number;

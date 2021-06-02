@@ -12,6 +12,8 @@ export const adsSchema = new Schema<AdsSchema>(
     lego: { type: Number },
     labeled: { type: Number },
     labeledDecision: { type: Number },
+    toReview: { type: Number },
+    comment: { type: String },
 
     pattern_score: { type: Number },
     pattern_gesamtscore: { type: Number },

@@ -90,12 +90,7 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   // Konto
   addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
 
-  if (
-    resultingAd.konto_anzeigen_anzahl > 0 &&
-    resultingAd.konto_anzeigen_ueber_100 === 0
-  )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Jessi
@@ -163,6 +158,14 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
+
+
+  if (
+    resultingAd.konto_anzeigen_anzahl > 0 &&
+    resultingAd.konto_anzeigen_ueber_100 === 0
+  )
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
 
   return resultingAd;
 };

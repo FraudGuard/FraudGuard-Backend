@@ -8,7 +8,7 @@ import { logger } from '../../shared';
  * @return {Promise<AdsSchema>} Returned das resolved resultingAd
  */
 
-export const analyzeBeschreibung = (
+const analyzeBeschreibung = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
@@ -396,3 +396,5 @@ export const analyzeBeschreibung = (
     }
     resolve(resultingAd);
   });
+
+export {analyzeBeschreibung}
