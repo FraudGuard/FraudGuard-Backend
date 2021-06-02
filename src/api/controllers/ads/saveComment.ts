@@ -1,4 +1,4 @@
-import {  AdsModel, AdsSchema } from '../../models';
+import { AdsModel, AdsSchema } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
@@ -18,15 +18,15 @@ export const saveComment = async (req: Request, res: Response) => {
       throw new Error('No valid id ');
     }
     if (!comment) {
-        throw new Error('No valid comment ');
-      }
-    const update: UpdateQuery<AdsSchema> = {
-        toReview: 1,
-        comment
+      throw new Error('No valid comment ');
     }
-console.log(comment)
+    const update: UpdateQuery<AdsSchema> = {
+      toReview: 1,
+      comment,
+    };
+    console.log(comment);
     AdsModel.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
-      logger.info('saved comment ', (ad ? 'yes' : 'no'));
+      logger.info('saved comment ', ad ? 'yes' : 'no');
       if (ad) {
         res.status(HttpStatus.OK).json({
           ad,
