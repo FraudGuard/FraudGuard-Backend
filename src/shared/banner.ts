@@ -10,7 +10,7 @@ const { host, port } = serverConfig;
 /**
  * Funktion die bei Serverstart das Banner und die Versionen der genutzten Software druckt.
  */
-export const printBanner = () => {
+const printBanner = () => {
   const banner = `
 
       8888888888                            888  .d8888b.                                888
@@ -36,3 +36,4 @@ export const printBanner = () => {
     `Server started on "http://localhost:${port}" : Shutdown by pressing <Ctrl>C`,
   );
 };
+export { printBanner };

@@ -8,9 +8,7 @@ import { logger } from '../../shared';
  * @param {string} accountId - Account Id nach dem gesucht werden soll
  * @return {Promise<AdsFromEbaySchema[]>} Gibt ein Array aus Anzeigen zurück
  */
-export const getAllByAccount = (
-  accountId: string,
-): Promise<AdsFromEbaySchema[]> =>
+const getAllByAccount = (accountId: string): Promise<AdsFromEbaySchema[]> =>
   new Promise(async (resolve, reject) => {
     logger.info('accountId', accountId);
     if (!accountId) {
@@ -45,3 +43,4 @@ export const getAllByAccount = (
       reject(e);
     }
   });
+export { getAllByAccount };

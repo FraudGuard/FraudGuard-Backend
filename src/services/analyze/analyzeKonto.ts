@@ -12,10 +12,7 @@ import { analyze } from './analyze';
  * @param {resultingAd} resultingAd - Transformierte eBay-Kleinanzeigen Anzeige
  * @return {Promise<AdsSchema>} Returned das resolved resultingAd
  */
-export const analyzeKonto = async (
-  ad: AdsFromEbaySchema,
-  resultingAd: AdsSchema,
-) => {
+const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
   logger.info('analyze Konto');
   // console.log(ad['user-id'])
   const adsFromAccount = await getAllByAccount(ad['user-id']?.value).catch(() =>
@@ -168,3 +165,5 @@ export const analyzeKonto = async (
 
   return resultingAd;
 };
+
+export { analyzeKonto };

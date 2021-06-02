@@ -12,7 +12,7 @@ const whitelist = [
  * Zugriffe dieser Art sind normalerweise durch die Same-Origin-Policy (SOP) untersagt.
  * CORS ist ein Kompromiss zugunsten größerer Flexibilität im Internet unter Berücksichtigung möglichst hoher Sicherheitsmaßnahmen.
  */
-export const corsHandler = cors({
+const corsHandler = cors({
   origin: function (origin, callback) {
     if (!origin || (origin && whitelist.indexOf(origin) !== -1)) {
       callback(null, true);
@@ -40,3 +40,4 @@ export const corsHandler = cors({
   exposedHeaders: ['Location', 'ETag'],
   maxAge: 86400,
 });
+export { corsHandler };

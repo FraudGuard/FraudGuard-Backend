@@ -5,5 +5,5 @@ import { AdsFromEbayModel } from '../../api/models';
  * @param {string} id - ID einer anzeige
  * @return {Promise<Ad>} Gibt eine Anzeige aus der Datenbank zurück
  */
-export const findByIdEbay = (id: string) =>
-  AdsFromEbayModel.findById(id).exec();
+const findByIdEbay = (id: string) => AdsFromEbayModel.findById(id).exec();
+export { findByIdEbay };

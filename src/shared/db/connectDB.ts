@@ -25,7 +25,7 @@ const useUnifiedTopology = true;
 /**
  * Funktion die eine Verbindung zur MongoDB mit den gegebenen Verbindungsoptionen erstellt.
  */
-export const connectDB = async () => {
+const connectDB = async () => {
   logger.info(
     `URL for mongoose: ${url
       .replace(/\/\/.*:/u, '//USERNAME:@')
@@ -68,8 +68,10 @@ export const connectDB = async () => {
 /**
  * Funktion die auf das Mongoose Objekt close ruft und bei einem Error den Server gewaltsam herunterfährt
  */
-export const disconnectDB = () => {
+const disconnectDB = () => {
   connection.close().catch(() => process.exit(0));
 };
 
 export const autoIndex = false;
+
+export { connectDB, disconnectDB };

@@ -28,13 +28,17 @@
         <article>
             <pre class="prettyprint source linenums"><code>import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
+import { generateBeschreibung } from '../analyze/generateBeschreibung';
 import { evaluateAntipattern, evaluatePattern } from './';
+import { evaluateExclusions } from './evaluateExclusions';
 /**
- * Funktion zur Berechnung des Scores einer Anzeige
- * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
- * @return {Promise&lt;AdsSchema>} Gibt das Referenzobjekt zurück
+ * Funktion zur Berechnung des Scores einer Anzeige.
+ * Dabei werden die Scores (Patternscore und Antipatternscore) miteinander verrechnet und normiert.
+ * Die Normierung ist wichtig, um bei der Ergänzung oder Entfernung von Merkmalen im Wertebereich von -100 bis 100 zu liegen.
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können.
+ * @return {Promise&lt;AdsSchema>} Gibt das Referenzobjekt zurück.
  */
-export const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
+const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
   new Promise(async (resolve, _reject) => {
     logger.info('start evaluate');
 
@@ -46,16 +50,26 @@ export const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
     //   logger.error(error);
     //   reject(error);
     // });
-    const pattern_score =
-      (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
-    const antipattern_score =
-      (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
-      100;
+    const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
 
-    resultingAd.fraud_score =
-      Math.round((pattern_score - antipattern_score) * 100) / 100;
+    if (ausschlusskriterium_erfuellt === 1) {
+      resultingAd.fraud_score = -100;
+    } else {
+      const pattern_score =
+        (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
+      const antipattern_score =
+        (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
+        100;
+
+      resultingAd.fraud_score =
+        Math.round((pattern_score - antipattern_score) * 100) / 100;
+    }
+
+    generateBeschreibung(resultingAd);
+
     resolve(resultingAd);
   });
+export { evaluate };
 </code></pre>
         </article>
     </section>
@@ -66,13 +80,13 @@ export const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon May 24 2021 11:58:10 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 09:10:15 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

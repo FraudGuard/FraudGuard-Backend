@@ -5,11 +5,11 @@ import { UpdateQuery } from 'mongoose';
 
 /**
  * Funktion zum Aktualisieren einer Anzeige
- * @param {req} _req - Express Request Objekt
+ * @param {req} req - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-export const updateAd = async (req: Request, res: Response) => {
+const updateAd = async (req: Request, res: Response) => {
   try {
     const { id, labeledDecision, toReview } = req.body;
 
@@ -44,3 +44,5 @@ export const updateAd = async (req: Request, res: Response) => {
     logger.error(err);
   }
 };
+
+export { updateAd };

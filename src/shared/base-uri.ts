@@ -6,7 +6,8 @@ import { serverConfig } from './config';
  * @param {req} req - Eingehender Request welcher umgewandelt wird
  * @return {string} - returns BaseUri
  */
-export const getBaseUri = (req: Request) => {
+const getBaseUri = (req: Request) => {
   const { protocol, hostname, baseUrl } = req;
   return `${protocol}://${hostname}${serverConfig.port}${baseUrl}`;
 };
+export { getBaseUri };

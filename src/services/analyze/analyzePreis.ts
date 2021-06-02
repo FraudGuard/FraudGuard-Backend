@@ -8,10 +8,7 @@ import { logger } from '../../shared';
  * @return {Promise<AdsSchema>} Returned das resolved resultingAd
  */
 
-export const analyzePreis = (
-  ad: any,
-  resultingAd: AdsSchema,
-): Promise<AdsSchema> =>
+const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     logger.info('start analyze Preis');
 
@@ -60,3 +57,5 @@ export const analyzePreis = (
     }
     resolve(resultingAd);
   });
+
+export { analyzePreis };

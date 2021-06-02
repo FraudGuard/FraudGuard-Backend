@@ -7,7 +7,7 @@ import { AdsSchema } from '../../api/models';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird, um die Referenzen setzen zu können.
  * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
-export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
+const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   resultingAd.antipattern_score = 0;
   resultingAd.antipattern_gesamtscore = 0;
   resultingAd.antipattern_anzahl_zutreffend = 0;
@@ -43,19 +43,6 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   // BEISPIEL ENDE
 
-  // Michelle
-
-  // Titel
-  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_gebraucht === 1, 5);
-
-  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_suche === 1, 5);
-
-  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_tausche === 1, 5);
-
-  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_kilo === 1, 3);
-
-  addToScore(resultingAd, resultingAd.ap_titel_enthaelt_sammlung === 1, 4);
-
   // Beschreibung
   addToScore(
     resultingAd,
@@ -68,8 +55,6 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_gebraucht === 1,
     5,
   );
-
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 5);
 
   addToScore(
     resultingAd,
@@ -85,8 +70,6 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 3);
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 5);
-
   // Konto
   addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
 
@@ -94,19 +77,9 @@ export const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Jessi
-  // Score Kategorie Preis
-  addToScore(resultingAd, resultingAd.ap_preis_ist_leer === 1, 5);
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
-
-  addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_suche === 1, 5);
-
-  addToScore(
-    resultingAd,
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1,
-    4,
-  );
 
   // Score Kombinationen
   if (
@@ -186,3 +159,4 @@ const addToScore = (
   resultingAd.antipattern_gesamtscore += score;
   resultingAd.antipattern_anzahl_gesamt += 1;
 };
+export { evaluateAntipattern };
