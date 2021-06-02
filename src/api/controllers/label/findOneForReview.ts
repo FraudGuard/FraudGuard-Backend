@@ -4,11 +4,11 @@ import { Request, Response } from 'express';
 
 /**
  * Funktion welche eine Anzeige zur Review zurück gibt
- * @param {req} req - Express Request Objekt
+ * @param {req} _ - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-const findOneToReview = async (req: Request, res: Response) => {
+const findOneToReview = async (_: Request, res: Response) => {
   try {
     Ads.findOne({ toReview: true })
       .exec()
