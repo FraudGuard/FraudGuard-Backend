@@ -160,7 +160,9 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
     // berechnen der durchschnittlichen Betrugsrate
     resultingAd.konto_anzeigen_betrugsrate =
       betrugsrate_summe /
-      (resultingAd.konto_anzeigen_anzahl > 4 ? 5 : resultingAd.konto_anzeigen_anzahl);
+      (resultingAd.konto_anzeigen_anzahl > 4
+        ? 5
+        : resultingAd.konto_anzeigen_anzahl);
 
     // eintragen der Anzahl der verschiedenen Orte
     resultingAd.konto_anzeigen_verschiedene_orte =
