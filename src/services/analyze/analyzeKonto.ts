@@ -130,7 +130,9 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
     [ad['ad-address']['zip-code'].value]: true,
   };
   if (adsFromAccount) {
-    for (const adFromAccount of adsFromAccount) {
+    // eslint-disable-next-line guard-for-in
+    for (const i in adsFromAccount) {
+      const adFromAccount = adsFromAccount[i];
       if (
         adFromAccount.title.value.includes(
           ad.title.value.toLocaleLowerCase(),
@@ -147,16 +149,18 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
           adFromAccount['ad-address']['zip-code'].value
         ] = true;
       }
-
-      const analyzeResult = await analyze(adFromAccount, true);
-      if (analyzeResult) {
-        betrugsrate_summe += analyzeResult.fraud_score;
+      if (Number.parseInt(i) > 4) {
+        const analyzeResult = await analyze(adFromAccount, true);
+        if (analyzeResult) {
+          betrugsrate_summe += analyzeResult.fraud_score;
+        }
       }
     }
 
     // berechnen der durchschnittlichen Betrugsrate
     resultingAd.konto_anzeigen_betrugsrate =
-      betrugsrate_summe / resultingAd.konto_anzeigen_anzahl;
+      betrugsrate_summe /
+      (resultingAd.konto_anzeigen_anzahl > 4 ? 5 : resultingAd.konto_anzeigen_anzahl);
 
     // eintragen der Anzahl der verschiedenen Orte
     resultingAd.konto_anzeigen_verschiedene_orte =
