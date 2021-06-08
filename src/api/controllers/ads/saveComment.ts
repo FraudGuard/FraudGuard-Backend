@@ -34,7 +34,6 @@ const saveComment = async (req: Request, res: Response) => {
       AdsFromEbayModel.findOneAndUpdate({"_id": result.id}, result,{upsert:true}).then(() => {
         console.log('updated')
       })
-      console.log(result)
     }
 
     console.log(comment);
