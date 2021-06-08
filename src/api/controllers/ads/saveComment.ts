@@ -3,6 +3,7 @@ import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
 import { getSingleById } from '../../../services/ebay';
+import { findById } from '../../../services/mongo';
 
 /**
  * Funktion zum Speichern von Feedback
@@ -13,7 +14,7 @@ import { getSingleById } from '../../../services/ebay';
 const saveComment = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { comment } = req.body;
+    let { comment } = req.body;
 
     if (!id) {
       throw new Error('No valid id ');
@@ -21,6 +22,11 @@ const saveComment = async (req: Request, res: Response) => {
     if (!comment) {
       throw new Error('No valid comment ');
     }
+    const currentAd = await findById(id);
+    if (currentAd?.comment) {
+      comment = comment + '<br/>'+currentAd.comment;
+    }
+
     const update: UpdateQuery<AdsSchema> = {
       toReview: 1,
       comment,
@@ -31,9 +37,11 @@ const saveComment = async (req: Request, res: Response) => {
       // await adsFromEbaySchema.add(result);
       result.toReview = true;
       result.comment = comment;
-      AdsFromEbayModel.findOneAndUpdate({"_id": result.id}, result,{upsert:true}).then(() => {
-        console.log('updated')
-      })
+      AdsFromEbayModel.findOneAndUpdate({ _id: result.id }, result, {
+        upsert: true,
+      }).then(() => {
+        console.log('updated');
+      });
     }
 
     console.log(comment);
