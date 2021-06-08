@@ -24,7 +24,7 @@ const saveComment = async (req: Request, res: Response) => {
     }
     const currentAd = await findById(id);
     if (currentAd?.comment) {
-      comment = comment + '<br/>'+currentAd.comment;
+      comment = comment + '<br/>' + currentAd.comment;
     }
 
     const update: UpdateQuery<AdsSchema> = {
