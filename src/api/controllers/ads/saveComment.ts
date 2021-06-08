@@ -31,9 +31,11 @@ const saveComment = async (req: Request, res: Response) => {
       // await adsFromEbaySchema.add(result);
       result.toReview = true;
       result.comment = comment;
-      AdsFromEbayModel.findOneAndUpdate({"_id": result.id}, result,{upsert:true}).then(() => {
-        console.log('updated')
-      })
+      AdsFromEbayModel.findOneAndUpdate({ _id: result.id }, result, {
+        upsert: true,
+      }).then(() => {
+        console.log('updated');
+      });
     }
 
     console.log(comment);
