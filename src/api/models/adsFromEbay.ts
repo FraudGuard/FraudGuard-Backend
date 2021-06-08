@@ -11,6 +11,7 @@ export const adsFromEbaySchema = new Schema<AdsFromEbaySchema>(
     labeled: { type: Boolean },
     labeledDecision: { type: Boolean },
     toReview: { type: Boolean },
+    comment: { type: String },
 
     'ad-address': { type: Object },
     'ad-external-reference-id': { type: Object },

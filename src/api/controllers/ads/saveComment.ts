@@ -1,7 +1,8 @@
-import { AdsModel, AdsSchema } from '../../models';
+import { AdsFromEbayModel, AdsModel, AdsSchema } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
+import { getSingleById } from '../../../services/ebay';
 
 /**
  * Funktion zum Speichern von Feedback
@@ -24,6 +25,18 @@ const saveComment = async (req: Request, res: Response) => {
       toReview: 1,
       comment,
     };
+
+    const result = await getSingleById(id);
+    if (result) {
+      // await adsFromEbaySchema.add(result);
+      result.toReview = true;
+      result.comment = comment;
+      AdsFromEbayModel.findOneAndUpdate({"_id": result.id}, result,{upsert:true}).then(() => {
+        console.log('updated')
+      })
+      console.log(result)
+    }
+
     console.log(comment);
     AdsModel.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
       logger.info('saved comment ', ad ? 'yes' : 'no');
