@@ -34,8 +34,8 @@ const run = async (skip = 0) => {
   await AdsModel.bulkWrite(data.filter((x) => x));
   if (items.length === limit) {
     run(skip + limit);
-  }else{
-    console.log('🎉🎉🎉🎉🎉🎉🎉🎉 FERTIG 🎉🎉🎉🎉🎉🎉🎉🎉 ')
+  } else {
+    console.log('🎉🎉🎉🎉🎉🎉🎉🎉 FERTIG 🎉🎉🎉🎉🎉🎉🎉🎉 ');
   }
 };
 
