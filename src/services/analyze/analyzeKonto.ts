@@ -133,26 +133,28 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
     // eslint-disable-next-line guard-for-in
     for (const i in adsFromAccount) {
       const adFromAccount = adsFromAccount[i];
-      if (
-        adFromAccount.title.value.includes(
-          ad.title.value.toLocaleLowerCase(),
-        ) &&
-        adFromAccount.description.value.includes(
-          ad.description.value.toLocaleLowerCase(),
-        )
-      ) {
-        ++resultingAd.konto_anzeigen_gleich;
-      }
+      if (adFromAccount.id != ad.id) {
+        if (
+          adFromAccount.title.value.includes(
+            ad.title.value.toLocaleLowerCase(),
+          ) &&
+          adFromAccount.description.value.includes(
+            ad.description.value.toLocaleLowerCase(),
+          )
+        ) {
+          ++resultingAd.konto_anzeigen_gleich;
+        }
 
-      if (adFromAccount['ad-address']['zip-code'].value) {
-        verschiedene_orte_anzeigen[
-          adFromAccount['ad-address']['zip-code'].value
-        ] = true;
-      }
-      if (Number.parseInt(i) > 4) {
-        const analyzeResult = await analyze(adFromAccount, true);
-        if (analyzeResult) {
-          betrugsrate_summe += analyzeResult.fraud_score;
+        if (adFromAccount['ad-address']['zip-code'].value) {
+          verschiedene_orte_anzeigen[
+            adFromAccount['ad-address']['zip-code'].value
+          ] = true;
+        }
+        if (Number.parseInt(i) < 6) {
+          const analyzeResult = await analyze(adFromAccount, true);
+          if (analyzeResult) {
+            betrugsrate_summe += analyzeResult.fraud_score;
+          }
         }
       }
     }
