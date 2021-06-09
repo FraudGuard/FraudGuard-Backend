@@ -29,7 +29,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       3;
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
-    } else if(!zu_wenig_merkmale) {
+    } else if (!zu_wenig_merkmale) {
       const pattern_score =
         (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
       const antipattern_score =
@@ -41,7 +41,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     }
 
     generateBeschreibung(resultingAd);
-    
+
     if (zu_wenig_merkmale) {
       resultingAd.fraud_score = 0;
       resultingAd.keine_bewertung_moeglich = 1;
