@@ -33,7 +33,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       resultingAd.antipattern_anzahl_zutreffend,
       resultingAd.pattern_anzahl_zutreffend +
         resultingAd.antipattern_anzahl_zutreffend <
-      3
+        3,
     );
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
