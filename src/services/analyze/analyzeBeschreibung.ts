@@ -41,6 +41,26 @@ const analyzeBeschreibung = (
     }
     resultingAd.beschreibung_enthaelt_sepa = enthaelt_signalwort;
 
+    // prüfen auf PayPal Freunde
+    const paypal_f_signalwoerter = [
+      'paypal freunde'
+    ];
+    const paypal_f_signalwoerter_gegenteil = [
+      'kein paypal',
+    ];
+    enthaelt_signalwort = 0;
+    for (const signalwort of paypal_f_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
+    }
+    for (const signalwort of paypal_f_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
+    }
+    resultingAd.beschreibung_enthaelt_paypal_freunde = enthaelt_signalwort;
+
     // prüfen auf Überweisung
     const ueberweisung_signalwoerter = [
       'überweisung',
@@ -250,6 +270,27 @@ const analyzeBeschreibung = (
       }
     }
     resultingAd.ap_beschreibung_enthaelt_barzahlung = enthaelt_signalwort;
+
+    // prüfen auf PayPal Käuferschutz
+    const paypal_k_signalwoerter = [
+      'paypal käuferschutz',
+      'paypal kaeuferschutz',
+    ];
+    const paypal_k_signalwoerter_gegenteil = [
+      'kein paypal',
+    ];
+    enthaelt_signalwort = 0;
+    for (const signalwort of paypal_k_signalwoerter) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 1;
+      }
+    }
+    for (const signalwort of paypal_k_signalwoerter_gegenteil) {
+      if (beschreibung.includes(signalwort)) {
+        enthaelt_signalwort = 0;
+      }
+    }
+    resultingAd.ap_beschreibung_enthaelt_paypal_kaeuferschutz = enthaelt_signalwort;
 
     // Prüfen, ob Artikel gebraucht ist
     const gebraucht_signalwoerter = [

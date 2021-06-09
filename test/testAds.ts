@@ -212,7 +212,7 @@ export const Ad2 = new AdsFromEbayModel({
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'kein sepa .Mit Versiegelung aber nicht neu, daher hier zum Verkauf :<br />Originalverpackter LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br /> Überweisung und nicht bar Bezahlung.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden whatsapp Nicht nur die Elite des Imperiums, sondern auch gelegentlich ein Spezialkommando der Rebellen nutzt das elegante Imperial Shuttle der Lamdba-Klasse , um durch die Galaxie zu reisen. Zum allerersten Mal gibt es dieses berühmte Star Wars Raumschiff nun als LEGO Modell im Minifiguren-Maßstab. Tauchen Sie mit der LEGO® Polizeistation (10278) in eine Welt voller Gaunereien, Ermittlungserfolge und Donuts ein',
+      'kein sepa .Mit Versiegelung aber nicht neu, paypal käuferschutz paypal freunde daher hier zum Verkauf :<br />Originalverpackter LEGO Technic mobiler Schwerlastkran (42009)<br /><br />- vollständiges Set<br />- nicht bespielt<br />- incl. Aufbauanleitung<br /><br /> Überweisung und nicht bar Bezahlung.<br /><br />Wird natürlich nochmal gereinigt<br /><br />Bei Fragen einfach melden whatsapp Nicht nur die Elite des Imperiums, sondern auch gelegentlich ein Spezialkommando der Rebellen nutzt das elegante Imperial Shuttle der Lamdba-Klasse , um durch die Galaxie zu reisen. Zum allerersten Mal gibt es dieses berühmte Star Wars Raumschiff nun als LEGO Modell im Minifiguren-Maßstab. Tauchen Sie mit der LEGO® Polizeistation (10278) in eine Welt voller Gaunereien, Ermittlungserfolge und Donuts ein',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },

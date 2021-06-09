@@ -55,6 +55,7 @@ export interface AdsSchema extends Document {
   // Jana
   beschreibung_enthaelt_ueberweisung: number;
   beschreibung_enthaelt_sepa: number;
+  beschreibung_enthaelt_paypal_freunde: number;
   beschreibung_enthaelt_versand: number;
   beschreibung_enthaelt_neu: number;
   beschreibung_enthaelt_ovp: number;
@@ -63,6 +64,7 @@ export interface AdsSchema extends Document {
   beschreibung_ist_kopiert_anzeige: number;
   beschreibung_ist_kopiert_unternehmen: number;
   ap_beschreibung_enthaelt_barzahlung: number;
+  ap_beschreibung_enthaelt_paypal_kaeuferschutz: number;
   ap_beschreibung_enthaelt_gebraucht: number;
   ap_beschreibung_enthaelt_tausch: number;
   ap_beschreibung_enthaelt_abholung: number;
