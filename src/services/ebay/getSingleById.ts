@@ -1,4 +1,4 @@
-import { AdsFromEbayModel } from '../../api/models';
+import { AdsFromEbayModel, AdsFromEbaySchema } from '../../api/models';
 import { ebayHeaders } from './ebay';
 import axios, { AxiosRequestConfig } from 'axios';
 
@@ -7,7 +7,7 @@ import axios, { AxiosRequestConfig } from 'axios';
  * @param {string} id - Id nach der gesucht werden soll
  * @return {Promise<AdsFromEbaySchema>} Gibt eine Anzeige zurück
  */
-const getSingleById = (id: string): Promise<any> =>
+const getSingleById = (id: string): Promise<AdsFromEbaySchema> =>
   new Promise((resolve, reject) => {
     try {
       const config: AxiosRequestConfig = {

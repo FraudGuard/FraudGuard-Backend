@@ -8,6 +8,7 @@ export interface AdsFromEbaySchema extends Document {
   labeled: boolean;
   labeledDecision: boolean;
   toReview: boolean;
+  comment: string;
   searchQuery?: string;
 
   'ad-address': {

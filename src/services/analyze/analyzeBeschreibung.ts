@@ -303,6 +303,7 @@ const analyzeBeschreibung = (
     const gebraucht_signalwoerter_gegenteil = [
       'keine gebrauchsspuren',
       'nicht benutzt',
+      'unbenutzt',
       'nicht gebraucht',
       'nie aufgebaut',
       'nie zusammengebaut',

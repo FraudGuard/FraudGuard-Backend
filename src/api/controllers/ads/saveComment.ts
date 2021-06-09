@@ -1,7 +1,9 @@
-import { AdsModel, AdsSchema } from '../../models';
+import { AdsFromEbayModel, AdsModel, AdsSchema } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
 import { UpdateQuery } from 'mongoose';
+import { getSingleById } from '../../../services/ebay';
+import { findById } from '../../../services/mongo';
 
 /**
  * Funktion zum Speichern von Feedback
@@ -12,7 +14,7 @@ import { UpdateQuery } from 'mongoose';
 const saveComment = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { comment } = req.body;
+    let { comment } = req.body;
 
     if (!id) {
       throw new Error('No valid id ');
@@ -20,10 +22,28 @@ const saveComment = async (req: Request, res: Response) => {
     if (!comment) {
       throw new Error('No valid comment ');
     }
+    const currentAd = await findById(id);
+    if (currentAd?.comment) {
+      comment = comment + '<br/>' + currentAd.comment;
+    }
+
     const update: UpdateQuery<AdsSchema> = {
       toReview: 1,
       comment,
     };
+
+    const result = await getSingleById(id);
+    if (result) {
+      // await adsFromEbaySchema.add(result);
+      result.toReview = true;
+      result.comment = comment;
+      AdsFromEbayModel.findOneAndUpdate({ _id: result.id }, result, {
+        upsert: true,
+      }).then(() => {
+        console.log('updated');
+      });
+    }
+
     console.log(comment);
     AdsModel.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
       logger.info('saved comment ', ad ? 'yes' : 'no');

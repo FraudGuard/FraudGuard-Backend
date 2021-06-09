@@ -3,10 +3,7 @@ import { AdsSchema } from '../../api/models';
 const generateBeschreibung = (resultingAd: AdsSchema) => {
   resultingAd.beschreibung = '';
 
-  if (
-    resultingAd.ap_titel_enthaelt_gebraucht === 1 ||
-    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1
-  ) {
+  if (resultingAd.ap_titel_enthaelt_gebraucht === 1) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil es sich um einen gebrauchten Artikel handelt</li>';
   }

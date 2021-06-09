@@ -12,7 +12,7 @@ import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
 const transform = async (_: Request, res: Response) => {
   try {
     logger.info('transform');
-    run(4500);
+    run(0);
     res.status(HttpStatus.OK).json({ result: true });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
@@ -34,6 +34,8 @@ const run = async (skip = 0) => {
   await AdsModel.bulkWrite(data.filter((x) => x));
   if (items.length === limit) {
     run(skip + limit);
+  } else {
+    console.log('🎉🎉🎉🎉🎉🎉🎉🎉 FERTIG 🎉🎉🎉🎉🎉🎉🎉🎉 ');
   }
 };
 

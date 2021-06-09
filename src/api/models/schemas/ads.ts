@@ -12,6 +12,7 @@ export interface AdsSchema extends Document {
   fraud_score: number;
   toReview: number;
   comment: string;
+  keine_bewertung_moeglich: number;
 
   // evaluate
   pattern_score: number;

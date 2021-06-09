@@ -130,33 +130,41 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
     [ad['ad-address']['zip-code'].value]: true,
   };
   if (adsFromAccount) {
-    for (const adFromAccount of adsFromAccount) {
-      if (
-        adFromAccount.title.value.includes(
-          ad.title.value.toLocaleLowerCase(),
-        ) &&
-        adFromAccount.description.value.includes(
-          ad.description.value.toLocaleLowerCase(),
-        )
-      ) {
-        ++resultingAd.konto_anzeigen_gleich;
-      }
+    // eslint-disable-next-line guard-for-in
+    for (const i in adsFromAccount) {
+      const adFromAccount = adsFromAccount[i];
+      if (adFromAccount.id != ad.id) {
+        if (
+          adFromAccount.title.value.includes(
+            ad.title.value.toLocaleLowerCase(),
+          ) &&
+          adFromAccount.description.value.includes(
+            ad.description.value.toLocaleLowerCase(),
+          )
+        ) {
+          ++resultingAd.konto_anzeigen_gleich;
+        }
 
-      if (adFromAccount['ad-address']['zip-code'].value) {
-        verschiedene_orte_anzeigen[
-          adFromAccount['ad-address']['zip-code'].value
-        ] = true;
-      }
-
-      const analyzeResult = await analyze(adFromAccount, true);
-      if (analyzeResult) {
-        betrugsrate_summe += analyzeResult.fraud_score;
+        if (adFromAccount['ad-address']['zip-code'].value) {
+          verschiedene_orte_anzeigen[
+            adFromAccount['ad-address']['zip-code'].value
+          ] = true;
+        }
+        if (Number.parseInt(i) < 6) {
+          const analyzeResult = await analyze(adFromAccount, true);
+          if (analyzeResult) {
+            betrugsrate_summe += analyzeResult.fraud_score;
+          }
+        }
       }
     }
 
     // berechnen der durchschnittlichen Betrugsrate
     resultingAd.konto_anzeigen_betrugsrate =
-      betrugsrate_summe / resultingAd.konto_anzeigen_anzahl;
+      betrugsrate_summe /
+      (resultingAd.konto_anzeigen_anzahl > 4
+        ? 5
+        : resultingAd.konto_anzeigen_anzahl);
 
     // eintragen der Anzahl der verschiedenen Orte
     resultingAd.konto_anzeigen_verschiedene_orte =

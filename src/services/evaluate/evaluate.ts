@@ -23,10 +23,13 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     //   reject(error);
     // });
     const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
-
+    const zu_wenig_merkmale =
+      resultingAd.pattern_anzahl_zutreffend +
+        resultingAd.antipattern_anzahl_zutreffend <
+      3;
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
-    } else {
+    } else if (!zu_wenig_merkmale) {
       const pattern_score =
         (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
       const antipattern_score =
@@ -39,6 +42,12 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
 
     generateBeschreibung(resultingAd);
 
+    if (zu_wenig_merkmale) {
+      resultingAd.fraud_score = 0;
+      resultingAd.keine_bewertung_moeglich = 1;
+      resultingAd.beschreibung +=
+        'Es kann keine Begründung abgegeben werden, da zu wenige Merkmale erkannt wurden die für oder gegen einen Betrug sprechen';
+    }
     resolve(resultingAd);
   });
 export { evaluate };
