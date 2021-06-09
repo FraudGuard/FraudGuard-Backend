@@ -1,4 +1,4 @@
-import { findById } from './../../../services/mongo/findByIdEbay';
+// import { findById } from './../../../services/mongo/findByIdEbay';
 import { analyze } from '../../../services/analyze';
 import { findByIdEbay } from '../../../services/mongo';
 import { HttpStatus, logger } from '../../../shared';
@@ -14,7 +14,8 @@ const analyzeFromDb = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const result = await findById(id);
+    // const result = await findById(id);
+    const result = false;
 
     if (result) {
       res.status(HttpStatus.OK).json(result);
