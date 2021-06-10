@@ -27,6 +27,14 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       resultingAd.pattern_anzahl_zutreffend +
         resultingAd.antipattern_anzahl_zutreffend <
       3;
+    console.log(
+      'zuwenig',
+      resultingAd.pattern_anzahl_zutreffend,
+      resultingAd.antipattern_anzahl_zutreffend,
+      resultingAd.pattern_anzahl_zutreffend +
+        resultingAd.antipattern_anzahl_zutreffend <
+        3,
+    );
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
     } else if (!zu_wenig_merkmale) {

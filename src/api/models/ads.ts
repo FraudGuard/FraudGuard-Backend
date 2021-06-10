@@ -14,7 +14,7 @@ export const adsSchema = new Schema<AdsSchema>(
     labeledDecision: { type: Number },
     toReview: { type: Number },
     comment: { type: String },
-    keine_bewertung_moeglich: { type: String },
+    keine_bewertung_moeglich: { type: Number },
 
     pattern_score: { type: Number },
     pattern_gesamtscore: { type: Number },
@@ -57,7 +57,7 @@ export const adsSchema = new Schema<AdsSchema>(
     // Jana
     beschreibung_enthaelt_ueberweisung: { type: Number },
     beschreibung_enthaelt_sepa: { type: Number },
-    beschreibung_enthaelt_paypal_freunde: {type: Number},
+    beschreibung_enthaelt_paypal_freunde: { type: Number },
     beschreibung_enthaelt_versand: { type: Number },
     beschreibung_enthaelt_neu: { type: Number },
     beschreibung_enthaelt_ovp: { type: Number },
@@ -66,7 +66,7 @@ export const adsSchema = new Schema<AdsSchema>(
     beschreibung_ist_kopiert_anzeige: { type: Number },
     beschreibung_ist_kopiert_unternehmen: { type: Number },
     ap_beschreibung_enthaelt_barzahlung: { type: Number },
-    ap_beschreibung_enthalet_paypal_kaeuferschutz: {type: Number},
+    ap_beschreibung_enthalet_paypal_kaeuferschutz: { type: Number },
     ap_beschreibung_enthaelt_gebraucht: { type: Number },
     ap_beschreibung_enthaelt_tausch: { type: Number },
     ap_beschreibung_enthaelt_abholung: { type: Number },

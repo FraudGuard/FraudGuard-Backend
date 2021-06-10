@@ -119,7 +119,9 @@ describe('Analyze Ads', () => {
     expect(result2.ap_beschreibung_enthaelt_suche).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
-    expect(result2.ap_beschreibung_enthaelt_paypal_kaeuferschutz).to.be.equal(1);
+    expect(result2.ap_beschreibung_enthaelt_paypal_kaeuferschutz).to.be.equal(
+      1,
+    );
     expect(result2.beschreibung_enthaelt_paypal_freunde).to.be.equal(1);
 
     const result3 = await analyzeBeschreibung(Ad3, new AdsModel());
@@ -319,5 +321,5 @@ describe('Analyze Ads', () => {
     expect(result3.antipattern_anzahl_zutreffend).to.be.equal(2);
     expect(result3.antipattern_score).to.be.equal(7);
     expect(result3.antipattern_gesamtscore).to.be.equal(33);
-  }); 
+  });
 });
