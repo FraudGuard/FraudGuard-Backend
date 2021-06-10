@@ -350,7 +350,7 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 5);
 
   if (
-    resultingAd.titel_enthaelt_zeichen=== 1 &&
+    resultingAd.titel_enthaelt_zeichen === 1 &&
     resultingAd.titel_enthaelt_ovp === 1 &&
     resultingAd.titel_enthaelt_neu === 1 &&
     resultingAd.sonstiges_kategorie_unpassend === 1
