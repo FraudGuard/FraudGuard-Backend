@@ -78,9 +78,9 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   // Preis
 
   if (resultingAd.preis_waehrung_eur == 1) {
-    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 4);
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 5);
   } else {
-    addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, false, 5);
   }
 
   if (resultingAd.preis_waehrung_eur == 1) {
