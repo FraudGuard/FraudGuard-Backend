@@ -41,7 +41,7 @@ const evaluateExclusions = (resultingAd: AdsSchema) => {
     ausschlusskriterium_erfuellt = 1;
   }
 
-  if (resultingAd.ap_beschreibung_enthaelt_paypal_kaeuferschutz ===1){
+  if (resultingAd.ap_beschreibung_enthaelt_paypal_kaeuferschutz === 1) {
     ausschlusskriterium_erfuellt = 1;
   }
 
