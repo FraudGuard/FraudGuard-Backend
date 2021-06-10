@@ -83,6 +83,12 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
     addToScore(resultingAd, false, 4);
   }
 
+  if (resultingAd.preis_waehrung_eur == 1) {
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.3, 2);
+  } else {
+    addToScore(resultingAd, false, 2);
+  }
+
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
 
