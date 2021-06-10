@@ -113,25 +113,11 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 5);
 
   if (
-    resultingAd.ap_konto_name_natuerlich === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1
-  )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (
     resultingAd.preis_abweichung_marktwert >= 0.5 &&
     resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.konto_anzeigen_anzahl > 0 &&
-    resultingAd.konto_anzeigen_ueber_100 === 0
-  )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
 
   return resultingAd;
 };
