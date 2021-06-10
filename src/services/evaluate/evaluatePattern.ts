@@ -47,6 +47,12 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     2,
   );
 
+  addToScore(
+    resultingAd,
+    resultingAd.beschreibung_enthaelt_paypal_freunde === 1,
+    2,
+  );
+
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2);
 
   addToScore(

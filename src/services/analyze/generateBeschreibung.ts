@@ -35,6 +35,11 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       '<li>Kein Betrug, weil Sammlungen sehr selten Betrug darstellen.</li>';
   }
 
+  if (resultingAd.ap_beschreibung_enthaelt_paypal_kaeuferschutz === 1) {
+    resultingAd.beschreibung +=
+      '<li>Kein Betrug, da eine Bezahlung mit Paypal Käuferschutz angeboten wird.</li>';
+  }
+
   if (resultingAd.ap_preis_ist_leer === 1) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil kein Preis angegeben ist.</li>';
