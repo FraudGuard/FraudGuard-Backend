@@ -2,7 +2,7 @@ import { AdsSchema } from '../../api/models';
 
 const generateBeschreibung = (resultingAd: AdsSchema) => {
   resultingAd.beschreibung = '';
-// Antipattern
+  // Antipattern
   if (resultingAd.ap_titel_enthaelt_gebraucht === 1) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil es sich um einen gebrauchten Artikel handelt</li>';
@@ -44,7 +44,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil kein Preis angegeben ist.</li>';
   }
-// Kombinationen - Antipattern
+  // Kombinationen - Antipattern
   if (
     resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
@@ -115,7 +115,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3)
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: ovp (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: ovp (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -123,9 +123,9 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3) ||
     (resultingAd.beschreibung_enthaelt_neu === 1 &&
       resultingAd.preis_abweichung_marktwert <= -0.3)
-  ){
+  ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -137,7 +137,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       resultingAd.preis_abweichung_marktwert <= -0.3)
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: verschweißt oder ungeöffnet im Titel oder versiegelt in der Beschreibung. Zusätzlich liegt der Preis mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: verschweißt oder ungeöffnet im Titel oder versiegelt in der Beschreibung. Zusätzlich liegt der Preis mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -145,7 +145,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.konto_name_enthaelt_gmbh === 1
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: ein privates Konto und gmbh im Kontoname.<li>';
+      '<li>Die Anzeige enthält: ein privates Konto und gmbh im Kontoname.<li>';
   }
 
   if (
@@ -155,9 +155,8 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_whatsapp === 1)
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung) und WhatsApp in der Beschreibung.<li>';
+      '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung) und WhatsApp in der Beschreibung.<li>';
   }
-
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -167,7 +166,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_ist_kopiert_anzeige === 1
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu und ovp (im Titel oder in der Beschreibung) und eine kopierte Beschreibung einer anderen Anzeige.<li>';
+      '<li>Die Anzeige enthält: neu und ovp (im Titel oder in der Beschreibung) und eine kopierte Beschreibung einer anderen Anzeige.<li>';
   }
 
   if (
@@ -178,7 +177,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu und ovp (Im Titel oder in der Beschreibung) und einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige.<li>';
+      '<li>Die Anzeige enthält: neu und ovp (Im Titel oder in der Beschreibung) und einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige.<li>';
   }
 
   if (
@@ -188,7 +187,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.preis_abweichung_marktwert <= -0.3
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enhält: neu (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enhält: neu (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -198,7 +197,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_sepa
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung), WhatsApp und Sepa in der Beschreibung.<li>';
+      '<li>Die Anzeige enthält: neu (im Titel oder in der Beschreibung), WhatsApp und Sepa in der Beschreibung.<li>';
   }
 
   if (
@@ -210,7 +209,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.preis_abweichung_marktwert <= -0.3
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: neu und ovp (im Titel oder in der Beschreibung), eine Beschreibung, die von einem Unternehmen kopiert ist und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: neu und ovp (im Titel oder in der Beschreibung), eine Beschreibung, die von einem Unternehmen kopiert ist und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -220,7 +219,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.preis_abweichung_marktwert <= -0.3
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: nicht neu (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: nicht neu (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -230,7 +229,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.preis_abweichung_marktwert <= -0.3
   ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: nicht ovp (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: nicht ovp (im Titel oder in der Beschreibung), einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
   if (
@@ -238,136 +237,135 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     resultingAd.ap_beschreibung_enthaelt_abholung === 0 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
-  ){
+  ) {
     resultingAd.beschreibung +=
-    '<li>Die Anzeige enthält: nicht Abholung in der Beschreibung, neu (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
+      '<li>Die Anzeige enthält: nicht Abholung in der Beschreibung, neu (im Titel oder in der Beschreibung) und der Preis liegt mindestens 30% unter dem Marktwert.<li>';
   }
 
- // Kombinationen - Pattern - Assoziationsanalys
+  // Kombinationen - Pattern - Assoziationsanalys
 
- if (
-  resultingAd.beschreibung_enthaelt_sepa === 1 &&
-  resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
-  resultingAd.konto_privat === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: sepa und Überweisung in der Beschreibung und es handelt sich um eine privates Konto.<li>';
-}
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &&
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
+    resultingAd.konto_privat === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: sepa und Überweisung in der Beschreibung und es handelt sich um eine privates Konto.<li>';
+  }
 
-if (
-  resultingAd.titel_enthaelt_neu === 1 &&
-  resultingAd.titel_enthaelt_zeichen === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: neu und mindestens ein Sonderzeichen im Titel und die Kategorie ist unpassend.<li>';
-}
+  if (
+    resultingAd.titel_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: neu und mindestens ein Sonderzeichen im Titel und die Kategorie ist unpassend.<li>';
+  }
 
-if (
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.titel_enthaelt_zeichen === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: ovp und mindestens ein Sonderzeichen im Titel und die Kategorie ist unpassend.<li>';
-}
+  if (
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: ovp und mindestens ein Sonderzeichen im Titel und die Kategorie ist unpassend.<li>';
+  }
 
-if (
-  resultingAd.preis_unter_marktwert === 1 &&
-  resultingAd.beschreibung_enthaelt_ovp === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.beschreibung_enthaelt_versiegelt === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: einen Preis unter dem Marktwert sowie ovp, neu und versiegelt in der Beschreibung.<li>';
-}
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.beschreibung_enthaelt_ovp === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versiegelt === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: einen Preis unter dem Marktwert sowie ovp, neu und versiegelt in der Beschreibung.<li>';
+  }
 
-if (
-  resultingAd.preis_unter_marktwert === 1 &&
-  resultingAd.preis_typ_vb === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.beschreibung_enthaelt_versand === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, einen VB Preis, neu und versiegelt in der Beschreibung.<li>';
-}
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, einen VB Preis, neu und versiegelt in der Beschreibung.<li>';
+  }
 
-if (
-  resultingAd.preis_typ_vb === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.beschreibung_enthaelt_versand === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>DIe Anzeige enthält: einen VB Preis, neu und Versand in der Beschreibung und die Kategorie ist unpassend.<li>';
-}
+  if (
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>DIe Anzeige enthält: einen VB Preis, neu und Versand in der Beschreibung und die Kategorie ist unpassend.<li>';
+  }
 
-if (
-  resultingAd.beschreibung_ist_kopiert_anzeige === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: eine kopierte Beschreibung von einer anderen Anzeige, neu in der Beschreibung, ovp im Titel und eine unpassende Kategorie.<li>';
-}
+  if (
+    resultingAd.beschreibung_ist_kopiert_anzeige === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: eine kopierte Beschreibung von einer anderen Anzeige, neu in der Beschreibung, ovp im Titel und eine unpassende Kategorie.<li>';
+  }
 
-if (
-  resultingAd.preis_unter_marktwert === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.sonstiges_anzeige_kopiert === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, ovp im Titel, neu in der Beschreibung und eine unpassende Kategorie.<li>';
-}
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_anzeige_kopiert === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, ovp im Titel, neu in der Beschreibung und eine unpassende Kategorie.<li>';
+  }
 
-if (
-  resultingAd.sonstiges_anzeige_kopiert === 1 &&
-  resultingAd.beschreibung_enthaelt_neu === 1 &&
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige, ovp im Titel, neu in der Beschreibung und eine unpassende Kategorie.<li>';
-}
+  if (
+    resultingAd.sonstiges_anzeige_kopiert === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: einen kopierten Titel und eine kopierte Beschreibung von einer anderen Anzeige, ovp im Titel, neu in der Beschreibung und eine unpassende Kategorie.<li>';
+  }
 
-if (
-  resultingAd.beschreibung_enthaelt_sepa === 1 &&
-  resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
-  resultingAd.beschreibung_enthaelt_versand === 1 &&
-  resultingAd.konto_privat === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: sepa, Überweisung und Versand in der Beschreibung und es handelt sich um ein privates Konto.<li>';
-}
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &&
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1 &&
+    resultingAd.konto_privat === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: sepa, Überweisung und Versand in der Beschreibung und es handelt sich um ein privates Konto.<li>';
+  }
 
-if (
-  resultingAd.preis_unter_marktwert === 1 &&
-  resultingAd.preis_typ_vb === 1 &&
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.titel_enthaelt_neu === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, einen VB Preis, neu und ovp im Titel.<li>';
-}
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_neu === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: einen Preis unter dem Marktwert, einen VB Preis, neu und ovp im Titel.<li>';
+  }
 
-if (
-  resultingAd.titel_enthaelt_zeichen === 1 &&
-  resultingAd.titel_enthaelt_ovp === 1 &&
-  resultingAd.titel_enthaelt_neu === 1 &&
-  resultingAd.sonstiges_kategorie_unpassend === 1
-) {
-  resultingAd.beschreibung +=
-  '<li>Die Anzeige enthält: neu, ovp und mindestens ein Sonderzeichen im Titel und hat eine unpassende Kategorie.<li>';
-}
+  if (
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_neu === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Die Anzeige enthält: neu, ovp und mindestens ein Sonderzeichen im Titel und hat eine unpassende Kategorie.<li>';
+  }
 
-if (resultingAd.beschreibung.length > 0) {
+  if (resultingAd.beschreibung.length > 0) {
     resultingAd.beschreibung =
       '<b>Folgende Gründe haben wir für die Analyse herangezogen: </b><ul>' +
       resultingAd.beschreibung +
       '</ul>';
   }
-
 };
 export { generateBeschreibung };
