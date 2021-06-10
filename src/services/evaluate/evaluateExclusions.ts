@@ -57,7 +57,8 @@ const evaluateExclusions = (resultingAd: AdsSchema) => {
   if (
     resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
-    resultingAd.beschreibung_enthaelt_ueberweisung === 0) {
+    resultingAd.beschreibung_enthaelt_ueberweisung === 0
+  ) {
     ausschlusskriterium_erfuellt = 1;
   }
 
@@ -77,11 +78,19 @@ const evaluateExclusions = (resultingAd: AdsSchema) => {
     ausschlusskriterium_erfuellt = 1;
   }
 
-  if (resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1) { ausschlusskriterium_erfuellt = 1; }
+  if (
+    resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
+  ) {
+    ausschlusskriterium_erfuellt = 1;
+  }
 
-  if (resultingAd.preis_abweichung_marktwert >= 0.5 &&
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1) { ausschlusskriterium_erfuellt = 1; }
+  if (
+    resultingAd.preis_abweichung_marktwert >= 0.5 &&
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
+  ) {
+    ausschlusskriterium_erfuellt = 1;
+  }
 
   return ausschlusskriterium_erfuellt;
 };
