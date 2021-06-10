@@ -55,7 +55,48 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       '<li>Kein Betrug, weil der Artikel direkt abgeholt und Bar bezahlt werden kann.</li>';
   }
 
-  
+  if (
+    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
+    resultingAd.beschreibung_enthaelt_ueberweisung === 0
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Kein Betrug, weil nur Abholung möglich ist und die Beschreibung Barzahlung aber nicht Überweisung enthält.</li>';
+  }
+
+  if (
+    resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Kein Betrug, weil die Beschreibung Abholung, Barzahlung und gebraucht enthält.</li>';
+  }
+
+  if (
+    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_gebraucht
+  ) {
+    resultingAd.beschreibung +=
+      '<li>kein Betrug, weil nur Abholung möglich ist und die Beschreibung Barzahlung und gebraucht enthält.</li>';
+  }
+
+  if (
+    resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Kein Betrug, weil die Beschreibung Abholung und Sammlung enthält.</li>';
+  }
+
+  if (
+    resultingAd.preis_abweichung_marktwert >= 0.5 &&
+    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
+  ) {
+    resultingAd.beschreibung +=
+      '<li>Kein Betrug, weil der Preis 50% über dem vom Marktpreis liegt und die Beschreibung Sammlung enthält.</li>';
+  }
 
   // Kombinationen - Pattern
   if (
