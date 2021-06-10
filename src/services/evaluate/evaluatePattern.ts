@@ -252,6 +252,112 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
 
+  // Kombinationen aus Assoziationsanalyse
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &&
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
+    resultingAd.konto_privat === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.titel_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_zeichen === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.beschreibung_enthaelt_ovp === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versiegelt === 1
+  )
+    addToScore(resultingAd, true, 2);
+  else addToScore(resultingAd, false, 2);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1
+  )
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
+
+  if (
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
+
+  if (
+    resultingAd.beschreibung_ist_kopiert_anzeige === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_anzeige_kopiert === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.sonstiges_anzeige_kopiert === 1 &&
+    resultingAd.beschreibung_enthaelt_neu === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &&
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
+    resultingAd.beschreibung_enthaelt_versand === 1 &&
+    resultingAd.konto_privat === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &&
+    resultingAd.preis_typ_vb === 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_neu === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
+  if (
+    resultingAd.titel_enthaelt_zeichen=== 1 &&
+    resultingAd.titel_enthaelt_ovp === 1 &&
+    resultingAd.titel_enthaelt_neu === 1 &&
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
+
   return resultingAd;
 };
 
