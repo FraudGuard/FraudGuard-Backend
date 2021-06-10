@@ -75,7 +75,13 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
-  // Jessi
+  // Preis
+
+  if (resultingAd.preis_waehrung_eur == 1) {
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 4);
+  } else {
+    addToScore(resultingAd, false, 4);
+  }
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
