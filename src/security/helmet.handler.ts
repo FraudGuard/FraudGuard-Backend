@@ -12,10 +12,7 @@ import {
  */
 export const helmetHandlers = [
   contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["https: 'self'"],
-      styleSrc: ["https: 'unsafe-inline'"],
-    },
+    useDefaults: true,
   }),
 
   xssFilter(),
