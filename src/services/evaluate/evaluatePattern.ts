@@ -128,8 +128,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 0
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 1);
+  else addToScore(resultingAd, false, 1);
 
   if (
     (resultingAd.titel_enthaelt_ovp === 1 &&
@@ -137,8 +137,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_ovp === 1 &&
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 &&
@@ -146,8 +146,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_neu === 1 &&
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
+    addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd, false, 4);
 
   if (
     (resultingAd.titel_enthaelt_verschweißt === 1 &&
@@ -181,7 +181,7 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.beschreibung_enthaelt_ovp === 1) &&
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1
+    resultingAd.beschreibung_ist_kopiert_anzeige === 1
   )
     addToScore(resultingAd, true, 2);
   else addToScore(resultingAd, false, 2);
@@ -191,20 +191,10 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_neu === 1) &&
     (resultingAd.titel_enthaelt_ovp === 1 ||
       resultingAd.beschreibung_enthaelt_ovp === 1) &&
-    resultingAd.beschreibung_ist_kopiert_anzeige === 1
-  )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.sonstiges_anzeige_kopiert === 1
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 2);
+  else addToScore(resultingAd, false, 2);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -212,8 +202,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -221,8 +211,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_whatsapp === 1 &&
     resultingAd.beschreibung_enthaelt_sepa
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -232,8 +222,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     resultingAd.titel_enthaelt_neu === 0 &&
@@ -241,8 +231,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     resultingAd.titel_enthaelt_ovp === 0 &&
@@ -250,8 +240,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -259,8 +249,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_abholung === 0 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 4);
+  else addToScore(resultingAd, false, 4);
 
   return resultingAd;
 };
