@@ -75,50 +75,23 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
-  // Jessi
+  // Preis
+
+  if (resultingAd.preis_waehrung_eur == 1) {
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 5);
+  } else {
+    addToScore(resultingAd, false, 5);
+  }
+
+  if (resultingAd.preis_waehrung_eur == 1) {
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.3, 2);
+  } else {
+    addToScore(resultingAd, false, 2);
+  }
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_nur_abholung === 1, 5)
-
-  // Score Kombinationen
-  if (
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
-    resultingAd.beschreibung_enthaelt_ueberweisung === 0
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_gebraucht === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.ap_beschreibung_enthaelt_abholung === 1 &&
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.preis_abweichung_marktwert >= 0.5 &&
-    resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
 
   return resultingAd;
 };
