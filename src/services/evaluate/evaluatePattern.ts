@@ -28,15 +28,15 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   // Jana
   // Titel
-  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 2);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 1);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 3);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 1);
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_verschweißt === 1, 1);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 4);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 1);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 2);
 
   // Beschreibung
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 5);
@@ -53,7 +53,7 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     2,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 1);
 
   addToScore(
     resultingAd,
@@ -61,14 +61,14 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     5,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 1);
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 1);
 
   addToScore(
     resultingAd,
     resultingAd.beschreibung_enthaelt_versiegelt === 1,
-    3,
+    1,
   );
 
   addToScore(

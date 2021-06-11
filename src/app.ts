@@ -1,11 +1,16 @@
-import { adsRouter, analyzeRouter, labelRouter } from './api/routes';
+import {
+  adsRouter,
+  analyzeRouter,
+  labelRouter,
+  swaggerRouter,
+} from './api/routes';
 import { corsHandler, helmetHandlers } from './security';
 import { loggerProfiles, serverConfig } from './shared';
 import compression from 'compression';
+import dotenv from 'dotenv';
 import express, { Express as IExpress } from 'express';
 import pino, { Logger } from 'pino';
 
-import dotenv from 'dotenv';
 const result = dotenv.config();
 if (result.error !== undefined) {
   throw result.error;
@@ -27,6 +32,7 @@ export const PATHS = {
   ads: `${apiPath}/ads`,
   analyze: `${apiPath}/analyze`,
   label: `${apiPath}/label`,
+  docs: `${apiPath}/docs`,
 };
 
 /**
@@ -74,6 +80,8 @@ class App {
     this.app.use(PATHS.ads, adsRouter);
     this.app.use(PATHS.analyze, analyzeRouter);
     this.app.use(PATHS.label, labelRouter);
+    this.app.use(PATHS.docs, swaggerRouter);
+
     this.app.get('/', (_, res) => {
       res.send('Hello World on "/" => GET');
     });
