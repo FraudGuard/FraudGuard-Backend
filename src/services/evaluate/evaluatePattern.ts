@@ -13,20 +13,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   resultingAd.pattern_anzahl_zutreffend = 0;
   resultingAd.pattern_anzahl_gesamt = 0;
 
-  // BEISPIEL
-
-  // addToScore(resultingAd immer eingeben, bedingung wann addiert werden soll, score)
-  /* addToScore(
-    resultingAd,
-    resultingAd.beschreibung_enthaelt_ueberweisung === 1,
-    5,
-  ); */
-
-  // BEISPIEL ENDE
-
-  // Michelle
-
-  // Jana
   // Titel
   addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 1);
 
@@ -103,7 +89,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 4);
 
-  // Jessi
   // Score Kategorie Preis
   if (resultingAd.preis_waehrung_eur == 1) {
     addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 2);
@@ -149,16 +134,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
 
-  if (
-    (resultingAd.titel_enthaelt_verschweißt === 1 &&
-      resultingAd.preis_abweichung_marktwert <= -0.3) ||
-    (resultingAd.titel_enthaelt_ungeoeffnet === 1 &&
-      resultingAd.preis_abweichung_marktwert <= -0.3) ||
-    (resultingAd.beschreibung_enthaelt_versiegelt === 1 &&
-      resultingAd.preis_abweichung_marktwert <= -0.3)
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
 
   if (
     resultingAd.konto_privat === 1 &&
@@ -197,44 +172,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 2);
 
   if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &&
-    resultingAd.sonstiges_anzeige_kopiert === 1 &&
-    resultingAd.preis_abweichung_marktwert <= -0.3
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &&
-    resultingAd.beschreibung_enthaelt_whatsapp === 1 &&
-    resultingAd.beschreibung_enthaelt_sepa
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &&
-    (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.beschreibung_enthaelt_ovp === 1) &&
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &&
-    resultingAd.preis_abweichung_marktwert <= -0.3
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.titel_enthaelt_neu === 0 &&
-    resultingAd.beschreibung_enthaelt_neu === 0 &&
-    resultingAd.sonstiges_anzeige_kopiert === 1 &&
-    resultingAd.preis_abweichung_marktwert <= -0.3
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
     resultingAd.titel_enthaelt_ovp === 0 &&
     resultingAd.beschreibung_enthaelt_ovp === 0 &&
     resultingAd.sonstiges_anzeige_kopiert === 1 &&
@@ -253,29 +190,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 4);
 
   // Kombinationen aus Assoziationsanalyse
-  if (
-    resultingAd.beschreibung_enthaelt_sepa === 1 &&
-    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
-    resultingAd.konto_privat === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.titel_enthaelt_neu === 1 &&
-    resultingAd.titel_enthaelt_zeichen === 1 &&
-    resultingAd.sonstiges_kategorie_unpassend === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.titel_enthaelt_ovp === 1 &&
-    resultingAd.titel_enthaelt_zeichen === 1 &&
-    resultingAd.sonstiges_kategorie_unpassend === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
 
   if (
     resultingAd.preis_unter_marktwert === 1 &&
@@ -305,55 +219,10 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   else addToScore(resultingAd, false, 3);
 
   if (
-    resultingAd.beschreibung_ist_kopiert_anzeige === 1 &&
-    resultingAd.beschreibung_enthaelt_neu === 1 &&
-    resultingAd.titel_enthaelt_ovp === 1 &&
-    resultingAd.sonstiges_kategorie_unpassend === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.preis_unter_marktwert === 1 &&
-    resultingAd.beschreibung_enthaelt_neu === 1 &&
-    resultingAd.titel_enthaelt_ovp === 1 &&
-    resultingAd.sonstiges_anzeige_kopiert === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.sonstiges_anzeige_kopiert === 1 &&
-    resultingAd.beschreibung_enthaelt_neu === 1 &&
-    resultingAd.titel_enthaelt_ovp === 1 &&
-    resultingAd.sonstiges_kategorie_unpassend === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.beschreibung_enthaelt_sepa === 1 &&
-    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
-    resultingAd.beschreibung_enthaelt_versand === 1 &&
-    resultingAd.konto_privat === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
     resultingAd.preis_unter_marktwert === 1 &&
     resultingAd.preis_typ_vb === 1 &&
     resultingAd.titel_enthaelt_ovp === 1 &&
     resultingAd.titel_enthaelt_neu === 1
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    resultingAd.titel_enthaelt_zeichen === 1 &&
-    resultingAd.titel_enthaelt_ovp === 1 &&
-    resultingAd.titel_enthaelt_neu === 1 &&
-    resultingAd.sonstiges_kategorie_unpassend === 1
   )
     addToScore(resultingAd, true, 5);
   else addToScore(resultingAd, false, 5);
