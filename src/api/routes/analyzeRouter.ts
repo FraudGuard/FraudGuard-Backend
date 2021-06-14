@@ -10,70 +10,67 @@ analyzeRouter
   .route('/:id')
   /**
    * @swagger
-   * /:id/:
+   * /api/analyze/:id:
    *   get:
    *     tags:
-   *       - analyzeFromApi
-   *     description: Analysiert eine Ad mit der ebay-Kleinanzeigen API
+   *       - Analyze
+   *     summary: Analysiert eine Ad aus der ebay-Kleinanzeigen API.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Ein Ad-Objekt mit den Merkmalen
+   *         description: Die Analysierte Anzeige.
    *         content:
-   *           application/json:
-   *             schema:
-   *               type: adsSchema
    *       '404':
    *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
    */ .get(analyzeFromApi);
 analyzeRouter
   .route('/fromDb/:id')
   /**
    * @swagger
-   * /fromDb/:id/:
+   * /api/analyze/fromDb/:id:
    *   get:
    *     tags:
-   *       - analyzeFromDb
-   *     description: Analysiert eine Ad aus unsere Datenbank
+   *       - Analyze
+   *     summary: Analysiert eine Ad aus unsere Datenbank.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Ein Ad-Objekt mit den Merkmalen
+   *         description: Die Analysierte Anzeige.
    *         content:
    *           application/json:
    *             schema:
    *               type: adsSchema
    *       '404':
    *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
    */ .get(analyzeFromDb);
 analyzeRouter
   .route('/:id/comment')
   /**
    * @swagger
-   * /:id/:
-   *   get:
+   * /api/:id/comment:
+   *   patch:
    *     tags:
-   *       - saveComment
-   *     description: Fügt dem Comment Attribut einen String hinzu
+   *       - Analyze
+   *     summary: Fügt dem Comment Attribut einen String hinzu.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Der Kommentar wurde hinzugefügt
+   *         description: Der Kommentar wurde hinzugefügt.
    *         content:
    *           application/json:
    *             schema:
    *               type: string
    *       '404':
    *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
    */ .patch(saveComment);
 
 export { analyzeRouter };

@@ -3,6 +3,7 @@ import { logger } from '../../shared';
 import { generateBeschreibung } from '../analyze/generateBeschreibung';
 import { evaluateAntipattern, evaluatePattern } from './';
 import { evaluateExclusions } from './evaluateExclusions';
+import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
 /**
  * Funktion zur Berechnung des Scores einer Anzeige.
  * Dabei werden die Scores (Patternscore und Antipatternscore) miteinander verrechnet und normiert.
@@ -23,6 +24,8 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     //   reject(error);
     // });
     const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
+    const aussagekraeftiges_Pattern_erfuellt =
+      evaluateSignificantPatterns(resultingAd);
     const zu_wenig_merkmale =
       resultingAd.pattern_anzahl_zutreffend +
         resultingAd.antipattern_anzahl_zutreffend <
@@ -46,6 +49,10 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
 
       resultingAd.fraud_score =
         Math.round((pattern_score - antipattern_score) * 100) / 100;
+
+      if (aussagekraeftiges_Pattern_erfuellt === 1) {
+        resultingAd.fraud_score += 30;
+      }
     }
 
     generateBeschreibung(resultingAd);

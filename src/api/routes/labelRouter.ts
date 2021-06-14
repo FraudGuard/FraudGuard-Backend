@@ -14,21 +14,17 @@ labelRouter
    * /api/label/get/:
    *   get:
    *     tags:
-   *       - findOneForLabel
-   *     description: Liefert eine Anzeige welche in review ist
+   *       - Label
+   *     summary: Liefert eine Anzeige, welche noch nicht gelabelt wurde.
    *     responses:
    *       '200':
-   *         description: blabla
+   *         description: Eine zufällige Anzeige, welche mit toReview markiert ist.
    *         content:
    *           application/json:
    *             schema:
    *               type: adsSchema
-   *       '404':
-   *         description: blabla
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: string
+   *       '400':
+   *         description: Bad Request
    */ .get(findOneForLabel);
 labelRouter
   .route('/getToReview')
@@ -37,19 +33,17 @@ labelRouter
    * /api/label/getToReview/:
    *   get:
    *     tags:
-   *       - findOneToReview
-   *     description: blabla
+   *       - Label
+   *     summary: Liefert eine Anzeige, welche mit toReview markiert ist.
    *     responses:
    *       '200':
-   *         description: blabla
+   *         description: Eine zufällige Anzeige, welche mit toReview markiert ist.
    *         content:
    *           application/json:
    *             schema:
    *               type: adsSchema
-   *       '404':
-   *         description: blabla
-   *         content:
-   *           application/json
+   *       '400':
+   *         description: Bad Request
    */ .get(findOneToReview);
 labelRouter
   .route('/count')
@@ -58,47 +52,32 @@ labelRouter
    * /api/label/count/:
    *   get:
    *     tags:
-   *       - countToLabel
-   *     description: blabla
+   *       - Label
+   *     summary: Zählt die gelabelten Anzeigen. Jeder Request erhöht den Wert um 1.
    *     responses:
    *       '200':
-   *         description: blabla
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: array
-   *               items:
-   *                 type: blabla
-   *       '404':
-   *         description: blabla
-   *           application/json:
-   *             schema:
-   *               type: string
+   *         description: Der Wert wurde erfolgreich eins nach oben gezählt.
+   *       '400':
+   *         description: Bad Request
    */ .get(countToLabel);
 labelRouter
   .route('/update')
   /**
    * @swagger
    * /api/label/update/:
-   *   get:
+   *   post:
    *     tags:
-   *       - updateAd
-   *     description: blabla
+   *       - Label
+   *     summary: Markiert eine Anzeige als gelabelt mit der getroffenen Entscheidung.
    *     responses:
    *       '200':
-   *         description: blabla
+   *         description: Anzeige, welche geupdated wird
    *         content:
-   *           application/json:
+   *          application/json::
    *             schema:
-   *               type: array
-   *               items:
-   *                 type: Lecture
-   *       '404':
-   *         description: blabla
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: string
+   *               type: adsSchema
+   *       '400':
+   *         description: Bad Request
    */ .post(updateAd);
 
 export { labelRouter };
