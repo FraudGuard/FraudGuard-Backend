@@ -13,13 +13,12 @@ adsRouter
    * /api/ads/transform/evaluate/:
    *   get:
    *     tags:
-   *       - Evaluate
-   *     description: Transformiert alle Ads und wertet sie neu aus.
+   *       - Ads
+   *     summary: Transformiert alle Ads und wertet sie neu aus.
    *     responses:
    *       '200':
    *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool
    *         content:
-   *           application/json
    *       '500':
    *         description: Internal Error
    *         content:
@@ -32,13 +31,12 @@ adsRouter
    * /api/ads/transform/:
    *   get:
    *     tags:
-   *       - Evaluate
-   *     description: Transformiert alle Ads.
+   *       - Ads
+   *     summary: Transformiert alle Ads.
    *     responses:
    *       '200':
    *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool
    *         content:
-   *           application/json
    *       '500':
    *         description: Internal Error
    *         content:
@@ -51,25 +49,18 @@ adsRouter
    * /api/ads/:id/:
    *   get:
    *     tags:
-   *       - findById
-   *     description: Liefert ein Ad mit der Id
+   *       - Ads
+   *     summary: Liefert ein Ad mit der Id
    *     parameters:
    *       - name: id
-   *         description: id einer Anzeige
+   *         description: Id der angefragten Anzeige
    *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Liefert das angefragte Ad
+   *         description: Die angefragte Anzeige
    *         content:
-   *           application/json:
-   *             schema:
-   *               type: AdsSchema
-   *       '404':
-   *         description: Falls die Id ungültig ist oder die Ad nicht existiert
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: string
+   *       '400':
+   *         description: Bad request
    */ .get(findById);
 
 export { adsRouter };

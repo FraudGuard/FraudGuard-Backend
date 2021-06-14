@@ -134,7 +134,6 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     addToScore(resultingAd, true, 4);
   else addToScore(resultingAd, false, 4);
 
-
   if (
     resultingAd.konto_privat === 1 &&
     resultingAd.konto_name_enthaelt_gmbh === 1

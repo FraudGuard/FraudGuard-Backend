@@ -10,37 +10,38 @@ analyzeRouter
   .route('/:id')
   /**
    * @swagger
-   * /:id/:
+   * /api/analyze/:id:
    *   get:
    *     tags:
-   *       - analyzeFromApi
-   *     description: Analysiert eine Ad mit der ebay-Kleinanzeigen API
+   *       - Analyze
+   *     summary: Analysiert eine Ad aus der ebay-Kleinanzeigen API.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Ein Ad-Objekt mit den Merkmalen
+   *         description: Die Analysierte Anzeige.
    *         content:
-   *           application/json:
-   *             schema:
-   *               type: adsSchema
-   *       '404':
-   *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
+   *       '400':
+   *         description: Bad request
    */ .get(analyzeFromApi);
 analyzeRouter
   .route('/fromDb/:id')
   /**
    * @swagger
-   * /fromDb/:id/:
+   * /api/analyze/fromDb/:id:
    *   get:
    *     tags:
-   *       - analyzeFromDb
-   *     description: Analysiert eine Ad aus unsere Datenbank
+   *       - Analyze
+   *     summary: Analysiert eine Ad aus unsere Datenbank.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Ein Ad-Objekt mit den Merkmalen
+   *         description: Die Analysierte Anzeige.
    *         content:
    *           application/json:
    *             schema:
@@ -56,14 +57,18 @@ analyzeRouter
   .route('/:id/comment')
   /**
    * @swagger
-   * /:id/:
+   * /api/:id/comment:
    *   get:
    *     tags:
-   *       - saveComment
-   *     description: Fügt dem Comment Attribut einen String hinzu
+   *       - Analyze
+   *     summary: Fügt dem Comment Attribut einen String hinzu.
+   *     parameters:
+   *       - name: id
+   *         description: Id der angefragten Anzeige.
+   *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Der Kommentar wurde hinzugefügt
+   *         description: Der Kommentar wurde hinzugefügt.
    *         content:
    *           application/json:
    *             schema:
