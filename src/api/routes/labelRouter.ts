@@ -25,10 +25,6 @@ labelRouter
    *               type: adsSchema
    *       '400':
    *         description: Bad Request
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: string
    */ .get(findOneForLabel);
 labelRouter
   .route('/getToReview')
@@ -48,8 +44,6 @@ labelRouter
    *               type: adsSchema
    *       '400':
    *         description: Bad Request
-   *         content:
-   *           application/json
    */ .get(findOneToReview);
 labelRouter
   .route('/count')
@@ -59,26 +53,19 @@ labelRouter
    *   get:
    *     tags:
    *       - Label
-   *     summary: blabla
+   *     summary: Zählt die gelabelten Anzeigen. Jeder Request erhöht den Wert um 1.
    *     responses:
    *       '200':
-   *         description: blabla
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
+   *         description: Der Wert wurde erfolgreich eins nach oben gezählt.
    *       '400':
    *         description: Bad Request
-   *           application/json:
-   *             schema:
-   *               type: string
    */ .get(countToLabel);
 labelRouter
   .route('/update')
   /**
    * @swagger
    * /api/label/update/:
-   *   get:
+   *   post:
    *     tags:
    *       - Label
    *     summary: Markiert eine Anzeige als gelabelt mit der getroffenen Entscheidung.
@@ -91,10 +78,6 @@ labelRouter
    *               type: adsSchema
    *       '400':
    *         description: Bad Request
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: string
    */ .post(updateAd);
 
 export { labelRouter };

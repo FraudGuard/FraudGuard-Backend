@@ -17,12 +17,10 @@ adsRouter
    *     summary: Transformiert alle Ads und wertet sie neu aus.
    *     responses:
    *       '200':
-   *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool
+   *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool.
    *         content:
    *       '500':
    *         description: Internal Error
-   *         content:
-   *           application/json
    */ .get(transformEvaluate);
 adsRouter
   .route('/transform')
@@ -35,12 +33,10 @@ adsRouter
    *     summary: Transformiert alle Ads.
    *     responses:
    *       '200':
-   *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool
+   *         description: Liefert wenn alles vollständig transformiert wurde ein result mit einem bool.
    *         content:
    *       '500':
-   *         description: Internal Error
-   *         content:
-   *           application/json
+   *         description: Internal Error.
    */ .get(transform);
 adsRouter
   .route('/:id')
@@ -50,17 +46,17 @@ adsRouter
    *   get:
    *     tags:
    *       - Ads
-   *     summary: Liefert ein Ad mit der Id
+   *     summary: Liefert ein Ad mit der Id.
    *     parameters:
    *       - name: id
-   *         description: Id der angefragten Anzeige
+   *         description: Id der angefragten Anzeige.
    *         in: 'path'
    *     responses:
    *       '200':
-   *         description: Die angefragte Anzeige
+   *         description: Die angefragte Anzeige.
    *         content:
-   *       '400':
-   *         description: Bad request
+   *       '404':
+   *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
    */ .get(findById);
 
 export { adsRouter };

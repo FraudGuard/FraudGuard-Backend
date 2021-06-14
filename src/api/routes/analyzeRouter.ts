@@ -23,8 +23,8 @@ analyzeRouter
    *       '200':
    *         description: Die Analysierte Anzeige.
    *         content:
-   *       '400':
-   *         description: Bad request
+   *       '404':
+   *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
    */ .get(analyzeFromApi);
 analyzeRouter
   .route('/fromDb/:id')
@@ -48,17 +48,13 @@ analyzeRouter
    *               type: adsSchema
    *       '404':
    *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
    */ .get(analyzeFromDb);
 analyzeRouter
   .route('/:id/comment')
   /**
    * @swagger
    * /api/:id/comment:
-   *   get:
+   *   patch:
    *     tags:
    *       - Analyze
    *     summary: Fügt dem Comment Attribut einen String hinzu.
@@ -75,10 +71,6 @@ analyzeRouter
    *               type: string
    *       '404':
    *         description: Es konnte kein Ad-Objekt mit der Id gefunden werden.
-   *         content:
-   *          application/json::
-   *             schema:
-   *               type: adsSchema
    */ .patch(saveComment);
 
 export { analyzeRouter };
