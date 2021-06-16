@@ -12,7 +12,7 @@ import {
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import { createTestserver } from './testserver';
 import { expect } from 'chai';
-import { Ad1, Ad2, Ad3 } from './testAds';
+import { Ad1, Ad2, Ad3, Ad4 } from './testAds';
 import type { Server } from 'http';
 
 let server: Server;
@@ -119,7 +119,7 @@ describe('Analyze Ads', () => {
     expect(result2.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
     expect(result2.ap_beschreibung_enthaelt_paypal_kaeuferschutz).to.be.equal(
-      1,
+      0,
     );
     expect(result2.beschreibung_enthaelt_paypal_freunde).to.be.equal(1);
 
@@ -290,8 +290,8 @@ describe('Analyze Ads', () => {
     // expect(result2.fraud_score).to.be.equal(-39.); ohne Ausschlusskriterien
     expect(result1.fraud_score).to.be.equal(-100);
     expect(result1.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result1.pattern_anzahl_zutreffend).to.be.equal(3);
-    expect(result1.pattern_score).to.be.equal(7);
+    expect(result1.pattern_anzahl_zutreffend).to.be.equal(2);
+    expect(result1.pattern_score).to.be.equal(6);
     expect(result1.pattern_gesamtscore).to.be.equal(107);
     expect(result1.antipattern_anzahl_gesamt).to.be.equal(10);
     expect(result1.antipattern_anzahl_zutreffend).to.be.equal(5);
@@ -302,8 +302,8 @@ describe('Analyze Ads', () => {
     // expect(result2.fraud_score).to.be.equal(43.48); ohne Ausschlusskriterien
     expect(result2.fraud_score).to.be.equal(-100);
     expect(result2.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result2.pattern_anzahl_zutreffend).to.be.equal(21);
-    expect(result2.pattern_score).to.be.equal(56);
+    expect(result2.pattern_anzahl_zutreffend).to.be.equal(20);
+    expect(result2.pattern_score).to.be.equal(55);
     expect(result2.pattern_gesamtscore).to.be.equal(107);
     expect(result2.antipattern_anzahl_gesamt).to.be.equal(10);
     expect(result2.antipattern_anzahl_zutreffend).to.be.equal(1);
@@ -314,12 +314,18 @@ describe('Analyze Ads', () => {
     // expect(result3.fraud_score).to.be.equal(-29.69); ohne Ausschlusskriterien
     expect(result3.fraud_score).to.be.equal(-100);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result3.pattern_anzahl_zutreffend).to.be.equal(5);
-    expect(result3.pattern_score).to.be.equal(18);
+    expect(result3.pattern_anzahl_zutreffend).to.be.equal(4);
+    expect(result3.pattern_score).to.be.equal(17);
     expect(result3.pattern_gesamtscore).to.be.equal(107);
     expect(result3.antipattern_anzahl_gesamt).to.be.equal(10);
     expect(result3.antipattern_anzahl_zutreffend).to.be.equal(2);
     expect(result3.antipattern_score).to.be.equal(7);
     expect(result3.antipattern_gesamtscore).to.be.equal(37);
+
+
+    // Prüfung auf aussagekräftige Patterns
+    const result4 = await analyze(Ad4);
+
+    expect(result4.fraud_score).to.be.equal(35.83);
   });
 });
