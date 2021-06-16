@@ -496,7 +496,6 @@ export const Ad3 = new AdsFromEbayModel({
   updatedAt: { $date: { $numberLong: '1619816154092' } },
 });
 
-
 export const Ad4 = new AdsFromEbayModel({
   _id: '1681374618',
   'ad-address': {
@@ -641,8 +640,7 @@ export const Ad4 = new AdsFromEbayModel({
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
   title: {
-    value:
-      '   blabla',
+    value: '   blabla',
   },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },

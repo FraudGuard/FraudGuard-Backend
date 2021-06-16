@@ -322,7 +322,6 @@ describe('Analyze Ads', () => {
     expect(result3.antipattern_score).to.be.equal(7);
     expect(result3.antipattern_gesamtscore).to.be.equal(37);
 
-
     // Prüfung auf aussagekräftige Patterns
     const result4 = await analyze(Ad4);
 
