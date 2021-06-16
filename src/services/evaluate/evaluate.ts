@@ -50,7 +50,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
 
     generateBeschreibung(resultingAd);
 
-    if (zu_wenig_merkmale) {
+    if (zu_wenig_merkmale && ausschlusskriterium_erfuellt !== 1) {
       resultingAd.fraud_score = 0;
       resultingAd.keine_bewertung_moeglich = 1;
       resultingAd.beschreibung +=
