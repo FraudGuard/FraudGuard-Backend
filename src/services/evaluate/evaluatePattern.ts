@@ -68,7 +68,7 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   // Konto
   addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 / resultingAd.konto_anzeigen_anzahl >= 0.2, 1);
 
   if (resultingAd.konto_anzeigen_betrugsrate >= 40) {
     addToScore(resultingAd, true, 4);
