@@ -141,6 +141,10 @@ describe('Analyze Ads', () => {
     expect(result3.ap_beschreibung_enthaelt_suche).to.be.equal(0);
     expect(result3.ap_beschreibung_enthaelt_sammleraufloesung).to.be.equal(0);
     expect(result3.ap_beschreibung_enthaelt_kilo).to.be.equal(0);
+
+    const result4 = await analyzeBeschreibung(Ad4, new AdsModel());
+
+    expect(result4.ap_beschreibung_enthaelt_gebraucht).to.be.equal(0);
   });
 
   test('Analyze account', async () => {

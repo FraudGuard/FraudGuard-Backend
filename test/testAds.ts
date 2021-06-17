@@ -544,7 +544,7 @@ export const Ad4 = new AdsFromEbayModel({
   'contact-name': { value: 'Aruba !3' },
   'contact-name-initials': { value: 'AB' },
   description: {
-    value: ' sepa Überweisung  ',
+    value: ' blablabla  Rechte gebraucht  ',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
