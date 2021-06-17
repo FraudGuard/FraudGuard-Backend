@@ -350,6 +350,7 @@ const analyzeBeschreibung = (
       'selbstabholer',
       'abholen',
       'abgeholt',
+      'abholer',
     ];
     const abholung_signalwoerter_gegenteil = [
       'keine abholung',
