@@ -9,11 +9,10 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
   }
 
   if (
-    resultingAd.ap_titel_enthaelt_tausche === 1 ||
-    resultingAd.ap_beschreibung_enthaelt_tausch === 1
+    resultingAd.ap_titel_enthaelt_tausche === 1 
   ) {
     resultingAd.beschreibung +=
-      '<li>Kein Betrug, weil "tausche" im Titel oder der Beschreibung steht und solche Anzeigen in der Regel keine Betrugsmuster darstellen.</li>';
+      '<li>Kein Betrug, weil "tausche" im Titel steht und solche Anzeigen in der Regel keine Betrugsmuster darstellen.</li>';
   }
 
   if (
@@ -96,6 +95,16 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
   ) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil der Preis 50% über dem vom Marktpreis liegt und die Beschreibung Sammlung enthält.</li>';
+  }
+
+  if (resultingAd.konto_privat != 1) {
+    resultingAd.beschreibung +=
+    '<li>Ein Betrug ist unwahrscheinlich, da es sich um einen gewerblichen Verkäufer handelt</li>';
+  }
+
+  if(resultingAd.ap_sonstiges_anzeige_nur_abholung ===1 && resultingAd.beschreibung_enthaelt_ueberweisung === 0 && resultingAd.beschreibung_enthaelt_sepa === 0) {
+    resultingAd.beschreibung +=
+    '<li>Kein Betrug, da nur Abholung möglich ist und keine Überweisung verlangt wird</li>';
   }
 
   // Kombinationen - Pattern
@@ -360,6 +369,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung +=
       '<li>Die Anzeige enthält: neu, ovp und mindestens ein Sonderzeichen im Titel und hat eine unpassende Kategorie.</li>';
   }
+
 
   if (resultingAd.beschreibung.length > 0) {
     resultingAd.beschreibung =

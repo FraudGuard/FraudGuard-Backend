@@ -64,6 +64,7 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
   );
 
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4);
+  
 
   // Konto
   addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
