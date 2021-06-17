@@ -159,6 +159,7 @@ const analyzeBeschreibung = (
       'nicht die originalverpackung',
       'keine originalverpackung',
       'keine ovp',
+      'ovp vorhanden',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of ovp_signalwoerter) {
