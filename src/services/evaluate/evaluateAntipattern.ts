@@ -70,9 +70,9 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 3);
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche ===1, 5 );
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 5);
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch===1, 5);
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 5);
 
   // Konto
   addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
