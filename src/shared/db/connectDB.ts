@@ -42,7 +42,6 @@ const connectDB = async () => {
     useCreateIndex,
     useUnifiedTopology,
   };
-
   // http://mongoosejs.com/docs/api.html#index_Mongoose-createConnection
   // http://mongoosejs.com/docs/api.html#connection_Connection-open
   // http://mongoosejs.com/docs/connections.html
