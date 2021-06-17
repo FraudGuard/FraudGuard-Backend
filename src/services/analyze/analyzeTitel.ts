@@ -45,7 +45,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
             resultingAd.titel_enthaelt_neu = 1;
           }
           if (str.includes(g)) {
-          resultingAd.titel_enthaelt_neu = 0;
+            resultingAd.titel_enthaelt_neu = 0;
           }
         }
       }
@@ -72,7 +72,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g1)) {
             resultingAd.titel_enthaelt_ovp = 0;
-            }
+          }
         }
       }
 
@@ -97,7 +97,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g2)) {
             resultingAd.titel_enthaelt_verschweißt = 0;
-            }
+          }
         }
       }
 
@@ -117,7 +117,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g3)) {
             resultingAd.titel_enthaelt_ungeoeffnet = 0;
-            }
+          }
         }
       }
 
@@ -157,7 +157,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g5)) {
             resultingAd.ap_titel_enthaelt_gebraucht = 0;
-            }
+          }
         }
       }
 
@@ -177,7 +177,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g6)) {
             resultingAd.ap_titel_enthaelt_tausche = 0;
-            }
+          }
         }
       }
 
@@ -197,7 +197,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g7)) {
             resultingAd.ap_titel_enthaelt_suche = 0;
-            }
+          }
         }
       }
 
@@ -213,7 +213,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g8)) {
             resultingAd.ap_titel_enthaelt_kilo = 0;
-            }
+          }
         }
       }
 
@@ -243,7 +243,7 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
           }
           if (str.includes(g9)) {
             resultingAd.ap_titel_enthaelt_sammlung = 0;
-            }
+          }
         }
       }
 

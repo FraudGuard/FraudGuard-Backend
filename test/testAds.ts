@@ -142,7 +142,9 @@ export const Ad1 = new AdsFromEbayModel({
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
-  title: { value: 'ziemlich neu LEGO Technic 42009 Mobiler Schwerlastkran MK II' },
+  title: {
+    value: 'ziemlich neu LEGO Technic 42009 Mobiler Schwerlastkran MK II',
+  },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
   'user-rating': { averageRating: { value: '0.875' } },

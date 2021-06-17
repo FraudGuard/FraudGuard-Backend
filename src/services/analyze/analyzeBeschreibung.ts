@@ -132,7 +132,7 @@ const analyzeBeschreibung = (
       'nicht ungeoeffnet',
       'neuwertig',
       'ziemlich neu',
-      'neuanschaffung'
+      'neuanschaffung',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of neu_signalwoerter) {
@@ -251,7 +251,11 @@ const analyzeBeschreibung = (
 
     // Antipattern
     // Prüfen auf Barzahlung
-    const barzahlung_signalwoerter = ['barzahlung', ' bar', 'bezahlung vor ort'];
+    const barzahlung_signalwoerter = [
+      'barzahlung',
+      ' bar',
+      'bezahlung vor ort',
+    ];
     const barzahlung_signalwoerter_gegenteil = [
       'keine barzahlung',
       'nicht bar',
