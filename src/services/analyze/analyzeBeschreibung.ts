@@ -159,6 +159,7 @@ const analyzeBeschreibung = (
       'nicht die originalverpackung',
       'keine originalverpackung',
       'keine ovp',
+      'ovp vorhanden',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of ovp_signalwoerter) {
@@ -349,6 +350,7 @@ const analyzeBeschreibung = (
       'selbstabholer',
       'abholen',
       'abgeholt',
+      'abholer',
     ];
     const abholung_signalwoerter_gegenteil = [
       'keine abholung',
