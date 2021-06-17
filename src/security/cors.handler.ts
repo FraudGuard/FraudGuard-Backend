@@ -4,6 +4,7 @@ const whitelist = [
   'https://www.ebay-kleinanzeigen.de/*',
   'https://www.ebay-kleinanzeigen.de',
   'http://localhost:4200',
+  'http://localhost:4202',
   'https://awp-label5000.inncoded.com',
 ];
 

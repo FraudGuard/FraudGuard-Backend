@@ -26,7 +26,7 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
       if (ad_title.includes(produkt.produktname.toLowerCase())) {
         marktwert = produkt.preis;
       }
-      if (num != '' && produkt.produktname.toLowerCase().includes(num))
+      if (num != '' && produkt.legoNr == num)
         marktwert = produkt.preis;
     }
 
