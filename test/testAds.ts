@@ -49,7 +49,7 @@ export const Ad1 = new AdsFromEbayModel({
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'Sammlung etwas verkleinern, daher hier zum Verkauf LEGO Technic mobiler Schwerlastkran (42009)- vollständiges Set- nicht bespielt- incl. AufbauanleitungKann zusammengebaut abgeholt, oder zerlegt versendet werden.Wird natürlich nochmal gereinigtBei Fragen einfach melden. nur sepa ',
+      'Neuanschaffung gebrauchbar Sammlung etwas verkleinern, daher hier zum Verkauf LEGO Technic mobiler Schwerlastkran (42009)- vollständiges Set- nicht bespielt- incl. AufbauanleitungKann zusammengebaut abgeholt, oder zerlegt versendet werden.Wird natürlich nochmal gereinigtBei Fragen einfach melden. nur sepa ',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
@@ -142,7 +142,9 @@ export const Ad1 = new AdsFromEbayModel({
   'seller-account-type': { value: 'PRIVATE' },
   'start-date-time': { value: '2021-02-27T15:07:11.000+0100' },
   'store-id': {},
-  title: { value: 'LEGO Technic 42009 Mobiler Schwerlastkran MK II' },
+  title: {
+    value: 'ziemlich neu LEGO Technic 42009 Mobiler Schwerlastkran MK II',
+  },
   tracking: { 'user-account-type': { value: 'private' } },
   'user-id': { value: '43301478' },
   'user-rating': { averageRating: { value: '0.875' } },
