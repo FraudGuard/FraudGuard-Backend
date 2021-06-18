@@ -12,7 +12,7 @@ const analyzeBeschreibung = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, _reject) => {
     logger.info('start analyze Beschreibung');
     const beschreibung = ad['description']?.value?.toLowerCase();
 
@@ -436,9 +436,6 @@ const analyzeBeschreibung = (
     }
     resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
     resolve(resultingAd);
   });
 

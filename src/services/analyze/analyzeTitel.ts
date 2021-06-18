@@ -247,9 +247,6 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
         }
       }
 
-      if (false) {
-        reject(new Error('Some Error happened'));
-      }
       resolve(resultingAd);
     } catch (e) {
       reject(e);

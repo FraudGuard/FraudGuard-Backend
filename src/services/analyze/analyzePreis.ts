@@ -51,9 +51,6 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
     // Prüfen, ob Preis vorhanden ist
     resultingAd.ap_preis_ist_leer = ad.price?.amount?.value == 0 ? 1 : 0;
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
     resolve(resultingAd);
   });
 

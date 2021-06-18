@@ -5,7 +5,7 @@ const analyzeSonstiges = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, _reject) => {
     logger.info('start analyze Sonstiges');
 
     const res = await AdsFromEbayModel.find({
@@ -96,9 +96,6 @@ const analyzeSonstiges = (
     resultingAd.ap_sonstiges_anzeige_suche =
       ad['ad-type'].value === 'WANTED' ? 1 : 0;
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
     resolve(resultingAd);
   });
 export { analyzeSonstiges };
