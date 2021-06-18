@@ -13,6 +13,7 @@ export interface AdsSchema extends Document {
   toReview: number;
   comment: string;
   keine_bewertung_moeglich: number;
+  beschreibung_zu_klein: number;
 
   // evaluate
   pattern_score: number;

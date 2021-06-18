@@ -161,7 +161,7 @@ describe('Analyze Ads', () => {
     expect(result1.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result1.konto_name_enthaelt_gmbh).to.be.equal(0);
     expect(result1.konto_name_laenge).to.be.equal(14);
-    //expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
+    // expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result1.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result1.konto_privat).to.be.equal(1);
     expect(result1.konto_bewertungen_anzahl).to.be.equal(2);
@@ -179,7 +179,7 @@ describe('Analyze Ads', () => {
     expect(result2.konto_name_enthaelt_unueblich).to.be.equal(1);
     expect(result2.konto_name_laenge).to.be.equal(8);
     expect(result2.konto_name_enthaelt_gmbh).to.be.equal(0);
-    //expect(result2.ap_konto_name_natuerlich).to.be.equal(0);
+    // expect(result2.ap_konto_name_natuerlich).to.be.equal(0);
     expect(result2.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result2.konto_privat).to.be.equal(1);
     expect(result2.konto_bewertungen_anzahl).to.be.equal(2);
@@ -197,7 +197,7 @@ describe('Analyze Ads', () => {
     expect(result3.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result3.konto_name_laenge).to.be.equal(19);
     expect(result3.konto_name_enthaelt_gmbh).to.be.equal(1);
-    //expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
+    // expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result3.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result3.konto_privat).to.be.equal(1);
     expect(result3.konto_bewertungen_anzahl).to.be.equal(2);
