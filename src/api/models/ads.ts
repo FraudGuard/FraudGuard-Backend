@@ -15,6 +15,7 @@ export const adsSchema = new Schema<AdsSchema>(
     toReview: { type: Number },
     comment: { type: String },
     keine_bewertung_moeglich: { type: Number },
+    beschreibung_zu_klein: { type: Number },
 
     pattern_score: { type: Number },
     pattern_gesamtscore: { type: Number },

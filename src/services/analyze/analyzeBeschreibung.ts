@@ -436,6 +436,8 @@ const analyzeBeschreibung = (
     }
     resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
 
+    resultingAd.beschreibung_zu_klein = beschreibung.length < 50 ? 1 : 0;
+
     if (false) {
       reject(new Error('Some Error happened'));
     }
