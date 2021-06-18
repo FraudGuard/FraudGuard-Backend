@@ -9,7 +9,7 @@ import { logger } from '../../shared';
  */
 
 const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, _reject) => {
     logger.info('start analyze Preis');
 
     const ad_preis = parseInt(ad.price?.amount?.value, 10);
