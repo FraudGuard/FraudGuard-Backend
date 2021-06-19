@@ -316,7 +316,8 @@ describe('Analyze Ads', () => {
     // Ad 3
     const result3 = await analyze(Ad3);
     // expect(result3.fraud_score).to.be.equal(-29.69); ohne Ausschlusskriterien
-    expect(result3.fraud_score).to.be.equal(-100);
+    //expect(result3.fraud_score).to.be.equal(-100);
+    expect(result3.fraud_score).to.be.equal(0);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(38);
     expect(result3.pattern_anzahl_zutreffend).to.be.equal(5);
     expect(result3.pattern_score).to.be.equal(18);
@@ -329,6 +330,7 @@ describe('Analyze Ads', () => {
     // Prüfung auf aussagekräftige Patterns
     const result4 = await analyze(Ad4);
 
-    expect(result4.fraud_score).to.be.equal(39.64);
+    //expect(result4.fraud_score).to.be.equal(39.64);
+    expect(result4.fraud_score).to.be.equal(0);
   });
 });
