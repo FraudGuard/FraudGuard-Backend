@@ -95,11 +95,6 @@ const evaluateAntipattern = async (resultingAd: AdsSchema) => {
 
   // Score Kategorie Sonstiges
   addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
-  addToScore(
-    resultingAd,
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1,
-    5,
-  );
 
   return resultingAd;
 };
