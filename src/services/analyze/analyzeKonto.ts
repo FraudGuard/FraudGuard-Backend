@@ -118,6 +118,7 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
     resultingAd.konto_name_enthaelt_unueblich = 1;
   }
 
+  // prüfen, ob es mehrere Anzeigen des Accounts mit einem Wert über 100€ gibt
   resultingAd.konto_anzeigen_anzahl = adsFromAccount
     ? adsFromAccount.length
     : 0;
@@ -128,6 +129,7 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
         ).length ?? 0
       : 0;
 
+  // prüfen, ob der Account mehrere Anzeigen an verschiedenen Orten eingestellt hat
   resultingAd.konto_anzeigen_gleich = 0;
   let betrugsrate_summe = 0;
   const verschiedene_orte_anzeigen: any = {
