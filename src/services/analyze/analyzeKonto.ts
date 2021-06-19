@@ -86,7 +86,7 @@ const analyzeKonto = async (ad: AdsFromEbaySchema, resultingAd: AdsSchema) => {
   resultingAd.ap_konto_name_natuerlich = 0;
   const str1 = ad['contact-name'].value.toLowerCase();
   if (str1 === 'privat') {
-    resultingAd.ap_konto_name_natuerlich = 1;
+    resultingAd.ap_konto_name_natuerlich = 0;
   } else {
     for (const f of firstNames) {
       if (str1.includes(f.toLowerCase())) {
