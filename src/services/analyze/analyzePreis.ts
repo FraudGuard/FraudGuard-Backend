@@ -9,7 +9,7 @@ import { logger } from '../../shared';
  */
 
 const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, _reject) => {
     logger.info('start analyze Preis');
 
     const ad_preis = parseInt(ad.price?.amount?.value, 10);
@@ -26,8 +26,7 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
       if (ad_title.includes(produkt.produktname.toLowerCase())) {
         marktwert = produkt.preis;
       }
-      if (num != '' && produkt.produktname.toLowerCase().includes(num))
-        marktwert = produkt.preis;
+      if (num != '' && produkt.legoNr == num) marktwert = produkt.preis;
     }
 
     // Abgleich mit Marktwert 1 bedeutet geprüft und unter Marktwert / 2 bedeutet geprüft und nicht unter Marktwert
@@ -52,9 +51,6 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
     // Prüfen, ob Preis vorhanden ist
     resultingAd.ap_preis_ist_leer = ad.price?.amount?.value == 0 ? 1 : 0;
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
     resolve(resultingAd);
   });
 

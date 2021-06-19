@@ -12,7 +12,7 @@ const analyzeBeschreibung = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, _reject) => {
     logger.info('start analyze Beschreibung');
     const beschreibung = ad['description']?.value?.toLowerCase();
 
@@ -131,6 +131,8 @@ const analyzeBeschreibung = (
       'nicht nie ausgepackt',
       'nicht ungeoeffnet',
       'neuwertig',
+      'ziemlich neu',
+      'neuanschaffung',
     ];
 
    
@@ -252,7 +254,11 @@ const analyzeBeschreibung = (
 
     // Antipattern
     // Prüfen auf Barzahlung
-    const barzahlung_signalwoerter = ['barzahlung', 'bar', 'bezahlung vor ort'];
+    const barzahlung_signalwoerter = [
+      'barzahlung',
+      ' bar',
+      'bezahlung vor ort',
+    ];
     const barzahlung_signalwoerter_gegenteil = [
       'keine barzahlung',
       'nicht bar',
@@ -442,9 +448,7 @@ const analyzeBeschreibung = (
     }
     resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
+    resultingAd.beschreibung_zu_klein = beschreibung.length < 50 ? 1 : 0;
     resolve(resultingAd);
   });
 

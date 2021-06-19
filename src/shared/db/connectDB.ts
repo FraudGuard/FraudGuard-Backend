@@ -59,7 +59,7 @@ const connectDB = async () => {
   logger.info(`DB-Connection to ${connection.db.databaseName} is established`);
 
   connection.on('disconnecting', () =>
-    logger.info('DB-Connection is being closed geschlossen...'),
+    logger.info('DB-Connection is being closed...'),
   );
   connection.on('disconnected', () => logger.info('DB-Connection is closed.'));
   connection.on('error', () => logger.error('Faulty DB-Connection'));

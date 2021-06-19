@@ -11,7 +11,7 @@ const analyzeMetadaten = (
   ad: any,
   resultingAd: AdsSchema,
 ): Promise<AdsSchema> =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve, _reject) => {
     logger.info('start analyze Metadaten');
 
     resultingAd.metadaten_breitengrad = parseFloat(
@@ -28,9 +28,6 @@ const analyzeMetadaten = (
       ad['start-date-time'].value,
     ).getTime();
 
-    if (false) {
-      reject(new Error('Some Error happened'));
-    }
     resolve(resultingAd);
   });
 

@@ -165,7 +165,7 @@ describe('Analyze Ads', () => {
     expect(result1.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result1.konto_name_enthaelt_gmbh).to.be.equal(0);
     expect(result1.konto_name_laenge).to.be.equal(14);
-    expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
+    // expect(result1.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result1.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result1.konto_privat).to.be.equal(1);
     expect(result1.konto_bewertungen_anzahl).to.be.equal(2);
@@ -183,7 +183,7 @@ describe('Analyze Ads', () => {
     expect(result2.konto_name_enthaelt_unueblich).to.be.equal(1);
     expect(result2.konto_name_laenge).to.be.equal(8);
     expect(result2.konto_name_enthaelt_gmbh).to.be.equal(0);
-    expect(result2.ap_konto_name_natuerlich).to.be.equal(0);
+    // expect(result2.ap_konto_name_natuerlich).to.be.equal(0);
     expect(result2.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result2.konto_privat).to.be.equal(1);
     expect(result2.konto_bewertungen_anzahl).to.be.equal(2);
@@ -201,7 +201,7 @@ describe('Analyze Ads', () => {
     expect(result3.konto_name_enthaelt_unueblich).to.be.equal(0);
     expect(result3.konto_name_laenge).to.be.equal(19);
     expect(result3.konto_name_enthaelt_gmbh).to.be.equal(1);
-    expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
+    // expect(result3.ap_konto_name_natuerlich).to.be.equal(1);
     expect(result3.konto_name_sonderzeichen_anzahl).to.be.equal(0);
     expect(result3.konto_privat).to.be.equal(1);
     expect(result3.konto_bewertungen_anzahl).to.be.equal(2);
@@ -294,41 +294,41 @@ describe('Analyze Ads', () => {
     // expect(result2.fraud_score).to.be.equal(-39.); ohne Ausschlusskriterien
     expect(result1.fraud_score).to.be.equal(-100);
     expect(result1.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result1.pattern_anzahl_zutreffend).to.be.equal(2);
-    expect(result1.pattern_score).to.be.equal(6);
+    expect(result1.pattern_anzahl_zutreffend).to.be.equal(3);
+    expect(result1.pattern_score).to.be.equal(7);
     expect(result1.pattern_gesamtscore).to.be.equal(107);
-    expect(result1.antipattern_anzahl_gesamt).to.be.equal(10);
+    expect(result1.antipattern_anzahl_gesamt).to.be.equal(12);
     expect(result1.antipattern_anzahl_zutreffend).to.be.equal(5);
     expect(result1.antipattern_score).to.be.equal(17);
-    expect(result1.antipattern_gesamtscore).to.be.equal(37);
+    expect(result1.antipattern_gesamtscore).to.be.equal(47);
     // Ad 2
     const result2 = await analyze(Ad2);
     // expect(result2.fraud_score).to.be.equal(43.48); ohne Ausschlusskriterien
     expect(result2.fraud_score).to.be.equal(-100);
     expect(result2.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result2.pattern_anzahl_zutreffend).to.be.equal(20);
-    expect(result2.pattern_score).to.be.equal(55);
+    expect(result2.pattern_anzahl_zutreffend).to.be.equal(21);
+    expect(result2.pattern_score).to.be.equal(56);
     expect(result2.pattern_gesamtscore).to.be.equal(107);
-    expect(result2.antipattern_anzahl_gesamt).to.be.equal(10);
+    expect(result2.antipattern_anzahl_gesamt).to.be.equal(12);
     expect(result2.antipattern_anzahl_zutreffend).to.be.equal(1);
     expect(result2.antipattern_score).to.be.equal(5);
-    expect(result2.antipattern_gesamtscore).to.be.equal(37);
+    expect(result2.antipattern_gesamtscore).to.be.equal(47);
     // Ad 3
     const result3 = await analyze(Ad3);
     // expect(result3.fraud_score).to.be.equal(-29.69); ohne Ausschlusskriterien
     expect(result3.fraud_score).to.be.equal(-100);
     expect(result3.pattern_anzahl_gesamt).to.be.equal(38);
-    expect(result3.pattern_anzahl_zutreffend).to.be.equal(4);
-    expect(result3.pattern_score).to.be.equal(17);
+    expect(result3.pattern_anzahl_zutreffend).to.be.equal(5);
+    expect(result3.pattern_score).to.be.equal(18);
     expect(result3.pattern_gesamtscore).to.be.equal(107);
-    expect(result3.antipattern_anzahl_gesamt).to.be.equal(10);
+    expect(result3.antipattern_anzahl_gesamt).to.be.equal(12);
     expect(result3.antipattern_anzahl_zutreffend).to.be.equal(2);
     expect(result3.antipattern_score).to.be.equal(7);
-    expect(result3.antipattern_gesamtscore).to.be.equal(37);
+    expect(result3.antipattern_gesamtscore).to.be.equal(47);
 
     // Prüfung auf aussagekräftige Patterns
     const result4 = await analyze(Ad4);
 
-    expect(result4.fraud_score).to.be.equal(35.83);
+    expect(result4.fraud_score).to.be.equal(39.64);
   });
 });

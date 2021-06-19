@@ -9,4 +9,5 @@ export interface ProductSchema extends Document {
   produktname: string;
   beschreibung: string;
   preis: number;
+  legoNr: string;
 }
