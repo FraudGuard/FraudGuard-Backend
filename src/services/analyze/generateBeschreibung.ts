@@ -100,9 +100,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       '<li>Ein Betrug ist unwahrscheinlich, da es sich um einen gewerblichen Verkäufer handelt</li>';
   }
 
-  if (
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 
-  ) {
+  if (resultingAd.ap_sonstiges_anzeige_nur_abholung === 1) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, da nur Abholung möglich ist.</li>';
   }

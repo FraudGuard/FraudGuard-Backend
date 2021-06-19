@@ -89,9 +89,7 @@ const evaluateExclusions = (resultingAd: AdsSchema) => {
     ausschlusskriterium_erfuellt = 1;
   }
 
-  if (
-    resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 
-  ) {
+  if (resultingAd.ap_sonstiges_anzeige_nur_abholung === 1) {
     ausschlusskriterium_erfuellt = 1;
   }
 
