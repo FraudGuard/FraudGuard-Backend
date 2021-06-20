@@ -305,7 +305,7 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_kategorie_unpassend === 1
   ) {
     resultingAd.beschreibung +=
-      '<li>DIe Anzeige enthält: einen VB Preis, neu und Versand in der Beschreibung und die Kategorie ist unpassend.</li>';
+      '<li>Die Anzeige enthält: einen VB Preis, neu und Versand in der Beschreibung und die Kategorie ist unpassend.</li>';
   }
 
   if (
