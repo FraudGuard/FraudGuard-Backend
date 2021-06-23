@@ -5,9 +5,9 @@ import { AdsSchema } from '../../api/models';
  * Die einzelnen Scores wurden zunächst subjektiv erstellt und zu einem gesammten Antipattern Score zusammenaddiert.
  * Der Wertebereich der einzelnen Scores liegt zwischen 1 und 5. Der Wertebereich wurde frei gewählt.
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird, um die Referenzen setzen zu können.
- * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
+ * @return {AdsSchema} Gibt das Referenzobjekt zurück.
  */
-const evaluateAntipattern = async (resultingAd: AdsSchema) => {
+const evaluateAntipattern = (resultingAd: AdsSchema) => {
   resultingAd.antipattern_score = 0;
   resultingAd.antipattern_gesamtscore = 0;
   resultingAd.antipattern_anzahl_zutreffend = 0;

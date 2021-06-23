@@ -12,17 +12,12 @@ import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
  * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
 const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
-  new Promise(async (resolve, _reject) => {
+  new Promise((resolve, _reject) => {
     logger.info('start evaluate');
 
-    // await Promise.all([
     evaluatePattern(resultingAd);
     evaluateAntipattern(resultingAd);
-    // ]).catch((error) => {
-    //   logger.error('error in evaluate');
-    //   logger.error(error);
-    //   reject(error);
-    // });
+
     const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
     const aussagekraeftiges_Pattern_erfuellt =
       evaluateSignificantPatterns(resultingAd);
