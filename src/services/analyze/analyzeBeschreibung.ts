@@ -134,7 +134,9 @@ const analyzeBeschreibung = (
       'ziemlich neu',
       'neuanschaffung',
     ];
+
     enthaelt_signalwort = 0;
+
     for (const signalwort of neu_signalwoerter) {
       if (beschreibung.includes(signalwort)) {
         enthaelt_signalwort = 1;
@@ -310,14 +312,24 @@ const analyzeBeschreibung = (
       'nie aufgebaut',
       'nie zusammengebaut',
     ];
+    // Text zu Rechten abschneiden
+    let beschreibung_gebraucht = '';
+    if (beschreibung.includes('rechte')) {
+      const pos = beschreibung.lastIndexOf('rechte');
+      beschreibung_gebraucht = beschreibung.substr(0, pos);
+    } else {
+      beschreibung_gebraucht = beschreibung;
+    }
+
     enthaelt_signalwort = 0;
+
     for (const signalwort of gebraucht_signalwoerter) {
-      if (beschreibung.includes(signalwort)) {
+      if (beschreibung_gebraucht.includes(signalwort)) {
         enthaelt_signalwort = 1;
       }
     }
     for (const signalwort of gebraucht_signalwoerter_gegenteil) {
-      if (beschreibung.includes(signalwort)) {
+      if (beschreibung_gebraucht.includes(signalwort)) {
         enthaelt_signalwort = 0;
       }
     }

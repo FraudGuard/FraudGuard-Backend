@@ -49,7 +49,7 @@ export const Ad1 = new AdsFromEbayModel({
   'contact-name-initials': { value: 'AB' },
   description: {
     value:
-      'Neuanschaffung gebrauchbar Sammlung etwas verkleinern, daher hier zum Verkauf LEGO Technic mobiler Schwerlastkran (42009)- vollständiges Set- nicht bespielt- incl. AufbauanleitungKann zusammengebaut abgeholt, oder zerlegt versendet werden.Wird natürlich nochmal gereinigtBei Fragen einfach melden. nur sepa ',
+      'Neuanschaffung gebrauchbar Sammlung etwas verkleinern, daher hier zum Verkauf LEGO Technic mobiler Schwerlastkran (42009)- vollständiges Set- nicht bespielt- incl. AufbauanleitungKann zusammengebaut Abholer, oder zerlegt versendet werden.Wird natürlich nochmal gereinigtBei Fragen einfach melden. nur sepa ',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
@@ -546,7 +546,7 @@ export const Ad4 = new AdsFromEbayModel({
   'contact-name': { value: 'Aruba !3' },
   'contact-name-initials': { value: 'AB' },
   description: {
-    value: ' sepa Überweisung  ',
+    value: ' blablabla  Rechte gebraucht  ',
   },
   displayoptions: {
     'reduced-ads-on-vip': { value: 'false' },
