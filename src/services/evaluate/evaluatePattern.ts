@@ -239,7 +239,6 @@ const addToScore = (
   condition: boolean,
   score: number,
 ): void => {
-
   if (condition) {
     resultingAd.pattern_score += score;
     resultingAd.pattern_anzahl_zutreffend += 1;

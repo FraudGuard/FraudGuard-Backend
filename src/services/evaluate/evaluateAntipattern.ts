@@ -102,7 +102,6 @@ const addToScore = (
   condition: boolean,
   score: number,
 ): void => {
-
   if (condition) {
     resultingAd.antipattern_score += score;
     resultingAd.antipattern_anzahl_zutreffend += 1;
