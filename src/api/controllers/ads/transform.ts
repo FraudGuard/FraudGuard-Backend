@@ -22,7 +22,7 @@ const transform = async (_: Request, res: Response) => {
 
 const run = async (skip = 0) => {
   const limit = 200;
-  const items = await AdsFromEbayModel.find({}).skip(skip).limit(limit);
+  const items = await AdsFromEbayModel.find({labeled: true}).skip(skip).limit(limit);
   console.log('items', items.length);
 
   const promises: Promise<any>[] = [];
