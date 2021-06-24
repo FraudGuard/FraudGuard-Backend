@@ -22,7 +22,7 @@ const transformEvaluate = async (_: Request, res: Response) => {
 };
 
 const runEvaluate = async (skip = 0) => {
-  const items = await AdsModel.find({}).skip(skip).limit(skipValue);
+  const items = await AdsModel.find({labeled: 1}).skip(skip).limit(skipValue);
   console.log('items', items.length);
 
   const promises: Promise<any>[] = [];
