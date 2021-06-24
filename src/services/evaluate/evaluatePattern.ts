@@ -65,7 +65,6 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     13,
   );
 
-
   // Konto
   addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 8);
 
