@@ -46,55 +46,51 @@ const evaluateAntipattern = (resultingAd: AdsSchema) => {
   // Beschreibung
   addToScore(
     resultingAd,
-    resultingAd.ap_beschreibung_enthaelt_barzahlung === 1,
-    5,
-  );
-
-  addToScore(
-    resultingAd,
     resultingAd.ap_beschreibung_enthaelt_gebraucht === 1,
-    5,
+    20,
   );
 
   addToScore(
     resultingAd,
     resultingAd.ap_beschreibung_enthaelt_abholung === 1,
-    1,
+    2,
   );
+
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 20);
 
   addToScore(
     resultingAd,
     resultingAd.ap_beschreibung_enthaelt_sammleraufloesung === 1,
-    4,
+    13,
   );
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 3);
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_kilo === 1, 8);
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_suche === 1, 5);
 
-  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 5);
+
+  addToScore(resultingAd, resultingAd.ap_beschreibung_enthaelt_tausch === 1, 20);
 
   // Konto
-  addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 2);
+  addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 3);
 
   // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Preis
 
   if (resultingAd.preis_waehrung_eur == 1) {
-    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 5);
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.5, 20);
+  } else {
+    addToScore(resultingAd, false, 20);
+  }
+
+  if (resultingAd.preis_waehrung_eur == 1) {
+    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.3, 5);
   } else {
     addToScore(resultingAd, false, 5);
   }
 
-  if (resultingAd.preis_waehrung_eur == 1) {
-    addToScore(resultingAd, resultingAd.preis_abweichung_marktwert >= 0.3, 2);
-  } else {
-    addToScore(resultingAd, false, 2);
-  }
-
   // Score Kategorie Sonstiges
-  addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 5);
+  addToScore(resultingAd, resultingAd.ap_sonstiges_anzeige_zeit_tag === 1, 0);
 
   return resultingAd;
 };
