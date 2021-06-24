@@ -22,10 +22,10 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 1);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 2);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
 
   // Beschreibung
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 5);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 20);
 
   addToScore(
     resultingAd,
@@ -36,16 +36,10 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
   addToScore(
     resultingAd,
     resultingAd.beschreibung_enthaelt_paypal_freunde === 1,
-    2,
+    5,
   );
 
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 1);
-
-  addToScore(
-    resultingAd,
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1,
-    5,
-  );
 
   addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 1);
 
@@ -57,60 +51,66 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     1,
   );
 
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 8);
+
   addToScore(
     resultingAd,
     resultingAd.beschreibung_ist_kopiert_anzeige === 1,
-    5,
+    13,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4);
+  addToScore(
+    resultingAd,
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1,
+    13,
+  );
 
   // Konto
-  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
+  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 8);
 
   addToScore(
     resultingAd,
     resultingAd.konto_anzeigen_ueber_100 / resultingAd.konto_anzeigen_anzahl >=
       0.2,
-    1,
+    2,
   );
 
   if (resultingAd.konto_anzeigen_betrugsrate >= 40) {
-    addToScore(resultingAd, true, 4);
+    addToScore(resultingAd, true, 13);
   } else {
-    addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, false, 13);
   }
   if (
     (resultingAd.konto_anzeigen_betrugsrate < 40 &&
       resultingAd.konto_anzeigen_betrugsrate >= 20) ||
     resultingAd.konto_anzeigen_betrugsrate >= 40
   ) {
-    addToScore(resultingAd, true, 2);
+    addToScore(resultingAd, true, 5);
   } else {
-    addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, false, 5);
   }
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 20);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 4);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 13);
 
   // Score Kategorie Preis
   if (resultingAd.preis_waehrung_eur == 1) {
-    addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 2);
+    addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 3);
   } else {
-    addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, false, 3);
   }
 
   if (resultingAd.preis_abweichung_marktwert <= -0.5) {
-    addToScore(resultingAd, true, 4);
+    addToScore(resultingAd, true, 13);
   } else {
-    addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, false, 13);
   }
 
   // Score Kategorie Sonstiges
-  addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
+  addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 13);
 
-  addToScore(resultingAd, resultingAd.sonstiges_kategorie_unpassend === 1, 4);
+  addToScore(resultingAd, resultingAd.sonstiges_kategorie_unpassend === 1, 13);
 
   // Score Kombinationen
   if (
@@ -118,8 +118,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_ueberweisung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 0
   )
-    addToScore(resultingAd, true, 1);
-  else addToScore(resultingAd, false, 1);
+    addToScore(resultingAd, true, 2);
+  else addToScore(resultingAd, false, 2);
 
   if (
     (resultingAd.titel_enthaelt_ovp === 1 &&
@@ -127,8 +127,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_ovp === 1 &&
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
+    addToScore(resultingAd, true, 20);
+  else addToScore(resultingAd, false, 20);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 &&
@@ -136,15 +136,15 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_neu === 1 &&
       resultingAd.preis_abweichung_marktwert <= -0.3)
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     resultingAd.konto_privat === 1 &&
     resultingAd.konto_name_enthaelt_gmbh === 1
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
 
   if (
     (resultingAd.beschreibung_enthaelt_neu === 1 &&
@@ -152,8 +152,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 &&
       resultingAd.beschreibung_enthaelt_whatsapp === 1)
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -162,8 +162,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.beschreibung_ist_kopiert_anzeige === 1
   )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -172,8 +172,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_ovp === 1) &&
     resultingAd.sonstiges_anzeige_kopiert === 1
   )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, true, 3);
+  else addToScore(resultingAd, false, 3);
 
   if (
     resultingAd.titel_enthaelt_ovp === 0 &&
@@ -181,8 +181,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -190,8 +190,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_abholung === 0 &&
     resultingAd.preis_abweichung_marktwert <= -0.3
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
 
   // Kombinationen aus Assoziationsanalyse
 
@@ -201,8 +201,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_neu === 1 &&
     resultingAd.beschreibung_enthaelt_versiegelt === 1
   )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     resultingAd.preis_unter_marktwert === 1 &&
@@ -210,8 +210,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_neu === 1 &&
     resultingAd.beschreibung_enthaelt_versand === 1
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     resultingAd.preis_typ_vb === 1 &&
@@ -219,8 +219,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_versand === 1 &&
     resultingAd.sonstiges_kategorie_unpassend === 1
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
 
   if (
     resultingAd.preis_unter_marktwert === 1 &&
@@ -228,8 +228,8 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
     resultingAd.titel_enthaelt_ovp === 1 &&
     resultingAd.titel_enthaelt_neu === 1
   )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
+    addToScore(resultingAd, true, 20);
+  else addToScore(resultingAd, false, 20);
 
   return resultingAd;
 };
