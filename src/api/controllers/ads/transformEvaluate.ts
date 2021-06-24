@@ -36,6 +36,8 @@ const runEvaluate = async (skip = 0) => {
   if (items.length === skipValue) {
     console.log('analyzed', skipValue);
     runEvaluate(skip + skipValue);
+  } else {
+    console.log('🎉🎉🎉🎉🎉🎉🎉🎉 FERTIG 🎉🎉🎉🎉🎉🎉🎉🎉 ');
   }
 };
 

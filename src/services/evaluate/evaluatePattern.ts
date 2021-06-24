@@ -239,9 +239,6 @@ const addToScore = (
   condition: boolean,
   score: number,
 ): void => {
-  if (score < 1 || score > 5) {
-    throw new Error('Score not in Range');
-  }
 
   if (condition) {
     resultingAd.pattern_score += score;
