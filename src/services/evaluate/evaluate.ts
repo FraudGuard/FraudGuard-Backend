@@ -11,6 +11,7 @@ import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können.
  * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
+// backup
 const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise((resolve, _reject) => {
     logger.info('start evaluate');
