@@ -5,9 +5,9 @@ import { AdsSchema } from '../../api/models';
  * Die einzelnen Scores wurden zunächst subjektiv erstellt und zu einem gesamten Patternscore zusammenaddiert.
  * Der Wertebereich der einzelnen Scores liegt zwischen 1 und 5. Der Wertebereich wurde frei gewählt.
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
- * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück
+ * @return {AdsSchema} Gibt das Referenzobjekt zurück
  */
-const evaluatePattern = async (resultingAd: AdsSchema) => {
+const evaluatePattern = (resultingAd: AdsSchema) => {
   resultingAd.pattern_score = 0;
   resultingAd.pattern_gesamtscore = 0;
   resultingAd.pattern_anzahl_zutreffend = 0;
