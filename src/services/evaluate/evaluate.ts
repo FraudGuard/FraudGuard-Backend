@@ -30,14 +30,14 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
     } else if (!zu_wenig_merkmale) {
-      const pattern_score =
+      /*const pattern_score =
         (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
       const antipattern_score =
         (resultingAd.antipattern_score / resultingAd.antipattern_gesamtscore) *
-        100;
+        100; */
 
       resultingAd.fraud_score =
-        Math.round((pattern_score - antipattern_score) * 100) / 100;
+        Math.round((resultingAd.pattern_score - resultingAd.antipattern_score) * 100) / 100; 
 
       if (aussagekraeftiges_Pattern_erfuellt === 1) {
         resultingAd.fraud_score += 40;
