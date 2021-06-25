@@ -37,7 +37,9 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
         100; */
 
       resultingAd.fraud_score =
-        Math.round((resultingAd.pattern_score - resultingAd.antipattern_score) * 100) / 100; 
+        Math.round(
+          (resultingAd.pattern_score - resultingAd.antipattern_score) * 100,
+        ) / 100;
 
       if (aussagekraeftiges_Pattern_erfuellt === 1) {
         resultingAd.fraud_score += 40;
