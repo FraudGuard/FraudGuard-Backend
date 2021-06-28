@@ -210,7 +210,7 @@ const analyzeBeschreibung = (
       'whats-app',
       'welche app',
       'what app',
-      'w­h­a­t­s'//TIMMICHELLE ÄNDERUNG
+      'w­h­a­t­s', // TIMMICHELLE ÄNDERUNG
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of whatsapp_signalwoerter) {
