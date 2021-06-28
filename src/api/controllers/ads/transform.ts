@@ -12,7 +12,7 @@ import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
 const transform = async (_: Request, res: Response) => {
   try {
     logger.info('transform');
-    run(6500);
+    run(0);
     res.status(HttpStatus.OK).json({ result: true });
   } catch (err) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
