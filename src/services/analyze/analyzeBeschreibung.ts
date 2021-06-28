@@ -449,12 +449,12 @@ const analyzeBeschreibung = (
     }
     resultingAd.ap_beschreibung_enthaelt_kilo = enthaelt_signalwort;
 
-    if (beschreibung.includes('­')) { //TIMMICHELLE ÄNDERUNG
-      // !ACHTUNG es wird überprüft ob die Beschreibung das HTML zeichen &shy; enthält)
-      resultingAd.titel_enthaelt_neu = 1;
-      resultingAd.sonstiges_anzeige_kopiert = 1;
-      resultingAd.preis_abweichung_marktwert = -0.5;
-    }
+    // if (beschreibung.includes('­')) { //TIMMICHELLE ÄNDERUNG
+    //   // !ACHTUNG es wird überprüft ob die Beschreibung das HTML zeichen &shy; enthält)
+    //   resultingAd.titel_enthaelt_neu = 1;
+    //   resultingAd.sonstiges_anzeige_kopiert = 1;
+    //   resultingAd.preis_abweichung_marktwert = -0.5;
+    // }
 
     resultingAd.beschreibung_zu_klein = beschreibung.length < 50 ? 1 : 0;
     resolve(resultingAd);
