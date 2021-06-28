@@ -28,7 +28,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
-import { generateBeschreibung } from '../analyze/generateBeschreibung';
+import { generateDescription } from '../analyze/generateDescription';
 import { evaluateAntipattern, evaluatePattern } from './';
 import { evaluateExclusions } from './evaluateExclusions';
 /**
@@ -65,7 +65,7 @@ const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         Math.round((pattern_score - antipattern_score) * 100) / 100;
     }
 
-    generateBeschreibung(resultingAd);
+    generateDescription(resultingAd);
 
     resolve(resultingAd);
   });

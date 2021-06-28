@@ -1,6 +1,6 @@
 import { AdsSchema } from '../../api/models';
 
-const generateBeschreibung = (resultingAd: AdsSchema) => {
+const generateDescription = (resultingAd: AdsSchema) => {
   resultingAd.beschreibung = '';
   // Antipattern
   if (resultingAd.ap_titel_enthaelt_gebraucht === 1) {
@@ -380,4 +380,4 @@ const generateBeschreibung = (resultingAd: AdsSchema) => {
       '</ul>';
   }
 };
-export { generateBeschreibung };
+export { generateDescription };

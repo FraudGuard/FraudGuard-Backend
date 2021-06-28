@@ -1,6 +1,6 @@
 import { AdsSchema } from '../../api/models';
 import { logger } from '../../shared';
-import { generateBeschreibung } from '../analyze/generateBeschreibung';
+import { generateDescription } from '../analyze/generateDescription';
 import { evaluateAntipattern, evaluatePattern } from './';
 import { evaluateExclusions } from './evaluateExclusions';
 import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
@@ -49,7 +49,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       }
     }
 
-    generateBeschreibung(resultingAd);
+    generateDescription(resultingAd);
 
     if (
       (zu_wenig_merkmale && ausschlusskriterium_erfuellt !== 1) ||
