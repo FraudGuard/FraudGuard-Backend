@@ -210,7 +210,7 @@ const analyzeBeschreibung = (
       'whats-app',
       'welche app',
       'what app',
-      'w­h­a­t­s'
+      'w­h­a­t­s',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of whatsapp_signalwoerter) {

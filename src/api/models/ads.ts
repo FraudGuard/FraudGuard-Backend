@@ -26,7 +26,6 @@ export const adsSchema = new Schema<AdsSchema>(
     antipattern_anzahl_zutreffend: { type: Number },
     antipattern_anzahl_gesamt: { type: Number },
 
-    
     konto_bewertungen_anzahl: { type: Number },
     konto_erstellt_zeit: { type: Number },
     konto_anzeigen_anzahl: { type: Number },
@@ -47,7 +46,6 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_anzeigen_ueber_100: { type: Number },
     ap_konto_name_natuerlich: { type: Number },
 
-    
     metadaten_laengengrad: { type: Number },
     metadaten_breitengrad: { type: Number },
     metadaten_telefonnumer: { type: Number },
@@ -55,7 +53,6 @@ export const adsSchema = new Schema<AdsSchema>(
     metadaten_kategorie: { type: Number },
     metadaten_anzeige_zeit: { type: Number },
 
-    
     beschreibung_enthaelt_ueberweisung: { type: Number },
     beschreibung_enthaelt_sepa: { type: Number },
     beschreibung_enthaelt_paypal_freunde: { type: Number },
