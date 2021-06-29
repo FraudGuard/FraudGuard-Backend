@@ -31,6 +31,7 @@ import { logger } from '../../shared';
 import { generateDescription } from '../analyze/generateDescription';
 import { evaluateAntipattern, evaluatePattern } from './';
 import { evaluateExclusions } from './evaluateExclusions';
+import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
 /**
  * Funktion zur Berechnung des Scores einer Anzeige.
  * Dabei werden die Scores (Patternscore und Antipatternscore) miteinander verrechnet und normiert.
@@ -38,23 +39,25 @@ import { evaluateExclusions } from './evaluateExclusions';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können.
  * @return {Promise&lt;AdsSchema>} Gibt das Referenzobjekt zurück.
  */
+
 const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
-  new Promise(async (resolve, _reject) => {
+  new Promise((resolve, _reject) => {
     logger.info('start evaluate');
 
-    // await Promise.all([
     evaluatePattern(resultingAd);
     evaluateAntipattern(resultingAd);
-    // ]).catch((error) => {
-    //   logger.error('error in evaluate');
-    //   logger.error(error);
-    //   reject(error);
-    // });
+
     const ausschlusskriterium_erfuellt = evaluateExclusions(resultingAd);
+    const aussagekraeftiges_Pattern_erfuellt =
+      evaluateSignificantPatterns(resultingAd);
+    const zu_wenig_merkmale =
+      resultingAd.pattern_anzahl_zutreffend +
+        resultingAd.antipattern_anzahl_zutreffend &lt;
+      3;
 
     if (ausschlusskriterium_erfuellt === 1) {
       resultingAd.fraud_score = -100;
-    } else {
+    } else if (!zu_wenig_merkmale) {
       const pattern_score =
         (resultingAd.pattern_score / resultingAd.pattern_gesamtscore) * 100;
       const antipattern_score =
@@ -63,10 +66,23 @@ const evaluate = (resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
 
       resultingAd.fraud_score =
         Math.round((pattern_score - antipattern_score) * 100) / 100;
+
+      if (aussagekraeftiges_Pattern_erfuellt === 1) {
+        resultingAd.fraud_score += 40;
+      }
     }
 
     generateDescription(resultingAd);
 
+    if (
+      (zu_wenig_merkmale &amp;&amp; ausschlusskriterium_erfuellt !== 1) ||
+      resultingAd.beschreibung_zu_klein
+    ) {
+      resultingAd.fraud_score = 0;
+      resultingAd.keine_bewertung_moeglich = 1;
+      resultingAd.beschreibung +=
+        'Es kann keine Begründung abgegeben werden, da zu wenige Merkmale erkannt wurden die für oder gegen einen Betrug sprechen';
+    }
     resolve(resultingAd);
   });
 export { evaluate };
@@ -80,13 +96,13 @@ export { evaluate };
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#evaluateSignificantPatterns">evaluateSignificantPatterns</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#saveComment">saveComment</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 09:10:15 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jun 28 2021 22:28:19 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

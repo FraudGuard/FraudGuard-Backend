@@ -14,7 +14,7 @@ const transform = async (_: Request, res: Response) => {
     logger.info('transform');
     run(0);
     res.status(HttpStatus.OK).json({ result: true });
-  } catch (err) {
+  } catch (err: any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }
@@ -29,7 +29,6 @@ const run = async (skip = 0) => {
 
   const promises: Promise<any>[] = [];
   items.forEach(async (ad, i) => {
-    // for (const ad of items) {
     promises.push(single(ad, i));
   });
   const data = await Promise.all(promises);

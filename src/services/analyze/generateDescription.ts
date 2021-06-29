@@ -152,14 +152,6 @@ const generateDescription = (resultingAd: AdsSchema) => {
       '<li>Die Anzeige enthält: verschweißt oder ungeöffnet im Titel oder versiegelt in der Beschreibung. Zusätzlich liegt der Preis mindestens 30% unter dem Marktwert.</li>';
   }
 
-  // if (
-  //   resultingAd.konto_privat === 1 &&
-  //   resultingAd.konto_name_enthaelt_gmbh === 1
-  // ) {
-  //   resultingAd.beschreibung +=
-  //     '<li>Die Anzeige enthält: ein privates Konto und gmbh im Kontoname.</li>';
-  // }
-
   if (
     (resultingAd.beschreibung_enthaelt_neu === 1 &&
       resultingAd.beschreibung_enthaelt_whatsapp === 1) ||

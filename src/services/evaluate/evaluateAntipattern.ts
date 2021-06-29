@@ -75,7 +75,6 @@ const evaluateAntipattern = (resultingAd: AdsSchema) => {
   // Konto
   addToScore(resultingAd, resultingAd.ap_konto_name_natuerlich === 1, 3);
 
-  // addToScore(resultingAd, resultingAd.weitere_anzeigen_gebraucht)
 
   // Preis
 

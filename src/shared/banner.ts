@@ -24,7 +24,7 @@ const printBanner = () => {
     `;
 
   logger.info(stripIndent(banner));
-  // https://nodejs.org/api/process.html
+
   logger.info(`Version:           ${version}`);
   logger.info(`Node:              ${process.version}`);
   logger.info(`Hostname:          ${host}`);

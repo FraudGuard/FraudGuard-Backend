@@ -43,7 +43,6 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
   new Promise(async (resolve, reject) => {
     try {
       logger.info('start analyze Titel');
-      // console.log(ad.title.value);
 
       const str = ad['title'].value.toLowerCase();
 
@@ -62,6 +61,8 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         'nicht neu',
         'ausgepackt',
         'benutzt',
+        'ziemlich neu',
+        'neuanschaffung',
       ];
 
       resultingAd.titel_enthaelt_neu = 0;
@@ -69,6 +70,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         for (const g of wordListNeu_gegenteil) {
           if (str.includes(w) &amp;&amp; !str.includes(g)) {
             resultingAd.titel_enthaelt_neu = 1;
+          }
+          if (str.includes(g)) {
+            resultingAd.titel_enthaelt_neu = 0;
           }
         }
       }
@@ -93,6 +97,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
           if (str.includes(w1) &amp;&amp; !str.includes(g1)) {
             resultingAd.titel_enthaelt_ovp = 1;
           }
+          if (str.includes(g1)) {
+            resultingAd.titel_enthaelt_ovp = 0;
+          }
         }
       }
 
@@ -115,6 +122,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
           if (str.includes(w2) &amp;&amp; !str.includes(g2)) {
             resultingAd.titel_enthaelt_verschweißt = 1;
           }
+          if (str.includes(g2)) {
+            resultingAd.titel_enthaelt_verschweißt = 0;
+          }
         }
       }
 
@@ -124,13 +134,16 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         'ungeoeffnet',
         'nicht geöffnet',
       ];
-      const wordListUngeoeffnet_gegenteil = ['geöffnet', 'geoeffnet'];
+      const wordListUngeoeffnet_gegenteil = [' geöffnet', ' geoeffnet'];
 
       resultingAd.titel_enthaelt_ungeoeffnet = 0;
       for (const w3 of wordListUngeoeffnet) {
         for (const g3 of wordListUngeoeffnet_gegenteil) {
           if (str.includes(w3) &amp;&amp; !str.includes(g3)) {
             resultingAd.titel_enthaelt_ungeoeffnet = 1;
+          }
+          if (str.includes(g3)) {
+            resultingAd.titel_enthaelt_ungeoeffnet = 0;
           }
         }
       }
@@ -169,6 +182,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
           if (str.includes(w5) &amp;&amp; !str.includes(g5)) {
             resultingAd.ap_titel_enthaelt_gebraucht = 1;
           }
+          if (str.includes(g5)) {
+            resultingAd.ap_titel_enthaelt_gebraucht = 0;
+          }
         }
       }
 
@@ -185,6 +201,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         for (const g6 of wordListTausche_gegenteil) {
           if (str.includes(w6) &amp;&amp; !str.includes(g6)) {
             resultingAd.ap_titel_enthaelt_tausche = 1;
+          }
+          if (str.includes(g6)) {
+            resultingAd.ap_titel_enthaelt_tausche = 0;
           }
         }
       }
@@ -203,6 +222,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
           if (str.includes(w7) &amp;&amp; !str.includes(g7)) {
             resultingAd.ap_titel_enthaelt_suche = 1;
           }
+          if (str.includes(g7)) {
+            resultingAd.ap_titel_enthaelt_suche = 0;
+          }
         }
       }
 
@@ -215,6 +237,9 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
         for (const g8 of wordListKilo_gegenteil) {
           if (str.includes(w8) &amp;&amp; !str.includes(g8)) {
             resultingAd.ap_titel_enthaelt_kilo = 1;
+          }
+          if (str.includes(g8)) {
+            resultingAd.ap_titel_enthaelt_kilo = 0;
           }
         }
       }
@@ -243,12 +268,12 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise&lt;AdsSchema> =>
           if (str.includes(w9) &amp;&amp; !str.includes(g9)) {
             resultingAd.ap_titel_enthaelt_sammlung = 1;
           }
+          if (str.includes(g9)) {
+            resultingAd.ap_titel_enthaelt_sammlung = 0;
+          }
         }
       }
 
-      if (false) {
-        reject(new Error('Some Error happened'));
-      }
       resolve(resultingAd);
     } catch (e) {
       reject(e);
@@ -265,13 +290,13 @@ export { analyzeTitel };
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#evaluateSignificantPatterns">evaluateSignificantPatterns</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#saveComment">saveComment</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 09:10:15 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jun 28 2021 22:28:19 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

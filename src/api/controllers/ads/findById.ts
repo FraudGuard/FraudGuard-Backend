@@ -22,7 +22,7 @@ const findById = async (req: Request, res: Response) => {
         });
       }
     });
-  } catch (err) {
+  } catch (err: any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }

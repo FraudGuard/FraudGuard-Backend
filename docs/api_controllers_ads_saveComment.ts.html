@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/controllers/ads/transform.ts</title>
+    <title>JSDoc: Source: api/controllers/ads/saveComment.ts</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/controllers/ads/transform.ts</h1>
+    <h1 class="page-title">Source: api/controllers/ads/saveComment.ts</h1>
 
     
 
@@ -26,61 +26,71 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { analyze } from '../../../services/analyze';
+            <pre class="prettyprint source linenums"><code>import { AdsFromEbayModel, AdsModel, AdsSchema } from '../../models';
 import { HttpStatus, logger } from '../../../shared';
 import { Request, Response } from 'express';
-import { AdsFromEbayModel, AdsFromEbaySchema, AdsModel } from '../../models';
+import { UpdateQuery } from 'mongoose';
+import { getSingleById } from '../../../services/ebay';
+import { findById } from '../../../services/mongo';
 
 /**
- * Funktion welche alle Anzeigen aus der Datenbank analysiert und speichert
- * @param {req} _ - Express Request Objekt
+ * Funktion zum Speichern von Feedback
+ * @param {req} req - Express Request Objekt
  * @param {res} res - Express Response Objekt
  * @return {void}
  */
-const transform = async (_: Request, res: Response) => {
+const saveComment = async (req: Request, res: Response) => {
   try {
-    logger.info('transform');
-    run(0);
-    res.status(HttpStatus.OK).json({ result: true });
-  } catch (err: any) {
+    const { id } = req.params;
+    let { comment } = req.body;
+
+    if (!id) {
+      throw new Error('No valid id ');
+    }
+    if (!comment) {
+      throw new Error('No valid comment ');
+    }
+    const currentAd = await findById(id);
+    if (currentAd?.comment) {
+      comment = comment + '&lt;br/>' + currentAd.comment;
+    }
+
+    const update: UpdateQuery&lt;AdsSchema> = {
+      toReview: 1,
+      comment,
+    };
+
+    const result = await getSingleById(id);
+    if (result) {
+      result.toReview = true;
+      result.comment = comment;
+      AdsFromEbayModel.findOneAndUpdate({ _id: result.id }, result, {
+        upsert: true,
+      }).then(() => {
+        console.log('updated');
+      });
+    }
+
+    console.log(comment);
+    AdsModel.findByIdAndUpdate({ _id: id.toString() }, update).then((ad) => {
+      logger.info('saved comment ', ad ? 'yes' : 'no');
+      if (ad) {
+        res.status(HttpStatus.OK).json({
+          ad,
+        });
+      } else {
+        res.status(HttpStatus.INTERNAL_ERROR).json({
+          msg: 'Error while updating',
+        });
+      }
+    });
+  } catch (err:any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }
 };
 
-const run = async (skip = 0) => {
-  const limit = 200;
-  const items = await AdsFromEbayModel.find({ labeled: true })
-    .skip(skip)
-    .limit(limit);
-  console.log('items', items.length);
-
-  const promises: Promise&lt;any>[] = [];
-  items.forEach(async (ad, i) => {
-    promises.push(single(ad, i));
-  });
-  const data = await Promise.all(promises);
-  await AdsModel.bulkWrite(data.filter((x) => x));
-  if (items.length === limit) {
-    run(skip + limit);
-  } else {
-    console.log('🎉🎉🎉🎉🎉🎉🎉🎉 FERTIG 🎉🎉🎉🎉🎉🎉🎉🎉 ');
-  }
-};
-
-const single = (ad: AdsFromEbaySchema, i: number) =>
-  new Promise(async (resolve) => {
-    const result = await analyze(ad);
-    console.log('analyzed', ++i);
-    resolve({
-      updateOne: {
-        filter: { _id: result._id },
-        update: result.toObject(),
-        upsert: true,
-      },
-    });
-  });
-export { transform };
+export { saveComment };
 </code></pre>
         </article>
     </section>

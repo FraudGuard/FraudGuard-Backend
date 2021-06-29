@@ -15,7 +15,6 @@ export interface AdsSchema extends Document {
   keine_bewertung_moeglich: number;
   beschreibung_zu_klein: number;
 
-  // evaluate
   pattern_score: number;
   pattern_gesamtscore: number;
   pattern_anzahl_zutreffend: number;
@@ -25,7 +24,6 @@ export interface AdsSchema extends Document {
   antipattern_anzahl_zutreffend: number;
   antipattern_anzahl_gesamt: number;
 
-  // tim
   konto_bewertungen_anzahl: number;
   konto_erstellt_zeit: number;
   konto_anzeigen_anzahl: number;
@@ -46,7 +44,6 @@ export interface AdsSchema extends Document {
   konto_anzeigen_ueber_100: number;
   ap_konto_name_natuerlich: number;
 
-  // Chris
   metadaten_laengengrad: number;
   metadaten_breitengrad: number;
   metadaten_kategorie: number;
@@ -54,7 +51,6 @@ export interface AdsSchema extends Document {
   metadaten_telefonnummer: number;
   metadaten_anzeige_zeit: number;
 
-  // Jana
   beschreibung_enthaelt_ueberweisung: number;
   beschreibung_enthaelt_sepa: number;
   beschreibung_enthaelt_paypal_freunde: number;
@@ -74,7 +70,6 @@ export interface AdsSchema extends Document {
   ap_beschreibung_enthaelt_sammleraufloesung: number;
   ap_beschreibung_enthaelt_kilo: number;
 
-  // Michelle
   titel_enthaelt_neu: number;
   titel_enthaelt_ovp: number;
   titel_enthaelt_verschweißt: number;
@@ -86,14 +81,13 @@ export interface AdsSchema extends Document {
   ap_titel_enthaelt_kilo: number;
   ap_titel_enthaelt_sammlung: number;
 
-  // Sonstiges
   sonstiges_anzeige_kopiert: number;
   sonstiges_kategorie_unpassend: number;
   ap_sonstiges_anzeige_zeit_tag: number;
   ap_sonstiges_anzeige_nur_abholung: number;
   ap_sonstiges_anzeige_suche: number;
 
-  // Jessi
+  
   preis_unter_marktwert: number;
   preis_abweichung_marktwert: number;
   preis_waehrung_eur: number;

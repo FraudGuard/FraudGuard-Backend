@@ -33,41 +33,27 @@
  * Die einzelnen Scores wurden zunächst subjektiv erstellt und zu einem gesamten Patternscore zusammenaddiert.
  * Der Wertebereich der einzelnen Scores liegt zwischen 1 und 5. Der Wertebereich wurde frei gewählt.
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
- * @return {Promise&lt;AdsSchema>} Gibt das Referenzobjekt zurück
+ * @return {AdsSchema} Gibt das Referenzobjekt zurück
  */
-const evaluatePattern = async (resultingAd: AdsSchema) => {
+const evaluatePattern = (resultingAd: AdsSchema) => {
   resultingAd.pattern_score = 0;
   resultingAd.pattern_gesamtscore = 0;
   resultingAd.pattern_anzahl_zutreffend = 0;
   resultingAd.pattern_anzahl_gesamt = 0;
 
-  // BEISPIEL
+  
+  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 1);
 
-  // addToScore(resultingAd immer eingeben, bedingung wann addiert werden soll, score)
-  /* addToScore(
-    resultingAd,
-    resultingAd.beschreibung_enthaelt_ueberweisung === 1,
-    5,
-  ); */
-
-  // BEISPIEL ENDE
-
-  // Michelle
-
-  // Jana
-  // Titel
-  addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 2);
-
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 3);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 1);
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_verschweißt === 1, 1);
 
-  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 4);
+  addToScore(resultingAd, resultingAd.titel_enthaelt_ungeoeffnet === 1, 1);
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_zeichen === 1, 3);
 
   // Beschreibung
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 5);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_sepa === 1, 20);
 
   addToScore(
     resultingAd,
@@ -75,70 +61,84 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     2,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 2);
-
   addToScore(
     resultingAd,
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1,
+    resultingAd.beschreibung_enthaelt_paypal_freunde === 1,
     5,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_versand === 1, 1);
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 2);
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_neu === 1, 1);
+
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_ovp === 1, 1);
 
   addToScore(
     resultingAd,
     resultingAd.beschreibung_enthaelt_versiegelt === 1,
-    3,
+    1,
   );
+
+  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 8);
 
   addToScore(
     resultingAd,
     resultingAd.beschreibung_ist_kopiert_anzeige === 1,
-    5,
+    13,
   );
 
-  addToScore(resultingAd, resultingAd.beschreibung_enthaelt_whatsapp === 1, 4);
+  addToScore(
+    resultingAd,
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1,
+    13,
+  );
 
   // Konto
-  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 3);
+  addToScore(resultingAd, resultingAd.konto_name_enthaelt_unueblich === 1, 8);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_ueber_100 >= 2, 1);
+  addToScore(
+    resultingAd,
+    resultingAd.konto_anzeigen_ueber_100 / resultingAd.konto_anzeigen_anzahl >=
+      0.2,
+    2,
+  );
 
   if (resultingAd.konto_anzeigen_betrugsrate >= 40) {
-    addToScore(resultingAd, true, 4);
-  } else if (
-    resultingAd.konto_anzeigen_betrugsrate &lt; 40 &amp;&amp;
-    resultingAd.konto_anzeigen_betrugsrate >= 20
-  ) {
-    addToScore(resultingAd, true, 2);
+    addToScore(resultingAd, true, 13);
   } else {
-    addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, false, 13);
+  }
+  if (
+    (resultingAd.konto_anzeigen_betrugsrate &lt; 40 &amp;&amp;
+      resultingAd.konto_anzeigen_betrugsrate >= 20) ||
+    resultingAd.konto_anzeigen_betrugsrate >= 40
+  ) {
+    addToScore(resultingAd, true, 5);
+  } else {
+    addToScore(resultingAd, false, 5);
   }
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 5);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_gleich > 0, 20);
 
-  addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 4);
+  addToScore(resultingAd, resultingAd.konto_anzeigen_verschiedene_orte > 1, 13);
 
-  // Jessi
   // Score Kategorie Preis
   if (resultingAd.preis_waehrung_eur == 1) {
-    addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 2);
+    addToScore(resultingAd, resultingAd.preis_unter_marktwert === 1, 3);
   } else {
-    addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, false, 3);
   }
 
   if (resultingAd.preis_abweichung_marktwert &lt;= -0.5) {
-    addToScore(resultingAd, true, 4);
+    addToScore(resultingAd, true, 13);
   } else {
-    addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, false, 13);
   }
 
   // Score Kategorie Sonstiges
-  addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 4);
+  addToScore(resultingAd, resultingAd.sonstiges_anzeige_kopiert === 1, 13);
 
-  addToScore(resultingAd, resultingAd.sonstiges_kategorie_unpassend === 1, 4);
+  addToScore(resultingAd, resultingAd.sonstiges_kategorie_unpassend === 1, 13);
 
   // Score Kombinationen
   if (
@@ -146,12 +146,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.beschreibung_enthaelt_ueberweisung === 1 &amp;&amp;
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 0
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (resultingAd.konto_anzeigen_gleich === 1 &amp;&amp; resultingAd.konto_privat === 1)
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 2);
+  else addToScore(resultingAd, false, 2);
 
   if (
     (resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
@@ -159,8 +155,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_ovp === 1 &amp;&amp;
       resultingAd.preis_abweichung_marktwert &lt;= -0.3)
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 20);
+  else addToScore(resultingAd, false, 20);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 &amp;&amp;
@@ -168,26 +164,15 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
       resultingAd.preis_abweichung_marktwert &lt;= -0.3)
   )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
-
-  if (
-    (resultingAd.titel_enthaelt_verschweißt === 1 &amp;&amp;
-      resultingAd.preis_abweichung_marktwert &lt;= -0.3) ||
-    (resultingAd.titel_enthaelt_ungeoeffnet === 1 &amp;&amp;
-      resultingAd.preis_abweichung_marktwert &lt;= -0.3) ||
-    (resultingAd.beschreibung_enthaelt_versiegelt === 1 &amp;&amp;
-      resultingAd.preis_abweichung_marktwert &lt;= -0.3)
-  )
-    addToScore(resultingAd, true, 5);
-  else addToScore(resultingAd, false, 5);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     resultingAd.konto_privat === 1 &amp;&amp;
     resultingAd.konto_name_enthaelt_gmbh === 1
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
 
   if (
     (resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
@@ -195,18 +180,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     (resultingAd.titel_enthaelt_neu === 1 &amp;&amp;
       resultingAd.beschreibung_enthaelt_whatsapp === 1)
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.beschreibung_enthaelt_ovp === 1) &amp;&amp;
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1
-  )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -225,72 +200,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
       resultingAd.beschreibung_enthaelt_ovp === 1) &amp;&amp;
     resultingAd.sonstiges_anzeige_kopiert === 1
   )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
-    resultingAd.preis_abweichung_marktwert &lt;= -0.3
-  )
     addToScore(resultingAd, true, 3);
   else addToScore(resultingAd, false, 3);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    resultingAd.beschreibung_enthaelt_whatsapp === 1 &amp;&amp;
-    resultingAd.beschreibung_enthaelt_sepa
-  )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &amp;&amp;
-    resultingAd.beschreibung_enthaelt_whatsapp === 1
-  )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.beschreibung_enthaelt_ovp === 1) &amp;&amp;
-    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &amp;&amp;
-    resultingAd.preis_abweichung_marktwert &lt;= -0.3
-  )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    (resultingAd.titel_enthaelt_ovp === 1 ||
-      resultingAd.beschreibung_enthaelt_ovp === 1) &amp;&amp;
-    (resultingAd.beschreibung_enthaelt_versiegelt === 1 ||
-      resultingAd.titel_enthaelt_verschweißt === 1 ||
-      resultingAd.titel_enthaelt_ungeoeffnet === 1)
-  )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
-
-  if (
-    resultingAd.titel_enthaelt_zeichen === 1 &amp;&amp;
-    resultingAd.sonstiges_anzeige_kopiert === 1
-  )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
-
-  if (
-    resultingAd.titel_enthaelt_neu === 0 &amp;&amp;
-    resultingAd.beschreibung_enthaelt_neu === 0 &amp;&amp;
-    resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
-    resultingAd.preis_abweichung_marktwert &lt;= -0.3
-  )
-    addToScore(resultingAd, true, 4);
-  else addToScore(resultingAd, false, 4);
 
   if (
     resultingAd.titel_enthaelt_ovp === 0 &amp;&amp;
@@ -298,26 +209,8 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
     resultingAd.preis_abweichung_marktwert &lt;= -0.3
   )
-    addToScore(resultingAd, true, 2);
-  else addToScore(resultingAd, false, 2);
-
-  if (
-    (resultingAd.titel_enthaelt_neu === 1 ||
-      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
-    resultingAd.ap_sonstiges_anzeige_zeit_tag === 0 &amp;&amp;
-    resultingAd.preis_abweichung_marktwert &lt;= -0.3
-  )
-    addToScore(resultingAd, true, 1);
-  else addToScore(resultingAd, false, 1);
-
-  if (
-    resultingAd.titel_enthaelt_neu === 0 &amp;&amp;
-    resultingAd.beschreibung_enthaelt_neu === 0 &amp;&amp;
-    resultingAd.ap_sonstiges_anzeige_zeit_tag === 0 &amp;&amp;
-    resultingAd.preis_abweichung_marktwert &lt;= -0.3
-  )
-    addToScore(resultingAd, true, 1);
-  else addToScore(resultingAd, false, 1);
+    addToScore(resultingAd, true, 5);
+  else addToScore(resultingAd, false, 5);
 
   if (
     (resultingAd.titel_enthaelt_neu === 1 ||
@@ -325,8 +218,46 @@ const evaluatePattern = async (resultingAd: AdsSchema) => {
     resultingAd.ap_beschreibung_enthaelt_abholung === 0 &amp;&amp;
     resultingAd.preis_abweichung_marktwert &lt;= -0.3
   )
-    addToScore(resultingAd, true, 3);
-  else addToScore(resultingAd, false, 3);
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
+
+  // Kombinationen aus Assoziationsanalyse
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_versiegelt === 1
+  )
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &amp;&amp;
+    resultingAd.preis_typ_vb === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_versand === 1
+  )
+    addToScore(resultingAd, true, 8);
+  else addToScore(resultingAd, false, 8);
+
+  if (
+    resultingAd.preis_typ_vb === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_versand === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  )
+    addToScore(resultingAd, true, 13);
+  else addToScore(resultingAd, false, 13);
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &amp;&amp;
+    resultingAd.preis_typ_vb === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_neu === 1
+  )
+    addToScore(resultingAd, true, 20);
+  else addToScore(resultingAd, false, 20);
 
   return resultingAd;
 };
@@ -336,10 +267,6 @@ const addToScore = (
   condition: boolean,
   score: number,
 ): void => {
-  if (score &lt; 1 || score > 5) {
-    throw new Error('Score not in Range');
-  }
-
   if (condition) {
     resultingAd.pattern_score += score;
     resultingAd.pattern_anzahl_zutreffend += 1;
@@ -358,13 +285,13 @@ export { evaluatePattern };
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#evaluateSignificantPatterns">evaluateSignificantPatterns</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#saveComment">saveComment</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 09:10:15 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jun 28 2021 22:28:19 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

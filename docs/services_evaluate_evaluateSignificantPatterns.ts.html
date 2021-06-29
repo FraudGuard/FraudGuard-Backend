@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/evaluate/evaluateSignificantPatterns.ts</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/evaluate/evaluateSignificantPatterns.ts</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { AdsSchema } from '../../api/models';
+
+/**
+ * Funktion zur Anwendung des Regelwerkes
+ * Die Anzeige wird auf einzelen Merkmale geprüft, die als aussagekräftige Patterns gelten
+ * Sie diese erfüllt wird zum Score +30 addiert
+ * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können
+ * @return {number} Gibt zurück, ob ein aussagekraeftiges Pattern erfüllt ist
+ */
+const evaluateSignificantPatterns = (resultingAd: AdsSchema) => {
+  let aussagekraeftiges_Pattern_erfuellt = 0;
+
+  if (
+    (resultingAd.titel_enthaelt_verschweißt === 1 &amp;&amp;
+      resultingAd.preis_abweichung_marktwert &lt;= -0.3) ||
+    (resultingAd.titel_enthaelt_ungeoeffnet === 1 &amp;&amp;
+      resultingAd.preis_abweichung_marktwert &lt;= -0.3) ||
+    (resultingAd.beschreibung_enthaelt_versiegelt === 1 &amp;&amp;
+      resultingAd.preis_abweichung_marktwert &lt;= -0.3)
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    (resultingAd.titel_enthaelt_neu === 1 ||
+      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
+    resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
+    resultingAd.preis_abweichung_marktwert &lt;= -0.3
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    (resultingAd.titel_enthaelt_neu === 1 ||
+      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
+    resultingAd.beschreibung_enthaelt_whatsapp === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_sepa
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    (resultingAd.titel_enthaelt_neu === 1 ||
+      resultingAd.beschreibung_enthaelt_neu === 1) &amp;&amp;
+    (resultingAd.titel_enthaelt_ovp === 1 ||
+      resultingAd.beschreibung_enthaelt_ovp === 1) &amp;&amp;
+    resultingAd.beschreibung_ist_kopiert_unternehmen === 1 &amp;&amp;
+    resultingAd.preis_abweichung_marktwert &lt;= -0.3
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.titel_enthaelt_neu === 0 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 0 &amp;&amp;
+    resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
+    resultingAd.preis_abweichung_marktwert &lt;= -0.3
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &amp;&amp;
+    resultingAd.konto_privat === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.titel_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_zeichen === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_zeichen === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.beschreibung_ist_kopiert_anzeige === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.preis_unter_marktwert === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.sonstiges_anzeige_kopiert === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.sonstiges_anzeige_kopiert === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.beschreibung_enthaelt_sepa === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_ueberweisung === 1 &amp;&amp;
+    resultingAd.beschreibung_enthaelt_versand === 1 &amp;&amp;
+    resultingAd.konto_privat === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  if (
+    resultingAd.titel_enthaelt_zeichen === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_ovp === 1 &amp;&amp;
+    resultingAd.titel_enthaelt_neu === 1 &amp;&amp;
+    resultingAd.sonstiges_kategorie_unpassend === 1
+  ) {
+    aussagekraeftiges_Pattern_erfuellt = 1;
+  }
+
+  return aussagekraeftiges_Pattern_erfuellt;
+};
+export { evaluateSignificantPatterns };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li></ul><h3>Interfaces</h3><ul><li><a href="AdsFromEbaySchema.html">AdsFromEbaySchema</a></li><li><a href="AdsSchema.html">AdsSchema</a></li><li><a href="ProductSchema.html">ProductSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adsFromEbaySchema">adsFromEbaySchema</a></li><li><a href="global.html#adsSchema">adsSchema</a></li><li><a href="global.html#analyzeBeschreibung">analyzeBeschreibung</a></li><li><a href="global.html#analyzeFromApi">analyzeFromApi</a></li><li><a href="global.html#analyzeFromDb">analyzeFromDb</a></li><li><a href="global.html#analyzeKonto">analyzeKonto</a></li><li><a href="global.html#analyzeMetadaten">analyzeMetadaten</a></li><li><a href="global.html#analyzePreis">analyzePreis</a></li><li><a href="global.html#analyzeTitel">analyzeTitel</a></li><li><a href="global.html#connectDB">connectDB</a></li><li><a href="global.html#corsHandler">corsHandler</a></li><li><a href="global.html#countToLabel">countToLabel</a></li><li><a href="global.html#dbConfig">dbConfig</a></li><li><a href="global.html#disconnectDB">disconnectDB</a></li><li><a href="global.html#evaluate">evaluate</a></li><li><a href="global.html#evaluateAntipattern">evaluateAntipattern</a></li><li><a href="global.html#evaluateExclusions">evaluateExclusions</a></li><li><a href="global.html#evaluatePattern">evaluatePattern</a></li><li><a href="global.html#evaluateSignificantPatterns">evaluateSignificantPatterns</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#findByIdEbay">findByIdEbay</a></li><li><a href="global.html#findOneForLabel">findOneForLabel</a></li><li><a href="global.html#findOneToReview">findOneToReview</a></li><li><a href="global.html#getAllByAccount">getAllByAccount</a></li><li><a href="global.html#getBaseUri">getBaseUri</a></li><li><a href="global.html#getSingleById">getSingleById</a></li><li><a href="global.html#helmetHandlers">helmetHandlers</a></li><li><a href="global.html#HttpStatus">HttpStatus</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#loggerProfiles">loggerProfiles</a></li><li><a href="global.html#printBanner">printBanner</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#saveComment">saveComment</a></li><li><a href="global.html#serverConfig">serverConfig</a></li><li><a href="global.html#shutdown">shutdown</a></li><li><a href="global.html#startServer">startServer</a></li><li><a href="global.html#transform">transform</a></li><li><a href="global.html#transformEvaluate">transformEvaluate</a></li><li><a href="global.html#updateAd">updateAd</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jun 28 2021 22:28:19 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -15,7 +15,6 @@ const analyzeTitel = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise(async (resolve, reject) => {
     try {
       logger.info('start analyze Titel');
-      // console.log(ad.title.value);
 
       const str = ad['title'].value.toLowerCase();
 

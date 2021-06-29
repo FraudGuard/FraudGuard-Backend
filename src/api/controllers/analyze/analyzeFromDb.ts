@@ -14,13 +14,11 @@ const analyzeFromDb = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    // const result = await findById(id);
     const result = false;
 
     if (result) {
       res.status(HttpStatus.OK).json(result);
     } else {
-      // funktionerweise gleich wie const ad = await findByIdEbay(id);
       findByIdEbay(id).then((ad) => {
         if (!ad) {
           res.status(HttpStatus.NOT_FOUND).json({
@@ -44,7 +42,7 @@ const analyzeFromDb = async (req: Request, res: Response) => {
           });
       });
     }
-  } catch (err) {
+  } catch (err:any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }

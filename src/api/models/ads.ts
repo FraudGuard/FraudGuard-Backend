@@ -26,7 +26,7 @@ export const adsSchema = new Schema<AdsSchema>(
     antipattern_anzahl_zutreffend: { type: Number },
     antipattern_anzahl_gesamt: { type: Number },
 
-    // tim
+    
     konto_bewertungen_anzahl: { type: Number },
     konto_erstellt_zeit: { type: Number },
     konto_anzeigen_anzahl: { type: Number },
@@ -47,7 +47,7 @@ export const adsSchema = new Schema<AdsSchema>(
     konto_anzeigen_ueber_100: { type: Number },
     ap_konto_name_natuerlich: { type: Number },
 
-    // Chris
+    
     metadaten_laengengrad: { type: Number },
     metadaten_breitengrad: { type: Number },
     metadaten_telefonnumer: { type: Number },
@@ -55,7 +55,7 @@ export const adsSchema = new Schema<AdsSchema>(
     metadaten_kategorie: { type: Number },
     metadaten_anzeige_zeit: { type: Number },
 
-    // Jana
+    
     beschreibung_enthaelt_ueberweisung: { type: Number },
     beschreibung_enthaelt_sepa: { type: Number },
     beschreibung_enthaelt_paypal_freunde: { type: Number },
@@ -75,8 +75,6 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_beschreibung_enthaelt_sammleraufloesung: { type: Number },
     ap_beschreibung_enthaelt_kilo: { type: Number },
 
-    // Michelle
-    // Titel
     titel_enthaelt_neu: { type: Number },
     titel_enthaelt_ovp: { type: Number },
     titel_enthaelt_verschweißt: { type: Number },
@@ -88,14 +86,12 @@ export const adsSchema = new Schema<AdsSchema>(
     ap_titel_enthaelt_kilo: { type: Number },
     ap_titel_enthaelt_sammlung: { type: Number },
 
-    // Sonstiges
     sonstiges_anzeige_kopiert: { type: Number },
     sonstiges_kategorie_unpassend: { type: Number },
     ap_sonstiges_anzeige_zeit_tag: { type: Number },
     ap_sonstiges_anzeige_nur_abholung: { type: Number },
     ap_sonstiges_anzeige_suche: { type: Number },
 
-    // Jessi
     preis_unter_marktwert: { type: Number },
     preis_abweichung_marktwert: { type: Number },
     preis_waehrung_eur: { type: Number },

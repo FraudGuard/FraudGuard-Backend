@@ -11,7 +11,7 @@ import { evaluateSignificantPatterns } from './evaluateSignificantPatterns';
  * @param {AdsSchema} resultingAd - Ergebnisobjekt, welches eingegeben wird um die Referenzen setzen zu können.
  * @return {Promise<AdsSchema>} Gibt das Referenzobjekt zurück.
  */
-// backup
+
 const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
   new Promise((resolve, _reject) => {
     logger.info('start evaluate');
@@ -38,11 +38,6 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
 
       resultingAd.fraud_score =
         Math.round((pattern_score - antipattern_score) * 100) / 100;
-
-      // resultingAd.fraud_score =
-      // Math.round(
-      //   (resultingAd.pattern_score - resultingAd.antipattern_score) * 100,
-      // ) / 100;
 
       if (aussagekraeftiges_Pattern_erfuellt === 1) {
         resultingAd.fraud_score += 40;

@@ -15,7 +15,7 @@ const transformEvaluate = async (_: Request, res: Response) => {
     logger.info('transformEvaluate');
     runEvaluate(0);
     res.status(HttpStatus.OK).json({ result: true });
-  } catch (err) {
+  } catch (err:any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }
@@ -27,7 +27,6 @@ const runEvaluate = async (skip = 0) => {
 
   const promises: Promise<any>[] = [];
   items.forEach(async (ad, i) => {
-    // for (const ad of items) {
     promises.push(singleEvaluate(ad, i));
   });
   const data = await Promise.all(promises);
@@ -43,12 +42,11 @@ const runEvaluate = async (skip = 0) => {
 
 const singleEvaluate = (ad: AdsSchema, _i: number) =>
   new Promise(async (resolve, reject) => {
-    // const result = await analyze(ad);
     const result = await evaluate(ad).catch((error) => reject(error));
     if (!result) {
       return;
     }
-    // console.log('analyzed', ++i);
+
     resolve({
       updateOne: {
         filter: { _id: result._id },
