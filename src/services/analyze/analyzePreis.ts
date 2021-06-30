@@ -20,9 +20,7 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
     const num = ad_title.replace(/^\D+|\D+$/g, '');
     // alle Produkte aus der product collection in ein Array
-    const produkte = skipDB
-    ? []
-    : await ProductModel.find({});
+    const produkte = skipDB ? [] : await ProductModel.find({});
 
     for (const produkt of produkte) {
       if (ad_title.includes(produkt.produktname.toLowerCase())) {
