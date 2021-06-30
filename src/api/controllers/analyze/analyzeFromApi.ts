@@ -1,7 +1,7 @@
 import { findById } from './../../../services/mongo/findByIdEbay';
 import { analyze } from '../../../services/analyze';
 import { getSingleById } from '../../../services/ebay';
-import { HttpStatus, logger } from '../../../shared';
+import { HttpStatus, logger, skipDB } from '../../../shared';
 import { Request, Response } from 'express';
 
 /**
@@ -14,7 +14,7 @@ const analyzeFromApi = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const result = await findById(id);
+    const result = skipDB ? false : await findById(id);
 
     if (result) {
       res.status(HttpStatus.OK).json(result);
@@ -24,7 +24,9 @@ const analyzeFromApi = async (req: Request, res: Response) => {
           analyze(ad)
             .then((result) => {
               result._id = id;
-              result.save();
+              if (!skipDB) {
+                result.save();
+              }
               res.status(HttpStatus.OK).json(result);
             })
             .catch((error) => {
@@ -40,7 +42,7 @@ const analyzeFromApi = async (req: Request, res: Response) => {
           });
         });
     }
-  } catch (err:any) {
+  } catch (err: any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }

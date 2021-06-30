@@ -4,7 +4,8 @@ if (result.error !== undefined) {
   throw result.error;
 }
 
-const { DB_NAME, DB_HOST, DB_USER, DB_PASS } = process.env;
+const { DB_NAME, DB_HOST, DB_USER, DB_PASS, SKIP_DB } = process.env;
+export const skipDB = SKIP_DB ?? false;
 
 const dbName = DB_NAME ?? 'name';
 const host = DB_HOST ?? 'cluster0.mongodb.net';

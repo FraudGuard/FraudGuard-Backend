@@ -1,5 +1,5 @@
 import { AdsSchema, ProductModel } from '../../api/models';
-import { logger } from '../../shared';
+import { logger, skipDB } from '../../shared';
 
 /**
  * Funktion welche die Anzeige auf Eigenschaften vom Typ Konto prüft
@@ -20,7 +20,9 @@ const analyzePreis = (ad: any, resultingAd: AdsSchema): Promise<AdsSchema> =>
     // alles aus Titel entfernen außer Ziffern (für Lego Produktnummer)
     const num = ad_title.replace(/^\D+|\D+$/g, '');
     // alle Produkte aus der product collection in ein Array
-    const produkte = await ProductModel.find({});
+    const produkte = skipDB
+    ? []
+    : await ProductModel.find({});
 
     for (const produkt of produkte) {
       if (ad_title.includes(produkt.produktname.toLowerCase())) {

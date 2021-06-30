@@ -1,5 +1,5 @@
 import { AdsFromEbayModel, AdsSchema } from '../../api/models';
-import { logger } from '../../shared';
+import { logger, skipDB } from '../../shared';
 
 const analyzeSonstiges = (
   ad: any,
@@ -8,10 +8,12 @@ const analyzeSonstiges = (
   new Promise(async (resolve, _reject) => {
     logger.info('start analyze Sonstiges');
 
-    const res = await AdsFromEbayModel.find({
-      'title.value': ad.title.value,
-      'description.value': ad.description.value,
-    });
+    const res = skipDB
+      ? false
+      : await AdsFromEbayModel.find({
+          'title.value': ad.title.value,
+          'description.value': ad.description.value,
+        });
 
     // Anzeige kopiert
     if (res) {

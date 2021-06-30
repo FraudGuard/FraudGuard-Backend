@@ -1,5 +1,5 @@
 import { AdsSchema, ProductModel, AdsFromEbayModel } from '../../api/models';
-import { logger } from '../../shared';
+import { logger, skipDB } from '../../shared';
 
 /**
  * Funktion welche die Anzeige auf Eigenschaften vom Typ Beschreibung prüft
@@ -210,7 +210,7 @@ const analyzeBeschreibung = (
       'whats-app',
       'welche app',
       'what app',
-      'w­h­a­t­s'
+      'w­h­a­t­s',
     ];
     enthaelt_signalwort = 0;
     for (const signalwort of whatsapp_signalwoerter) {
@@ -222,9 +222,11 @@ const analyzeBeschreibung = (
 
     // prüfen auf kopierte Anzeigenbeschreibung
 
-    const res = await AdsFromEbayModel.find({
-      'description.value': ad.description.value,
-    });
+    const res = skipDB
+      ? false
+      : await AdsFromEbayModel.find({
+          'description.value': ad.description.value,
+        });
     // res ist array mit Ads
     if (res) {
       resultingAd.beschreibung_ist_kopiert_anzeige = res.length > 1 ? 1 : 0;
@@ -232,10 +234,10 @@ const analyzeBeschreibung = (
 
     // prüfen auf kopierte Unternehmensbeschreibung
     enthaelt_signalwort = 0;
-    const produktbeschreibungen = await ProductModel.find(
-      {},
-      { beschreibung: 1 },
-    );
+    const produktbeschreibungen = skipDB
+      ? []
+      : await ProductModel.find({}, { beschreibung: 1 });
+
     for (const produktbeschreibung of produktbeschreibungen) {
       if (produktbeschreibung.beschreibung.length > 1) {
         const saetze = produktbeschreibung.beschreibung.split('.');
