@@ -87,7 +87,6 @@ export interface AdsSchema extends Document {
   ap_sonstiges_anzeige_nur_abholung: number;
   ap_sonstiges_anzeige_suche: number;
 
-  
   preis_unter_marktwert: number;
   preis_abweichung_marktwert: number;
   preis_waehrung_eur: number;

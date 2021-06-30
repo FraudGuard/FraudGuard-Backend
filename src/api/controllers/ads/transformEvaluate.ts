@@ -15,7 +15,7 @@ const transformEvaluate = async (_: Request, res: Response) => {
     logger.info('transformEvaluate');
     runEvaluate(0);
     res.status(HttpStatus.OK).json({ result: true });
-  } catch (err:any) {
+  } catch (err: any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }

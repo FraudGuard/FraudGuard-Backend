@@ -13,7 +13,6 @@ const evaluatePattern = (resultingAd: AdsSchema) => {
   resultingAd.pattern_anzahl_zutreffend = 0;
   resultingAd.pattern_anzahl_gesamt = 0;
 
-  
   addToScore(resultingAd, resultingAd.titel_enthaelt_neu === 1, 1);
 
   addToScore(resultingAd, resultingAd.titel_enthaelt_ovp === 1, 1);

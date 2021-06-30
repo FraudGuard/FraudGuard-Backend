@@ -46,7 +46,6 @@ const evaluateExclusions = (resultingAd: AdsSchema) => {
     ausschlusskriterium_erfuellt = 1;
   }
 
-
   if (
     resultingAd.ap_sonstiges_anzeige_nur_abholung === 1 &&
     resultingAd.ap_beschreibung_enthaelt_barzahlung === 1 &&

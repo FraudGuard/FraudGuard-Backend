@@ -56,7 +56,7 @@ const saveComment = async (req: Request, res: Response) => {
         });
       }
     });
-  } catch (err:any) {
+  } catch (err: any) {
     res.status(HttpStatus.INTERNAL_ERROR).json({ error: err });
     logger.error(err);
   }
