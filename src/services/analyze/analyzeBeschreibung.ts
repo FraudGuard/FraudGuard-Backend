@@ -283,6 +283,8 @@ const analyzeBeschreibung = (
     const paypal_k_signalwoerter = [
       'paypal käuferschutz',
       'paypal kaeuferschutz',
+      'paypal gebühren',
+      'paypal gebuehren',
     ];
     const paypal_k_signalwoerter_gegenteil = ['kein paypal'];
     enthaelt_signalwort = 0;
@@ -394,8 +396,12 @@ const analyzeBeschreibung = (
     resultingAd.ap_beschreibung_enthaelt_abholung = enthaelt_signalwort;
 
     // Prüfen auf Suche
-    const suche_signalwoerter = ['suche', 'gesucht'];
-    const suche_signalwoerter_gegenteil = ['keine suche', 'nicht gesucht'];
+    const suche_signalwoerter = [' suche', 'gesucht'];
+    const suche_signalwoerter_gegenteil = [
+      'keine suche',
+      'nicht gesucht',
+      'suchender',
+    ];
     enthaelt_signalwort = 0;
     for (const signalwort of suche_signalwoerter) {
       if (beschreibung.includes(signalwort)) {

@@ -53,7 +53,7 @@ const evaluate = (resultingAd: AdsSchema): Promise<AdsSchema> =>
       resultingAd.fraud_score = 0;
       resultingAd.keine_bewertung_moeglich = 1;
       resultingAd.beschreibung +=
-        'Es kann keine Begründung abgegeben werden, da zu wenige Merkmale erkannt wurden die für oder gegen einen Betrug sprechen';
+        'Es kann keine Begründung angegeben werden, da zu wenige Merkmale erkannt wurden die für oder gegen einen Betrug sprechen';
     }
     resolve(resultingAd);
   });

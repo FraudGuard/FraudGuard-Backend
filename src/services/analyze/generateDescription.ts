@@ -15,7 +15,6 @@ const generateDescription = (resultingAd: AdsSchema) => {
 
   if (
     resultingAd.ap_titel_enthaelt_suche === 1 ||
-    resultingAd.ap_beschreibung_enthaelt_suche === 1 ||
     resultingAd.ap_sonstiges_anzeige_suche === 1
   ) {
     resultingAd.beschreibung +=
@@ -98,11 +97,6 @@ const generateDescription = (resultingAd: AdsSchema) => {
   ) {
     resultingAd.beschreibung +=
       '<li>Kein Betrug, weil der Preis 50% über dem vom Marktpreis liegt und die Beschreibung Sammlung enthält.</li>';
-  }
-
-  if (resultingAd.konto_privat != 1) {
-    resultingAd.beschreibung +=
-      '<li>Ein Betrug ist unwahrscheinlich, da es sich um einen gewerblichen Verkäufer handelt</li>';
   }
 
   if (resultingAd.ap_sonstiges_anzeige_nur_abholung === 1) {
