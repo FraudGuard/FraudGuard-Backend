@@ -65,7 +65,7 @@
     "express-pino-logger": "^6.0.0",
     "helmet": "^4.4.1",
     "http": "*",
-    "ip": "^1.1.5",
+    "ip": "^1.1.9",
     "mongoose": "^5.11.18",
     "pino": "^6.11.1",
     "pino-pretty": "^4.5.0",
